@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~angular-notifier/styles";
+@import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
+.body-fix {
+    font-family: 'Noto Serif', serif;
+    color: #172C57;
+    background-color: #FFFFFF;
+    font-size: 16px;
+}
