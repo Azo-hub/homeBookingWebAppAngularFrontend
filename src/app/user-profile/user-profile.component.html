@@ -1,0 +1,181 @@
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-md-12">
+            <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row flex-lg-nowrap">
+        
+        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="e-profile">
+                                <div class="row">
+                                    <div class="col-12 col-sm-auto mb-3">
+                                        <div class="mx-auto" style="width: 140px;">
+                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{loggedInUser?.firstname}} {{loggedInUser?.lastname}}
+                                            </h4>
+                                            <p class="mb-0">{{loggedInUser?.email}}</p>
+                                            <div class="text-muted">
+                                                <small>Last seen 2 hours ago</small>
+                                            </div>
+                                            <div class="mt-2">
+                                                <button class="btn btn-block btn-secondary" type="button" >
+													<i class="fa fa-fw fa-camera"></i> <span>Change
+														Photo</span>
+												</button>
+                                            </div>
+                                        </div>
+                                        <div class="text-center text-sm-right">
+                                            <span class="badge" style="background-color:#39e75f;">{{loggedInUserRole}}</span>
+                                            <div class="text-muted">
+                                                <small>Joined {{loggedInUser?.dateJoined |
+													date:'mediumDate'}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="active nav-link" style="color:inherit;">Settings</a></li>
+                                </ul>
+                                <div class="tab-content pt-3">
+                                    <div class="tab-pane active">
+                                        <form class="form" #userProfileForm="ngForm" (ngSubmit)="onUpdateCurrentUser(userProfileForm)">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>First Name</label> <input class="form-control" type="text" name="firstname" placeholder="First name" [(ngModel)]="loggedInUser.firstname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Last Name</label> <input class="form-control" type="text" name="lastname" placeholder="Last name" [(ngModel)]="loggedInUser.lastname">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Username</label> <input class="form-control" type="text" name="username" placeholder="Username" [(ngModel)]="loggedInUser.username">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Email</label> <input class="form-control" type="email" name="email" placeholder="user@example.com" [(ngModel)]="loggedInUser.email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col mb-3">
+                                                            <div class="form-group">
+                                                                <label>About</label>
+                                                                <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col mb-3">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Permissions Granted</h5>
+                                                                    <div class="card-text" *ngFor="let permission of loggedInUserPermission; let i = index">
+                                                                        <span class="card-text">{{permission}}</span><br/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-9 mb-3">
+                                                    <div class="mb-2">
+                                                        <b>Change Password</b>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <input class="form-control" type="password" ngModel name="currentPassword" placeholder="Current Password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <input class="form-control" name="newPassword" type="password" ngModel placeholder="New Password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <input class="form-control" ngModel name="confirmPassword" type="password" placeholder="Confirm New Password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="row">
+                                                <div class="col d-flex justify-content-end">
+                                                    <button class="btn searchbar-button-fix" [disabled]="userProfileShowLoading" type="submit">
+														<i class="fa fa-spinner fa-spin " *ngIf="userProfileShowLoading"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="userProfileShowLoading===true">Loading...</span> <span
+                                                        *ngIf="userProfileShowLoading === false">Save Changes</span>
+                                                        
+													</button>
+
+
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 mb-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="px-xl-3">
+                                <button (click)="onLogOut()" class="btn btn-block btn-secondary">
+									<i class="fa fa-sign-out"></i> <span>Logout</span>
+								</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title font-weight-bold">Support</h6>
+                            <p class="card-text">Get fast, free help from our friendly assistants.
+                            </p>
+                            <button type="button" class="btn btn-block btn-secondary">Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

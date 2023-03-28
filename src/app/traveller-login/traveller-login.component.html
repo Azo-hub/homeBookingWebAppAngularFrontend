@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row">
+        <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
+        <hr />
+        <div class="col-md-3 my-2">
+            <a routerLink="/" style="color: inherit;"><span
+				style="font-size: 25px;" class="fa fa-arrow-left" aria-hidden="true"></span></a>
+        </div>
+        <div class="col-md-6 my-2">
+            <h2 class="mb-5">Sign in</h2>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="Username" name="username" ngModel #usernameInput="ngModel" required style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
+						enter a username</span>
+                </div>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="Password" name="password" ngModel #passwordInput="ngModel" required style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="passwordInput.invalid && passwordInput.touched">Please
+						enter a password</span>
+                </div>
+
+
+                <div class="row my-2">
+                    <div class="col-md-12">
+                        <p>
+                            By signing in, I agree to the Vrbo <a href="#" style="color: inherit;">Terms and Conditions</a> and <a routerLink="/privacyPolicy" style="color: inherit;">Privacy Statement</a>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+
+                        <button type="submit" [disabled]=" loginForm.invalid || showLoading " name="button" class="form-control travellerLogin-button-fix" style="color: inherit;" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+							<i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+							<span *ngIf="showLoading === true ">Loading...</span> <span
+								*ngIf="showLoading !== true ">Continue</span>
+						</button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <div class="row my-2">
+                <div class="col-md-12" align="center">
+
+                    <p class="my-2">
+                        <a routerLink="/forgetpassword" style="color:red;">Forget
+							Password</a>
+                    </p>
+
+                    <p class="my-2">
+                        Don't have an account? <a routerLink="/signup" style="color:inherit;">Create one</a>
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
