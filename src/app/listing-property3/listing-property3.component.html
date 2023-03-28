@@ -1,0 +1,121 @@
+<div class="container-fluid px-0 mb-5">
+    <!-- Start of Navbar -->
+<app-navbar></app-navbar>
+<!-- End of Navbar -->
+
+    <div class="row mx-0 px-0">
+        <div class="col-md-12 mx-0 px-0">
+            <img src="/assets/customImage/vrbo-listyourproperty.jpg" width="100%" height="350px" />
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row my-2">
+                <div class="col-sm-12">
+                    <p class="text-muted">Step 2 of 2</p>
+                    <h3>
+                        <b>Create your account</b>
+                    </h3>
+                    <p>
+                        Have an existing account with us? <a routerLink="/ownerLogin">Log
+							in</a> to set up the new property under that account.
+                    </p>
+                    <p>Don't want to use your existing account? Use a different email address below to create a new account. Please don't use a shared email address.</p>
+                </div>
+            </div>
+            <form #ownerSignUpForm="ngForm" (ngSubmit)="onOwnerSignUp(ownerSignUpForm.value)">
+                <div class="row my-2">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control " required ngModel name="firstname" #firstnameInput="ngModel" placeholder="First name" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control " required ngModel name="lastname" #lastnameInput="ngModel" placeholder="Last name" />
+                    </div>
+                </div>
+                <div class="row my-2">
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" required ngModel name="phone" #phoneInput="ngModel" placeholder="Phone" />
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-sm-12">
+                        <input type="email" class="form-control" placeholder="Email" required ngModel name="email" #emailInput="ngModel" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="emailInput.invalid && emailInput.touched">Please
+						enter an email</span>
+                </div>
+                <div class="row my-2">
+                    <div class="col-sm-12">
+                        <input type="hidden" [(ngModel)]="owner" name="userType" #userTypeInput="ngModel"> <input type="text" class="form-control" placeholder="Username" required ngModel name="username" #usernameInput="ngModel" />
+                    </div>
+                    <span class="help-block " style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
+						enter a username</span>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-sm-12">
+                        <button class="form-control listing-property3-searchbar-button-fix" type="submit" [disabled]="ownerSignUpForm.invalid || showLoading">
+							<i class="fa fa-spinner fa-spin " *ngIf="showLoading"></i>&nbsp;&nbsp;
+							<span *ngIf="showLoading === true">Loading...</span> <span
+								*ngIf="showLoading !==true">Next</span>
+						</button>
+                        <p class="text-muted my-2">
+                            By creating an account you are accepting our <a href="#">Terms
+								and Conditions</a> and <a href="#">Privacy Policy</a>.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+            <h3>
+                <b>Bring the right guests within reach</b>
+            </h3>
+            <p>Connect with millions of people whose purpose, taste and budget make your property the perfect place to stay.</p>
+            <img src="/assets/customImage/vrbo_listing_icon.png" width="200px" height="200px" />
+            <h4>
+                <b>Access a world of travelers</b>
+            </h4>
+
+            <p>From long-range planners to last-minute bookers, bring travelers to your door from around the world.</p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+            <img src="/assets/customImage/vrbo_listing_icon2.png" width="200px" height="200px" />
+            <h4>
+                <b>Attract your ideal guests</b>
+            </h4>
+
+            <p>Book your ideal guests—travelers who delight in what you provide and want to return again and again.</p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+            <img src="/assets/customImage/vrbo_listing_icon3.png" width="200px" height="200px" />
+            <h4>
+                <b>Grow your business</b>
+            </h4>
+            <p>Make decisions based on real-time data, be more competitive & help increase visibility and bookings.</p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
