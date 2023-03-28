@@ -1,0 +1,13 @@
+@media screen and (min-width:577.99px) {
+   .searchBarMediumDisplay {
+        display:none;
+    } 
+
+}
+
+.searchbar-button-fix {
+    background-color: #172C57;
+    color: #F8F7F5;
+    border-radius: 25px;
+    padding: 5px 20px 5px 20px;
+}

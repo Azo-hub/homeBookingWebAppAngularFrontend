@@ -1,0 +1,46 @@
+<!--<div class="container-fluid searchBarMediumDisplay">
+    <div class ="row mx-0 my-0">
+        <div class="col-md-12 mx-0 my-0">
+            <img src="/assets/customImage/vrbo-searchbg.jpg" width="100%" height="85vmin"/>
+        </div>
+    </div>
+</div>-->
+<div class = "container-fluid my-5 searchBarMediumDisplay" style="width: 100%;">
+    <div class = "row my-3">
+        <div class = "col-sm-12">
+            <h3 class="my-2" style="color: inherit;">
+                Find your place for together
+            </h3>
+            <input type="text" class="form-control fa" placeholder="&#xF041; United States of America" />
+        </div>
+    </div>
+    <div class = "row my-3">
+        <div class = "col-sm-12">
+            <span>Check-In</span><br/>
+            <input id="searchBarMediumCheckin" class="form-control fa" [(ngModel)]="searchBarMediumCheckInDate" [owlDateTime]="searchBarMediumDateSingle" [owlDateTimeTrigger]="searchBarMediumDateSingle" placeholder="&#xF274; Check-in" required>
+            <owl-date-time #searchBarMediumDateSingle></owl-date-time>
+
+        </div>
+    </div>
+    <div class = "row my-3">
+        <div class = "col-sm-12">
+            <span>Check-Out</span>
+            <input id="searchBarMediumCheckout" class="form-control fa" [(ngModel)]="searchBarMediumCheckOutDate" [owlDateTime]="searchBarMediumDateSingle1" [owlDateTimeTrigger]="searchBarMediumDateSingle1" placeholder="&#xF274; Check-out" required>
+            <owl-date-time #searchBarMediumDateSingle1></owl-date-time>
+        </div>
+    </div>
+    <div class = "row my-3">
+        <div class = "col-sm-12">
+            <input type="text" placeholder="&#xF2C0; Guest" class="form-control fa" />
+        </div>
+    </div>
+    <div class = "row my-3">
+        <div class = "col-sm-12">
+            <button class="btn form-control searchbar-button-fix" (click)="onCheckDateAvailabilityMedium()" [disabled]="searchBarMediumShowLoading">
+                <i class="fa fa-spinner fa-spin " *ngIf="searchBarMediumShowLoading"></i>&nbsp;&nbsp;
+                <span *ngIf="searchBarMediumShowLoading===true">Loading...</span> <span
+                    *ngIf="searchBarMediumShowLoading !==true">Search</span></button>
+        </div>
+    </div>
+</div>
+

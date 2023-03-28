@@ -1,0 +1,9 @@
+.body-fix {
+    font-family: 'Noto Serif', serif;
+    color: #172C57;
+    background-color: #F8F7F5 !important;
+}
+
+.navbar-btn-fix {
+    border:none;
+}
