@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row">
+        <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
+
+        <hr />
+        <div class="col-md-3 my-2">
+            <a routerLink="/" style="color: inherit;"><span
+				style="font-size: 25px;" class="fa fa-arrow-left" aria-hidden="true"></span></a>
+        </div>
+        <div class="col-md-6 my-2">
+            <form #signUpForm="ngForm" (ngSubmit)="onSignUp(signUpForm.value)">
+                <h2 class="mb-5">Create an account</h2>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="email" class="form-control" placeholder="Email Address" required ngModel name="email" #emailInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="emailInput.invalid && emailInput.touched">Please
+						enter an email</span>
+                </div>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="hidden" [(ngModel)]="traveller" name="userType" #userTypeInput="ngModel"> <input type="text" class="form-control " placeholder="Username" required ngModel name="username" #usernameInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+                    <span class="help-block " style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
+						enter a username</span>
+
+                </div>
+
+                <div class="row my-4 ">
+
+                    <div class="col-md-12 " style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " required ngModel name="firstname" #firstnameInput="ngModel" placeholder="First name" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                </div>
+
+                <div class="row my-4 ">
+
+                    <div class="col-md-12 " style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " required ngModel name="lastname" #lastnameInput="ngModel" placeholder="Last name" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                </div>
+
+
+                <div class="row my-2 ">
+                    <div class="col-md-12 ">
+                        <p>By creating an account, I agree to the Vrbo Terms and Conditions and Privacy Statement.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="row my-4 ">
+                    <div class="col-md-12 " style="display: flex; flex-direction: row;">
+
+                        <button class="form-control signUp-button-fix" type="submit" [disabled]="signUpForm.invalid || showLoading" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+							<i class="fa fa-spinner fa-spin " *ngIf="showLoading"></i>&nbsp;&nbsp;
+							<span *ngIf="showLoading === true">Loading...</span> <span
+								*ngIf="showLoading !==true">Continue</span>
+						</button>
+
+                    </div>
+
+                </div>
+            </form>
+            <div class="row my-2 ">
+                <div class="col-md-12 ">
+
+                    <p>
+                        Already have an account? <a routerLink="/travellerLogin">Sign
+							in </a>
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3 "></div>
+    </div>
+</div>

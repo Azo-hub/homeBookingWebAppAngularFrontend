@@ -1,0 +1,9 @@
+.vertical-center_list_your_property{
+    margin: 0;
+    position: absolute;
+    top:50vmin;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
