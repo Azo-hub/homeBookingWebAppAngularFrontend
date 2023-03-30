@@ -22,10 +22,6 @@ export class ListingProperty3Component implements OnInit, OnDestroy {
     private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
-      this.router.navigateByUrl("/");
-    
-    } 
     
   }
 

@@ -12,4 +12,5 @@ export class ListingProperty2Component implements OnInit {
   ngOnInit(): void {
   }
 
+ 
 }

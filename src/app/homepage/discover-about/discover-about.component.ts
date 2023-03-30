@@ -7,21 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscoverAboutComponent implements OnInit {
 
-  aboutShow: boolean = false;
-  vacationRentalPerfect: boolean = false;
-
+  
   constructor() { }
-
-  showAbout(): void {
-    this.aboutShow = true;
-  
-  }
-
-  showvacationRentalPerfect(): void {
-    this.vacationRentalPerfect = true;
-  
-  }
-
 
   ngOnInit(): void {
   }

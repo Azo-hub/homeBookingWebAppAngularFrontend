@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationType } from '../enum/notification-type.enum';
 import { Property } from '../model/property';
+import { AuthenticationService } from '../service/authentication.service';
 import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
 
@@ -25,15 +26,15 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   
   
   
-  constructor(private propertyService: PropertyService, 
+  constructor(private propertyService: PropertyService, private authenticationService : AuthenticationService,
     private router: Router, private notificationService: NotificationService,
     private http: HttpClient) { }
 
   ngOnInit(): void {
-   /* if (this.authenticationService.isUserLoggedIn()) {
+   if (!this.authenticationService.isUserLoggedIn()) {
       this.router.navigateByUrl("/");
-      
-    }   */
+      this.sendNotification(NotificationType.ERROR, "You need to log in to access add new property page!");
+    }   
   }
 
   public onAddNewProperty(property: Property): void {
