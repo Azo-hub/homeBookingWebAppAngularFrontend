@@ -23,7 +23,7 @@
                     </h3>
                     <p>
                         <span class = "text-muted" [hidden]="isAuthenticatedListing3">Have an existing account with us? </span> <a [hidden]="isAuthenticatedListing3" routerLink="/ownerLogin" style="text-decoration: underline; cursor:pointer; color:inherit;">Log
-							in</a> <span class = "text-muted"> to set up the new property under that account.</span>
+							in</a> <span class = "text-muted" [hidden]="isAuthenticatedListing3"> to set up the new property under that account.</span>
                     </p>
                     <p [hidden]="!isAuthenticatedListing3" class = "text-muted">Don't want to use your existing account? Use a different email address below to create a new account. Please don't use a shared email address.</p>
                 </div>
