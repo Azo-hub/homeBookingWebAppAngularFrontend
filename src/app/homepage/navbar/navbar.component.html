@@ -10,11 +10,11 @@
 
             <ul class="navbar-nav ms-auto mb-lg-0">
 
-                <li class="nav-item" [hidden]="isNotAuthenticatedNavBar">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/" style="color:inherit;">Home</a>
                 </li>
 
-                <li class="nav-item dropdown" [hidden]="isNotAuthenticatedNavBar">
+                <li class="nav-item dropdown" [hidden]="isAuthenticated">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:inherit;">
                         <i class="fa fa-sign-in"></i>&nbsp;Login
                     </a>
@@ -24,17 +24,17 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" [hidden]="isNotAuthenticatedNavBar">
+                <li class="nav-item" [hidden]="isAuthenticated">
                     <a class="nav-link active" aria-current="page" routerLink="/signup" style="color:inherit;"><i class="fa fa-user-plus"></i>&nbsp;Sign up</a>
                 </li>
 
-                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar"><span class="nav-link active">Logged In as <b>{{loggedInUsername}}</b></span></li>
+                <li class="nav-item" [hidden]="!isAuthenticated"><span class="nav-link active">Logged In as <b>{{loggedInUsername}}</b></span></li>
 
-                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar">
+                <li class="nav-item" [hidden]="!isAuthenticated">
                     <a class="nav-link active" aria-current="page" routerLink="/userProfile" style="color:inherit;"><i class="fa fa-user-o"></i>&nbsp;My Profile</a>
                 </li>
 
-                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar">
+                <li class="nav-item" [hidden]="!isAuthenticated">
                     <a class="nav-link active btn navbar-btn-fix" aria-current="page" (click)="onLogOutNav()" style="color:inherit;"><i class="fa fa-sign-out"></i>&nbsp;Log out</a>
                 </li>
 

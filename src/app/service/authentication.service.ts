@@ -82,27 +82,26 @@ export class AuthenticationService {
     
   }
 
-
-  public get isAdmin(): boolean {
-    return this.getUserRole() === Role.ADMIN;
-  }
-  
-  public get isOwner(): boolean {
-    return this.getUserRole() === Role.OWNER;
-  }
-
-  public get isTraveller(): boolean {
-    return this.getUserRole() === Role.TRAVELLER;
-  }
-
-  public get isAuthenticated(): boolean {
-    
-    return this.getUserFromLocalCache() === JSON.parse(localStorage.getItem('user') || "");
+  public isUserAuthenticated():any {
+    this.loadToken();
+    if(this.token != null && this.token !== ''){
+      
+      if(this.jwtHelper.decodeToken(this.token).sub != null || '') {
+        if(!this.jwtHelper.isTokenExpired(this.token)) {
+          this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
+          return true;
+        }
+      }
+      
+    } 
     
   }
+
+
   
   
-  private getUserRole(): string {
+  
+  getUserRole(): string {
     return this.getUserFromLocalCache().role;
   }
   
