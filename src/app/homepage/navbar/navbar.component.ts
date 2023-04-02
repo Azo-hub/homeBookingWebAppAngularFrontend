@@ -11,11 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  loggedInUsername:string= "";
+
+  isNotAuthenticatedNavBar:boolean = false;
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.loggedInUsername = this.authenticationService.getUserFromLocalCache().username;
+    this.isNotAuthenticatedNavBar = this.authenticationService.isUserLoggedIn();
   }
 
   onLogOutNav():void {

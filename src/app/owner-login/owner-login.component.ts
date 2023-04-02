@@ -38,19 +38,20 @@ export class OwnerLoginComponent implements OnInit, OnDestroy {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token || "");
           this.authenticationService.addUserToLocalCache(response.body || null);
+          this.sendNotification(NotificationType.SUCCESS, `Log In Successful`);
           this.router.navigateByUrl('/');
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
           
-          this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
     );
   }
   
-  private sendErrorNotification(notificationType: NotificationType, message: string) {
+  private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {

@@ -14,15 +14,16 @@ import { NotificationService } from '../service/notification.service';
 })
 export class ListingProperty3Component implements OnInit, OnDestroy {
 
-  owner: string = "owner";
+  owner: string = "ROLE_OWNER_USER";
   showLoading: boolean = false; 
   private subscriptions: Subscription [] = [];
+  isAuthenticatedListing3:boolean = false;
   
   constructor(private authenticationService: AuthenticationService, 
     private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    
+    this.isAuthenticatedListing3 = this.authenticationService.isUserLoggedIn();
   }
 
   public onOwnerSignUp(user: User): void {

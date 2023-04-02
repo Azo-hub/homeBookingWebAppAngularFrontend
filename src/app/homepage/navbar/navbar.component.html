@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
         <!--Start of large screen display-->
-
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" ></span>
       </button>
@@ -10,7 +10,7 @@
 
             <ul class="navbar-nav ms-auto mb-lg-0">
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" [hidden]="isNotAuthenticatedNavBar">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:inherit;">
                         <i class="fa fa-sign-in"></i>&nbsp;Login
                     </a>
@@ -20,15 +20,17 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="isNotAuthenticatedNavBar">
                     <a class="nav-link active" aria-current="page" routerLink="/signup" style="color:inherit;"><i class="fa fa-user-plus"></i>&nbsp;Sign up</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar"><span class="nav-link active">Logged In as <b>{{loggedInUsername}}</b></span></li>
+
+                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar">
                     <a class="nav-link active" aria-current="page" routerLink="/userProfile" style="color:inherit;"><i class="fa fa-user-o"></i>&nbsp;My Profile</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!isNotAuthenticatedNavBar">
                     <a class="nav-link active btn navbar-btn-fix" aria-current="page" (click)="onLogOutNav()" style="color:inherit;"><i class="fa fa-sign-out"></i>&nbsp;Log out</a>
                 </li>
 

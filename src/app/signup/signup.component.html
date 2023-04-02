@@ -23,13 +23,13 @@
                 <div class="row my-4">
 
                     <div class="col-md-12" style="display: flex; flex-direction: row;">
-                        <input type="hidden" [(ngModel)]="traveller" name="userType" #userTypeInput="ngModel"> <input type="text" class="form-control " placeholder="Username" required ngModel name="username" #usernameInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                        <input type="text" class="form-control" placeholder="Username" required ngModel name="username" #usernameInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                     </div>
-                    <span class="help-block " style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
+                    <span class="help-block" style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
 						enter a username</span>
-
                 </div>
 
+                
                 <div class="row my-4 ">
 
                     <div class="col-md-12 " style="display: flex; flex-direction: row;">
@@ -44,13 +44,24 @@
                     </div>
                 </div>
 
+                <div class="row my-4 ">
+
+                    <div style="display: flex; flex-direction: row;">
+                        <label for = "signupAs" class="col-md-3 text-muted">SignUp As</label>
+                        <select id="signupAs" class="form-control col-md-9" required ngModel name="role" #roleInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                            <option value="ROLE_TRAVELLER_USER">A Traveller</option>
+                            <option value = "ROLE_OWNER_USER">A Property Owner</option>
+                        </select>
+                    </div>
+                </div>
+
 
                 <div class="row my-2 ">
                     <div class="col-md-12 ">
-                        <p>By creating an account, I agree to the Vrbo Terms and Conditions and Privacy Statement.</p>
+                        <p><input type="checkbox" required/> I agree to the Valence Direct Booking Rentals Terms and Conditions and Privacy Statement.</p>
 
                     </div>
-
+ 
                 </div>
 
                 <div class="row my-4 ">

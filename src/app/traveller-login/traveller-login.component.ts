@@ -40,18 +40,19 @@ export class TravellerLoginComponent implements OnInit, OnDestroy {
           this.authenticationService.addUserToLocalCache(response.body || null);
           
           this.showLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, `Log In Successful`);
           this.router.navigateByUrl("/");
         },
         (errorResponse: HttpErrorResponse) => {
           
-          this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
     );
   }
   
-  private sendErrorNotification(notificationType: NotificationType, message: string) {
+  private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {

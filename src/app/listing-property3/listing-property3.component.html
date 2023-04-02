@@ -22,10 +22,10 @@
                         <b>Create your account</b>
                     </h3>
                     <p>
-                        Have an existing account with us? <a routerLink="/ownerLogin">Log
-							in</a> to set up the new property under that account.
+                        <span class = "text-muted" [hidden]="isAuthenticatedListing3">Have an existing account with us? </span> <a [hidden]="isAuthenticatedListing3" routerLink="/ownerLogin" style="text-decoration: underline; cursor:pointer; color:inherit;">Log
+							in</a> <span class = "text-muted"> to set up the new property under that account.</span>
                     </p>
-                    <p>Don't want to use your existing account? Use a different email address below to create a new account. Please don't use a shared email address.</p>
+                    <p [hidden]="!isAuthenticatedListing3" class = "text-muted">Don't want to use your existing account? Use a different email address below to create a new account. Please don't use a shared email address.</p>
                 </div>
             </div>
             <form #ownerSignUpForm="ngForm" (ngSubmit)="onOwnerSignUp(ownerSignUpForm.value)">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="row my-2">
                     <div class="col-sm-12">
-                        <input type="hidden" [(ngModel)]="owner" name="userType" #userTypeInput="ngModel"> <input type="text" class="form-control" placeholder="Username" required ngModel name="username" #usernameInput="ngModel" />
+                        <input type="hidden" [(ngModel)]="owner" name="role" #roleInput="ngModel"> <input type="text" class="form-control" placeholder="Username" required ngModel name="username" #usernameInput="ngModel" />
                     </div>
                     <span class="help-block " style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
 						enter a username</span>
@@ -66,8 +66,8 @@
 								*ngIf="showLoading !==true">Next</span>
 						</button>
                         <p class="text-muted my-2">
-                            By creating an account you are accepting our <a href="#">Terms
-								and Conditions</a> and <a href="#">Privacy Policy</a>.
+                            By creating an account you are accepting our <a routerLink="#">Terms
+								and Conditions</a> and <a routerLink = "/privacyPolicy" style="text-decoration: underline; cursor:pointer; color:inherit;">Privacy Policy</a>.
                         </p>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ import { NotificationService } from '../service/notification.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit, OnDestroy {
-  traveller: string = "traveller";
+  
   showLoading: boolean = false; 
   private subscriptions: Subscription [] = [];
   
@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
+   if (this.authenticationService.isUserLoggedIn()) {
       this.router.navigateByUrl("/");
       
     }   
@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   public onSignUp(user: User): void {
     this.showLoading = true;
+
     
     this.subscriptions.push(
       this.authenticationService.newUser(user).subscribe(

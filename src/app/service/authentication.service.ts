@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import { Role } from '../enum/role.enum';
 
 
 @Injectable({
@@ -80,5 +81,30 @@ export class AuthenticationService {
     }
     
   }
+
+
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.ADMIN;
+  }
+  
+  public get isOwner(): boolean {
+    return this.getUserRole() === Role.OWNER;
+  }
+
+  public get isTraveller(): boolean {
+    return this.getUserRole() === Role.TRAVELLER;
+  }
+
+  public get isAuthenticated(): boolean {
+    
+    return this.getUserFromLocalCache() === JSON.parse(localStorage.getItem('user') || "");
+    
+  }
+  
+  
+  private getUserRole(): string {
+    return this.getUserFromLocalCache().role;
+  }
+  
 
 }
