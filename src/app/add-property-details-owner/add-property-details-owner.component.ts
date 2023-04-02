@@ -17,7 +17,16 @@ import { PropertyService } from '../service/property.service';
 export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
 
   showLoading: boolean = false;
-  showLoadingg: boolean = false; 
+  pictureShowLoading1: boolean;
+  pictureShowLoading2: boolean;
+  pictureShowLoading3: boolean;
+  pictureShowLoading4: boolean;
+  pictureShowLoading5: boolean;
+  picture1showLoading: boolean; 
+  picture2showLoading: boolean; 
+  picture3showLoading: boolean; 
+  picture4showLoading: boolean; 
+  picture5showLoading: boolean; 
   private subscriptions: Subscription [] = [];
   propertyId!: number|undefined;
   profileImage!: File;
@@ -45,7 +54,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         (response: HttpResponse<Property>) => {
           
           this.showLoading = false;
-          this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} created successfully.`);
+          this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} created successfully. Proceed to add property Images`);
           this.propertyId=response.body?.id;
           this.showImageUpload = true;
           
@@ -62,7 +71,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   public host = environment.apiUrl;
   
   public onFileSelected1(file:File):void {
-    this.showLoadingg = true;
+    this.pictureShowLoading1 = true;
+    this.picture1showLoading = true;
    this.profileImage = file;
     
         const formData = new FormData();
@@ -73,7 +83,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         
         upload$.subscribe(
           (response: any) => {
-            this.showLoadingg = false;
+            this.pictureShowLoading1 = false
+            this.picture1showLoading = false;
             this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
             
             
@@ -81,7 +92,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           (errorResponse: HttpErrorResponse) => {
             
             this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-            this.showLoadingg = false;
+            this.pictureShowLoading1 = false;
+            this.picture1showLoading = false;
           }
         )
       
@@ -94,7 +106,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   
   
   public onFileSelected2(file:File):void {
-    this.showLoadingg = true;
+    this.pictureShowLoading2 = true;
+    this.picture2showLoading = true;
    this.profileImage = file;
     
         const formData = new FormData();
@@ -105,7 +118,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         
         upload$.subscribe(
           (response: any) => {
-            this.showLoadingg = false;
+            this.pictureShowLoading2 = false;
+            this.picture2showLoading = false;
             this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
             
             
@@ -113,7 +127,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           (errorResponse: HttpErrorResponse) => {
             
             this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-            this.showLoadingg = false;
+            this.pictureShowLoading2 = false;
+            this.picture2showLoading = false;
           }
         )
       
@@ -125,7 +140,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   
   
   public onFileSelected3(file:File):void {
-    this.showLoadingg = true;
+    this.pictureShowLoading3 = true;
+    this.picture3showLoading = true;
    this.profileImage = file;
     
         const formData = new FormData();
@@ -136,7 +152,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         
         upload$.subscribe(
           (response: any) => {
-            this.showLoadingg = false;
+            this.pictureShowLoading3 = false;
+            this.picture3showLoading = false;
             this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
             
             
@@ -144,7 +161,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           (errorResponse: HttpErrorResponse) => {
             
             this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-            this.showLoadingg = false;
+            this.pictureShowLoading3 = false;
+            this.picture3showLoading = false;
           }
         )
       
@@ -156,7 +174,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   
   
   public onFileSelected4(file:File):void {
-    this.showLoadingg = true;
+    this.pictureShowLoading4 = true;
+    this.picture4showLoading = true;
    this.profileImage = file;
     
         const formData = new FormData();
@@ -167,7 +186,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         
         upload$.subscribe(
           (response: any) => {
-            this.showLoadingg = false;
+            this.pictureShowLoading4 = false;
+            this.picture4showLoading = false;
             this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
             
             
@@ -175,7 +195,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           (errorResponse: HttpErrorResponse) => {
             
             this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-            this.showLoadingg = false;
+            this.pictureShowLoading4 = false;
+            this.picture4showLoading = false;
           }
         )
       
@@ -188,7 +209,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   
   
   public onFileSelected5(file:File):void {
-    this.showLoadingg = true;
+    this.pictureShowLoading5 = true;
+    this.picture5showLoading = true;
    this.profileImage = file;
     
         const formData = new FormData();
@@ -199,7 +221,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
         
         upload$.subscribe(
           (response: any) => {
-            this.showLoadingg = false;
+            this.pictureShowLoading5 = false;
+            this.picture5showLoading = false;
             this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
             
             
@@ -207,7 +230,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           (errorResponse: HttpErrorResponse) => {
             
             this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-            this.showLoadingg = false;
+            this.pictureShowLoading5 = false;
+            this.picture5showLoading = false;
           }
         )
       
