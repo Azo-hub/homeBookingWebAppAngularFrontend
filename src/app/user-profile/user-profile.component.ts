@@ -8,6 +8,7 @@ import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Role } from '../enum/role.enum';
 
 @Component({
   selector: 'app-user-profile',
@@ -64,6 +65,27 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     );
     
   }
+
+
+
+  public get isAdminOrOwner(): boolean {
+    return this.authenticationService.getUserRole() === Role.ADMIN || this.authenticationService.getUserRole() === Role.OWNER;
+  }
+
+  public get isAdmin(): boolean {
+    return this.authenticationService.getUserRole() === Role.ADMIN;
+  }
+  
+  public get isOwner(): boolean {
+    return this.authenticationService.getUserRole() === Role.OWNER;
+  }
+
+  public get isTraveller(): boolean {
+    return this.authenticationService.getUserRole() === Role.TRAVELLER;
+  }
+
+
+
   
   
   private sendNotification(notificationType: NotificationType, message: string) {
