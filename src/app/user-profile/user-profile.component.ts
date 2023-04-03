@@ -34,7 +34,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   
   onLogOut(): void {
     this.authenticationService.logOut();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
     this.sendNotification(NotificationType.SUCCESS, 
       `You've been logged out successfully`);
   }
