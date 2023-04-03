@@ -20,7 +20,7 @@ export class RoleOwnerGuard implements CanActivate {
       }
       this.router.navigate(['/']);
       this.notificationService.notify(NotificationType.ERROR, 
-        'Access Denied');
+        'Access Denied! Sign up as a property owner to proceed');
       return false;
     
 
