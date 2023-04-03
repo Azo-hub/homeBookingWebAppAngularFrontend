@@ -41,6 +41,8 @@ import { TravellerLoginComponent } from './traveller-login/traveller-login.compo
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthenticationTravellerGuard } from './guard/authenticationTraveller.guard';
 import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
+import { RoleOwnerGuard } from './guard/role.guard';
+import { RoleTravellerGuard } from './guard/role-traveller.guard';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,7 @@ import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
     ReactiveFormsModule,
   ],
   providers:[DatePipe, AuthenticationService, UserService,NotificationService,
-  BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,
+  BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,RoleOwnerGuard,RoleTravellerGuard,
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })

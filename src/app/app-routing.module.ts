@@ -7,6 +7,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { AuthenticationTravellerGuard } from './guard/authenticationTraveller.guard';
+import { RoleTravellerGuard } from './guard/role-traveller.guard';
+import { RoleOwnerGuard } from './guard/role.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ListingProperty2Component } from './listing-property2/listing-property2.component';
 import { ListingProperty3Component } from './listing-property3/listing-property3.component';
@@ -27,13 +29,13 @@ const routes: Routes = [
   {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent},
   {path:"forgetpassword", component:ForgetPasswordComponent},
   {path:"propertydetails/:id", component:PropertyDetailsComponent},
-  {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard]},
+  {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},
   {path:"listing2", component:ListingProperty2Component},
   {path:"listing3", component:ListingProperty3Component},
-  {path:"booking/:noOfDays/:checkInDate/:checkOutDate/:id", component:BookingPaymentMethodComponent, canActivate: [AuthenticationTravellerGuard]},
+  {path:"booking/:noOfDays/:checkInDate/:checkOutDate/:id", component:BookingPaymentMethodComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard]},
   {path:"privacyPolicy", component:PrivacyPolicyComponent},
   {path:"userProfile", component:UserProfileComponent, canActivate: [AuthenticationGuard]},
-  {path:"orderCompleted", component:OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard]}
+  {path:"orderCompleted", component:OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard]}
   
   
   //{path:"**", component:Error404Component}

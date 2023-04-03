@@ -9,18 +9,18 @@ import { NotificationService } from '../service/notification.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RoleOwnerGuard implements CanActivate {
+export class RoleTravellerGuard implements CanActivate {
   constructor(private authenticationService: AuthenticationService, 
     private router: Router, private notificationService: NotificationService) {}
   
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  boolean  {
       
-      if(this.authenticationService.getUserRole() === Role.OWNER || this.authenticationService.getUserRole() === Role.ADMIN) {
+      if(this.authenticationService.getUserRole() === Role.TRAVELLER || this.authenticationService.getUserRole() === Role.ADMIN) {
         return true;
       }
       this.router.navigate(['/']);
       this.notificationService.notify(NotificationType.ERROR, 
-        'Access Denied');
+        'Sign up as a traveller to proceed');
       return false;
     
 
