@@ -39,6 +39,8 @@ import { UserService } from './service/user.service';
 import { SignupComponent } from './signup/signup.component';
 import { TravellerLoginComponent } from './traveller-login/traveller-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthenticationTravellerGuard } from './guard/authenticationTraveller.guard';
+import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ReactiveFormsModule,
   ],
   providers:[DatePipe, AuthenticationService, UserService,NotificationService,
-  BookingService, PropertyService, 
+  BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,9 @@ import { AddPropertyDetailsOwnerComponent } from './add-property-details-owner/a
 import { BookingPaymentMethodComponent } from './booking-payment-method/booking-payment-method.component';
 import { FindSpacesThatSuitYouInnerComponent } from './find-spaces-that-suit-you-inner/find-spaces-that-suit-you-inner.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
+import { AuthenticationGuard } from './guard/authentication.guard';
+import { AuthenticationTravellerGuard } from './guard/authenticationTraveller.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ListingProperty2Component } from './listing-property2/listing-property2.component';
 import { ListingProperty3Component } from './listing-property3/listing-property3.component';
@@ -24,13 +27,13 @@ const routes: Routes = [
   {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent},
   {path:"forgetpassword", component:ForgetPasswordComponent},
   {path:"propertydetails/:id", component:PropertyDetailsComponent},
-  {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent},
+  {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard]},
   {path:"listing2", component:ListingProperty2Component},
   {path:"listing3", component:ListingProperty3Component},
-  {path:"booking/:noOfDays/:checkInDate/:checkOutDate/:id", component:BookingPaymentMethodComponent},
+  {path:"booking/:noOfDays/:checkInDate/:checkOutDate/:id", component:BookingPaymentMethodComponent, canActivate: [AuthenticationTravellerGuard]},
   {path:"privacyPolicy", component:PrivacyPolicyComponent},
-  {path:"userProfile", component:UserProfileComponent /*, canActivate: [AuthenticationGuard]*/},
-  {path:"orderCompleted", component:OrderDetailsComponent}
+  {path:"userProfile", component:UserProfileComponent, canActivate: [AuthenticationGuard]},
+  {path:"orderCompleted", component:OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard]}
   
   
   //{path:"**", component:Error404Component}
