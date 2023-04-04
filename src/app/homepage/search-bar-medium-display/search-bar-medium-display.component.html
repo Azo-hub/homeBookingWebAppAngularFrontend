@@ -36,6 +36,11 @@
     </div>
     <div class = "row my-3">
         <div class = "col-sm-12">
+            <input type="text" placeholder="&#xf1ae; Children" class="form-control fa" />
+        </div>
+    </div>
+    <div class = "row my-3">
+        <div class = "col-sm-12">
             <button class="btn form-control searchbar-button-fix" (click)="onCheckDateAvailabilityMedium()" [disabled]="searchBarMediumShowLoading">
                 <i class="fa fa-spinner fa-spin " *ngIf="searchBarMediumShowLoading"></i>&nbsp;&nbsp;
                 <span *ngIf="searchBarMediumShowLoading===true">Loading...</span> <span

@@ -22,11 +22,64 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   pictureShowLoading3: boolean;
   pictureShowLoading4: boolean;
   pictureShowLoading5: boolean;
+  pictureShowLoading6: boolean;
+  pictureShowLoading7: boolean;
+  pictureShowLoading8: boolean;
+  pictureShowLoading9: boolean;
+  pictureShowLoading10: boolean;
+  pictureShowLoading11: boolean;
+  pictureShowLoading12: boolean;
+  pictureShowLoading13: boolean;
+  pictureShowLoading14: boolean;
+  pictureShowLoading15: boolean;
+  pictureShowLoading16: boolean;
+  pictureShowLoading17: boolean;
+  pictureShowLoading18: boolean;
+  pictureShowLoading19: boolean;
+  pictureShowLoading20: boolean;
+  pictureShowLoading21: boolean;
+  pictureShowLoading22: boolean;
+  pictureShowLoading23: boolean;
+  pictureShowLoading24: boolean;
+  pictureShowLoading25: boolean;
+  pictureShowLoading26: boolean;
+  pictureShowLoading27: boolean;
+  pictureShowLoading28: boolean;
+  pictureShowLoading29: boolean;
+  pictureShowLoading30: boolean;
+  
+  
   picture1showLoading: boolean; 
   picture2showLoading: boolean; 
   picture3showLoading: boolean; 
   picture4showLoading: boolean; 
   picture5showLoading: boolean; 
+  picture6showLoading: boolean; 
+  picture7showLoading: boolean; 
+  picture8showLoading: boolean; 
+  picture9showLoading: boolean; 
+  picture10showLoading: boolean; 
+  picture11showLoading: boolean; 
+  picture12showLoading: boolean; 
+  picture13showLoading: boolean; 
+  picture14showLoading: boolean; 
+  picture15showLoading: boolean;
+  picture16showLoading: boolean; 
+  picture17showLoading: boolean; 
+  picture18showLoading: boolean; 
+  picture19showLoading: boolean; 
+  picture20showLoading: boolean; 
+  picture21showLoading: boolean; 
+  picture22showLoading: boolean; 
+  picture23showLoading: boolean; 
+  picture24showLoading: boolean; 
+  picture25showLoading: boolean; 
+  picture26showLoading: boolean; 
+  picture27showLoading: boolean; 
+  picture28showLoading: boolean; 
+  picture29showLoading: boolean; 
+  picture30showLoading: boolean;  
+
   private subscriptions: Subscription [] = [];
   propertyId!: number|undefined;
   profileImage!: File;
@@ -239,6 +292,963 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
       
     
   }
+
+
+
+
+  public onFileSelected6(file:File):void {
+    this.pictureShowLoading6 = true;
+    this.picture6showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage6`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading6 = false;
+            this.picture6showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading6 = false;
+            this.picture6showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+  public onFileSelected7(file:File):void {
+    this.pictureShowLoading7 = true;
+    this.picture7showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage7`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading7 = false;
+            this.picture7showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading7 = false;
+            this.picture7showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected8(file:File):void {
+    this.pictureShowLoading8 = true;
+    this.picture8showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage8`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading8 = false;
+            this.picture8showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading8 = false;
+            this.picture8showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected9(file:File):void {
+    this.pictureShowLoading9 = true;
+    this.picture9showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage9`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading9 = false;
+            this.picture9showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading9 = false;
+            this.picture9showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected10(file:File):void {
+    this.pictureShowLoading10 = true;
+    this.picture10showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage10`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading10 = false;
+            this.picture10showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading10 = false;
+            this.picture10showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+  public onFileSelected11(file:File):void {
+    this.pictureShowLoading11 = true;
+    this.picture11showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage11`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading11 = false;
+            this.picture11showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading11 = false;
+            this.picture11showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+  public onFileSelected12(file:File):void {
+    this.pictureShowLoading12 = true;
+    this.picture12showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage12`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading12 = false;
+            this.picture12showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading12 = false;
+            this.picture12showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+
+
+  public onFileSelected13(file:File):void {
+    this.pictureShowLoading13 = true;
+    this.picture13showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage13`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading13 = false;
+            this.picture13showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading13 = false;
+            this.picture13showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected14(file:File):void {
+    this.pictureShowLoading14 = true;
+    this.picture14showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage14`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading14 = false;
+            this.picture14showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading14 = false;
+            this.picture14showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected15(file:File):void {
+    this.pictureShowLoading15 = true;
+    this.picture15showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage15`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading15 = false;
+            this.picture15showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading15 = false;
+            this.picture15showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected16(file:File):void {
+    this.pictureShowLoading16 = true;
+    this.picture16showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage16`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading16 = false;
+            this.picture16showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading16 = false;
+            this.picture16showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected17(file:File):void {
+    this.pictureShowLoading17 = true;
+    this.picture17showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage17`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading17 = false;
+            this.picture17showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading17 = false;
+            this.picture17showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+  public onFileSelected18(file:File):void {
+    this.pictureShowLoading18 = true;
+    this.picture18showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage18`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading18 = false;
+            this.picture18showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading18 = false;
+            this.picture18showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+  public onFileSelected19(file:File):void {
+    this.pictureShowLoading19 = true;
+    this.picture19showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage19`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading19 = false;
+            this.picture19showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading19 = false;
+            this.picture19showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected20(file:File):void {
+    this.pictureShowLoading20 = true;
+    this.picture20showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage20`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading20 = false;
+            this.picture20showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading20 = false;
+            this.picture20showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+  public onFileSelected21(file:File):void {
+    this.pictureShowLoading21 = true;
+    this.picture21showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage21`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading21 = false;
+            this.picture21showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading21 = false;
+            this.picture21showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected22(file:File):void {
+    this.pictureShowLoading22 = true;
+    this.picture22showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage22`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading22 = false;
+            this.picture22showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading22 = false;
+            this.picture22showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected23(file:File):void {
+    this.pictureShowLoading23 = true;
+    this.picture23showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage23`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading23 = false;
+            this.picture23showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading23 = false;
+            this.picture23showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+  public onFileSelected24(file:File):void {
+    this.pictureShowLoading24 = true;
+    this.picture24showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage24`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading24 = false;
+            this.picture24showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading24 = false;
+            this.picture24showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected25(file:File):void {
+    this.pictureShowLoading25 = true;
+    this.picture25showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage25`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading25 = false;
+            this.picture25showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading25 = false;
+            this.picture25showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected26(file:File):void {
+    this.pictureShowLoading26 = true;
+    this.picture26showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage26`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading26 = false;
+            this.picture26showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading26 = false;
+            this.picture26showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+  public onFileSelected27(file:File):void {
+    this.pictureShowLoading27 = true;
+    this.picture27showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage27`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading27 = false;
+            this.picture27showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading27 = false;
+            this.picture27showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+
+  public onFileSelected28(file:File):void {
+    this.pictureShowLoading28 = true;
+    this.picture28showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage28`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading28 = false;
+            this.picture28showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading28 = false;
+            this.picture28showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+  public onFileSelected29(file:File):void {
+    this.pictureShowLoading29 = true;
+    this.picture29showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage29`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading29 = false;
+            this.picture29showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading29 = false;
+            this.picture29showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+  public onFileSelected30(file:File):void {
+    this.pictureShowLoading30 = true;
+    this.picture30showLoading = true;
+   this.profileImage = file;
+    
+        const formData = new FormData();
+        formData.append("propertyImage",this.profileImage);
+        formData.append("propertyId",String(this.propertyId));
+        
+        const upload$ = this.http.post(`${this.host}/uploadPropertyImage30`,formData);
+        
+        upload$.subscribe(
+          (response: any) => {
+            this.pictureShowLoading30 = false;
+            this.picture30showLoading = false;
+            this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+            
+            
+          },
+          (errorResponse: HttpErrorResponse) => {
+            
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+            this.pictureShowLoading30 = false;
+            this.picture30showLoading = false;
+          }
+        )
+      
+      
+      
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   

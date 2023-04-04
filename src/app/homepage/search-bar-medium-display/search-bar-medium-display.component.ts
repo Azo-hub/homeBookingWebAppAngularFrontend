@@ -5,6 +5,7 @@ import { CustomHttpResponse } from 'src/app/model/custom-http-response';
 import { NotificationService } from 'src/app/service/notification.service';
 import { PropertyService } from 'src/app/service/property.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
   selector: 'app-search-bar-medium-display',
@@ -20,7 +21,7 @@ export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   
   
-  constructor(private propertyService:PropertyService, 
+  constructor(private propertyService:PropertyService, private authenticationService:AuthenticationService,
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -30,6 +31,10 @@ export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
 
 
   onCheckDateAvailabilityMedium():void {
+    if(!this.authenticationService.isUserLoggedIn()) {
+      this.sendNotification(NotificationType.ERROR, "You need to login to continue");;
+    } else {
+    
     this.searchBarMediumShowLoading = true;
     const formData = new FormData();
     formData.append("checkInDate" ,this.searchBarMediumCheckInDate.toString());
@@ -51,6 +56,8 @@ export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
        
       )
     );
+
+    }
   }
 
 

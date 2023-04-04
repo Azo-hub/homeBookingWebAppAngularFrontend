@@ -19,6 +19,16 @@ export class FindspacesthatsuityourstyleComponent implements OnInit {
   houseType2: string = "bungalows";
   houseType3: string = "cabins";
   houseType4: string = "caravans";
+  houseType5: string = "Condos/Apartments";
+  houseType6: string = "Cottages";
+  houseType7: string = "Farm Houses";
+  houseType8: string = "Guest Houses";
+  houseType9: string = "Hotels";
+  houseType10: string = "Lodges";
+  houseType11: string = "Resorts";
+  houseType12: string = "Town Houses";
+  houseType13: string = "Villas";
+  
   
   
 

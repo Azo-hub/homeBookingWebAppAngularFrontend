@@ -5,6 +5,7 @@ import { CustomHttpResponse } from 'src/app/model/custom-http-response';
 import { NotificationService } from 'src/app/service/notification.service';
 import { PropertyService } from 'src/app/service/property.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   
   
-  constructor(private propertyService:PropertyService, 
+  constructor(private propertyService:PropertyService, private authenticationService:AuthenticationService,
      private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -30,7 +31,13 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
 
   onCheckDateAvailability():void {
+    if(!this.authenticationService.isUserLoggedIn()) {
+      this.sendNotification(NotificationType.ERROR, "You need to login to continue");;
+    } else {
+      
+    
     this.searchBarShowLoading = true;
+
     const formData = new FormData();
     formData.append("checkInDate" ,this.searchBarCheckInDate.toString());
     formData.append("checkOutDate" ,this.searchBarCheckOutDate.toString());
@@ -51,6 +58,8 @@ export class SearchBarComponent implements OnInit, OnDestroy {
        
       )
     );
+
+    }
   }
 
 
