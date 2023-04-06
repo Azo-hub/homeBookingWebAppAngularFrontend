@@ -315,8 +315,8 @@
                                                                         </p>
                                                                         <p class="card-text">{{propertyEach.description.substring(0, 100)}}...</p>
                                                                         <div class = "row">
-                                                                            <div class ="col-sm-6"><button class ="btn btn-block btn-secondary">Edit</button></div>
-                                                                            <div class ="col-sm-6"><button class="btn btn-block btn-danger">Delete</button></div>
+                                                                            <div class ="col-sm-6"><button class ="btn btn-block btn-secondary" routerLink="/edit/property/{{propertyEach.id}}">Edit</button></div>
+                                                                            <div class ="col-sm-6"><button class="btn btn-block btn-danger" routerLink="/delete/property/{{propertyEach.id}}">Delete</button></div>
                                                                         </div>
                                                                         
                                                                     </div>

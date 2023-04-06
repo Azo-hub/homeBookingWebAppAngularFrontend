@@ -29,6 +29,7 @@ const routes: Routes = [
   {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent, canActivate: [AuthenticationGuard]},
   {path:"forgetpassword", component:ForgetPasswordComponent},
   {path:"propertydetails/:id", component:PropertyDetailsComponent, canActivate: [AuthenticationGuard]},
+ /* {path:"/edit/property/:id", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},*/
   {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},
   {path:"listing2", component:ListingProperty2Component},
   {path:"listing3", component:ListingProperty3Component},
