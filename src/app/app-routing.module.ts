@@ -19,6 +19,7 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 import { SignupComponent } from './signup/signup.component';
 import { TravellerLoginComponent } from './traveller-login/traveller-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditPropertyComponent } from './edit-property/edit-property.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent, canActivate: [AuthenticationGuard]},
   {path:"forgetpassword", component:ForgetPasswordComponent},
   {path:"propertydetails/:id", component:PropertyDetailsComponent, canActivate: [AuthenticationGuard]},
- /* {path:"/edit/property/:id", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},*/
+  {path:"edit/property/:id", component:EditPropertyComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},
   {path:"addNewProperty", component:AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},
   {path:"listing2", component:ListingProperty2Component},
   {path:"listing3", component:ListingProperty3Component},

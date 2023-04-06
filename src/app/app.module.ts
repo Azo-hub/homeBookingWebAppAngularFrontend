@@ -43,6 +43,7 @@ import { AuthenticationTravellerGuard } from './guard/authenticationTraveller.gu
 import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
 import { RoleOwnerGuard } from './guard/role.guard';
 import { RoleTravellerGuard } from './guard/role-traveller.guard';
+import { EditPropertyComponent } from './edit-property/edit-property.component';
 
 
 @NgModule({
@@ -68,11 +69,11 @@ import { RoleTravellerGuard } from './guard/role-traveller.guard';
     ListingProperty2Component,
     ListingProperty3Component,
     AddPropertyDetailsOwnerComponent,
-    
     SearchBarMediumDisplayComponent,
-          PrivacyPolicyComponent,
-          UserProfileComponent,
-          OrderDetailsComponent
+    PrivacyPolicyComponent,
+    UserProfileComponent,
+    OrderDetailsComponent,
+    EditPropertyComponent
   ],
   imports: [
     BrowserModule,
