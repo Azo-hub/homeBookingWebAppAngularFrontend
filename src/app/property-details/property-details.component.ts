@@ -13,6 +13,7 @@ import {DatePipe} from  '@angular/common';
 
 
 
+
 @Component({
   selector: 'app-property-details',
   
@@ -70,6 +71,8 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   
   
   onCheckPropertyAvailabilityButtonEvent():void {
+
+
     this.showPropertyAvailabilityTable = true;
     this.showBookNowButton=true;
   }
@@ -121,5 +124,9 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
+
+
+
+ 
 
 }

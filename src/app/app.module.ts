@@ -44,6 +44,7 @@ import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
 import { RoleOwnerGuard } from './guard/role.guard';
 import { RoleTravellerGuard } from './guard/role-traveller.guard';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,7 @@ import { RoleTravellerGuard } from './guard/role-traveller.guard';
     HttpClientModule,
     NotificationModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers:[DatePipe, AuthenticationService, UserService,NotificationService,
   BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,RoleOwnerGuard,RoleTravellerGuard,

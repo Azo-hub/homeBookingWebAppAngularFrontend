@@ -9,11 +9,14 @@ import { AuthenticationService } from '../service/authentication.service';
 import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
 
+
 @Component({
   selector: 'app-add-property-details-owner',
   templateUrl: './add-property-details-owner.component.html',
   styleUrls: ['./add-property-details-owner.component.css']
 })
+
+
 export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
 
   showLoading: boolean = false;
@@ -1241,11 +1244,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
 
 
 
-
-
-
-
-
+ 
 
 
 
@@ -1268,6 +1267,16 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
+
+
+
+
+  
+
+
+
+
+
 
 
 }

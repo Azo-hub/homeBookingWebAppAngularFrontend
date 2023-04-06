@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Role } from '../enum/role.enum';
+import { PropertyService } from '../service/property.service';
+import { Property } from '../model/property';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,14 +24,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   userProfileShowLoading:boolean = false;
   loggedInUserRole: string = "";
   loggedInUserPermission: [] = [];
+  propertiesByOwner: Property[] = [];
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService, private propertyService: PropertyService) { }
 
   ngOnInit(): void {
     this.loggedInUser = this.authenticationService.getUserFromLocalCache();
     this.loggedInUserRole = this.loggedInUser.role.substring(5);
     this.loggedInUserPermission = this.loggedInUser.authorities;
+    this.getPropertyByOwner();
   }
   
   onLogOut(): void {
@@ -60,6 +64,28 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         (errorResponse: HttpErrorResponse) => {
           this.userProfileShowLoading = false;
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+        }
+      )
+    );
+    
+  }
+
+
+  getPropertyByOwner():void {
+    
+    const formData = new FormData();
+    formData.append("propertyOwner",this.loggedInUser.username);
+    this.subscriptions.push(
+      
+      this.propertyService.getPropertiesByOwner(formData).subscribe(
+        (response: Property[]) => {
+          //this.uService.addUsersToLocalCache(response);
+          this.propertiesByOwner = response;
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          //this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
         }
       )
     );

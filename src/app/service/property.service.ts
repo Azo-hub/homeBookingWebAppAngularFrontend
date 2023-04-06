@@ -36,6 +36,11 @@ export class PropertyService {
     return this.http.post<CustomHttpResponse>
      (`${this.host}/checkDateAvailability`,formData);
   }
-  
+
+  getPropertiesByOwner(formData:FormData) : Observable<Property[]> {
+    return this.http.post<Property[]>(`${this.host}/allPropertyByOwner`,formData);
+  }
  
+
+
 }
