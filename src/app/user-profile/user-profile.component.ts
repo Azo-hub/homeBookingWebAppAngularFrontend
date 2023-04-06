@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Role } from '../enum/role.enum';
 import { PropertyService } from '../service/property.service';
 import { Property } from '../model/property';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,6 +26,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   loggedInUserRole: string = "";
   loggedInUserPermission: [] = [];
   propertiesByOwner: Property[] = [];
+  deletePropertyShowLoading:boolean = false;
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService, private propertyService: PropertyService) { }
@@ -93,24 +95,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
 
-  onClickDelete():void {
-
-   /* const formData = new FormData();
-    formData.append("propertyId",this.loggedInUser.username);
+  onClickDelete(deletePropertyId:number):void {
+    this.deletePropertyShowLoading = true;
+    const formData = new FormData();
+    formData.append("deletePropertyId",deletePropertyId.toString());
     this.subscriptions.push(
       
-      this.propertyService.getPropertiesByOwner(formData).subscribe(
-        (response: Property[]) => {
-          //this.uService.addUsersToLocalCache(response);
-          this.propertiesByOwner = response;
-          
+      this.propertyService.deleteProperty(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.deletePropertyShowLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.getPropertyByOwner();
         },
         (errorResponse: HttpErrorResponse) => {
-          //this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+          this.deletePropertyShowLoading = false;
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
         }
       )
-    ); */
+    ); 
 
   }
 

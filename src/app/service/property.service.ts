@@ -45,6 +45,10 @@ export class PropertyService {
   getPropertiesByOwner(formData:FormData) : Observable<Property[]> {
     return this.http.post<Property[]>(`${this.host}/allPropertyByOwner`,formData);
   }
+
+  deleteProperty(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/deleteProperty`,formData);
+  }
  
 
 

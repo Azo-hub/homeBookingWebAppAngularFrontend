@@ -191,7 +191,11 @@
                                                                         </a>
                                                                         <div class = "row mt-2 gy-2">
                                                                             <div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" routerLink="/edit/property/{{propertyEach.id}}">Edit</button></div>
-                                                                            <div class ="col-sm-6"><button class="form-control btn btn-block btn-danger"  (click) = "onClickDelete()">Delete</button></div>
+                                                                            <div class ="col-sm-6"><button class="form-control btn btn-block btn-danger"  (click) = "onClickDelete(propertyEach.id)">
+                                                                                <i class="fa fa-spinner fa-spin " *ngIf="deletePropertyShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span *ngIf="deletePropertyShowLoading===true">Deleting...</span> <span
+                                                                                    *ngIf="deletePropertyShowLoading === false">Delete</span>
+                                                                            </button></div>
                                                                         </div>
                                                                         
                                                                     </div>
