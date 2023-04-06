@@ -5,6 +5,7 @@ export class Property {
 	public propertyPrice: number;
 	public propertyCountry: string;
     public propertyState: string;
+    public propertyCity: string;
 	public propertyAddress: string;
     public propertyZipCode: string;
     public description: string;
@@ -24,6 +25,7 @@ export class Property {
         this.propertyType = "";
         this.propertyPrice = 0;
         this.propertyCountry = "";
+        this.propertyCity = "";
         this.propertyState = "";
         this.propertyAddress = "";
         this.propertyZipCode = "";

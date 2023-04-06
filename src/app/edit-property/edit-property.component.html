@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="container my-5">
-    <h2>Add a New Property</h2>
+    <h2>Edit Property </h2>
 
     <div class="row my-3">
 
@@ -25,8 +25,8 @@
                         <div class="col-sm-12">
                           <!--  <input type="text" class="form-control" placeholder="Enter Property Type" required ngModel name="propertyType" #propertyTypeInput="ngModel" /> -->
                             <label for="PropertyType" class="text-muted my-2">Enter Property Type</label>
-                            <select id="PropertyType" class="form-control" required ngModel name="propertyType" #propertyTypeInput="ngModel">
-
+                            <select id="PropertyType" class="form-control" [(ngModel)]="property.propertyType"  required ngModel name="propertyType" #propertyTypeInput="ngModel">
+                                <option selected >{{property.propertyType}}</option>
                                 <option value="House">House</option>
                                 <option value="Bungalows">Bungalows</option>
                                 <option value="Cabins">Cabins</option>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" placeholder="Enter Property Name" required ngModel name="name" #propertyNameInput="ngModel" />
+                            <input type="text" class="form-control" [ngModel]="property.name" placeholder="Enter Property Name" required ngModel name="name" #propertyNameInput="ngModel" />
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
@@ -56,7 +56,7 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyPrice" #propertyPriceInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Property Cost" />
+                                <input type="number" class="form-control" [ngModel]="property.propertyPrice" required ngModel name="propertyPrice" #propertyPriceInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Property Cost" />
                             </div>
 
                         </div>
@@ -69,7 +69,7 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyTax" #propertyTaxInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Tax" />
+                                <input type="number" class="form-control" [ngModel]="property.propertyTax" required ngModel name="propertyTax" #propertyTaxInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Tax" />
                             </div>
 
                         </div>
@@ -82,7 +82,7 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyServiceFee" #propertyServiceFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Service Fee" />
+                                <input type="number" class="form-control" [ngModel]="property.propertyServiceFee" required ngModel name="propertyServiceFee" #propertyServiceFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Service Fee" />
                             </div>
 
                         </div>
@@ -95,7 +95,7 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyCleaningFee" #propertyCleaningFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Cleaning Fee" />
+                                <input type="number" class="form-control" [ngModel]="property.propertyCleaningFee" required ngModel name="propertyCleaningFee" #propertyCleaningFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Cleaning Fee" />
                             </div>
 
                         </div>
@@ -106,25 +106,25 @@
                 <div class="card my-5 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="&#xF041; Country" ngModel name="propertyCountry" #propertyCountryInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="text" required class="form-control fa" placeholder="&#xF041; Country" [ngModel]="property.propertyCountry" ngModel name="propertyCountry" #propertyCountryInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="Street Address" ngModel name="propertyAddress" #propertyAddressInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="text" required class="form-control fa" placeholder="Street Address" [ngModel]="property.propertyAddress" ngModel name="propertyAddress" #propertyAddressInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="City" ngModel name="propertyCity" #propertyCityInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="text" required class="form-control fa" placeholder="City" [ngModel]="property.propertyCity" ngModel name="propertyCity" #propertyCityInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="State" ngModel name="propertyState" #propertyStateInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="text" required class="form-control fa" placeholder="State" [ngModel]="property.propertyState" ngModel name="propertyState" #propertyStateInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                         <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="number" required class="form-control fa" placeholder="Zip Code" ngModel name="propertyZipCode" #propertyZipCodeInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="number" required class="form-control fa" placeholder="Zip Code" [ngModel]="property.propertyZipCode" ngModel name="propertyZipCode" #propertyZipCodeInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                     </div>
 
@@ -134,7 +134,7 @@
                 <div class="card my-5 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                           <textarea rows="10" class="form-control" placeholder="Property Description" required ngModel name="description" #descriptionInput="ngModel"></textarea>
+                           <textarea rows="10" class="form-control" placeholder="Property Description" [ngModel]="property.description" required ngModel name="description" #descriptionInput="ngModel"></textarea>
                            
                         </div>
                     </div>
@@ -162,7 +162,7 @@
             <div class = "card my-4 card-fix" *ngIf="showImageUpload">
                 
                 <div class = "card-body my-2 mx-2">
-                    <h5 class = "card-title">Add Property Image <small class="text-muted">Max Image Size <= 3MB</small></h5>
+                    <h5 class = "card-title">Edit Property Image <small class="text-muted">Max Image Size <= 3MB</small></h5>
                     <div *ngIf="showImageUpload">
 
                         <div class="row my-1 mx-1">
@@ -173,6 +173,11 @@
                         </div>
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected1($any($event).target.files[0])" name="propertyImage1" />
                             </div>
                             <div class="col-sm-5">
@@ -183,6 +188,11 @@
                         </div>
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_2{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected2($any($event).target.files[0])" name="propertyImage2" />
                             </div>
                             <div class="col-sm-5">
@@ -193,6 +203,11 @@
                         </div>
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_3{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected3($any($event).target.files[0])" name="propertyImage3" />
                             </div>
                             <div class="col-sm-5">
@@ -204,6 +219,11 @@
         
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_4{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected4($any($event).target.files[0])" name="propertyImage4" />
                             </div>
                             <div class="col-sm-5">
@@ -215,6 +235,11 @@
         
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_5{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected5($any($event).target.files[0])" name="propertyImage5" />
                             </div>
                             <div class="col-sm-5">
@@ -226,6 +251,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_6{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected6($any($event).target.files[0])" name="propertyImage6" />
                             </div>
                             <div class="col-sm-5">
@@ -237,6 +267,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_7{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected7($any($event).target.files[0])" name="propertyImage7" />
                             </div>
                             <div class="col-sm-5">
@@ -248,6 +283,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_8{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected8($any($event).target.files[0])" name="propertyImage8" />
                             </div>
                             <div class="col-sm-5">
@@ -259,6 +299,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_9{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected9($any($event).target.files[0])" name="propertyImage9" />
                             </div>
                             <div class="col-sm-5">
@@ -270,6 +315,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_10{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected10($any($event).target.files[0])" name="propertyImage10" />
                             </div>
                             <div class="col-sm-5">
@@ -281,6 +331,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_11{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected11($any($event).target.files[0])" name="propertyImage11" />
                             </div>
                             <div class="col-sm-5">
@@ -292,6 +347,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_12{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected12($any($event).target.files[0])" name="propertyImage12" />
                             </div>
                             <div class="col-sm-5">
@@ -303,6 +363,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_13{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected13($any($event).target.files[0])" name="propertyImage13" />
                             </div>
                             <div class="col-sm-5">
@@ -314,6 +379,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_14{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected14($any($event).target.files[0])" name="propertyImage14" />
                             </div>
                             <div class="col-sm-5">
@@ -325,6 +395,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_15{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected15($any($event).target.files[0])" name="propertyImage15" />
                             </div>
                             <div class="col-sm-5">
@@ -336,6 +411,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_16{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected16($any($event).target.files[0])" name="propertyImage16" />
                             </div>
                             <div class="col-sm-5">
@@ -348,6 +428,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_17{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected17($any($event).target.files[0])" name="propertyImage17" />
                             </div>
                             <div class="col-sm-5">
@@ -359,6 +444,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_18{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected18($any($event).target.files[0])" name="propertyImage18" />
                             </div>
                             <div class="col-sm-5">
@@ -370,6 +460,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_19{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected19($any($event).target.files[0])" name="propertyImage19" />
                             </div>
                             <div class="col-sm-5">
@@ -381,6 +476,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_20{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected20($any($event).target.files[0])" name="propertyImage20" />
                             </div>
                             <div class="col-sm-5">
@@ -392,6 +492,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_21{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected21($any($event).target.files[0])" name="propertyImage21" />
                             </div>
                             <div class="col-sm-5">
@@ -403,6 +508,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_22{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected22($any($event).target.files[0])" name="propertyImage22" />
                             </div>
                             <div class="col-sm-5">
@@ -414,6 +524,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_23{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected23($any($event).target.files[0])" name="propertyImage23" />
                             </div>
                             <div class="col-sm-5">
@@ -425,6 +540,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_24{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected24($any($event).target.files[0])" name="propertyImage24" />
                             </div>
                             <div class="col-sm-5">
@@ -436,6 +556,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_25{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected25($any($event).target.files[0])" name="propertyImage25" />
                             </div>
                             <div class="col-sm-5">
@@ -447,6 +572,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_26{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected26($any($event).target.files[0])" name="propertyImage26" />
                             </div>
                             <div class="col-sm-5">
@@ -459,6 +589,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_27{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected27($any($event).target.files[0])" name="propertyImage27" />
                             </div>
                             <div class="col-sm-5">
@@ -470,6 +605,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_28{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected28($any($event).target.files[0])" name="propertyImage28" />
                             </div>
                             <div class="col-sm-5">
@@ -481,6 +621,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_29{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected29($any($event).target.files[0])" name="propertyImage29" />
                             </div>
                             <div class="col-sm-5">
@@ -492,6 +637,11 @@
 
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
+                                <div class="row my-2 mx-1">
+                                    <div class="col-sm-12">
+                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_30{{property.name}}{{property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">    
+                                    </div>
+                                </div>
                                 <input type="file" class="form-control" (change)="onEditFileSelected30($any($event).target.files[0])" name="propertyImage30" />
                             </div>
                             <div class="col-sm-5">

@@ -93,6 +93,28 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
 
+  onClickDelete():void {
+
+   /* const formData = new FormData();
+    formData.append("propertyId",this.loggedInUser.username);
+    this.subscriptions.push(
+      
+      this.propertyService.getPropertiesByOwner(formData).subscribe(
+        (response: Property[]) => {
+          //this.uService.addUsersToLocalCache(response);
+          this.propertiesByOwner = response;
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          //this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    ); */
+
+  }
+
+
 
   public get isAdminOrOwner(): boolean {
     return this.authenticationService.getUserRole() === Role.ADMIN || this.authenticationService.getUserRole() === Role.OWNER;

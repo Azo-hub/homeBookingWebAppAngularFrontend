@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationType } from '../enum/notification-type.enum';
@@ -16,36 +16,16 @@ import { PropertyService } from '../service/property.service';
 })
 export class EditPropertyComponent implements OnInit, OnDestroy {
   showLoading: boolean = false;
-  pictureShowLoading1: boolean;
-  pictureShowLoading2: boolean;
-  pictureShowLoading3: boolean;
-  pictureShowLoading4: boolean;
-  pictureShowLoading5: boolean;
-  pictureShowLoading6: boolean;
-  pictureShowLoading7: boolean;
-  pictureShowLoading8: boolean;
-  pictureShowLoading9: boolean;
-  pictureShowLoading10: boolean;
-  pictureShowLoading11: boolean;
-  pictureShowLoading12: boolean;
-  pictureShowLoading13: boolean;
-  pictureShowLoading14: boolean;
-  pictureShowLoading15: boolean;
-  pictureShowLoading16: boolean;
-  pictureShowLoading17: boolean;
-  pictureShowLoading18: boolean;
-  pictureShowLoading19: boolean;
-  pictureShowLoading20: boolean;
-  pictureShowLoading21: boolean;
-  pictureShowLoading22: boolean;
-  pictureShowLoading23: boolean;
-  pictureShowLoading24: boolean;
-  pictureShowLoading25: boolean;
-  pictureShowLoading26: boolean;
-  pictureShowLoading27: boolean;
-  pictureShowLoading28: boolean;
-  pictureShowLoading29: boolean;
-  pictureShowLoading30: boolean;
+  pictureShowLoading1: boolean; pictureShowLoading2: boolean; pictureShowLoading3: boolean;
+  pictureShowLoading4: boolean; pictureShowLoading5: boolean; pictureShowLoading6: boolean;
+  pictureShowLoading7: boolean; pictureShowLoading8: boolean; pictureShowLoading9: boolean;
+  pictureShowLoading10: boolean; pictureShowLoading11: boolean; pictureShowLoading12: boolean;
+  pictureShowLoading13: boolean; pictureShowLoading14: boolean; pictureShowLoading15: boolean;
+  pictureShowLoading16: boolean; pictureShowLoading17: boolean; pictureShowLoading18: boolean;
+  pictureShowLoading19: boolean; pictureShowLoading20: boolean; pictureShowLoading21: boolean;
+  pictureShowLoading22: boolean; pictureShowLoading23: boolean; pictureShowLoading24: boolean;
+  pictureShowLoading25: boolean; pictureShowLoading26: boolean; pictureShowLoading27: boolean;
+  pictureShowLoading28: boolean; pictureShowLoading29: boolean; pictureShowLoading30: boolean;
   
   
   picture1showLoading: boolean; 
@@ -83,30 +63,76 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
   propertyId!: number|undefined;
   profileImage!: File;
   showImageUpload:boolean=false;
-  
+  editPropertyIdFromUrl: string = "";
+  property:Property = new Property;
   
   
   
   constructor(private propertyService: PropertyService, private authenticationService : AuthenticationService,
-    private router: Router, private notificationService: NotificationService,
+    private router: Router, private notificationService: NotificationService, 
+    private activatedRoute: ActivatedRoute,
     private http: HttpClient) { }
 
   ngOnInit(): void {
    if (!this.authenticationService.isUserLoggedIn()) {
       this.router.navigateByUrl("/");
       this.sendNotification(NotificationType.ERROR, "You need to log in to access add new property page!");
-    }   
+    } 
+    
+    this.editPropertyIdFromUrl = this.activatedRoute.snapshot.paramMap.get("id");
+    this.getPropertyForEdit();
   }
+
+  getPropertyForEdit():void {
+    
+    const formData = new FormData();
+    formData.append("propertyId",this.editPropertyIdFromUrl);
+    this.subscriptions.push(
+      
+      this.propertyService.getPropertyById(formData).subscribe(
+        (response: Property) => {
+          //this.uService.addUsersToLocalCache(response);
+          this.property = response;
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );    
+  }
+
+
+
 
   public onEditProperty(property: Property): void {
     this.showLoading = true;
     
+    const formData = new FormData();
+    formData.append("id", this.editPropertyIdFromUrl);
+    formData.append("name", property.name);
+    formData.append("propertyType", property.propertyType);
+    formData.append("propertyPrice", property.propertyPrice.toString());
+    formData.append("propertyCountry", property.propertyCountry);
+    formData.append("propertyState", property.propertyState);
+    formData.append("propertyCity", property.propertyCity);
+    formData.append("propertyAddress", property.propertyAddress);
+    formData.append("propertyZipCode", property.propertyZipCode);
+    formData.append("description", property.description);
+    formData.append("propertyTax", property.propertyTax.toString());
+    formData.append("propertyServiceFee", property.propertyServiceFee.toString());
+    formData.append("propertyCleaningFee", property.propertyCleaningFee.toString());
+   
+   
+    
+	 
     this.subscriptions.push(
-      this.propertyService.newProperty(property).subscribe(
+      this.propertyService.editProperty(formData).subscribe(
         (response: HttpResponse<Property>) => {
           
           this.showLoading = false;
-          this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} created successfully. Proceed to add property Images`);
+          this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} edited successfully. Proceed to add property Images`);
           this.propertyId=response.body?.id;
           this.showImageUpload = true;
           

@@ -18,6 +18,11 @@ export class PropertyService {
     return this.http.post<Property> 
     (`${this.host}/newProperty`, property, {observe: 'response'});
   }
+
+  editProperty(formData: FormData): Observable<HttpResponse<Property>> {
+    return this.http.post<Property> 
+    (`${this.host}/editProperty`, formData, {observe: 'response'});
+  }
   
   public getProperties(formData:FormData) : Observable<Property[]> {
     return this.http.post<Property[]>(`${this.host}/allPropertyByCategory`,formData);
