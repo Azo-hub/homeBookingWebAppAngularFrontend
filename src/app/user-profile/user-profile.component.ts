@@ -27,7 +27,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   loggedInUserPermission: [] = [];
   propertiesByOwner: Property[] = [];
   deletePropertyShowLoading:boolean = false;
-  
+  users: User[] = [];
+
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService, private propertyService: PropertyService) { }
@@ -37,6 +38,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.loggedInUserRole = this.loggedInUser.role.substring(5);
     this.loggedInUserPermission = this.loggedInUser.authorities;
     this.getPropertyByOwner();
+    this.getAllUsers();
   }
   
   onLogOut(): void {
@@ -95,6 +97,26 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     
   }
 
+
+  getAllUsers():void {
+    
+    this.subscriptions.push(
+      this.userService.getUsers().subscribe(
+        (response: User[]) => {
+          this.userService.addUsersToLocalCache(response);
+          this.users = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+    
+  }
+
+
   onSearchProperty(searchInput:string):void {
     
     const searchProperty: Property[] = [];
@@ -116,6 +138,42 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
 
   }
+
+
+
+
+
+  onSearchUser(searchInput:string):void {
+    
+    const searchUser: User[] = [];
+    for (const eachSearchUser of this.userService.getUsersFromLocalCache() ) {
+     
+      if(eachSearchUser.firstname?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 || 
+        eachSearchUser.lastname?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchUser.othername?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchUser.username?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchUser.userId?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchUser.email?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+           
+          searchUser.push(eachSearchUser);
+          
+         }
+    }
+
+    this.users = searchUser
+    if(searchUser.length === 0 || !searchInput) {
+      this.users = this.userService.getUsersFromLocalCache();
+    }
+
+  }
+
+
+
+
+
+
+
+
  
 
   onClickDelete(deletePropertyId:number):void {

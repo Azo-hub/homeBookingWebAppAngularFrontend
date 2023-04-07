@@ -211,7 +211,71 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade in show" id="user" [hidden]="!isAdmin"></div>
+                                    <div class="tab-pane fade in show" id="users" [hidden]="!isAdmin">
+                                        <div class = "container">
+                                            <div class = "row">
+                                                <div class = "col-md-12">
+                                                    <input name="searchUsers" #usersearchInput="ngModel" ngModel (ngModelChange)="onSearchUser(usersearchInput.value)" type="search" placeholder="Search Users" class = "form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "container-fluid">
+                                            <div class = "row" *ngFor="let user of users">
+                                                <div class = "col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-6">
+                                                                
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid rounded-start" alt="User Image">
+                                                                
+                                                            </div>
+                                                        
+                                                        
+                                                            <div class="col-md-6">
+                                                                
+                                                                    <div class="card-body">
+                                                                        <a routerLink="/propertydetails/{{user.userId}}" style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="badge" style="background-color:#39e75f;">{{user.role.substring(5)}}</h5>
+                                                                        <h5 class="card-title">
+                                                                            <b>{{user.username}}</b>
+                                                                        </h5><hr/>
+                                                                        <h4 class="card-title">
+                                                                            {{user.firstname}} {{user.lastname}}
+                                                                        </h4>
+
+                                                                        <h6 class="card-subtitle">{{user.email}}</h6>
+                                                                        <p class="my-1"><b>Last Login Date: </b><small>{{user.lastLoginDateDisplay |
+													                            date:'medium'}}</small></p>
+                                                                        <p class="my-1"><b>Joined </b><small>{{user.dateJoined |
+                                                                            date:'mediumDate'}}</small></p>
+                                                                                
+                                                                        <p class="card-text my-1">
+                                                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!user.accountEnabled">Enabled</small>
+                                                                            <small class="badge bg-danger"  [hidden]="user.accountEnabled">Disabled</small>
+                                                                        </p>
+                                                                       <!-- <p class="card-text">{{propertyEach.description.substring(0, 100)}}...</p> -->
+                                                                        </a>
+                                                                        <div class = "row mt-2 gy-2">
+                                                                            <!--<div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" routerLink="/edit/property/{{propertyEach.id}}">Edit</button></div>
+                                                                            <div class ="col-sm-6"><button class="form-control btn btn-block btn-danger"  (click) = "onClickDelete(propertyEach.id)">
+                                                                                <i class="fa fa-spinner fa-spin " *ngIf="deletePropertyShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span *ngIf="deletePropertyShowLoading===true">Deleting...</span> <span
+                                                                                    *ngIf="deletePropertyShowLoading === false">Delete</span>
+                                                                            </button></div>-->
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+   
+                                    </div>
                                 </div>
                             </div>
                         </div>
