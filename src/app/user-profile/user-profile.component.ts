@@ -27,6 +27,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   loggedInUserPermission: [] = [];
   propertiesByOwner: Property[] = [];
   deletePropertyShowLoading:boolean = false;
+  
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService, private propertyService: PropertyService) { }
@@ -81,12 +82,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       
       this.propertyService.getPropertiesByOwner(formData).subscribe(
         (response: Property[]) => {
-          //this.uService.addUsersToLocalCache(response);
+          this.propertyService.addPropertiesToLocalCache(response);
           this.propertiesByOwner = response;
           
         },
         (errorResponse: HttpErrorResponse) => {
-          //this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           
         }
       )
@@ -94,6 +95,28 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     
   }
 
+  onSearchProperty(searchInput:string):void {
+    
+    const searchProperty: Property[] = [];
+    for (const eachSearchProperty of this.propertyService.getPropertiesFromLocalCache() ) {
+     
+      if(eachSearchProperty.name?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 || 
+        eachSearchProperty.description?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchProperty.propertyType?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        eachSearchProperty.propertyAddress?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+           
+          searchProperty.push(eachSearchProperty);
+          
+         }
+    }
+
+    this.propertiesByOwner = searchProperty
+    if(searchProperty.length === 0 || !searchInput) {
+      this.propertiesByOwner = this.propertyService.getPropertiesFromLocalCache();
+    }
+
+  }
+ 
 
   onClickDelete(deletePropertyId:number):void {
     this.deletePropertyShowLoading = true;

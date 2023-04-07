@@ -49,6 +49,23 @@ export class PropertyService {
   deleteProperty(formData: FormData): Observable<CustomHttpResponse> {
     return this.http.post<CustomHttpResponse>(`${this.host}/deleteProperty`,formData);
   }
+
+  public addPropertiesToLocalCache(properties: Property[]): void {
+    localStorage.setItem('properties', JSON.stringify(properties));
+  }
+  
+  
+  public getPropertiesFromLocalCache(): Property[] {
+    if(localStorage.getItem('properties')) {
+      
+      return JSON.parse(localStorage.getItem('properties') || '');
+      
+    }
+    
+    return [];
+    
+  }
+  
  
 
 
