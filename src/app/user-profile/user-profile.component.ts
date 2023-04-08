@@ -7,11 +7,12 @@ import { NotificationService } from '../service/notification.service';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { Role } from '../enum/role.enum';
 import { PropertyService } from '../service/property.service';
 import { Property } from '../model/property';
 import { CustomHttpResponse } from '../model/custom-http-response';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,6 +20,8 @@ import { CustomHttpResponse } from '../model/custom-http-response';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
+
+  public host = environment.apiUrl;
 
   private subscriptions: Subscription[] = [];
   public loggedInUser : User = new User();
@@ -28,10 +31,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   propertiesByOwner: Property[] = [];
   deletePropertyShowLoading:boolean = false;
   users: User[] = [];
-
+  imageShowLoading1: boolean;
+  image1showLoading: boolean;
+  identityImage!: File;
+  options = [
+    {value:"IDCard", label:"ID Card"},
+    {value:"SSN", label:"SSN"}
+  ]
+  identityType:string ="";
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
-    private authenticationService: AuthenticationService, private propertyService: PropertyService) { }
+    private authenticationService: AuthenticationService, private propertyService: PropertyService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     this.loggedInUser = this.authenticationService.getUserFromLocalCache();
@@ -196,6 +207,56 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     ); 
 
   }
+
+
+
+
+  
+  
+  public onFileSelected1(file:File):void {
+    
+    
+    if(this.identityType.length == 0) {
+
+      this.sendNotification(NotificationType.ERROR, `Please Select your Identification Type`);
+      
+    } else {
+
+      this.imageShowLoading1 = true;
+      this.image1showLoading = true;
+      this.identityImage = file;
+
+      const formData = new FormData();
+      formData.append("identityImage",this.identityImage);
+      formData.append("identityType", this.identityType)
+      
+      const upload$ = this.http.post(`${this.host}/uploadIdentityImage`,formData);
+      
+      upload$.subscribe(
+        (response: any) => {
+          this.imageShowLoading1 = false
+          this.image1showLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+          
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.imageShowLoading1 = false;
+          this.image1showLoading = false;
+        }
+      )
+    }
+      
+    
+  }
+
+
+
+
+
+
 
 
 

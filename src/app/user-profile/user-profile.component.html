@@ -43,7 +43,9 @@
                                             </div>
                                         </div>
                                         <div class="text-center text-sm-right">
-                                            <span class="badge" style="background-color:#39e75f;">{{loggedInUserRole}}</span>
+                                            <span class="badge" style="background-color:#39e75f;">{{loggedInUserRole}}</span>&nbsp;
+                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!loggedInUser?.isVerified">Verified</small>
+                                            <small class="badge bg-danger"  [hidden]="loggedInUser?.isVerified">Unverified</small>
                                             <div class="text-muted">
                                                 <small>Joined {{loggedInUser?.dateJoined |
 													date:'mediumDate'}}</small>
@@ -88,13 +90,27 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col mb-3">
-                                                            <div class="form-group">
-                                                                <label>About</label>
-                                                                <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                                                        <div class="form-group my-3">
+                                                            <label>Select your means of Identification</label>
+                                                            <select name="identityType" [(ngModel)]="identityType" class="form-control">
+                                                               <!-- <option selected>Your Identification Type</option>-->
+                                                                <option *ngFor="let option of options" [ngValue]="option.value">{{option.label}}</option>
+                                                            </select>
+    
+                                                            <label class = "my-2">Upload your Identification Type </label>    
+                                                            <div class="col-sm-7">
+                                                                <input type="file" class="form-control" (change)="onFileSelected1($any($event).target.files[0])" name="identityImage" />
                                                             </div>
+                                                            <div class="col-sm-5">
+                                                                <i class="fa fa-spinner fa-spin " *ngIf="imageShowLoading1"></i>&nbsp;&nbsp;
+                                                                    <span *ngIf="image1showLoading">Uploading...</span>
+                                                                    <span *ngIf="image1showLoading === false">Completed</span>
+                                                            </div>
+                                                        
                                                         </div>
+                                                        
                                                     </div>
+    
                                                     <div class="row">
                                                         <div class="col mb-3">
                                                             <div class="card">
@@ -144,7 +160,7 @@
                                                     <button class="btn searchbar-button-fix" [disabled]="userProfileShowLoading" type="submit">
 														<i class="fa fa-spinner fa-spin " *ngIf="userProfileShowLoading"></i>&nbsp;&nbsp;
                                                         <span *ngIf="userProfileShowLoading===true">Loading...</span> <span
-                                                        *ngIf="userProfileShowLoading === false">Save Changes</span>
+                                                        *ngIf="userProfileShowLoading === false"> Save Changes</span>
                                                         
 													</button>
 
@@ -152,6 +168,10 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        
+                                            
+                                                                                            
+                                        
 
                                     </div>
 
@@ -233,8 +253,8 @@
                                                         
                                                             <div class="col-md-6">
                                                                 
-                                                                    <div class="card-body">
-                                                                        <a routerLink="/propertydetails/{{user.userId}}" style="color:inherit; text-decoration:none;">
+                                                                <div class="card-body">
+                                                                    <a routerLink="/userdetails/{{user.username}}" style="color:inherit; text-decoration:none;">
                                                                         <h5 class="badge" style="background-color:#39e75f;">{{user.role.substring(5)}}</h5>
                                                                         <h5 class="card-title">
                                                                             <b>{{user.username}}</b>
@@ -251,20 +271,14 @@
                                                                                 
                                                                         <p class="card-text my-1">
                                                                             <small class="badge" style="background-color:#39e75f;" [hidden]="!user.accountEnabled">Enabled</small>
-                                                                            <small class="badge bg-danger"  [hidden]="user.accountEnabled">Disabled</small>
+                                                                            <small class="badge bg-danger"  [hidden]="user.accountEnabled">Disabled</small>&nbsp;
+                                                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!user.isVerified">Verified</small>
+                                                                            <small class="badge bg-danger"  [hidden]="user.isVerified">Unverified</small>
                                                                         </p>
-                                                                       <!-- <p class="card-text">{{propertyEach.description.substring(0, 100)}}...</p> -->
-                                                                        </a>
-                                                                        <div class = "row mt-2 gy-2">
-                                                                            <!--<div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" routerLink="/edit/property/{{propertyEach.id}}">Edit</button></div>
-                                                                            <div class ="col-sm-6"><button class="form-control btn btn-block btn-danger"  (click) = "onClickDelete(propertyEach.id)">
-                                                                                <i class="fa fa-spinner fa-spin " *ngIf="deletePropertyShowLoading"></i>&nbsp;&nbsp;
-                                                                                <span *ngIf="deletePropertyShowLoading===true">Deleting...</span> <span
-                                                                                    *ngIf="deletePropertyShowLoading === false">Delete</span>
-                                                                            </button></div>-->
-                                                                        </div>
+                                                                       
+                                                                    </a>
                                                                         
-                                                                    </div>
+                                                                </div>
                                                                     
                                                                     
                                                                 

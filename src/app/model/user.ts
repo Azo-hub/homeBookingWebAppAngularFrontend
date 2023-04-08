@@ -17,6 +17,9 @@ export class User {
     public lastLoginDateDisplay!: Date;
 	public role: string;
     public authorities: [];
+    public isIdcard: boolean;
+    public isVerified: boolean;
+    public identityType: string;
 
     
     constructor() {
@@ -32,6 +35,9 @@ export class User {
         this.phone = "";
         this.role = "";
         this.authorities = [];
+        this.isIdcard = false;
+        this.isVerified = false;
+        this.identityType = "";
        
 
         
