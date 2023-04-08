@@ -45,6 +45,7 @@ import { RoleOwnerGuard } from './guard/role.guard';
 import { RoleTravellerGuard } from './guard/role-traveller.guard';
 import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { SupportComponent } from './support/support.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     UserProfileComponent,
     OrderDetailsComponent,
     EditPropertyComponent,
-    EditUserComponent
+    EditUserComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,

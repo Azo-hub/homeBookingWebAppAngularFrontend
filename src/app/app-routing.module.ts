@@ -22,6 +22,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { RoleAdminGuard } from './guard/role-admin.guard';
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -41,6 +42,8 @@ const routes: Routes = [
   {path:"userProfile", component:UserProfileComponent, canActivate: [AuthenticationGuard]},
   {path:"orderCompleted", component:OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard]},
   {path:"userdetails/:username", component:EditUserComponent, canActivate: [AuthenticationOwnerGuard, RoleAdminGuard]},
+  {path:"support", component:SupportComponent, canActivate: [AuthenticationTravellerGuard,AuthenticationOwnerGuard, RoleAdminGuard]},
+  
   
   //{path:"**", component:Error404Component}
 ];

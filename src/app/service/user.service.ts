@@ -59,6 +59,16 @@ export class UserService {
   verify(formData: FormData): Observable<CustomHttpResponse> {
     return this.http.post<CustomHttpResponse>(`${this.host}/verifyAcct`,formData);
   }
+
+  getUserByUsername(formData: FormData):Observable<User> {
+    return this.http.post<User>(`${this.host}/getUserByUsername`, formData);
+  
+  }
+
+  contactSupport(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/support`,formData);
+  }
+
   
   public addUsersToLocalCache(users: User[]): void {
     localStorage.setItem('users', JSON.stringify(users));
@@ -77,12 +87,7 @@ export class UserService {
   }
 
 
-  getUserByUsername(formData: FormData):Observable<User> {
-    return this.http.post<User>(`${this.host}/getUserByUsername`, formData);
-  
-  }
-
-    
+      
   public createUserFormData(loggedInUsername: string, user: User , profileImage: File):FormData {
     
     const formData = new FormData();
