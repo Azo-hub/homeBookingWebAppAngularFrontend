@@ -36,8 +36,10 @@ export class SignupComponent implements OnInit, OnDestroy {
         (response: HttpResponse<User>) => {
           
           this.showLoading = false;
+
           this.sendNotification(NotificationType.SUCCESS, `New Account created for ${response.body?.username} successfully. 
           Please check your email for password to log in.`);
+          this.router.navigateByUrl("/");
           
         },
         (errorResponse: HttpErrorResponse) => {

@@ -30,12 +30,7 @@
                                                 <small>{{user?.lastLoginDateDisplay |
 													date:'medium'}}</small>
                                             </div>
-                                            <div class="mt-2">
-                                                <button class="btn btn-block btn-secondary" type="button" >
-													<i class="fa fa-fw fa-camera"></i> <span>Change
-														Photo</span>
-												</button>
-                                            </div>
+                                            
                                         </div>
                                         <div class="text-center text-sm-right">
                                             <span class="badge" style="background-color:#39e75f;">{{user.role.substring(5)}}</span>&nbsp;
@@ -57,7 +52,7 @@
                                         
                                             <div class="row">
                                                 <div class="col">
-                                                    <div class="row">
+                                                    <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>First Name</label> <p class="form-control">{{user.firstname}}</p>
@@ -69,30 +64,46 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Username</label> <p class="form-control" >{{user.username}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Email</label> <p class="form-control" >{{user.email}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 my-3">
+                                                    <div class="row my-4">
+                                                        <div class="col-md-7 my-3">
                                                             <img src="https://res.cloudinary.com/azostore/image/upload/bookingwebapp{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid"/>
                                                             
                                                             <h4 class="card-title my-2"><span><b>Card Type:</b></span>{{user.identityType}}</h4>
                                                         </div>
+                                                        <div class="col-md-5 my-3">
+                                                            <p class="form-control" style="color:inherit;"><b>Date of Birth: </b>{{user.dateOfBirth}}</p>
+                                                            <p class="form-control" style="color:inherit;"><b>Profile Image: </b><span [hidden]="!user.isImage">Present</span><span [hidden]="user.isImage">None</span></p>
+                                                        </div>
                                                         
                                                     </div>
 
-                                                    <div class="row">
+                                                    <div class="row my-4">
+                                                        <form>
+                                                            <div class="col-md-12 form-group">
+                                                            
+                                                                <label class="my-2">To Notify the user if any of the required document is not yet uploaded</label>
+                                                                <textarea rows="5" class="form-control"></textarea>
+                                                                <button class="btn form-control" type="submit">Notify</button>
+                                                            </div>
+                                                              
+                                                        </form>                                                     
+                                                    </div>
+
+                                                    <div class="row my-3">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label class = "my-2" for="toVerifyAcct">Verify Account</label>&nbsp;<i class="fa fa-spinner fa-spin " *ngIf="verifyShowLoading"></i>&nbsp;&nbsp;
@@ -105,7 +116,7 @@
                                                         </div>
                                                     </div>
     
-                                                    <div class="row">
+                                                    <div class="row my-3">
                                                         <div class="col my-3">
                                                             <div class="card">
                                                                 <div class="card-body">

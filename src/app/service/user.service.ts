@@ -119,6 +119,7 @@ export class UserService {
     formData.append("role", user.role);
     formData.append("phone", user.phone);
     formData.append("gender", user.gender);
+    formData.append("dateOfBirth", user.dateOfBirth.toString());
     formData.append("currentPassword", currentPassword);
     formData.append("newPassword", newPassword);
     formData.append("confirmPassword", confirmPassword);

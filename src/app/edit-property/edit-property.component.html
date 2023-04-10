@@ -16,7 +16,7 @@
 <div class="container my-5">
     <h2>Edit Property </h2>
 
-    <div class="row my-3">
+    <div class="row my-3" [hidden]="showEditPropertySection">
 
         <div class="col-md-10">
             <form #editPropertyForm="ngForm" (ngSubmit)="onEditProperty(editPropertyForm.value)">
@@ -654,6 +654,7 @@
                        
                     </div>
                 </div>
+                <div class="card-footer" align="right"><button class="addNewProperty-button-fix" routerLink="/propertydetails/{propertyId}">Done</button></div>
             </div>
             
 

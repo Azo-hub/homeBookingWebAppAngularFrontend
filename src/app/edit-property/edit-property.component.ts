@@ -65,6 +65,7 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
   showImageUpload:boolean=false;
   editPropertyIdFromUrl: string = "";
   property:Property = new Property;
+  showEditPropertySection:boolean = false;
   
   
   
@@ -134,6 +135,7 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} edited successfully. Proceed to add property Images`);
           this.propertyId=response.body?.id;
+          this.showEditPropertySection = true;
           this.showImageUpload = true;
           
         },

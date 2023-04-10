@@ -87,6 +87,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   propertyId!: number|undefined;
   profileImage!: File;
   showImageUpload:boolean=false;
+  showAddPropertySection:boolean=false;
   
   
   
@@ -112,6 +113,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property ${response.body?.name} created successfully. Proceed to add property Images`);
           this.propertyId=response.body?.id;
+          this.showAddPropertySection = true;
           this.showImageUpload = true;
           
         },

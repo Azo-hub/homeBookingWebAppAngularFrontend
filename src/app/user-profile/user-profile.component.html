@@ -21,7 +21,7 @@
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-
+                                                <img src="https://res.cloudinary.com/azostore/image/upload/bookingwebapp-profileImage-{{loggedInUser?.firstname}}{{loggedInUser?.lastname}}{{loggedInUser?.userId}}.jpg" class="img-fluid"/>
                                             </div>
                                         </div>
                                     </div>
@@ -36,10 +36,13 @@
 													date:'medium'}}</small>
                                             </div>
                                             <div class="mt-2">
-                                                <button class="btn btn-block btn-secondary" type="button" >
-													<i class="fa fa-fw fa-camera"></i> <span>Change
-														Photo</span>
-												</button>
+                                                <input type="file" id="imageFileType" (change)="onFileSelected2($any($event).target.files[0])" hidden/>
+                                                <button class="btn btn-block btn-secondary" type="button" (click) = "changePhotoClick()">
+													<i class="fa fa-fw fa-camera"></i> <span>Upload/Change
+														Photo</span> 
+												</button>&nbsp;&nbsp; <i class="fa fa-spinner fa-spin " *ngIf="imageShowLoading2"></i>&nbsp;&nbsp;
+                                                <span *ngIf="image2showLoading">Uploading...</span>
+                                                <span *ngIf="image2showLoading === false">Completed</span>
                                             </div>
                                         </div>
                                         <div class="text-center text-sm-right">
@@ -87,6 +90,26 @@
                                                             <div class="form-group">
                                                                 <label>Email</label> <input class="form-control" type="email" name="email" placeholder="user@example.com" [(ngModel)]="loggedInUser.email">
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Gender</label> 
+                                                                <select class="form-control" name = "gender" [(ngModel)] = "loggedInUser.gender">
+                                                                    <option *ngFor="let uGender of userGender" [ngValue]="uGender.value">{{uGender.label}}</option>
+                                                                </select>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Date of Birth</label> 
+                                                                <input class="form-control" type="date" name="dateOfBirth" placeholder="Date Of Birth" [(ngModel)]="loggedInUser.dateOfBirth">
+                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -246,7 +269,7 @@
                                                         <div class="row gy-2">
                                                             <div class="col-md-6">
                                                                 
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid rounded-start" alt="User Image">
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/bookingwebapp-profileImage-{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid rounded-start" alt="User Image">
                                                                 
                                                             </div>
                                                         

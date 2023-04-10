@@ -20,6 +20,8 @@ export class User {
     public isIdcard: boolean;
     public isVerified: boolean;
     public identityType: string;
+    public dateOfBirth!: Date;
+    public isImage!:boolean;
 
     
     constructor() {
@@ -38,6 +40,7 @@ export class User {
         this.isIdcard = false;
         this.isVerified = false;
         this.identityType = "";
+        
        
 
         

@@ -1,6 +1,6 @@
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationType } from '../enum/notification-type.enum';
 import { Booking } from '../model/booking';
@@ -37,7 +37,7 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   bookingZipCode:any;
   
 
-  constructor(private notificationService: NotificationService,
+  constructor(private notificationService: NotificationService, private router: Router,
     private activatedRoute: ActivatedRoute, 
     private bookingService:BookingService) { }
 
@@ -71,7 +71,7 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
           
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property Booked Successfully! Check your email for follow-up messages.`);
-          
+          this.router.navigateByUrl(`/propertydetails/${this.bookingPropertyIdFromUrl}`); 
         },
         (errorResponse: HttpErrorResponse) => {
           

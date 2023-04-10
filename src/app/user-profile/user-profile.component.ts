@@ -38,7 +38,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     {value:"IDCard", label:"ID Card"},
     {value:"SSN", label:"SSN"}
   ]
+
+  userGender = [
+    {value:"Male", label:"Male"},
+    {value:"Female", label:"Female"}
+  ]
+
   identityType:string ="";
+  imageShowLoading2: boolean;
+  image2showLoading: boolean;
+  profileImage: File;
+
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService, private propertyService: PropertyService,
@@ -50,6 +60,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.loggedInUserPermission = this.loggedInUser.authorities;
     this.getPropertyByOwner();
     this.getAllUsers();
+    this.options;
+    this.userGender;
   }
   
   onLogOut(): void {
@@ -61,6 +73,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   
   onUpdateCurrentUser(userProfileForm:NgForm):void {
     this.userProfileShowLoading = true;
+    console.log(userProfileForm.value.gender);
     const formData = 
           this.userService.updateUserProfileBySelfFormData(userProfileForm.value['username'], userProfileForm.value,
           userProfileForm.value['currentPassword'], userProfileForm.value['newPassword'], userProfileForm.value['confirmPassword']);
@@ -210,6 +223,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
+  changePhotoClick():void {
+    document.getElementById("imageFileType")?.click();
+  }
+
+
+
 
   
   
@@ -254,6 +273,36 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
+  onFileSelected2(file: File): void {
+      this.imageShowLoading2 = true;
+      this.image2showLoading = true;
+      this.profileImage = file;
+
+      const formData = new FormData();
+      formData.append("profileImage",this.profileImage);
+      
+      
+      const upload$ = this.http.post(`${this.host}/uploadProfileImage`,formData);
+      
+      upload$.subscribe(
+        (response: any) => {
+          this.imageShowLoading2 = false
+          this.image2showLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, `Profile Image updated successfully.`);
+          
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.imageShowLoading1 = false;
+          this.image1showLoading = false;
+        }
+      )
+  }
+
+
+
 
 
 
@@ -276,6 +325,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     return this.authenticationService.getUserRole() === Role.TRAVELLER;
   }
 
+  
 
 
   
