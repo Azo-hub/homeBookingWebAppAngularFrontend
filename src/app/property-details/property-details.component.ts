@@ -10,6 +10,8 @@ import { Property } from '../model/property';
 import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
 import {DatePipe} from  '@angular/common';
+import { Review } from '../model/review';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 
@@ -34,6 +36,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   noOfDays: number = 0;
   showBookProceedButton:boolean = false;
   showBookNowButton:boolean = false;
+  reviews:Review[]=[];
   
   
 
@@ -46,6 +49,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
     this.propertyId = this.activatedRoute.snapshot.paramMap.get("id");
       
       this.getEachProperty();
+      this.getAllReviewsByProperty(this.propertyId);
   }
   
   getEachProperty():void {
@@ -59,6 +63,8 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           //this.uService.addUsersToLocalCache(response);
           this.property = response;
           
+          console.log(this.property);
+          
         },
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
@@ -67,6 +73,25 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
       )
     );
     
+  }
+
+
+  getAllReviewsByProperty(propertyId:string):void {
+    const formData = new FormData();
+    formData.append("propertyId", propertyId);
+    this.subscriptions.push(
+      this.propertyService.getReviewsByProperty(formData).subscribe(
+        (response: Review[]) => {
+          this.reviews = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+        
   }
   
   
@@ -126,6 +151,30 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   }
 
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: [ '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
  
 

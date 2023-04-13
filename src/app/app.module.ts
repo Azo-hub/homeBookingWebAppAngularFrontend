@@ -48,6 +48,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { SupportComponent } from './support/support.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +94,7 @@ import { SupportComponent } from './support/support.component';
   ],
   providers:[DatePipe, AuthenticationService, UserService,NotificationService,
   BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,RoleOwnerGuard,RoleTravellerGuard,
-  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true,}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

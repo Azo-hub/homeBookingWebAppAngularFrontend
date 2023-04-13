@@ -1,3 +1,4 @@
+
 <!-- Start of Navbar -->
 <app-navbar></app-navbar>
 <!-- End of Navbar -->
@@ -125,25 +126,17 @@
                         </div>
                     </div>
 
-
+                    
                 </div>
 
                 <div class="card my-5 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                           <textarea rows="10" class="form-control" placeholder="Property Description" required ngModel name="description" #descriptionInput="ngModel"></textarea>
+                           <textarea rows="10" class="form-control"  required placeholder="Property Description"  ngModel name="description" #descriptionInput="ngModel"></textarea>
                            
                         </div>
+                        
                     </div>
-
-                    <div class="row my-2 mx-2">
-                        <span style ="color:red">I am still working on review, other functions working perfectly.</span>
-                        <div class="col-sm-12">
-                           <input class="form-control" placeholder="Add Review" required ngModel name="review" #reviewInput="ngModel" />
-                           
-                        </div>
-                    </div>
-
 
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
@@ -158,10 +151,18 @@
 
 
                 </div>
+                
 
             </form>
         </div>
     </div>
+
+
+
+    
+    
+
+
 
     <div class = "row">
         <div class = "col-md-10">
@@ -510,7 +511,7 @@
                        
                     </div>
                 </div>
-                <div class="card-footer" align="right"><button class="addNewProperty-button-fix" routerLink="/propertydetails/{propertyId}">Done</button></div>
+                <div class="card-footer" align="right"><button class="addNewProperty-button-fix" (click)="imageUploadDone()">Done</button></div>
             </div>
             
 
@@ -518,3 +519,67 @@
     </div>
 
 </div>
+
+
+
+<div class="container my-5" *ngIf = "showReview"><!--*ngIf = "showReview"--> 
+
+    <div class="row my-5">
+
+        <div class="col-md-10">
+            <h3 class = "card-title my-3">Review</h3>
+            <div class = "card mx-2 card-fix">
+                <form #reviewForm="ngForm" (ngSubmit)="onPushReview(reviewForm)">
+                    
+                    <div class = "card-body">
+                        <textarea class="form-control my-2" placeholder="Add Review Content" required ngModel name="reviewContent" #reviewContent="ngModel"></textarea>
+                        <input class="form-control my-2" placeholder="Add author name" required ngModel name="reviewAuthor" #reviewAuthor="ngModel" />
+                        <input class="form-control my-2" placeholder="Add author location" required ngModel name="reviewLocation" #reviewLocation="ngModel" />
+                    </div>
+                    <div class = "card-footer">
+                        <button class="addNewProperty-button-fix" type="submit">
+                            <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+							    <span *ngIf="showLoading === true ">Loading...</span>
+                                <span *ngIf="showLoading !== true ">Push</span> 
+                                <span *ngIf="showLoadingDone === true">&nbsp;More</span> 
+                        </button> &nbsp;&nbsp;&nbsp;
+                        <button *ngIf="showLoadingDone === true" class="addNewProperty-button-fix" routerLink="/propertydetails/{{this.propertyId}}">
+                            <span>Done</span> 
+                        </button>
+                    </div>
+                </form>
+             </div>
+
+        </div>
+    </div>
+
+    <div class = "row my-5">
+        <div class = "col-md-10">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide *ngFor="let review of reviews">
+                    <div class="row mx-2">
+                        <div class="card">
+                            <div class = "card-title"><h5><b>{{review.reviewAuthor}}</b></h5></div>
+                            <div class = "card-subtitle text-muted"><small>{{review.reviewLocation}}</small></div> <hr/>
+                            
+                            <div class = "card-body">
+                                <h3>{{review.reviewContent}}</h3>
+                            </div>
+                            
+                        </div>
+            
+                    </div>
+                </ng-template>
+                
+            </owl-carousel-o>
+            
+        </div>
+
+        
+    </div>
+
+</div>
+
+
+
+

@@ -16,6 +16,7 @@ export class Property {
     public propertyServiceFee:number;
     public propertyCleaningFee:number;
     
+    
 	
    
 	
@@ -33,6 +34,7 @@ export class Property {
         this.propertyTax = 0;
         this.propertyServiceFee = 0;
         this.propertyCleaningFee = 0;
+       
        
 
         

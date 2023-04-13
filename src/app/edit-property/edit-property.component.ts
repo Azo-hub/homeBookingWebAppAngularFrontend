@@ -8,6 +8,10 @@ import { Property } from '../model/property';
 import { AuthenticationService } from '../service/authentication.service';
 import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Review } from '../model/review';
+import { NgForm } from '@angular/forms';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 @Component({
   selector: 'app-edit-property',
@@ -66,6 +70,11 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
   editPropertyIdFromUrl: string = "";
   property:Property = new Property;
   showEditPropertySection:boolean = false;
+  reviews:Review[] = [];
+  showLoadingDone:boolean;
+  showReview:boolean =false;
+  
+  
   
   
   
@@ -82,6 +91,7 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
     
     this.editPropertyIdFromUrl = this.activatedRoute.snapshot.paramMap.get("id");
     this.getPropertyForEdit();
+    this.getAllReviewsByProperty();
   }
 
   getPropertyForEdit():void {
@@ -147,6 +157,76 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
       )
     );
   }
+
+
+  imageUploadDone():void {
+    this.showImageUpload = false;
+    this.showReview = true;
+    
+  }
+
+
+  onPushReview(reviewForm: NgForm):void {
+    
+     this.showLoading = true;
+ 
+     const formData = new FormData();
+ 
+     formData.append("reviewContent", reviewForm.value.reviewContent);
+     formData.append("reviewAuthor", reviewForm.value.reviewAuthor);
+     formData.append("reviewLocation", reviewForm.value.reviewLocation);
+     formData.append("propertyId", this.propertyId.toString());
+     console.log(reviewForm.value.reviewContent);
+     console.log(reviewForm.value.reviewAuthor);
+     console.log(reviewForm.value.reviewLocation);
+ 
+     this.subscriptions.push(
+       this.propertyService.addReview(formData).subscribe(
+         (response: CustomHttpResponse) => {
+           this.sendNotification(NotificationType.SUCCESS, response.message);
+           this.showLoading = false;
+           this.getAllReviewsByProperty();
+           this.showLoadingDone = true;
+          
+         },
+         (error:HttpErrorResponse) => {
+           this.sendNotification(NotificationType.WARNING, error.error.message);
+           this.showLoading = false;
+         }
+ 
+         
+ 
+       )
+     );
+ 
+     reviewForm.reset();
+     
+   }
+ 
+   getAllReviewsByProperty():void {
+     const formData = new FormData();
+     formData.append("propertyId", this.editPropertyIdFromUrl);
+     this.subscriptions.push(
+       this.propertyService.getReviewsByProperty(formData).subscribe(
+         (response: Review[]) => {
+           this.reviews = response;
+         },
+ 
+         (errorResponse: HttpErrorResponse) => {
+           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+           
+         }
+       )
+     );
+         
+   }
+ 
+ 
+
+
+
+
+
   
   public host = environment.apiUrl;
   
@@ -1296,6 +1376,31 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
 
 
   
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: [ '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
 
 
 

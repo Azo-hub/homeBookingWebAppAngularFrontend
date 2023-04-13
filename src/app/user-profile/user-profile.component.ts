@@ -295,8 +295,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         (errorResponse: HttpErrorResponse) => {
           
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          this.imageShowLoading1 = false;
-          this.image1showLoading = false;
+          this.imageShowLoading2 = false;
+          this.image2showLoading = false;
         }
       )
   }

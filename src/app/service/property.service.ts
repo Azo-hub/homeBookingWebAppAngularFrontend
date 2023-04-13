@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CheckInAndOutDate } from '../model/checkInAndOutDate';
 import { CustomHttpResponse } from '../model/custom-http-response';
 import { Property } from '../model/property';
+import { Review } from '../model/review';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,15 @@ export class PropertyService {
 
   deleteProperty(formData: FormData): Observable<CustomHttpResponse> {
     return this.http.post<CustomHttpResponse>(`${this.host}/deleteProperty`,formData);
+  }
+
+  addReview(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/addReview`,formData);
+  }
+  
+  getReviewsByProperty(formData: FormData): Observable<Review[]> {
+    return this.http.post<Review[]>(`${this.host}/reviewByProperty`, formData);
+
   }
 
   public addPropertiesToLocalCache(properties: Property[]): void {

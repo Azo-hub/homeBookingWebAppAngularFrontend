@@ -353,10 +353,35 @@
             </div>
 
 
-            <div class="row my-4 ">
-                <div class="col-md-12 ">
+            <div class="row my-4">
+                <div class="col-md-12">
+                  <div class="my-4">
                     <h2>Reviews</h2>
-                    <hr />
+                    <hr/>
+                  </div>  
+                    
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide *ngFor="let review of reviews">
+                            <div>
+                                <div class="card mx-2 my-3">
+                                    <div class = "card-title mx-3 mt-2"><h5><b>{{review.reviewAuthor}}</b></h5></div>
+                                    <div class = "card-subtitle text-muted mx-3"><small><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
+                                        {{review.reviewLocation}}</small></div> <hr/>
+                                    
+                                    <div class = "card-body">
+                                        <h3><i class="fa fa-quote-left" aria-hidden="true"></i>&nbsp;
+                                            {{review.reviewContent}}
+                                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                        </h3>
+                                    </div>
+                                    
+                                </div>
+                    
+                            </div>
+                        </ng-template>
+                        
+                    </owl-carousel-o>
+                    
                 </div>
             </div>
 

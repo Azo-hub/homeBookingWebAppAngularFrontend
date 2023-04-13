@@ -1,5 +1,5 @@
 import { HttpResponse, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,10 @@ import { Property } from '../model/property';
 import { AuthenticationService } from '../service/authentication.service';
 import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
+import { NgForm } from '@angular/forms';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CustomHttpResponse } from '../model/custom-http-response';
+import { Review } from '../model/review';
 
 
 @Component({
@@ -88,8 +92,9 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   profileImage!: File;
   showImageUpload:boolean=false;
   showAddPropertySection:boolean=false;
-  
-  
+  reviews:Review[] = [];
+  showLoadingDone:boolean;
+  showReview:boolean =false;
   
   
   constructor(private propertyService: PropertyService, private authenticationService : AuthenticationService,
@@ -103,6 +108,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
     }   
   }
 
+ 
+  
   public onAddNewProperty(property: Property): void {
     this.showLoading = true;
     
@@ -125,6 +132,72 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
       )
     );
   }
+
+
+  imageUploadDone():void {
+    this.showImageUpload = false;
+    this.showReview = true;
+  }
+
+
+  onPushReview(reviewForm: NgForm):void {
+   /* this.reviews.push({content:reviewForm.value.reviewContent, 
+                        author:reviewForm.value.reviewAuthor, 
+                        location:reviewForm.value.reviewLocation}); */
+    this.showLoading = true;
+
+    const formData = new FormData();
+
+    formData.append("reviewContent", reviewForm.value.reviewContent);
+    formData.append("reviewAuthor", reviewForm.value.reviewAuthor);
+    formData.append("reviewLocation", reviewForm.value.reviewLocation);
+    formData.append("propertyId", this.propertyId.toString());
+    console.log(reviewForm.value.reviewContent);
+    console.log(reviewForm.value.reviewAuthor);
+    console.log(reviewForm.value.reviewLocation);
+
+    this.subscriptions.push(
+      this.propertyService.addReview(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.showLoading = false;
+          this.getAllReviewsByProperty(this.propertyId);
+          this.showLoadingDone = true;
+          /*this.router.navigateByUrl(`/propertydetails/${this.propertyId}`);*/
+        },
+        (error:HttpErrorResponse) => {
+          this.sendNotification(NotificationType.WARNING, error.error.message);
+          this.showLoading = false;
+        }
+
+        
+
+      )
+    );
+
+    reviewForm.reset();
+    
+  }
+
+  getAllReviewsByProperty(propertyId:number):void {
+    const formData = new FormData();
+    formData.append("propertyId", propertyId.toString());
+    this.subscriptions.push(
+      this.propertyService.getReviewsByProperty(formData).subscribe(
+        (response: Review[]) => {
+          this.reviews = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+        
+  }
+
+
   
   public host = environment.apiUrl;
   
@@ -1275,6 +1348,30 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
 
   
 
+customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: [ '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
 
 
