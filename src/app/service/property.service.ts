@@ -55,6 +55,10 @@ export class PropertyService {
     return this.http.post<CustomHttpResponse>(`${this.host}/addReview`,formData);
   }
   
+  addCheckInCheckOutDates(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/addDates`,formData);
+  }
+
   getReviewsByProperty(formData: FormData): Observable<Review[]> {
     return this.http.post<Review[]>(`${this.host}/reviewByProperty`, formData);
 

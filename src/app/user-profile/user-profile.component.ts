@@ -30,6 +30,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   loggedInUserPermission: [] = [];
   propertiesByOwner: Property[] = [];
   deletePropertyShowLoading:boolean = false;
+  addDateShowLoading:boolean = false;
   users: User[] = [];
   imageShowLoading1: boolean;
   image1showLoading: boolean;
@@ -228,9 +229,34 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
 
+  displayDate():void {
+    document.getElementById("showDates")?.classList.toggle('display_checkin_checkout_dates');
+    document.getElementById("addDatesBtn")?.classList.toggle('display_checkin_checkout_dates');
+  }
 
+  onAddDate(checkinDateAdmin:Date, checkoutDateAdmin:Date, propertyId:number):void{
+    this.addDateShowLoading = true;
+    const formData = new FormData();
+    formData.append("checkinDateAdmin", checkinDateAdmin.toString());
+    formData.append("checkoutDateAdmin", checkoutDateAdmin.toString());
+    formData.append("propertyId", propertyId.toString());
 
-  
+    this.subscriptions.push(
+      
+      this.propertyService.addCheckInCheckOutDates(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.addDateShowLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.addDateShowLoading = false;
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+        }
+      )
+    );
+
+  }
   
   public onFileSelected1(file:File):void {
     

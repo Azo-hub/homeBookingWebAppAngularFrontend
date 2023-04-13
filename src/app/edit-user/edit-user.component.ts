@@ -9,6 +9,7 @@ import { AuthenticationService } from '../service/authentication.service';
 import { NotificationService } from '../service/notification.service';
 import { UserService } from '../service/user.service';
 import { CustomHttpResponse } from '../model/custom-http-response';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
@@ -21,6 +22,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   verifyShowLoading: boolean = false;
   editUserUsernameFromUrl: string = "";
   user:User = new User;
+  notificationShowLoading: boolean = false; 
   
 
   constructor(private userService: UserService, private authenticationService : AuthenticationService,
@@ -51,6 +53,30 @@ export class EditUserComponent implements OnInit, OnDestroy {
         }
       )
     );    
+  }
+
+
+  sendUserNotification(notificationForm:NgForm): void {
+    this.notificationShowLoading = true;
+    const formData = new FormData();
+    formData.append("notifyMessage", notificationForm.value.notifyMessage);
+    formData.append("notifySubject", notificationForm.value.notifySubject);
+    formData.append("username",this.editUserUsernameFromUrl);
+    
+    this.subscriptions.push(
+      this.userService.sendNotification(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.notificationShowLoading = false;
+        },
+        (error:HttpErrorResponse) => {
+          this.sendNotification(NotificationType.WARNING, error.error.message);
+          this.notificationShowLoading = false;
+        },
+        
+        () => notificationForm.reset()
+      )
+    )
   }
 
 

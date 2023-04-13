@@ -60,7 +60,7 @@
                                     <li class="nav-item"><a class="active nav-link" href="#settings" data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
                                     <li class="nav-item" [hidden]="!isAdminOrOwner"><a class="nav-link" href="#property" data-bs-toggle="tab" style="color:inherit;">Property Listed</a></li>
                                     <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#users" data-bs-toggle="tab" style="color:inherit;">All Users</a></li>
-                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#" data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#dates" data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active fade in show" id="settings">
@@ -314,6 +314,79 @@
                                         </div>
    
                                     </div>
+
+                                    <div class="tab-pane fade in show" id="dates" [hidden]="!isAdminOrOwner">
+                                        <div class = "container">
+                                            <div class = "row">
+                                                <div class = "col-md-12">
+                                                    <input name="searchTerm" #searchInput="ngModel" ngModel (ngModelChange)="onSearchProperty(searchInput.value)" type="search" placeholder="Search Property" class = "form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "container-fluid">
+                                            <div class = "row" *ngFor="let propertyEach of propertiesByOwner">
+                                                <div class = "col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-7">
+                                                                
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
+                                                                
+                                                            </div>
+                                                        
+                                                        
+                                                            <div class="col-md-5">
+                                                                
+                                                                    <div class="card-body">
+                                                                        <a routerLink="/propertydetails/{{propertyEach.id}}" style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="card-subtitle">{{propertyEach.propertyType}}</h5>
+                                                                    
+                                                                        <h3 class="card-title">
+                                                                            <b>{{propertyEach.name}}</b>
+                                                                        </h3>
+                                                                        
+                                                                        <p class="card-text">
+                                                                            <small class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
+                                                                        </p>
+                                                                        
+                                                                        </a>
+                                                                        <div class = "row mt-2 gy-2">
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" (click)="displayDate()">Add Dates</button></div>
+                                                                            <div class = "col-sm-3"></div>
+                                                                        </div>
+                                                                        <div class="row my-3 gy-2 display_checkin_checkout_dates" id="showDates">
+                                                                            <div class="col-sm-6 form-group">
+                                                                                <label>Check-in Date</label>
+                                                                                <input class="form-control my-2" type="date" placeholder="check-in Date" name="checkinDateAdmin" #checkinDateAdmin="ngModel" ngModel/>
+                                                                            </div>
+                                                                            <div class="col-sm-6 form-group">
+                                                                                <label>Check-out Date</label>
+                                                                                <input class="form-control my-2" type="date" placeholder="check-out Date" name="checkoutDateAdmin" #checkoutDateAdmin="ngModel" ngModel/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class = "row display_checkin_checkout_dates" id="addDatesBtn">
+                                                                            <div class ="col-sm-6"></div>
+                                                                            <div class = "col-sm-6">
+                                                                                <button class ="form-control btn btn-block btn-secondary" (click)="onAddDate(checkinDateAdmin.value,checkoutDateAdmin.value,propertyEach.id)">
+                                                                                    <i class="fa fa-spinner fa-spin " *ngIf="addDateShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span *ngIf="addDateShowLoading===true">Loading...</span> <span
+                                                                                    *ngIf="addDateShowLoading === false">Add</span>
+                                                                                    </button></div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -92,12 +92,17 @@
                                                     </div>
 
                                                     <div class="row my-4">
-                                                        <form>
+                                                        <form #notificationForm="ngForm" (ngSubmit)="sendUserNotification(notificationForm)">
                                                             <div class="col-md-12 form-group">
                                                             
-                                                                <label class="my-2">To Notify the user if any of the required document is not yet uploaded</label>
-                                                                <textarea rows="5" class="form-control"></textarea>
-                                                                <button class="btn form-control" type="submit">Notify</button>
+                                                                <label class="my-2">To Notify the user of any of the required document not yet uploaded</label>
+                                                                <input type="text" class="form-control my-2" placeholder="Notification Subject" name="notifySubject" #notifySubjectInput="ngModel" ngModel />
+                                                                <textarea required name="notifyMessage" #notifyMessageInput="ngModel" ngModel placeholder="Type in notification message" rows="5" class="form-control"></textarea>
+                                                                <button class="btn addNewProperty-button-fix my-3" type="submit">
+                                                                    <i class="fa fa-spinner fa-spin " *ngIf="notificationShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span *ngIf="notificationShowLoading===true">Loading...</span> <span
+                                                                                    *ngIf="notificationShowLoading === false">Notify</span>
+                                                                    </button>
                                                             </div>
                                                               
                                                         </form>                                                     

@@ -43,6 +43,10 @@ export class UserService {
   public resetPassword(formData: FormData) : Observable<CustomHttpResponse> {
     return this.http.post<CustomHttpResponse>(`${this.host}/forgetPassword`,formData);
   }
+
+  sendNotification(formData :FormData) : Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/sendNotification`,formData);
+  }
   
   public updateProfileImage(formData:FormData): Observable<HttpEvent<User> | HttpErrorResponse> {
     return this.http.post<User>(`${this.host}/updateProfileImage`, formData, {
