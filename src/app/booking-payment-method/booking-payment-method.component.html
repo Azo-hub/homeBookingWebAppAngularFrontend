@@ -104,7 +104,7 @@
 
                 <div class="row my-2 ">
                     <div class="col-md-12 ">
-                        <p class="text-muted">When you book this property, your reservation will be confirmed instantly.</p>
+                        <p class="text-muted">When you book this property and make payment, your reservation will be confirmed instantly.</p>
 
                     </div>
 
@@ -116,7 +116,7 @@
                         <button class="form-control " type="submit" [disabled]="showLoading" (click)="onBookingPaymentForm()" style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
 							<i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
 							<span *ngIf="showLoading===true ">Loading...</span> <span
-								*ngIf="showLoading !==true ">Proceed</span>
+								*ngIf="showLoading !==true ">Request Booking</span>
 						</button>
 
                     </div>
