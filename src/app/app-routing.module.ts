@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:"signup", component:SignupComponent},
   {path:"ownerLogin", component:OwnerLoginComponent},
   {path:"travellerLogin", component:TravellerLoginComponent},
-  {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent, canActivate: [AuthenticationGuard]},
+  {path:"findSpacesThatSuitYouInner/:category", component:FindSpacesThatSuitYouInnerComponent},
   {path:"forgetpassword", component:ForgetPasswordComponent},
   {path:"propertydetails/:id", component:PropertyDetailsComponent, canActivate: [AuthenticationGuard]},
   {path:"edit/property/:id", component:EditPropertyComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard]},

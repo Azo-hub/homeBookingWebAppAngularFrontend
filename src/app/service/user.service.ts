@@ -20,6 +20,10 @@ export class UserService {
   public getUsers() : Observable<User[]> {
     return this.http.get<User[]>(`${this.host}/allUser`);
   }
+
+  searchUsers(formData:FormData): Observable<User[]> {
+    return this.http.post<User[]>(`${this.host}/searchUser`,formData);
+  }
   
   
   public addUser(formData: FormData) : Observable<User> {

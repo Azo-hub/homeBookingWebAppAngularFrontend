@@ -58,9 +58,11 @@
                                 </div>
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item"><a class="active nav-link" href="#settings" data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="tab" style="color:inherit;">Booking History</a></li>
                                     <li class="nav-item" [hidden]="!isAdminOrOwner"><a class="nav-link" href="#property" data-bs-toggle="tab" style="color:inherit;">Property Listed</a></li>
                                     <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#users" data-bs-toggle="tab" style="color:inherit;">All Users</a></li>
                                     <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#dates" data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#" data-bs-toggle="tab" style="color:inherit;">List of Property Booked</a></li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active fade in show" id="settings">

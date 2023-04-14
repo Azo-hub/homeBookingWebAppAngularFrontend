@@ -168,25 +168,25 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
-  onSearchUser(searchInput:string):void {
-    
-    const searchUser: User[] = [];
-    for (const eachSearchUser of this.userService.getUsersFromLocalCache() ) {
-     
-      if(eachSearchUser.firstname?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 || 
-        eachSearchUser.lastname?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchUser.othername?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchUser.username?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchUser.userId?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchUser.email?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
-           
-          searchUser.push(eachSearchUser);
-          
-         }
-    }
+  onSearchUser(searchUserInput:string):void {
 
-    this.users = searchUser
-    if(searchUser.length === 0 || !searchInput) {
+    const formData = new FormData();
+    formData.append("searchInput", searchUserInput);
+    this.subscriptions.push(
+      this.userService.searchUsers(formData).subscribe(
+        (response: User[]) => {
+          this.users = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+    
+    
+    if(!searchUserInput) {
       this.users = this.userService.getUsersFromLocalCache();
     }
 
