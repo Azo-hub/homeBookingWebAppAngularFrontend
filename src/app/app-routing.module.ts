@@ -43,6 +43,7 @@ const routes: Routes = [
   {path:"orderCompleted", component:OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard]},
   {path:"userdetails/:username", component:EditUserComponent, canActivate: [AuthenticationOwnerGuard, RoleAdminGuard]},
   {path:"support", component:SupportComponent, canActivate: [AuthenticationTravellerGuard,AuthenticationOwnerGuard, RoleAdminGuard]},
+  {path:"orderDetails/:id", component:OrderDetailsComponent, canActivate: [AuthenticationGuard]}
   
   
   //{path:"**", component:Error404Component}

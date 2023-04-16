@@ -16,6 +16,21 @@ export class BookingService {
     return this.http.post<Booking>(`${this.host}/newBooking`, formData);
   } 
 
+  getBookingById(formData : FormData) : Observable<Booking> {
+    return this.http.post<Booking>(`${this.host}/getBookingById`, formData);
+  } 
+
+  getAllBookingByUser() : Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.host}/allBookingByUser`);
+  } 
+
+  getAllBooking() : Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.host}/allBooking`);
+  }
+
+  searchAllBooking(formData:FormData): Observable<Booking[]> {
+    return this.http.post<Booking[]>(`${this.host}/searchAllBooking`,formData);
+  }
   
   public createBookingFormData(bookingFirstName:string,
     bookingLastName:string, bookingEmail:string, bookingHomePhoneNumber:string,
@@ -43,5 +58,39 @@ export class BookingService {
   return formData;
   
   }
+
+
+
+  public addBookingsToLocalCache(bookings: Booking[]): void {
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+  }
+
+  public addBookingsToLocalCacheAdmin(bookings: Booking[]): void {
+    localStorage.setItem('Allbookings', JSON.stringify(bookings));
+  }
+  
+  
+  public getBookingsFromLocalCache(): Booking[] {
+    if(localStorage.getItem('bookings')) {
+      
+      return JSON.parse(localStorage.getItem('bookings') || '');
+      
+    }
+    
+    return [];
+    
+  }
+
+  public getBookingsFromLocalCacheAdmin(): Booking[] {
+    if(localStorage.getItem('Allbookings')) {
+      
+      return JSON.parse(localStorage.getItem('Allbookings') || '');
+      
+    }
+    
+    return [];
+    
+  }
+  
 
 }

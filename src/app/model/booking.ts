@@ -6,18 +6,19 @@ export class Booking {
     public bookingCheckInDate: Date;
     public bookingCheckOutDate: Date;
     public totalPrice: number;
-    public propertyId!: number;
-    public userId: number;
+    public property: Property;
+    public user: User;
     public bookingFirstName: string; 
     public bookingLastName: string; 
     public bookingEmailAddress: string; 
     public bookingPhoneNumber: string; 
-    public bookingHomePhoneNumber: string; 
+    public bookingPhoneHomeNumber: string; 
     public bookingCountry: string; 
     public bookingStreet: string; 
     public bookingCity: string; 
     public bookingState: string; 
     public  bookingZipCode: string; 
+    public noOfDays!:number;
    
 	
 	constructor() {
@@ -29,7 +30,7 @@ export class Booking {
         this.bookingLastName = "";
         this.bookingEmailAddress = "";
         this.bookingPhoneNumber = "";
-        this.bookingHomePhoneNumber = "";
+        this.bookingPhoneHomeNumber = "";
         this.bookingCountry = "";
         this.bookingStreet = "";
         this.bookingCity = "";

@@ -12,6 +12,8 @@ import { NgForm } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CustomHttpResponse } from '../model/custom-http-response';
 import { Review } from '../model/review';
+import { Editor } from 'ngx-editor';
+import { toHTML } from 'ngx-editor';
 
 
 @Component({
@@ -95,6 +97,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   reviews:Review[] = [];
   showLoadingDone:boolean;
   showReview:boolean =false;
+  
   states = [
     {value:"Alabama", label:"Alabama"},  {value:"Alaska", label:"Alaska"},
     {value:"Arizona", label:"Arizona"}, {value:"Arkansas", label:"Arkansas"},
@@ -135,14 +138,16 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
    if (!this.authenticationService.isUserLoggedIn()) {
       this.router.navigateByUrl("/");
       this.sendNotification(NotificationType.ERROR, "You need to log in to access add new property page!");
-    }   
+    }  
+    
   }
 
  
   
   public onAddNewProperty(property: Property): void {
+
     this.showLoading = true;
-    
+     
     this.subscriptions.push(
       this.propertyService.newProperty(property).subscribe(
         (response: HttpResponse<Property>) => {

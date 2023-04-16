@@ -3,32 +3,132 @@
 <app-navbar></app-navbar>
 <!-- End of Navbar -->
 
-<div class = "container">
-    <div class = "row">
-        <div class = "col-md-12"></div>
+<div class = "container my-4">
+    <div class = "row my-4">
+        <div class = "col-md-12" align="center"><h2>Booking Details</h2></div>
     </div>
-    <div class = "row">
+    <div class = "row gy-4">
         <div class = "col-md-6">
-            <h3>Booking Address</h3>
-            <p><b>Booking Id: </b></p>
-            <p><b>Guest Name: </b></p>
-            <p><b>Email Address: </b></p>
-            <p><b>Phone Number: </b></p>
-            <p><b>Cell Phone Nmber: </b></p>
+            <h4 class="mb-5">Booking Address</h4>
+            <div class="form-group">
+                <label class="my-2">Booking Id</label>
+                <p class="form-control">{{booking.id}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Guest Name</label>
+                <p class="form-control">{{booking.bookingFirstName}} {{booking.bookingLastName}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Email Address</label>
+                <p class="form-control">{{booking.bookingEmailAddress}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Phone Number</label>
+                <p class="form-control">{{booking.bookingPhoneNumber}}</p>
+            </div>
+            
+         <!--   <div class="form-group">
+                <label class="my-2">Home Phone Nmber</label>
+                <p class="form-control">{{}}</p>
+            </div> -->
+            
         </div>
+
         <div class = "col-md-6">
-            <h3>Rents Details</h3>
-            <p><b>Property Name: </b></p>
-            <p><b>Property Address: </b></p>
-            <p><b>Check-in Date: </b></p>
-            <p><b>Check-out Date: </b></p>
-            <p><b>Total: </b></p>
+            <h4 class="mb-5">Rents Details</h4>
+
+            <div class="form-group">
+                <label class="my-2">Property Name</label>
+                <p class="form-control">{{booking.property.name}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Property Address</label>
+                <p class="form-control">{{booking.property.propertyAddress}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Check-in Date</label>
+                <p class="form-control">{{booking.bookingCheckInDate}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Check-out Date</label>
+                <p class="form-control">{{booking.bookingCheckOutDate}}</p>
+            </div>
+            
+            <div class="form-group">
+                <label class="my-2">Total Price</label>
+                <p class="form-control">{{booking.totalPrice | currency}}</p>
+            </div>
+
+            
         </div>
 
     </div>
-    <div class = "row">
+    <div class = "row my-4">
         <div class = "col-md-12">
-            Property
+            <div class="card my-3 mx-2">
+                <div class="row gy-2">
+                    <div class="col-md-6">
+                        
+                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
+                        
+                    </div>
+                
+                
+                    <div class="col-md-6">
+                        
+                            <div class="card-body">
+                                <a routerLink="/propertydetails/{{booking.property.id}}" style="color:inherit; text-decoration:none;">
+                                <p class="card-subtitle">{{booking.property.propertyType}}</p>
+                            
+                                <h5 class="card-title">
+                                    <b>{{booking.property.name}}</b>
+                                </h5>
+                                                             
+                                </a>
+
+                                <table class="table table-borderless table-responsive my-4" style="color:inherit;">
+                                    <tr>
+                                        <td><b>{{booking.property.propertyPrice | currency}} X {{booking.noOfDays}} days</b></td>
+                                        <td>{{booking.property.propertyPrice * booking.noOfDays | currency}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Cleaning fee</b></td>
+                                        <td>{{booking.property.propertyCleaningFee | currency}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Service Fee</b>
+                                        </td>
+                                        <td>{{booking.property.propertyServiceFee | currency}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Tax</b></td>
+                                        <td>{{booking.property.propertyTax | currency}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Total</b></td>
+                                        <td>{{(booking.property.propertyPrice * booking.noOfDays)+(booking.property.propertyCleaningFee)+(booking.property.propertyServiceFee)+(booking.property.propertyTax) | currency}}</td>
+                                    </tr>
+                                </table>
+                                
+
+
+                                
+                                
+                            </div>
+                            
+                            
+                        
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>

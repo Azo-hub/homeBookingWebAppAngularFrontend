@@ -58,11 +58,11 @@
                                 </div>
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item"><a class="active nav-link" href="#settings" data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="tab" style="color:inherit;">Booking History</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#bookingHistory" data-bs-toggle="tab" style="color:inherit;">Booking History</a></li>
                                     <li class="nav-item" [hidden]="!isAdminOrOwner"><a class="nav-link" href="#property" data-bs-toggle="tab" style="color:inherit;">Property Listed</a></li>
                                     <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#users" data-bs-toggle="tab" style="color:inherit;">All Users</a></li>
                                     <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#dates" data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
-                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#" data-bs-toggle="tab" style="color:inherit;">List of Property Booked</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#Allbooking" data-bs-toggle="tab" style="color:inherit;">List of Property Booked</a></li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active fade in show" id="settings">
@@ -321,12 +321,12 @@
                                         <div class = "container">
                                             <div class = "row">
                                                 <div class = "col-md-12">
-                                                    <input name="searchTerm" #searchInput="ngModel" ngModel (ngModelChange)="onSearchProperty(searchInput.value)" type="search" placeholder="Search Property" class = "form-control"/>
+                                                    <input name="searchTermDate" #searchInputDate="ngModel" ngModel (ngModelChange)="onSearchPropertyDate(searchInputDate.value)" type="search" placeholder="Search Property" class = "form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let propertyEach of propertiesByOwner">
+                                            <div class = "row" *ngFor="let propertyEach of Allproperties">
                                                 <div class = "col-md-12">
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
@@ -388,6 +388,139 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="tab-pane fade in show" id="bookingHistory" >
+                                        <div class = "container">
+                                            <div class = "row">
+                                                <div class = "col-md-12">
+                                                   <!-- <input name="searchTermBookingHistory" #searchInputBookingHistory="ngModel" ngModel (ngModelChange)="onSearchBooking(searchInputBookingHistory.value)" type="search" placeholder="Search Booking" class = "form-control"/>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "container-fluid">
+                                            <div class = "row" *ngFor="let booking of bookings">
+                                                <div class = "col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-7">
+                                                                
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
+                                                                
+                                                            </div>
+                                                        
+                                                        
+                                                            <div class="col-md-5">
+                                                                
+                                                                    <div class="card-body">
+                                                                        <a routerLink="/orderDetails/{{booking.id}}" style="color:inherit; text-decoration:none;">
+                                                                            <div class="form-group">
+                                                                                <label class="mb-1"><b>Booking ID</b></label>
+                                                                                <p>{{booking.id}}</p>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="mb-1"><b>Property Name</b></label>
+                                                                                <p>{{booking.property.name}}</p>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="mb-1"><b>Check In Date</b></label>
+                                                                                <p>{{booking.bookingCheckInDate}}</p>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="mb-1"><b>Check Out Date</b></label>
+                                                                                <p>{{booking.bookingCheckOutDate}}</p>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="mb-1"><b>Rents Amount</b></label>
+                                                                                <p>{{booking.totalPrice}}</p>
+                                                                            </div>
+                                                                       
+                                                                        </a>
+                                                                        <div class = "row mt-2">
+                                                                            <div class ="col-sm-12"><button class ="form-control btn btn-block btn-secondary" routerLink="/orderDetails/{{booking.id}}">View Details</button></div>
+                                                                            
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane fade in show" id="Allbooking" >
+                                        <div class = "container">
+                                            <div class = "row">
+                                                <div class = "col-md-12">
+                                                    <input name="searchTermAllbooking" #searchInputAllbooking="ngModel" ngModel (ngModelChange)="onSearchAllBooking(searchInputAllbooking.value)" type="search" placeholder="Search Booking By Firstname" class = "form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "container-fluid">
+                                            <div class = "row" *ngFor="let booking of Allbooking">
+                                                <div class = "col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-7">
+                                                                
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
+                                                                
+                                                            </div>
+                                                        
+                                                        
+                                                            <div class="col-md-5">
+                                                                
+                                                                    <div class="card-body">
+                                                                        <a routerLink="/orderDetails/{{booking.id}}" style="color:inherit; text-decoration:none;">
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Booking ID</b></label>
+                                                                            <p>{{booking.id}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Property Name</b></label>
+                                                                            <p>{{booking.property.name}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Booking First Name</b></label>
+                                                                            <p>{{booking.bookingFirstName}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Check In Date</b></label>
+                                                                            <p>{{booking.bookingCheckInDate}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Check Out Date</b></label>
+                                                                            <p>{{booking.bookingCheckOutDate}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Rents Amount</b></label>
+                                                                            <p>{{booking.totalPrice}}</p>
+                                                                        </div>
+                                                                       
+                                                                        </a>
+                                                                        <div class = "row mt-2">
+                                                                            <div class ="col-sm-12"><button class ="form-control btn btn-block btn-secondary" routerLink="/orderDetails/{{booking.id}}">View Details</button></div>
+                                                                            
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </div>

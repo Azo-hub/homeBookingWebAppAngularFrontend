@@ -13,6 +13,8 @@ import { PropertyService } from '../service/property.service';
 import { Property } from '../model/property';
 import { CustomHttpResponse } from '../model/custom-http-response';
 import { environment } from 'src/environments/environment';
+import { Booking } from '../model/booking';
+import { BookingService } from '../service/booking.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -49,11 +51,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   imageShowLoading2: boolean;
   image2showLoading: boolean;
   profileImage: File;
+  bookings: Booking[] = [];
+  Allbooking : Booking [] = [];
+  Allproperties: Property [] = [];
 
 
   constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
     private authenticationService: AuthenticationService, private propertyService: PropertyService,
-    private http: HttpClient) { }
+    private http: HttpClient, private bookingService : BookingService) { }
 
   ngOnInit(): void {
     this.loggedInUser = this.authenticationService.getUserFromLocalCache();
@@ -63,6 +68,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.getAllUsers();
     this.options;
     this.userGender;
+    this.getAllBookingByUser();
+    this.getAllBooking();
+    this.getAllProperty();
   }
   
   onLogOut(): void {
@@ -122,6 +130,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     
   }
 
+  getAllProperty():void {
+    this.subscriptions.push(
+      
+      this.propertyService.getAllProperties().subscribe(
+        (response: Property[]) => {
+          this.propertyService.addPropertiesToLocalCacheAdmin(response);
+          this.Allproperties = response;
+          
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+    
+  }
+
 
   getAllUsers():void {
     
@@ -130,6 +156,41 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         (response: User[]) => {
           this.userService.addUsersToLocalCache(response);
           this.users = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+    
+  }
+
+
+  getAllBookingByUser():void {
+    
+    this.subscriptions.push(
+      this.bookingService.getAllBookingByUser().subscribe(
+        (response: Booking[]) => {
+          this.bookings = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+    
+  }
+
+  getAllBooking():void {
+    
+    this.subscriptions.push(
+      this.bookingService.getAllBooking().subscribe(
+        (response: Booking[]) => {
+          this.Allbooking = response;
         },
 
         (errorResponse: HttpErrorResponse) => {
@@ -160,6 +221,70 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.propertiesByOwner = searchProperty
     if(searchProperty.length === 0 || !searchInput) {
       this.propertiesByOwner = this.propertyService.getPropertiesFromLocalCache();
+    }
+
+  }
+
+
+  onSearchBooking(searchInputBooking:string): void {
+
+    const searchBooking: Booking[] = [];
+    for (const eachSearchBooking of this.bookingService.getBookingsFromLocalCache() ) {
+     
+      if(eachSearchBooking.property.name?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 || 
+        eachSearchBooking.bookingFirstName?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
+        eachSearchBooking.bookingEmailAddress?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
+        eachSearchBooking.bookingCheckInDate?.toString().toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
+        eachSearchBooking.bookingEmailAddress?.toString().toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
+        eachSearchBooking.id?.toString().indexOf(searchInputBooking.toLowerCase()) !== -1) {
+           
+          searchBooking.push(eachSearchBooking);
+          
+         }
+    }
+
+    this.bookings = searchBooking
+    if(searchBooking.length === 0 || !searchInputBooking) {
+      this.bookings = this.bookingService.getBookingsFromLocalCache();
+    }
+
+  }
+
+
+  onSearchAllBooking(searchInputAllBooking:string):void {
+    const formData = new FormData();
+    formData.append("searchInput", searchInputAllBooking);
+    this.subscriptions.push(
+      this.bookingService.searchAllBooking(formData).subscribe(
+        (response: Booking[]) => {
+          this.Allbooking = response;
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          
+        }
+      )
+    );
+  }
+
+  onSearchPropertyDate(searchInputDate:string):void {
+    const searchPropertyDate: Property[] = [];
+    for (const eachSearchPropertyDate of this.propertyService.getPropertiesFromLocalCacheAdmin() ) {
+     
+      if(eachSearchPropertyDate.name?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 || 
+        eachSearchPropertyDate.description?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 ||
+        eachSearchPropertyDate.propertyType?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 ||
+        eachSearchPropertyDate.propertyAddress?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1) {
+           
+          searchPropertyDate.push(eachSearchPropertyDate);
+          
+         }
+    }
+
+    this.Allproperties = searchPropertyDate
+    if(searchPropertyDate.length === 0 || !searchInputDate) {
+      this.Allproperties = this.propertyService.getPropertiesFromLocalCacheAdmin();
     }
 
   }

@@ -8,7 +8,7 @@
         <div class = "col-md-8">
             <h3>Contact Support</h3>
             <form #supportForm = "ngForm" (ngSubmit)="onSupport(supportForm)">
-                <div class = "row my-4">
+                <div class = "row my-4 gy-4">
                     <div class = "col-md-6">
                         <input required type="text" class="form-control" name = "firstname" [(ngModel)] = "user.firstname" placeholder="First Name"/>
                     </div>

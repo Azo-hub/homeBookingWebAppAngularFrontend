@@ -13,8 +13,9 @@
 </div>
 <div class="container my-5">
     <h2>Add a New Property</h2>
-
+    
     <div class="row my-3" [hidden]="showAddPropertySection">
+
 
         <div class="col-md-10">
             <form #addNewPropertyForm="ngForm" (ngSubmit)="onAddNewProperty(addNewPropertyForm.value)">
@@ -149,6 +150,7 @@
                         
                     </div>
 
+                   
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
                             <button type="submit" [disabled]="addNewPropertyForm.invalid || showLoading" class="form-control addNewProperty-button-fix">

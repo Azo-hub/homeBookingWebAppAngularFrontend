@@ -71,7 +71,7 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
           
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property Booked Successfully! Check your email for follow-up messages.`);
-          this.router.navigateByUrl(`/propertydetails/${this.bookingPropertyIdFromUrl}`); 
+          this.router.navigateByUrl(`/orderDetails/${response.id}`); 
         },
         (errorResponse: HttpErrorResponse) => {
           

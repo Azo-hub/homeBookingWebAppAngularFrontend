@@ -28,6 +28,10 @@ export class PropertyService {
   public getProperties(formData:FormData) : Observable<Property[]> {
     return this.http.post<Property[]>(`${this.host}/allPropertyByCategory`,formData);
   }
+
+  getAllProperties(): Observable<Property[]> {
+    return this.http.get<Property[]>(`${this.host}/allProperty`);
+  }
   
   getPropertyById(formData:FormData) : Observable<Property> {
     return this.http.post<Property>(`${this.host}/eachPropertyById`,formData);
@@ -67,12 +71,27 @@ export class PropertyService {
   public addPropertiesToLocalCache(properties: Property[]): void {
     localStorage.setItem('properties', JSON.stringify(properties));
   }
+
+  public addPropertiesToLocalCacheAdmin(properties: Property[]): void {
+    localStorage.setItem('Allproperties', JSON.stringify(properties));
+  }
   
   
   public getPropertiesFromLocalCache(): Property[] {
     if(localStorage.getItem('properties')) {
       
       return JSON.parse(localStorage.getItem('properties') || '');
+      
+    }
+    
+    return [];
+    
+  }
+
+  public getPropertiesFromLocalCacheAdmin(): Property[] {
+    if(localStorage.getItem('Allproperties')) {
+      
+      return JSON.parse(localStorage.getItem('Allproperties') || '');
       
     }
     
