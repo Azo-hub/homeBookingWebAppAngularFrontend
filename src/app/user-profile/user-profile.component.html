@@ -99,10 +99,11 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Gender</label> 
-                                                                <select class="form-control" name = "gender" [(ngModel)] = "loggedInUser.gender">
+                                                                <select class="form-control" name = "gender" [(ngModel)] = "loggedInUser.gender" #genderInput="ngModel">
                                                                     <option *ngFor="let uGender of userGender" [ngValue]="uGender.value">{{uGender.label}}</option>
                                                                 </select>
-                                                                
+                                                                <span class="help-block" style="color: red;" *ngIf="genderInput.invalid && genderInput.touched || genderInput.value === null">Please
+                                                                    select your gender</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -110,8 +111,10 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Date of Birth</label> 
-                                                                <input class="form-control" type="date" name="dateOfBirth" placeholder="Date Of Birth" [(ngModel)]="loggedInUser.dateOfBirth">
+                                                                <input class="form-control" type="date" name="dateOfBirth" #dateOfBirthInput="ngModel" required placeholder="Date Of Birth" [(ngModel)]="loggedInUser.dateOfBirth">
                                                             </div>
+                                                            <span class="help-block" style="color: red;" *ngIf="dateOfBirthInput.invalid && dateOfBirthInput.touched || dateOfBirthInput.value === null">Please
+                                                                enter your date of birth</span>
                                                             
                                                         </div>
                                                     </div>

@@ -82,16 +82,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   
   onUpdateCurrentUser(userProfileForm:NgForm):void {
     this.userProfileShowLoading = true;
-    console.log(userProfileForm.value.gender);
+    
     const formData = 
           this.userService.updateUserProfileBySelfFormData(userProfileForm.value['username'], userProfileForm.value,
           userProfileForm.value['currentPassword'], userProfileForm.value['newPassword'], userProfileForm.value['confirmPassword']);
     
-         
+            
     this.subscriptions.push(
       this.userService.updateUserBySelf(formData).subscribe(
-    
+        
         (response: User) => {
+          
           this.userProfileShowLoading = false;
           this.authenticationService.addUserToLocalCache(response);
           this.loggedInUser = this.authenticationService.getUserFromLocalCache();
