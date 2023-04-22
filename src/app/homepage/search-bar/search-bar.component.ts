@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   onCheckDateAvailability():void {
     if(!this.authenticationService.isUserLoggedIn()) {
-      this.sendNotification(NotificationType.ERROR, "You need to login to continue");;
+      this.sendNotification(NotificationType.ERROR, "You need to login to continue");
     } else {
       
     

@@ -1,5 +1,5 @@
 import { HttpResponse, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,8 +12,7 @@ import { NgForm } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CustomHttpResponse } from '../model/custom-http-response';
 import { Review } from '../model/review';
-import { Editor } from 'ngx-editor';
-import { toHTML } from 'ngx-editor';
+
 
 
 @Component({
@@ -23,7 +22,7 @@ import { toHTML } from 'ngx-editor';
 })
 
 
-export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
+export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, AfterViewInit {
 
   showLoading: boolean = false;
   pictureShowLoading1: boolean;
@@ -97,6 +96,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
   reviews:Review[] = [];
   showLoadingDone:boolean;
   showReview:boolean =false;
+
   
   states = [
     {value:"Alabama", label:"Alabama"},  {value:"Alaska", label:"Alaska"},
@@ -142,6 +142,14 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy {
     
   }
 
+
+
+  ngAfterViewInit(): void {
+    
+  }
+
+
+  
  
   
   public onAddNewProperty(property: Property): void {

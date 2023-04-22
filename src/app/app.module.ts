@@ -46,6 +46,7 @@ import { RoleTravellerGuard } from './guard/role-traveller.guard';
 import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SupportComponent } from './support/support.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -91,7 +92,9 @@ import { SupportComponent } from './support/support.component';
     HttpClientModule,
     NotificationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule
+   
   ],
   providers:[DatePipe, AuthenticationService, UserService,NotificationService,
   BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,RoleOwnerGuard,RoleTravellerGuard,
