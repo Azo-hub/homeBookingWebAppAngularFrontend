@@ -24,7 +24,8 @@ import { BookingService } from '../service/booking.service';
 export class UserProfileComponent implements OnInit, OnDestroy {
 
   public host = environment.apiUrl;
-
+  showDates: boolean = true;
+  addDatesBtn: boolean = true;
   private subscriptions: Subscription[] = [];
   public loggedInUser : User = new User();
   userProfileShowLoading:boolean = false;
@@ -356,8 +357,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
   displayDate():void {
-    document.getElementById("showDates")?.classList.toggle('display_checkin_checkout_dates');
-    document.getElementById("addDatesBtn")?.classList.toggle('display_checkin_checkout_dates');
+   /* document.getElementById("showDates")?.classList.toggle('display_checkin_checkout_dates');
+    document.getElementById("addDatesBtn")?.classList.toggle('display_checkin_checkout_dates'); */
+    this.showDates = false;
+    this.addDatesBtn = false;
   }
 
   onAddDate(checkinDateAdmin:Date, checkoutDateAdmin:Date, propertyId:number):void{

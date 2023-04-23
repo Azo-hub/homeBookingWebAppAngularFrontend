@@ -360,7 +360,7 @@
                                                                             <div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" (click)="displayDate()">Add Dates</button></div>
                                                                             <div class = "col-sm-3"></div>
                                                                         </div>
-                                                                        <div class="row my-3 gy-2 display_checkin_checkout_dates" id="showDates">
+                                                                        <div class="row my-3 gy-2 " [hidden]="showDates">
                                                                             <div class="col-sm-6 form-group">
                                                                                 <label>Check-in Date</label>
                                                                                 <input class="form-control my-2" type="date" placeholder="check-in Date" name="checkinDateAdmin" #checkinDateAdmin="ngModel" ngModel/>
@@ -370,7 +370,7 @@
                                                                                 <input class="form-control my-2" type="date" placeholder="check-out Date" name="checkoutDateAdmin" #checkoutDateAdmin="ngModel" ngModel/>
                                                                             </div>
                                                                         </div>
-                                                                        <div class = "row display_checkin_checkout_dates" id="addDatesBtn">
+                                                                        <div class = "row" [hidden]="addDatesBtn">
                                                                             <div class ="col-sm-6"></div>
                                                                             <div class = "col-sm-6">
                                                                                 <button class ="form-control btn btn-block btn-secondary" (click)="onAddDate(checkinDateAdmin.value,checkoutDateAdmin.value,propertyEach.id)">
