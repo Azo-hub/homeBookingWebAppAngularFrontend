@@ -1,7 +1,9 @@
-<div class = "container-fluid">
-    <div class = "row">
-        <div class = "col-md-12">
-            <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img
+                    src="/assets/customImage/bookingLogo.jpeg" height="50vmin"
+                    width="50vmin" />&nbsp;<b>ValenceDirectBookingRentals</b></a>
             <hr />
         </div>
     </div>
@@ -10,7 +12,7 @@
 
 <div class="container">
     <div class="row flex-lg-nowrap">
-        
+
         <div class="col">
             <div class="row">
                 <div class="col mb-3">
@@ -20,89 +22,120 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
-                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{loggedInUser?.firstname}}{{loggedInUser?.lastname}}{{loggedInUser?.userId}}.jpg" class="img-fluid"/>
+                                            <div class="d-flex justify-content-center align-items-center rounded"
+                                                style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{loggedInUser?.firstname}}{{loggedInUser?.lastname}}{{loggedInUser?.userId}}.jpg"
+                                                    class="img-fluid" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{loggedInUser?.firstname}} {{loggedInUser?.lastname}}
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{loggedInUser?.firstname}}
+                                                {{loggedInUser?.lastname}}
                                             </h4>
                                             <p class="mb-0">{{loggedInUser?.email}}</p>
                                             <div class="text-muted">
                                                 <span>Last Login Date: </span>
                                                 <small>{{loggedInUser?.lastLoginDateDisplay |
-													date:'medium'}}</small>
+                                                    date:'medium'}}</small>
                                             </div>
                                             <div class="mt-2">
-                                                <input type="file" id="imageFileType" (change)="onFileSelected2($any($event).target.files[0])" hidden/>
-                                                <button class="btn btn-block btn-secondary" type="button" (click) = "changePhotoClick()">
-													<i class="fa fa-fw fa-camera"></i> <span>Upload/Change
-														Photo</span> 
-												</button>&nbsp;&nbsp; <i class="fa fa-spinner fa-spin " *ngIf="imageShowLoading2"></i>&nbsp;&nbsp;
+                                                <input type="file" id="imageFileType"
+                                                    (change)="onFileSelected2($any($event).target.files[0])" hidden />
+                                                <button class="btn btn-block btn-secondary" type="button"
+                                                    (click)="changePhotoClick()">
+                                                    <i class="fa fa-fw fa-camera"></i> <span>Upload/Change
+                                                        Photo</span>
+                                                </button>&nbsp;&nbsp; <i class="fa fa-spinner fa-spin "
+                                                    *ngIf="imageShowLoading2"></i>&nbsp;&nbsp;
                                                 <span *ngIf="image2showLoading">Uploading...</span>
                                                 <span *ngIf="image2showLoading === false">Completed</span>
                                             </div>
                                         </div>
                                         <div class="text-center text-sm-right">
-                                            <span class="badge" style="background-color:#39e75f;">{{loggedInUserRole}}</span>&nbsp;
-                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!loggedInUser?.isVerified">Verified</small>
-                                            <small class="badge bg-danger"  [hidden]="loggedInUser?.isVerified">Unverified</small>
+                                            <span class="badge"
+                                                style="background-color:#39e75f;">{{loggedInUserRole}}</span>&nbsp;
+                                            <small class="badge" style="background-color:#39e75f;"
+                                                [hidden]="!loggedInUser?.isVerified">Verified</small>
+                                            <small class="badge bg-danger"
+                                                [hidden]="loggedInUser?.isVerified">Unverified</small>
                                             <div class="text-muted">
                                                 <small>Joined {{loggedInUser?.dateJoined |
-													date:'mediumDate'}}</small>
+                                                    date:'mediumDate'}}</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a class="active nav-link" href="#settings" data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#bookingHistory" data-bs-toggle="tab" style="color:inherit;">Booking History</a></li>
-                                    <li class="nav-item" [hidden]="!isAdminOrOwner"><a class="nav-link" href="#property" data-bs-toggle="tab" style="color:inherit;">Property Listed</a></li>
-                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#users" data-bs-toggle="tab" style="color:inherit;">All Users</a></li>
-                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#dates" data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
-                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#Allbooking" data-bs-toggle="tab" style="color:inherit;">List of Property Booked</a></li>
+                                    <li class="nav-item"><a class="active nav-link" href="#settings"
+                                            data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#bookingHistory" data-bs-toggle="tab"
+                                            style="color:inherit;">Booking History</a></li>
+                                    <li class="nav-item" [hidden]="!isAdminOrOwner"><a class="nav-link" href="#property"
+                                            data-bs-toggle="tab" style="color:inherit;">Property Listed</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#users"
+                                            data-bs-toggle="tab" style="color:inherit;">All Users</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#dates"
+                                            data-bs-toggle="tab" style="color:inherit;">Dates</a></li>
+                                    <li class="nav-item" [hidden]="!isAdmin"><a class="nav-link" href="#Allbooking"
+                                            data-bs-toggle="tab" style="color:inherit;">List of Property Booked</a></li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active fade in show" id="settings">
-                                        <form class="form" #userProfileForm="ngForm" (ngSubmit)="onUpdateCurrentUser(userProfileForm)">
+                                        <form class="form" #userProfileForm="ngForm"
+                                            (ngSubmit)="onUpdateCurrentUser(userProfileForm)">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>First Name</label> <input class="form-control" type="text" name="firstname" placeholder="First name" [(ngModel)]="loggedInUser.firstname">
+                                                                <label>First Name</label> <input class="form-control"
+                                                                    type="text" name="firstname"
+                                                                    placeholder="First name"
+                                                                    [(ngModel)]="loggedInUser.firstname">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Last Name</label> <input class="form-control" type="text" name="lastname" placeholder="Last name" [(ngModel)]="loggedInUser.lastname">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Username</label> <input class="form-control" type="text" name="username" placeholder="Username" [(ngModel)]="loggedInUser.username">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Email</label> <input class="form-control" type="email" name="email" placeholder="user@example.com" [(ngModel)]="loggedInUser.email">
+                                                                <label>Last Name</label> <input class="form-control"
+                                                                    type="text" name="lastname" placeholder="Last name"
+                                                                    [(ngModel)]="loggedInUser.lastname">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Gender</label> 
-                                                                <select class="form-control" name = "gender" [(ngModel)] = "loggedInUser.gender" #genderInput="ngModel">
-                                                                    <option *ngFor="let uGender of userGender" [ngValue]="uGender.value">{{uGender.label}}</option>
+                                                                <label>Username</label> <input class="form-control"
+                                                                    type="text" name="username" placeholder="Username"
+                                                                    [(ngModel)]="loggedInUser.username">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Email</label> <input class="form-control"
+                                                                    type="email" name="email"
+                                                                    placeholder="user@example.com"
+                                                                    [(ngModel)]="loggedInUser.email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Gender</label>
+                                                                <select class="form-control" name="gender"
+                                                                    [(ngModel)]="loggedInUser.gender"
+                                                                    #genderInput="ngModel">
+                                                                    <option *ngFor="let uGender of userGender"
+                                                                        [ngValue]="uGender.value">{{uGender.label}}
+                                                                    </option>
                                                                 </select>
-                                                                <span class="help-block" style="color: red;" *ngIf="genderInput.invalid && genderInput.touched || genderInput.value === null">Please
+                                                                <span class="help-block" style="color: red;"
+                                                                    *ngIf="genderInput.invalid && genderInput.touched || genderInput.value === null">Please
                                                                     select your gender</span>
                                                             </div>
                                                         </div>
@@ -110,43 +143,55 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Date of Birth</label> 
-                                                                <input class="form-control" type="date" name="dateOfBirth" #dateOfBirthInput="ngModel" required placeholder="Date Of Birth" [(ngModel)]="loggedInUser.dateOfBirth">
+                                                                <label>Date of Birth</label>
+                                                                <input class="form-control" type="date"
+                                                                    name="dateOfBirth" #dateOfBirthInput="ngModel"
+                                                                    required placeholder="Date Of Birth"
+                                                                    [(ngModel)]="loggedInUser.dateOfBirth">
                                                             </div>
-                                                            <span class="help-block" style="color: red;" *ngIf="dateOfBirthInput.invalid && dateOfBirthInput.touched || dateOfBirthInput.value === null">Please
+                                                            <span class="help-block" style="color: red;"
+                                                                *ngIf="dateOfBirthInput.invalid && dateOfBirthInput.touched || dateOfBirthInput.value === null">Please
                                                                 enter your date of birth</span>
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-group my-3">
                                                             <label>Select your means of Identification</label>
-                                                            <select name="identityType" [(ngModel)]="identityType" class="form-control">
-                                                               <!-- <option selected>Your Identification Type</option>-->
-                                                                <option *ngFor="let option of options" [ngValue]="option.value">{{option.label}}</option>
+                                                            <select name="identityType" [(ngModel)]="identityType"
+                                                                class="form-control">
+                                                                <!-- <option selected>Your Identification Type</option>-->
+                                                                <option *ngFor="let option of options"
+                                                                    [ngValue]="option.value">{{option.label}}</option>
                                                             </select>
-    
-                                                            <label class = "my-2">Upload your Identification Type </label>    
+
+                                                            <label class="my-2">Upload your Identification Type </label>
                                                             <div class="col-sm-7">
-                                                                <input type="file" class="form-control" (change)="onFileSelected1($any($event).target.files[0])" name="identityImage" />
+                                                                <input type="file" class="form-control"
+                                                                    (change)="onFileSelected1($any($event).target.files[0])"
+                                                                    name="identityImage" />
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                <i class="fa fa-spinner fa-spin " *ngIf="imageShowLoading1"></i>&nbsp;&nbsp;
-                                                                    <span *ngIf="image1showLoading">Uploading...</span>
-                                                                    <span *ngIf="image1showLoading === false">Completed</span>
+                                                                <i class="fa fa-spinner fa-spin "
+                                                                    *ngIf="imageShowLoading1"></i>&nbsp;&nbsp;
+                                                                <span *ngIf="image1showLoading">Uploading...</span>
+                                                                <span
+                                                                    *ngIf="image1showLoading === false">Completed</span>
                                                             </div>
-                                                        
+
                                                         </div>
-                                                        
+
                                                     </div>
-    
+
                                                     <div class="row">
                                                         <div class="col mb-3">
                                                             <div class="card">
                                                                 <div class="card-body">
                                                                     <h5 class="card-title">Permissions Granted</h5>
-                                                                    <div class="card-text" *ngFor="let permission of loggedInUserPermission; let i = index">
-                                                                        <span class="card-text">{{permission}}</span><br/>
+                                                                    <div class="card-text"
+                                                                        *ngFor="let permission of loggedInUserPermission; let i = index">
+                                                                        <span
+                                                                            class="card-text">{{permission}}</span><br />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -163,95 +208,121 @@
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <input class="form-control" type="password" ngModel name="currentPassword" placeholder="Current Password">
+                                                                <input class="form-control" type="password" ngModel
+                                                                    name="currentPassword"
+                                                                    placeholder="Current Password">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <input class="form-control" name="newPassword" type="password" ngModel placeholder="New Password">
+                                                                <input class="form-control" name="newPassword"
+                                                                    type="password" ngModel placeholder="New Password">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <input class="form-control" ngModel name="confirmPassword" type="password" placeholder="Confirm New Password">
+                                                                <input class="form-control" ngModel
+                                                                    name="confirmPassword" type="password"
+                                                                    placeholder="Confirm New Password">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
+
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex justify-content-end">
-                                                    <button class="btn searchbar-button-fix" [disabled]="userProfileShowLoading" type="submit">
-														<i class="fa fa-spinner fa-spin " *ngIf="userProfileShowLoading"></i>&nbsp;&nbsp;
-                                                        <span *ngIf="userProfileShowLoading===true">Loading...</span> <span
-                                                        *ngIf="userProfileShowLoading === false"> Save Changes</span>
-                                                        
-													</button>
+                                                    <button class="btn searchbar-button-fix"
+                                                        [disabled]="userProfileShowLoading" type="submit">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="userProfileShowLoading"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="userProfileShowLoading===true">Loading...</span>
+                                                        <span *ngIf="userProfileShowLoading === false"> Save
+                                                            Changes</span>
+
+                                                    </button>
 
 
                                                 </div>
                                             </div>
                                         </form>
-                                        
-                                            
-                                                                                            
-                                        
+
+
+
+
 
                                     </div>
 
                                     <div class="tab-pane fade in show" id="property" [hidden]="!isAdminOrOwner">
-                                        <div class = "container">
-                                            <div class = "row">
-                                                <div class = "col-md-12">
-                                                    <input name="searchTerm" #searchInput="ngModel" ngModel (ngModelChange)="onSearchProperty(searchInput.value)" type="search" placeholder="Search Property" class = "form-control"/>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input name="searchTerm" #searchInput="ngModel" ngModel
+                                                        (ngModelChange)="onSearchProperty(searchInput.value)"
+                                                        type="search" placeholder="Search Property"
+                                                        class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let propertyEach of propertiesByOwner">
-                                                <div class = "col-md-12">
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let propertyEach of propertiesByOwner">
+                                                <div class="col-md-12">
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
                                                             <div class="col-md-7">
-                                                                
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
-                                                                
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
                                                             </div>
-                                                        
-                                                        
+
+
                                                             <div class="col-md-5">
-                                                                
-                                                                    <div class="card-body">
-                                                                        <a routerLink="/propertydetails/{{propertyEach.id}}" style="color:inherit; text-decoration:none;">
-                                                                        <h5 class="card-subtitle">{{propertyEach.propertyType}}</h5>
-                                                                    
+
+                                                                <div class="card-body">
+                                                                    <a routerLink="/propertydetails/{{propertyEach.id}}"
+                                                                        style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="card-subtitle">
+                                                                            {{propertyEach.propertyType}}</h5>
+
                                                                         <h3 class="card-title">
                                                                             <b>{{propertyEach.name}}</b>
                                                                         </h3>
-                                                                        
+
                                                                         <p class="card-text">
-                                                                            <small class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
+                                                                            <small
+                                                                                class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
                                                                         </p>
-                                                                        <p class="card-text">{{propertyEach.description.substring(0, 100)}}...</p>
-                                                                        </a>
-                                                                        <div class = "row mt-2 gy-2">
-                                                                            <div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" routerLink="/edit/property/{{propertyEach.id}}">Edit</button></div>
-                                                                            <div class ="col-sm-6"><button class="form-control btn btn-block btn-danger"  (click) = "onClickDelete(propertyEach.id)">
-                                                                                <i class="fa fa-spinner fa-spin " *ngIf="deletePropertyShowLoading"></i>&nbsp;&nbsp;
-                                                                                <span *ngIf="deletePropertyShowLoading===true">Deleting...</span> <span
+                                                                        <p class="card-text">
+                                                                            {{propertyEach.description.substring(0,
+                                                                            100)}}...</p>
+                                                                    </a>
+                                                                    <div class="row mt-2 gy-2">
+                                                                        <div class="col-sm-6"><button
+                                                                                class="form-control btn btn-block btn-secondary"
+                                                                                routerLink="/edit/property/{{propertyEach.id}}">Edit</button>
+                                                                        </div>
+                                                                        <div class="col-sm-6"><button
+                                                                                class="form-control btn btn-block btn-danger"
+                                                                                (click)="onClickDelete(propertyEach.id)">
+                                                                                <i class="fa fa-spinner fa-spin "
+                                                                                    *ngIf="deletePropertyShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span
+                                                                                    *ngIf="deletePropertyShowLoading===true">Deleting...</span>
+                                                                                <span
                                                                                     *ngIf="deletePropertyShowLoading === false">Delete</span>
                                                                             </button></div>
-                                                                        </div>
-                                                                        
                                                                     </div>
-                                                                    
-                                                                    
-                                                                
+
+                                                                </div>
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -261,129 +332,167 @@
                                     </div>
 
                                     <div class="tab-pane fade in show" id="users" [hidden]="!isAdmin">
-                                        <div class = "container">
-                                            <div class = "row">
-                                                <div class = "col-md-12">
-                                                    <input name="searchUsers" #usersearchInput="ngModel" ngModel (ngModelChange)="onSearchUser(usersearchInput.value)" type="search" placeholder="Search Users" class = "form-control"/>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input name="searchUsers" #usersearchInput="ngModel" ngModel
+                                                        (ngModelChange)="onSearchUser(usersearchInput.value)"
+                                                        type="search" placeholder="Search Users" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let user of users">
-                                                <div class = "col-md-12">
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let user of users">
+                                                <div class="col-md-12">
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
                                                             <div class="col-md-6">
-                                                                
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid rounded-start" alt="User Image">
-                                                                
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg"
+                                                                    class="img-fluid rounded-start" alt="User Image">
+
                                                             </div>
-                                                        
-                                                        
+
+
                                                             <div class="col-md-6">
-                                                                
+
                                                                 <div class="card-body">
-                                                                    <a routerLink="/userdetails/{{user.username}}" style="color:inherit; text-decoration:none;">
-                                                                        <h5 class="badge" style="background-color:#39e75f;">{{user.role.substring(5)}}</h5>
+                                                                    <a routerLink="/userdetails/{{user.username}}"
+                                                                        style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="badge"
+                                                                            style="background-color:#39e75f;">
+                                                                            {{user.role.substring(5)}}</h5>
                                                                         <h5 class="card-title">
                                                                             <b>{{user.username}}</b>
-                                                                        </h5><hr/>
+                                                                        </h5>
+                                                                        <hr />
                                                                         <h4 class="card-title">
                                                                             {{user.firstname}} {{user.lastname}}
                                                                         </h4>
 
                                                                         <h6 class="card-subtitle">{{user.email}}</h6>
-                                                                        <p class="my-1"><b>Last Login Date: </b><small>{{user.lastLoginDateDisplay |
-													                            date:'medium'}}</small></p>
-                                                                        <p class="my-1"><b>Joined </b><small>{{user.dateJoined |
-                                                                            date:'mediumDate'}}</small></p>
-                                                                                
+                                                                        <p class="my-1"><b>Last Login Date:
+                                                                            </b><small>{{user.lastLoginDateDisplay |
+                                                                                date:'medium'}}</small></p>
+                                                                        <p class="my-1"><b>Joined
+                                                                            </b><small>{{user.dateJoined |
+                                                                                date:'mediumDate'}}</small></p>
+
                                                                         <p class="card-text my-1">
-                                                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!user.accountEnabled">Enabled</small>
-                                                                            <small class="badge bg-danger"  [hidden]="user.accountEnabled">Disabled</small>&nbsp;
-                                                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!user.isVerified">Verified</small>
-                                                                            <small class="badge bg-danger"  [hidden]="user.isVerified">Unverified</small>
+                                                                            <small class="badge"
+                                                                                style="background-color:#39e75f;"
+                                                                                [hidden]="!user.accountEnabled">Enabled</small>
+                                                                            <small class="badge bg-danger"
+                                                                                [hidden]="user.accountEnabled">Disabled</small>&nbsp;
+                                                                            <small class="badge"
+                                                                                style="background-color:#39e75f;"
+                                                                                [hidden]="!user.isVerified">Verified</small>
+                                                                            <small class="badge bg-danger"
+                                                                                [hidden]="user.isVerified">Unverified</small>
                                                                         </p>
-                                                                       
+
                                                                     </a>
-                                                                        
+
                                                                 </div>
-                                                                    
-                                                                    
-                                                                
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-   
+
                                     </div>
 
                                     <div class="tab-pane fade in show" id="dates" [hidden]="!isAdminOrOwner">
-                                        <div class = "container">
-                                            <div class = "row">
-                                                <div class = "col-md-12">
-                                                    <input name="searchTermDate" #searchInputDate="ngModel" ngModel (ngModelChange)="onSearchPropertyDate(searchInputDate.value)" type="search" placeholder="Search Property" class = "form-control"/>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input name="searchTermDate" #searchInputDate="ngModel" ngModel
+                                                        (ngModelChange)="onSearchPropertyDate(searchInputDate.value)"
+                                                        type="search" placeholder="Search Property"
+                                                        class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let propertyEach of Allproperties">
-                                                <div class = "col-md-12">
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let propertyEach of Allproperties">
+                                                <div class="col-md-12">
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
                                                             <div class="col-md-7">
-                                                                
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
-                                                                
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
                                                             </div>
-                                                        
-                                                        
+
+
                                                             <div class="col-md-5">
-                                                                
-                                                                    <div class="card-body">
-                                                                        <a routerLink="/propertydetails/{{propertyEach.id}}" style="color:inherit; text-decoration:none;">
-                                                                        <h5 class="card-subtitle">{{propertyEach.propertyType}}</h5>
-                                                                    
+
+                                                                <div class="card-body">
+                                                                    <a routerLink="/propertydetails/{{propertyEach.id}}"
+                                                                        style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="card-subtitle">
+                                                                            {{propertyEach.propertyType}}</h5>
+
                                                                         <h3 class="card-title">
                                                                             <b>{{propertyEach.name}}</b>
                                                                         </h3>
-                                                                        
+
                                                                         <p class="card-text">
-                                                                            <small class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
+                                                                            <small
+                                                                                class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
                                                                         </p>
-                                                                        
-                                                                        </a>
-                                                                        <div class = "row mt-2 gy-2">
-                                                                            <div class="col-sm-3"></div>
-                                                                            <div class ="col-sm-6"><button class ="form-control btn btn-block btn-secondary" (click)="displayDate()">Add Dates</button></div>
-                                                                            <div class = "col-sm-3"></div>
+
+                                                                    </a>
+                                                                    <div class="row mt-2 gy-2">
+                                                                        <div class="col-sm-3"></div>
+                                                                        <div class="col-sm-6"><button
+                                                                                class="form-control btn btn-block btn-secondary"
+                                                                                (click)="displayDate()">Add
+                                                                                Dates</button></div>
+                                                                        <div class="col-sm-3"></div>
+                                                                    </div>
+                                                                    <div class="row my-3 gy-2 " [hidden]="showDates">
+                                                                        <div class="col-sm-6 form-group">
+                                                                            <label>Check-in Date</label>
+                                                                            <input class="form-control my-2" type="date"
+                                                                                placeholder="check-in Date"
+                                                                                name="checkinDateAdmin"
+                                                                                #checkinDateAdmin="ngModel" ngModel />
                                                                         </div>
-                                                                        <div class="row my-3 gy-2 " [hidden]="showDates">
-                                                                            <div class="col-sm-6 form-group">
-                                                                                <label>Check-in Date</label>
-                                                                                <input class="form-control my-2" type="date" placeholder="check-in Date" name="checkinDateAdmin" #checkinDateAdmin="ngModel" ngModel/>
-                                                                            </div>
-                                                                            <div class="col-sm-6 form-group">
-                                                                                <label>Check-out Date</label>
-                                                                                <input class="form-control my-2" type="date" placeholder="check-out Date" name="checkoutDateAdmin" #checkoutDateAdmin="ngModel" ngModel/>
-                                                                            </div>
+                                                                        <div class="col-sm-6 form-group">
+                                                                            <label>Check-out Date</label>
+                                                                            <input class="form-control my-2" type="date"
+                                                                                placeholder="check-out Date"
+                                                                                name="checkoutDateAdmin"
+                                                                                #checkoutDateAdmin="ngModel" ngModel />
                                                                         </div>
-                                                                        <div class = "row" [hidden]="addDatesBtn">
-                                                                            <div class ="col-sm-6"></div>
-                                                                            <div class = "col-sm-6">
-                                                                                <button class ="form-control btn btn-block btn-secondary" (click)="onAddDate(checkinDateAdmin.value,checkoutDateAdmin.value,propertyEach.id)">
-                                                                                    <i class="fa fa-spinner fa-spin " *ngIf="addDateShowLoading"></i>&nbsp;&nbsp;
-                                                                                <span *ngIf="addDateShowLoading===true">Loading...</span> <span
+                                                                    </div>
+                                                                    <div class="row" [hidden]="addDatesBtn">
+                                                                        <div class="col-sm-6"></div>
+                                                                        <div class="col-sm-6">
+                                                                            <button
+                                                                                class="form-control btn btn-block btn-secondary"
+                                                                                (click)="onAddDate(checkinDateAdmin.value,checkoutDateAdmin.value,propertyEach.id)">
+                                                                                <i class="fa fa-spinner fa-spin "
+                                                                                    *ngIf="addDateShowLoading"></i>&nbsp;&nbsp;
+                                                                                <span
+                                                                                    *ngIf="addDateShowLoading===true">Loading...</span>
+                                                                                <span
                                                                                     *ngIf="addDateShowLoading === false">Add</span>
-                                                                                    </button></div>
+                                                                            </button>
                                                                         </div>
-                                                                        
                                                                     </div>
-                                                                    
-                                                                    
-                                                                
+
+                                                                </div>
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -393,129 +502,156 @@
                                     </div>
 
 
-                                    <div class="tab-pane fade in show" id="bookingHistory" >
-                                        <div class = "container">
-                                            <div class = "row">
-                                                <div class = "col-md-12">
-                                                   <!-- <input name="searchTermBookingHistory" #searchInputBookingHistory="ngModel" ngModel (ngModelChange)="onSearchBooking(searchInputBookingHistory.value)" type="search" placeholder="Search Booking" class = "form-control"/>-->
+                                    <div class="tab-pane fade in show" id="bookingHistory">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- <input name="searchTermBookingHistory" #searchInputBookingHistory="ngModel" ngModel (ngModelChange)="onSearchBooking(searchInputBookingHistory.value)" type="search" placeholder="Search Booking" class = "form-control"/>-->
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let booking of bookings">
-                                                <div class = "col-md-12">
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let booking of bookings">
+                                                <div class="col-md-12">
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
                                                             <div class="col-md-7">
-                                                                
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
-                                                                
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
                                                             </div>
-                                                        
-                                                        
-                                                            <div class="col-md-5">
-                                                                
-                                                                    <div class="card-body">
-                                                                        <a routerLink="/orderDetails/{{booking.id}}" style="color:inherit; text-decoration:none;">
-                                                                            <div class="form-group">
-                                                                                <label class="mb-1"><b>Booking ID</b></label>
-                                                                                <p>{{booking.id}}</p>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="mb-1"><b>Property Name</b></label>
-                                                                                <p>{{booking.property.name}}</p>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="mb-1"><b>Check In Date</b></label>
-                                                                                <p>{{booking.bookingCheckInDate}}</p>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="mb-1"><b>Check Out Date</b></label>
-                                                                                <p>{{booking.bookingCheckOutDate}}</p>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="mb-1"><b>Rents Amount</b></label>
-                                                                                <p>{{booking.totalPrice}}</p>
-                                                                            </div>
-                                                                       
-                                                                        </a>
-                                                                        <div class = "row mt-2">
-                                                                            <div class ="col-sm-12"><button class ="form-control btn btn-block btn-secondary" routerLink="/orderDetails/{{booking.id}}">View Details</button></div>
-                                                                            
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                    
-                                                                    
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="tab-pane fade in show" id="Allbooking" >
-                                        <div class = "container">
-                                            <div class = "row">
-                                                <div class = "col-md-12">
-                                                    <input name="searchTermAllbooking" #searchInputAllbooking="ngModel" ngModel (ngModelChange)="onSearchAllBooking(searchInputAllbooking.value)" type="search" placeholder="Search Booking By Firstname" class = "form-control"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class = "container-fluid">
-                                            <div class = "row" *ngFor="let booking of Allbooking">
-                                                <div class = "col-md-12">
-                                                    <div class="card my-3 mx-2">
-                                                        <div class="row gy-2">
-                                                            <div class="col-md-7">
-                                                                
-                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg" class="img-fluid rounded-start" alt="Property Image">
-                                                                
-                                                            </div>
-                                                        
-                                                        
                                                             <div class="col-md-5">
-                                                                
-                                                                    <div class="card-body">
-                                                                        <a routerLink="/orderDetails/{{booking.id}}" style="color:inherit; text-decoration:none;">
+
+                                                                <div class="card-body">
+                                                                    <a routerLink="/orderDetails/{{booking.id}}"
+                                                                        style="color:inherit; text-decoration:none;">
                                                                         <div class="form-group">
-                                                                            <label class="mb-1"><b>Booking ID</b></label>
+                                                                            <label class="mb-1"><b>Booking
+                                                                                    ID</b></label>
                                                                             <p>{{booking.id}}</p>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="mb-1"><b>Property Name</b></label>
+                                                                            <label class="mb-1"><b>Property
+                                                                                    Name</b></label>
                                                                             <p>{{booking.property.name}}</p>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="mb-1"><b>Booking First Name</b></label>
-                                                                            <p>{{booking.bookingFirstName}}</p>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="mb-1"><b>Check In Date</b></label>
+                                                                            <label class="mb-1"><b>Check In
+                                                                                    Date</b></label>
                                                                             <p>{{booking.bookingCheckInDate}}</p>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="mb-1"><b>Check Out Date</b></label>
+                                                                            <label class="mb-1"><b>Check Out
+                                                                                    Date</b></label>
                                                                             <p>{{booking.bookingCheckOutDate}}</p>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="mb-1"><b>Rents Amount</b></label>
+                                                                            <label class="mb-1"><b>Rents
+                                                                                    Amount</b></label>
                                                                             <p>{{booking.totalPrice}}</p>
                                                                         </div>
-                                                                       
-                                                                        </a>
-                                                                        <div class = "row mt-2">
-                                                                            <div class ="col-sm-12"><button class ="form-control btn btn-block btn-secondary" routerLink="/orderDetails/{{booking.id}}">View Details</button></div>
-                                                                            
-                                                                        </div>
-                                                                        
+
+                                                                    </a>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col-sm-12"><button
+                                                                                class="form-control btn btn-block btn-secondary"
+                                                                                routerLink="/orderDetails/{{booking.id}}">View
+                                                                                Details</button></div>
+
                                                                     </div>
-                                                                    
-                                                                    
-                                                                
+
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane fade in show" id="Allbooking">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input name="searchTermAllbooking" #searchInputAllbooking="ngModel"
+                                                        ngModel
+                                                        (ngModelChange)="onSearchAllBooking(searchInputAllbooking.value)"
+                                                        type="search" placeholder="Search Booking By Firstname"
+                                                        class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let booking of Allbooking">
+                                                <div class="col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-7">
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{booking.property.name}}{{booking.property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
+                                                            </div>
+
+
+                                                            <div class="col-md-5">
+
+                                                                <div class="card-body">
+                                                                    <a routerLink="/orderDetails/{{booking.id}}"
+                                                                        style="color:inherit; text-decoration:none;">
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Booking
+                                                                                    ID</b></label>
+                                                                            <p>{{booking.id}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Property
+                                                                                    Name</b></label>
+                                                                            <p>{{booking.property.name}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Booking First
+                                                                                    Name</b></label>
+                                                                            <p>{{booking.bookingFirstName}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Check In
+                                                                                    Date</b></label>
+                                                                            <p>{{booking.bookingCheckInDate}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Check Out
+                                                                                    Date</b></label>
+                                                                            <p>{{booking.bookingCheckOutDate}}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mb-1"><b>Rents
+                                                                                    Amount</b></label>
+                                                                            <p>{{booking.totalPrice}}</p>
+                                                                        </div>
+
+                                                                    </a>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col-sm-12"><button
+                                                                                class="form-control btn btn-block btn-secondary"
+                                                                                routerLink="/orderDetails/{{booking.id}}">View
+                                                                                Details</button></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -536,19 +672,19 @@
                         <div class="card-body">
                             <div class="px-xl-3">
                                 <button (click)="onLogOut()" class="btn btn-block btn-secondary">
-									<i class="fa fa-sign-out"></i> <span>Logout</span>
-								</button>
-                               
+                                    <i class="fa fa-sign-out"></i> <span>Logout</span>
+                                </button>
+
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-3" [hidden] = "!isAdminOrOwner">
+                    <div class="card mb-3" [hidden]="!isAdminOrOwner">
                         <div class="card-body">
                             <div class="px-xl-3">
                                 <button routerLink="/addNewProperty" class="btn btn-block btn-secondary">
-									<span>Add New Property</span>
-								</button>
-                               
+                                    <span>Add New Property</span>
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -557,7 +693,8 @@
                             <h6 class="card-title font-weight-bold">Support</h6>
                             <p class="card-text">Get fast, free help from our friendly assistants.
                             </p>
-                            <button type="button" class="btn btn-block btn-secondary" routerLink="/support">Contact Us</button>
+                            <button type="button" class="btn btn-block btn-secondary" routerLink="/support">Contact
+                                Us</button>
                         </div>
                     </div>
                 </div>
