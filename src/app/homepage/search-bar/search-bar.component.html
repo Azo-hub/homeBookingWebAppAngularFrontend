@@ -1,0 +1,63 @@
+<div class="container-fluid search-body-fix " style="width: 100%; height: 85vmin">
+    <div class="row mx-0 my-0">
+        
+        <div class="col-md-12 my-0 searchBarDisplay">
+            
+            <div class="vertical-center">
+                <h1 class="mx-2 my-2" style="color: #F8F7F5;">
+                    <b>Find your place for together</b>
+                </h1>
+                <div class="container search-container-inner-fix py-3">
+
+                    <div class="row mx-2 my-3">
+                        <div class="col-sm-12 input-group">
+                            <input type="text" class="form-control fa" placeholder="&#xF041; United States of America" />
+                        </div>
+                    </div>
+                    <div class="row mx-2 my-3">
+
+                        <div class="col-sm-6">
+                            <p>Check-In</p>
+                                    <input id="searchBarCheckin" class="form-control fa" [(ngModel)]="searchBarCheckInDate" [owlDateTime]="searchBarDateSingle" [owlDateTimeTrigger]="searchBarDateSingle" placeholder="&#xF274; Check-in" required>
+
+                                    <owl-date-time #searchBarDateSingle></owl-date-time>
+
+                        </div>
+                        <div class = "col-sm-6">
+
+                            <p>Check-Out</p>
+                                    <input id="searchBarCheckout" class="form-control fa" [(ngModel)]="searchBarCheckOutDate" [owlDateTime]="searchBarDateSingle1" [owlDateTimeTrigger]="searchBarDateSingle1" placeholder="&#xF274; Check-out" required>
+                                    <owl-date-time #searchBarDateSingle1></owl-date-time>
+                        </div>
+
+                    </div>
+
+                    <div class="row mx-2 my-3">
+                        <div class="col-sm-3">
+                            
+                            <input type="text" placeholder="&#xF2C0; Guest" class="form-control fa" />
+                        </div>
+                        <div class="col-sm-3">
+                            
+                            <input type="text" placeholder="&#xf1ae; Children" class="form-control fa" />
+                        </div>
+                        <div class="col-sm-2">
+                            
+                            <input type="text" placeholder="Pets" class="form-control fa" />
+                        </div>
+                        <div class="col-sm-4">
+                            
+                            <button class="btn form-control searchbar-button-fix" (click)="onCheckDateAvailability()" [disabled]="searchBarShowLoading">
+                                <i class="fa fa-spinner fa-spin " *ngIf="searchBarShowLoading"></i>&nbsp;&nbsp;
+                                <span *ngIf="searchBarShowLoading===true">Loading...</span> <span
+                                    *ngIf="searchBarShowLoading !==true">Search</span></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.vertical-center_list_your_property{
+    margin: 0;
+    position: absolute;
+    top:50vmin;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.property-details-button-fix {
+    background-color: #172C57;
+    color: #F8F7F5;
+    border-radius: 25px;
+    padding: 5px 20px 5px 20px;
+}

@@ -1,0 +1,74 @@
+<!-- Start of Navbar -->
+<app-navbar></app-navbar>
+<!-- End of Navbar -->
+
+<hr />
+<div class="container-fluid">
+    <div class="row mx-1">
+            
+        
+    
+        
+        <div class="col-md-3 my-2 ">
+            <a routerLink="/" style="color: inherit;"><span
+				style="font-size: 25px;" class="fa fa-arrow-left" aria-hidden="true"></span></a>
+        </div>
+        <div class="col-md-6 my-2">
+            <h2 class="mb-3">
+                <b>Welcome</b>
+            </h2>
+            <p>Log in to owner dashboard</p>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="Username" name="username" ngModel #usernameInput="ngModel" required style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="usernameInput.invalid && usernameInput.touched">Please
+						enter a username</span>
+                </div>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="Password" name="password" ngModel #passwordInput="ngModel" required style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <span class="help-block" style="color: red;" *ngIf="passwordInput.invalid && passwordInput.touched">Please
+						enter a password</span>
+                </div>
+
+
+                <div class="row my-4">
+                    <div class="col-md-12" align="center">
+
+                        <button type="submit" [disabled]=" loginForm.invalid || showLoading " name="button" style="background-color: #172C57; color: #F8F7F5; border-radius: 25px; padding: 5px 20px 5px 20px; font-size: inherit;">
+							<i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+							<span *ngIf="showLoading === true ">Loading...</span> <span
+								*ngIf="showLoading !== true ">Continue</span>
+						</button>
+
+                    </div>
+
+                </div>
+            </form>
+            <div class="row my-2">
+                <div class="col-md-12" align="center">
+
+                    <p class="my-2">
+                        <a routerLink="/forgetpassword" style="color: red;">I
+							forget my password</a>
+                    </p>
+
+                    <p class="my-2">
+                        <a routerLink="/addNewProperty" style="color: inherit;">Want to list your
+							property?</a>
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

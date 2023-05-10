@@ -1,0 +1,61 @@
+<!-- Start of Navbar -->
+<app-navbar></app-navbar>
+<!-- End of Navbar -->
+
+<div class = "container-fluid my-3">
+    <div class = "row">
+        <div class = "col-md-2"></div>
+        <div class = "col-md-8">
+            <h3>Contact Support</h3>
+            <form #supportForm = "ngForm" (ngSubmit)="onSupport(supportForm)">
+                <div class = "row my-4 gy-4">
+                    <div class = "col-md-6">
+                        <input required type="text" class="form-control" name = "firstname" [(ngModel)] = "user.firstname" placeholder="First Name"/>
+                    </div>
+                    <div class = "col-md-6">
+                        <input required type="text" class="form-control" name = "lastname" [(ngModel)] = "user.lastname" placeholder="Last Name"/>
+                    </div>
+                </div>
+        
+                <div class = "row my-4">
+                    <div class = "col-md-12">
+                        <input required type="text" class="form-control" name = "email" [(ngModel)] = "user.email" placeholder="Email"/> 
+                    </div>
+                </div>
+        
+                <div class = "row my-4">
+                    <div class = "col-md-12">
+                        <input required type="text" class="form-control" name = "phonenumber" [(ngModel)] = "user.phone" placeholder="Phone Number"/>   
+                    </div>
+                </div>
+
+                <div class = "row my-4">
+                    <div class = "col-md-12">
+                        <input required type="text" class="form-control" name = "subject" ngModel placeholder="Subject"/>   
+                    </div>
+                </div>
+        
+                <div class = "row my-4">
+                    <div class = "col-md-12 form-group">
+                        <label>Describe your problem</label>
+                        <textarea required rows="10" class="form-control" name="problemInView" ngModel ></textarea>
+                    </div>
+                </div>
+        
+                <div class = "row my-4">
+                    <div class = "col-md-4"></div>
+                    <div class = "col-md-4"></div>
+                    <div class = "col-md-4">
+                        <button type="submit" class="form-control support-button-fix">
+                            <i class="fa fa-spinner fa-spin " *ngIf="supportRefreshing"></i>&nbsp;&nbsp;
+							<span *ngIf="supportRefreshing === true">Loading...</span> <span
+								*ngIf="supportRefreshing !==true">Submit</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class = "col-md-2"></div>
+    </div>
+    
+</div>

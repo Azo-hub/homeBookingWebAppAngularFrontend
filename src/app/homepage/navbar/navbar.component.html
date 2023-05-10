@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg body-fix">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img src="/assets/customImage/bookingLogo.jpeg" height="50vmin" width="50vmin"/>&nbsp;<b>ValenceDirectBookingRentals</b></a>
+        <!--Start of large screen display-->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" ></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav ms-auto mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/" style="color:inherit;">Home</a>
+                </li>
+
+                <li class="nav-item dropdown" [hidden]="isAuthenticated">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:inherit;">
+                        <i class="fa fa-sign-in"></i>&nbsp;Login
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/travellerLogin" style="color:inherit;">Traveler Login</a></li>
+                        <li><a class="dropdown-item" routerLink="/ownerLogin" style="color:inherit;">Owner Login</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" [hidden]="isAuthenticated">
+                    <a class="nav-link active" aria-current="page" routerLink="/signup" style="color:inherit;"><i class="fa fa-user-plus"></i>&nbsp;Sign up</a>
+                </li>
+
+                <li class="nav-item" [hidden]="!isAuthenticated"><span class="nav-link active">Logged In as <b>{{loggedInUsername}}</b></span></li>
+
+                <li class="nav-item" [hidden]="!isAuthenticated">
+                    <a class="nav-link active" aria-current="page" routerLink="/userProfile" style="color:inherit;"><i class="fa fa-user-o"></i>&nbsp;My Profile</a>
+                </li>
+
+                <li class="nav-item" [hidden]="!isAuthenticated">
+                    <a class="nav-link active btn navbar-btn-fix" aria-current="page" (click)="onLogOutNav()" style="color:inherit;"><i class="fa fa-sign-out"></i>&nbsp;Log out</a>
+                </li>
+
+              
+            </ul>
+
+        </div>
+
+
+        <!--End of large screen display-->
+
+        <!--     
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color:inherit;"><i class="fa fa-heart-o"></i>&nbsp;Trip Boards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/travellerLogin" style="color:inherit;"><i class="fa fa-user-o"></i>&nbsp;Traveler Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/ownerLogin" style="color:inherit;"><i class="fa fa-user-o"></i>&nbsp;Owner Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/signup" style="color:inherit;"><i class="fa fa-user-plus-o"></i>&nbsp;Sign up</a>
+                </li>
+
+
+            </ul>
+	 -->
+
+    </div>
+</nav>

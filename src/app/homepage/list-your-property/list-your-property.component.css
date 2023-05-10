@@ -1,0 +1,27 @@
+.listYourProperty-body-fix {
+    background-image: url('/assets/customImage/vrbo_listyourproperty.jpg');
+    background-size: 100% 85vmin;
+    background-repeat: no-repeat;
+    position:relative;
+}
+
+.listYourProperty-inner-fix {
+    padding-top: 25%;
+}
+
+.listYourProperty-button-fix {
+    background-color: #2F3E46;
+    color: #FAFAFA;
+    border-radius: 25px;
+    padding: 10px 40px 10px 40px;
+}
+
+.vertical-center_list_your_property{
+    margin: 0;
+    position: absolute;
+    top:50vmin;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}

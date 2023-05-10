@@ -1,0 +1,39 @@
+.search-body-fix {
+    background-image: url('/assets/customImage/vrbo-searchbg.jpg');
+    background-size: 100% 85vmin;
+    background-repeat: no-repeat;
+    position:relative;
+}
+
+.search-container-inner-fix {
+    border-radius: 10px;
+    background-color: #F8F7F5 !important;
+    
+    background-size: 100% 100%;;
+}
+
+
+.vertical-center{
+    margin: 0;
+    position: absolute;
+    top:50vmin;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.searchbar-button-fix {
+    background-color: #172C57;
+    color: #F8F7F5;
+    border-radius: 25px;
+    padding: 5px 20px 5px 20px;
+}
+
+@media screen and (max-width:578px) {
+    .searchBarDisplay {
+        display:none;
+    }
+
+}
+    
