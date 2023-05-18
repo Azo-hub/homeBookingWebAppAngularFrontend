@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Property {
     public id!: number;
     public name: string;
@@ -11,9 +13,7 @@ export class Property {
     public description: string;
     public lastLoginDateDisplay!: Date;
     public propertyImage!: File;
-    public propertyOwner!:string;
-    public propertyTax:number;
-    public propertyServiceFee:number;
+    public propertyOwner!:User;
     public propertyCleaningFee:number;
     
     
@@ -31,8 +31,6 @@ export class Property {
         this.propertyAddress = "";
         this.propertyZipCode = "";
         this.description = "";
-        this.propertyTax = 0;
-        this.propertyServiceFee = 0;
         this.propertyCleaningFee = 0;
        
        
