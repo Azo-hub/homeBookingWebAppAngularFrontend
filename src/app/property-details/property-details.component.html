@@ -244,7 +244,7 @@
                 <div class="col-sm-12 custom-text-fix">
                     <h3>{{property.propertyPrice|currency}}</h3>
                     <small>per night</small>
-            
+
                 </div>
             </div>
 
@@ -254,11 +254,13 @@
 
                     <hr />
                     <p class="custom-text-fix">{{property.description}}</p>
-                    <h4><b>Hosted by {{property.propertyOwner.firstname}} {{property.propertyOwner.lastname}}</b></h4>
-                    <small>{{property.propertyOwner.dateJoined}}</small>
-                    <button type="button" class="form-control my-2 property-details-button-fix"
-                        (click)="onCheckPropertyAvailabilityButtonEvent()" [hidden]="showBookNowButton">Book
-                        now</button>
+                    <h4 class="custom-text-fix"><b>Hosted by <a
+                                routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}"
+                                style="color:inherit;"> {{property.propertyOwner.firstname}}
+                                {{property.propertyOwner.lastname}} </a></b></h4>
+                    <small class="custom-text-fix">{{property.propertyOwner.dateJoined}}</small>
+                    <button type="button" class="my-2 property-details-button-fix"
+                        (click)="onClickContactPropertyOwner()">Contact Host</button>
 
                 </div>
             </div>
@@ -438,7 +440,7 @@
                             <td><b>Cleaning fee</b></td>
                             <td>{{property.propertyCleaningFee | currency}}</td>
                         </tr>
-                       
+
                         <tr>
                             <td><b>Total</b></td>
                             <td>{{(property.propertyPrice *
@@ -460,7 +462,7 @@
 
 
             <div class=" row my-4 ">
-                <div class="col-md-12 ">
+                <div class="col-md-12 custom-text-fix">
                     <h1>Still have questions?</h1>
                     <p>Get a fast response about property amenities, check-in times, and general questions.</p>
                     <a routerLink="/support">Contact Support</a>

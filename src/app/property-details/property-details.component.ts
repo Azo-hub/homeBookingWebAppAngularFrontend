@@ -39,6 +39,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   reviews:Review[]=[];
   
   
+  
 
   constructor(private activatedRoute: ActivatedRoute, 
     private propertyService:PropertyService, private datePipe: DatePipe,
@@ -132,6 +133,12 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
        
       )
     );
+  }
+
+
+  onClickContactPropertyOwner() {
+    this.router.navigateByUrl("/contactPropertyOwner");
+
   }
   
   

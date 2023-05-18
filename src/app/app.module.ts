@@ -47,6 +47,8 @@ import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SupportComponent } from './support/support.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { PropertyOwnerInfoComponent } from './property-owner-info/property-owner-info.component';
+import { ContactPropertyOwnerComponent } from './contact-property-owner/contact-property-owner.component';
 
 
 
@@ -80,7 +82,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     OrderDetailsComponent,
     EditPropertyComponent,
     EditUserComponent,
-    SupportComponent
+    SupportComponent,
+    PropertyOwnerInfoComponent,
+    ContactPropertyOwnerComponent
   ],
   imports: [
     BrowserModule,

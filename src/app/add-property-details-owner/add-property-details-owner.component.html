@@ -127,10 +127,11 @@
                 <div class="card my-5 card-fix">
 
                     <div class="row my-2 mx-2">
-                        <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
                             <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel name="propertyAddress1"
                                 #propertyAddress1Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
-                    
+                        </div>
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
                             <input type="text" class="form-control fa" placeholder="Address Line 2" ngModel name="propertyAddress2"
                                 #propertyAddress2Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                     
@@ -197,11 +198,11 @@
                             <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
                                 name="description" #descriptionInput="ngModel"></textarea> -->
                             <label>Beds</label>
-                            <input type="text" class="form-control" required placeholder="King" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="King" ngModel
                                 name="noOfKing" />
-                            <input type="text" class="form-control" required placeholder="Queen" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="Queen" ngModel
                                 name="noOfQueen" />
-                            <input type="text" class="form-control" required placeholder="Single" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="Single" ngModel
                                 name="noOfSingle" />
                         </div>
 
@@ -210,11 +211,11 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>Bathrooms</label>
-                            <input type="text" class="form-control" required placeholder="Master Bathroom" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="Master Bathroom" ngModel
                                 name="noOfMasterBathroom" />
-                            <input type="text" class="form-control" required placeholder="Private Bathroom" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="Private Bathroom" ngModel
                                 name="noOfPrivateBathroom" />
-                            <input type="text" class="form-control" required placeholder="Half-bath" ngModel
+                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel
                                 name="noOfHalfBath" />
                         </div>
 
