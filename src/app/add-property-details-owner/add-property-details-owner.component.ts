@@ -176,6 +176,8 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
     );
   }
 
+  
+
 
   imageUploadDone():void {
     this.showImageUpload = false;
