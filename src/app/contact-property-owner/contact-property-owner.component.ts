@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { CustomHttpResponse } from '../model/custom-http-response';
 import { NotificationType } from '../enum/notification-type.enum';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-property-owner',
@@ -19,12 +20,17 @@ export class ContactPropertyOwnerComponent implements OnInit {
   contactPropertyOwnerRefreshing: boolean = false;
   user: User = new User;
   private subscriptions: Subscription[] = [];
+  ownerUsername: string = "";
+  propertyName: string = "";
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService,
-    private notificationService: NotificationService) { }
+    private activatedRoute: ActivatedRoute, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.user = this.authenticationService.getUserFromLocalCache();
+    this.ownerUsername = this.activatedRoute.snapshot.paramMap.get("username");
+    this.propertyName = this.activatedRoute.snapshot.paramMap.get("name");
+
   }
 
 
@@ -37,9 +43,11 @@ export class ContactPropertyOwnerComponent implements OnInit {
     formData.append("phonenumber", contactPropertyOwnerForm.value.phonenumber);
     formData.append("subject", contactPropertyOwnerForm.value.subject);
     formData.append("problem", contactPropertyOwnerForm.value.problemInView);
+    formData.append("ownerUsername", this.ownerUsername);
+    formData.append("propertyName", this.propertyName);
 
     this.subscriptions.push(
-      this.userService.contactSupport(formData).subscribe(
+      this.userService.contactPropertyOwner(formData).subscribe(
         (response: CustomHttpResponse) => {
           this.sendNotification(NotificationType.SUCCESS, response.message);
           this.contactPropertyOwnerRefreshing = false;

@@ -97,11 +97,14 @@
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
-                        <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="Street Address"
-                                [ngModel]="property.propertyAddress" ngModel name="propertyAddress"
-                                #propertyAddressInput="ngModel"
-                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel name="propertyAddress1"
+                              [ngModel] = "property.propertyAddress1"  #propertyAddress1Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                        </div>
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="text" class="form-control fa" placeholder="Address Line 2" ngModel name="propertyAddress2"
+                               [ngModel] = "property.propertyAddress2" #propertyAddress2Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
@@ -131,13 +134,191 @@
                 <div class="card my-5 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                            <textarea rows="10" class="form-control" placeholder="Property Description"
-                                [ngModel]="property.description" required ngModel name="description"
-                                #descriptionInput="ngModel"></textarea>
-
+                            <label>The Space</label>
+                            <input type="text" class="form-control my-2" required placeholder="Accommodates" ngModel
+                               [ngModel] = "property.theSpace_noOfAccommodation" name="noOfAccommodation" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Bathrooms" ngModel
+                               [ngModel] = "property.theSpace_noOfBathrooms" name="noOfBathrooms" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Bedrooms" ngModel
+                               [ngModel] = "property.theSpace_noOfBedrooms"  name="noOfBedrooms" />
+                    
                         </div>
+                    
                     </div>
-
+                    
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
+                                                    name="description" #descriptionInput="ngModel"></textarea> -->
+                            <label>Beds</label>
+                            <input type="text" class="form-control my-2" required placeholder="King"
+                                [ngModel] = "property.beds_noOfKing" ngModel name="noOfKing" />
+                            <input type="text" class="form-control my-2" required placeholder="Queen" 
+                                [ngModel] = "property.beds_noOfQueen" ngModel name="noOfQueen" />
+                            <input type="text" class="form-control my-2" required placeholder="Single" 
+                                [ngModel] = "property.beds_noOfSingle" ngModel name="noOfSingle" />
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <label>Bathrooms</label>
+                            <input type="text" class="form-control my-2" required placeholder="Master Bathroom" ngModel
+                               [ngModel] = "property.bathrooms_noOfMasterBathroom" name="noOfMasterBathroom" />
+                            <input type="text" class="form-control my-2" required placeholder="Private Bathroom" ngModel
+                               [ngModel] = "property.bathrooms_noOfPrivateBathroom" name="noOfPrivateBathroom" />
+                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel 
+                                [ngModel] = "property.bathrooms_noOfHalfBath" name="noOfHalfBath" />
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <label class="my-2">Shared Spaces</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel name="Kitchen" 
+                                   [ngModel] = "property.sharedSpaces_kitchen" id="kitchenCheckbox" />
+                                   <label class="form-check-label" for="kitchenCheckbox">Kitchen</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel name="laudryRoom"
+                                   [ngModel] = "property.sharedSpaces_laundryRoom" id="laundryRoomCheckbox" />
+                                <label class="form-check-label" for="laundryRoomCheckbox">Laudry Room</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel name="outDoorParking"
+                                   [ngModel] = "property.sharedSpaces_outDoorParking"  id="outDoorParkingCheckbox" /><label class="form-check-label" for="outDoorParkingCheckbox">Outdoor
+                                    Parking</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Garage" ngModel name="garage"
+                                   [ngModel] = "property.sharedSpaces_garage"  id="garageCheckbox" /><label for="garageCheckbox" class="form-check-label">Garage</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Balcony" ngModel name="balcony"
+                                   [ngModel] = "property.sharedSpaces_balcony" id="balconyCheckbox" /><label class="form-check-label" for="balconyCheckbox">Balcony</label>
+                    
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Backyard" ngModel name="backyard"
+                                   [ngModel] = "property.sharedSpaces_backyard"  id="backyardCheckbox" /><label class="form-check-label" for="backyardCheckbox">Backyard</label>
+                            </div>
+                    
+                    
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="row my-2 mx-2">
+                        <label class="my-2">Amenities</label>
+                        <div class="col-sm-6">
+                            
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel name="Wifi" 
+                                 [ngModel] = "property.amenities_wifi" id="WifiCheckbox" /><label
+                                    class="form-check-label" for="WifiCheckbox">Wifi</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Towels, bed sheets, soap, and toilet paper" ngModel
+                                 [ngModel] = "property.amenities_towelsBedsheetsSoapAndToiletpaper"  name="TowelsBedsheetsSoapAndToiletpaper" id="TowelsBedsheetsSoapAndToiletpaperCheckbox" />
+                                <label class="form-check-label" for="TowelsBedsheetsSoapAndToiletpaperCheckbox">Towels,
+                                    bed sheets, soap, and toilet paper</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Shampoo" 
+                                    [ngModel] = "property.amenities_shampoo" ngModel name="shampoo"
+                                    id="shampooCheckbox" /><label class="form-check-label" for="shampooCheckbox">Shampoo</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Closet/drawers" ngModel name="closetDrawers"
+                                   [ngModel] = "property.amenities_closetDrawers"  id="closet/drawersCheckbox" /><label for="closet/drawersCheckbox"
+                                    class="form-check-label">Closet/drawers</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Hair dryer" ngModel name="hairDryer"
+                                   [ngModel] = "property.amenities_hairDryer" id="hairDryerCheckbox" /><label class="form-check-label" for="hairDryerCheckbox">Hair dryer</label>
+                    
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="LED TV" ngModel name="LEDTV"
+                                   [ngModel] = "property.amenities_LEDTV"  id="LEDTVCheckbox" /><label class="form-check-label" for="LEDTVCheckbox">LED
+                                    TV</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Grill" ngModel name="grill"
+                                   [ngModel] = "property.amenities_grill"  id="grillCheckbox" /><label class="form-check-label" for="grillCheckbox">Grill</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Parking" ngModel name="parking"
+                                   [ngModel] = "property.amenities_parking"  id="parkingCheckbox" /><label class="form-check-label" for="parkingCheckbox">Parking</label>
+                            </div>
+                    
+                        </div>
+                    
+                        <div class="col-sm-6">
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Outdoor Swimming Pool" ngModel
+                                   [ngModel] = "property.amenities_outdoorSwimmingPool"  name="outdoorSwimmingPool" id="outdoorSwimmingPoolCheckbox" /><label class="form-check-label"
+                                    for="outdoorSwimmingPoolCheckbox">Outdoor Swimming
+                                    Pool</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Iron & Board" ngModel name="iron&Board"
+                                   [ngModel] = "property.amenities_ironBoard"  id="iron&BoardCheckbox" /><label class="form-check-label" for="iron&BoardCheckbox">Iron & Board</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Satellite or cable" ngModel name="satelliteOrCable"
+                                   [ngModel] = "property.amenities_satelliteOrCable"  id="satelliteOrCableCheckbox" /><label class="form-check-label" for="satelliteOrCableCheckbox">Satellite
+                                    or cable</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Microwave" ngModel name="microwave"
+                                   [ngModel] = "property.amenities_microwave" id="microwaveCheckbox" /><label class="form-check-label" for="microwaveCheckbox">Microwave</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Board Games" ngModel name="boardGames"
+                                   [ngModel] = "property.amenities_boardGames"  id="boardGamesCheckbox" /><label class="form-check-label" for="boardGamesCheckbox">Board Games</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Toaster" ngModel name="toaster"
+                                   [ngModel] = "property.amenities_toaster"  id="toasterCheckbox" /><label class="form-check-label" for="toasterCheckbox">Toaster</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Coffee Maker" ngModel name="coffeeMaker"
+                                   [ngModel] = "property.amenities_coffeeMaker" id="coffeeMakerCheckbox" /><label class="form-check-label" for="coffeeMakerCheckbox">Coffee
+                                    Maker</label>
+                            </div>
+                    
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Stove" ngModel name="stove"
+                                   [ngModel] = "property.amenities_stove"  id="stoveCheckbox" /><label class="form-check-label" for="stoveCheckbox">Stove</label>
+                            </div>
+                    
+                    
+                        </div>
+                    
+                    </div>
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
                             <button type="submit" [disabled]="editPropertyForm.invalid || showLoading"

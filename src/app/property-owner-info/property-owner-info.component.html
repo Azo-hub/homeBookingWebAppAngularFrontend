@@ -14,13 +14,13 @@
                             <div class="e-profile">
                                 <div class="row">
                                     <div class="col-12 col-sm-auto mb-3">
-                                    <div class="mx-auto" style="width: 140px;">
-                                        <div class="d-flex justify-content-center align-items-center rounded"
-                                            style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{user?.firstname}}{{user?.lastname}}{{user?.userId}}.jpg"
-                                                class="img-fluid" />
+                                        <div class="mx-auto" style="width: 140px;">
+                                            <div class="d-flex justify-content-center align-items-center rounded"
+                                                style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{user?.firstname}}{{user?.lastname}}{{user?.userId}}.jpg"
+                                                    class="img-fluid" />
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
@@ -106,7 +106,8 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <input name="searchTerm" #searchInput="ngModel" ngModel
-                                                        (ngModelChange)="onSearchProperty(searchInput.value)" type="search" placeholder="Search Property"
+                                                        (ngModelChange)="onSearchProperty(searchInput.value)"
+                                                        type="search" placeholder="Search Property"
                                                         class="form-control" />
                                                 </div>
                                             </div>
@@ -117,34 +118,37 @@
                                                     <div class="card my-3 mx-2">
                                                         <div class="row gy-2">
                                                             <div class="col-md-7">
-                                        
+
                                                                 <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg"
-                                                                    class="img-fluid rounded-start" alt="Property Image">
-                                        
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
                                                             </div>
-                                        
-                                        
+
+
                                                             <div class="col-md-5">
-                                        
+
                                                                 <div class="card-body">
                                                                     <a routerLink="/propertydetails/{{propertyEach.id}}"
                                                                         style="color:inherit; text-decoration:none;">
-                                                                        <h5 class="card-subtitle">{{propertyEach.propertyType}}</h5>
-                                        
+                                                                        <h5 class="card-subtitle">
+                                                                            {{propertyEach.propertyType}}</h5>
+
                                                                         <h3 class="card-title">
                                                                             <b>{{propertyEach.name}}</b>
                                                                         </h3>
-                                        
+
                                                                         <p class="card-text">
-                                                                            <small class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
+                                                                            <small
+                                                                                class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
                                                                         </p>
-                                                                        <p class="card-text">{{propertyEach.description.substring(0, 100)}}...</p>
+
                                                                     </a>
-                                                                                                            
+
                                                                 </div>
-                                        
-                                        
-                                        
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>

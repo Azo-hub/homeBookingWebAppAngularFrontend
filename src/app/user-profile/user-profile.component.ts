@@ -27,39 +27,39 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   showDates: boolean = true;
   addDatesBtn: boolean = true;
   private subscriptions: Subscription[] = [];
-  public loggedInUser : User = new User();
-  userProfileShowLoading:boolean = false;
+  public loggedInUser: User = new User();
+  userProfileShowLoading: boolean = false;
   loggedInUserRole: string = "";
   loggedInUserPermission: [] = [];
   propertiesByOwner: Property[] = [];
-  deletePropertyShowLoading:boolean = false;
-  addDateShowLoading:boolean = false;
+  deletePropertyShowLoading: boolean = false;
+  addDateShowLoading: boolean = false;
   users: User[] = [];
   imageShowLoading1: boolean;
   image1showLoading: boolean;
   identityImage!: File;
   options = [
-    {value:"IDCard", label:"ID Card"},
-    {value:"SSN", label:"SSN"}
+    { value: "IDCard", label: "ID Card" },
+    { value: "SSN", label: "SSN" }
   ]
 
   userGender = [
-    {value:"Male", label:"Male"},
-    {value:"Female", label:"Female"}
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" }
   ]
 
-  identityType:string ="";
+  identityType: string = "";
   imageShowLoading2: boolean;
   image2showLoading: boolean;
   profileImage: File;
   bookings: Booking[] = [];
-  Allbooking : Booking [] = [];
-  Allproperties: Property [] = [];
+  Allbooking: Booking[] = [];
+  Allproperties: Property[] = [];
 
 
-  constructor(private router: Router, private userService: UserService, private notificationService: NotificationService, 
+  constructor(private router: Router, private userService: UserService, private notificationService: NotificationService,
     private authenticationService: AuthenticationService, private propertyService: PropertyService,
-    private http: HttpClient, private bookingService : BookingService) { }
+    private http: HttpClient, private bookingService: BookingService) { }
 
   ngOnInit(): void {
     this.loggedInUser = this.authenticationService.getUserFromLocalCache();
@@ -73,86 +73,86 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.getAllBooking();
     this.getAllProperty();
   }
-  
+
   onLogOut(): void {
     this.authenticationService.logOut();
     this.router.navigateByUrl('/');
-    this.sendNotification(NotificationType.SUCCESS, 
+    this.sendNotification(NotificationType.SUCCESS,
       `You've been logged out successfully`);
   }
-  
-  onUpdateCurrentUser(userProfileForm:NgForm):void {
+
+  onUpdateCurrentUser(userProfileForm: NgForm): void {
     this.userProfileShowLoading = true;
-    
-    const formData = 
-          this.userService.updateUserProfileBySelfFormData(userProfileForm.value['username'], userProfileForm.value,
-          userProfileForm.value['currentPassword'], userProfileForm.value['newPassword'], userProfileForm.value['confirmPassword']);
-    
-            
+
+    const formData =
+      this.userService.updateUserProfileBySelfFormData(userProfileForm.value['username'], userProfileForm.value,
+        userProfileForm.value['currentPassword'], userProfileForm.value['newPassword'], userProfileForm.value['confirmPassword']);
+
+
     this.subscriptions.push(
       this.userService.updateUserBySelf(formData).subscribe(
-        
+
         (response: User) => {
-          
+
           this.userProfileShowLoading = false;
           this.authenticationService.addUserToLocalCache(response);
           this.loggedInUser = this.authenticationService.getUserFromLocalCache();
-          this.sendNotification(NotificationType.SUCCESS, 
+          this.sendNotification(NotificationType.SUCCESS,
             `${response.username} successfully updated`);
         },
-    
+
         (errorResponse: HttpErrorResponse) => {
           this.userProfileShowLoading = false;
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
         }
       )
     );
-    
+
   }
 
 
-  getPropertyByOwner():void {
-    
+  getPropertyByOwner(): void {
+
     const formData = new FormData();
-    formData.append("propertyOwner",this.loggedInUser.username);
+    formData.append("propertyOwner", this.loggedInUser.username);
     this.subscriptions.push(
-      
+
       this.propertyService.getPropertiesByOwner(formData).subscribe(
         (response: Property[]) => {
           this.propertyService.addPropertiesToLocalCache(response);
           this.propertiesByOwner = response;
-          
+
         },
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
 
-  getAllProperty():void {
+  getAllProperty(): void {
     this.subscriptions.push(
-      
+
       this.propertyService.getAllProperties().subscribe(
         (response: Property[]) => {
           this.propertyService.addPropertiesToLocalCacheAdmin(response);
           this.Allproperties = response;
-          
+
         },
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
 
 
-  getAllUsers():void {
-    
+  getAllUsers(): void {
+
     this.subscriptions.push(
       this.userService.getUsers().subscribe(
         (response: User[]) => {
@@ -162,16 +162,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
 
 
-  getAllBookingByUser():void {
-    
+  getAllBookingByUser(): void {
+
     this.subscriptions.push(
       this.bookingService.getAllBookingByUser().subscribe(
         (response: Booking[]) => {
@@ -180,15 +180,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
 
-  getAllBooking():void {
-    
+  getAllBooking(): void {
+
     this.subscriptions.push(
       this.bookingService.getAllBooking().subscribe(
         (response: Booking[]) => {
@@ -197,63 +197,63 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
 
 
-  onSearchProperty(searchInput:string):void {
-    
+  onSearchProperty(searchInput: string): void {
+
     const searchProperty: Property[] = [];
-    for (const eachSearchProperty of this.propertyService.getPropertiesFromLocalCache() ) {
-     
-      if(eachSearchProperty.name?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 || 
-        eachSearchProperty.description?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+    for (const eachSearchProperty of this.propertyService.getPropertiesFromLocalCache()) {
+
+      if (eachSearchProperty.name?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+
         eachSearchProperty.propertyType?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchProperty.propertyAddress?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
-           
-          searchProperty.push(eachSearchProperty);
-          
-         }
+        eachSearchProperty.propertyAddress1?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+
+        searchProperty.push(eachSearchProperty);
+
+      }
     }
 
     this.propertiesByOwner = searchProperty
-    if(searchProperty.length === 0 || !searchInput) {
+    if (searchProperty.length === 0 || !searchInput) {
       this.propertiesByOwner = this.propertyService.getPropertiesFromLocalCache();
     }
 
   }
 
 
-  onSearchBooking(searchInputBooking:string): void {
+  onSearchBooking(searchInputBooking: string): void {
 
     const searchBooking: Booking[] = [];
-    for (const eachSearchBooking of this.bookingService.getBookingsFromLocalCache() ) {
-     
-      if(eachSearchBooking.property.name?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 || 
+    for (const eachSearchBooking of this.bookingService.getBookingsFromLocalCache()) {
+
+      if (eachSearchBooking.property.name?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
         eachSearchBooking.bookingFirstName?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
         eachSearchBooking.bookingEmailAddress?.toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
         eachSearchBooking.bookingCheckInDate?.toString().toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
         eachSearchBooking.bookingEmailAddress?.toString().toLowerCase().indexOf(searchInputBooking.toLowerCase()) !== -1 ||
         eachSearchBooking.id?.toString().indexOf(searchInputBooking.toLowerCase()) !== -1) {
-           
-          searchBooking.push(eachSearchBooking);
-          
-         }
+
+        searchBooking.push(eachSearchBooking);
+
+      }
     }
 
     this.bookings = searchBooking
-    if(searchBooking.length === 0 || !searchInputBooking) {
+    if (searchBooking.length === 0 || !searchInputBooking) {
       this.bookings = this.bookingService.getBookingsFromLocalCache();
     }
 
   }
 
 
-  onSearchAllBooking(searchInputAllBooking:string):void {
+  onSearchAllBooking(searchInputAllBooking: string): void {
     const formData = new FormData();
     formData.append("searchInput", searchInputAllBooking);
     this.subscriptions.push(
@@ -264,28 +264,28 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
   }
 
-  onSearchPropertyDate(searchInputDate:string):void {
+  onSearchPropertyDate(searchInputDate: string): void {
     const searchPropertyDate: Property[] = [];
-    for (const eachSearchPropertyDate of this.propertyService.getPropertiesFromLocalCacheAdmin() ) {
-     
-      if(eachSearchPropertyDate.name?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 || 
-        eachSearchPropertyDate.description?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 ||
+    for (const eachSearchPropertyDate of this.propertyService.getPropertiesFromLocalCacheAdmin()) {
+
+      if (eachSearchPropertyDate.name?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 ||
+
         eachSearchPropertyDate.propertyType?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1 ||
-        eachSearchPropertyDate.propertyAddress?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1) {
-           
-          searchPropertyDate.push(eachSearchPropertyDate);
-          
-         }
+        eachSearchPropertyDate.propertyAddress1?.toLowerCase().indexOf(searchInputDate.toLowerCase()) !== -1) {
+
+        searchPropertyDate.push(eachSearchPropertyDate);
+
+      }
     }
 
     this.Allproperties = searchPropertyDate
-    if(searchPropertyDate.length === 0 || !searchInputDate) {
+    if (searchPropertyDate.length === 0 || !searchInputDate) {
       this.Allproperties = this.propertyService.getPropertiesFromLocalCacheAdmin();
     }
 
@@ -295,7 +295,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
-  onSearchUser(searchUserInput:string):void {
+  onSearchUser(searchUserInput: string): void {
 
     const formData = new FormData();
     formData.append("searchInput", searchUserInput);
@@ -307,13 +307,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         (errorResponse: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
-    
-    if(!searchUserInput) {
+
+
+    if (!searchUserInput) {
       this.users = this.userService.getUsersFromLocalCache();
     }
 
@@ -326,14 +326,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
- 
 
-  onClickDelete(deletePropertyId:number):void {
+
+  onClickDelete(deletePropertyId: number): void {
     this.deletePropertyShowLoading = true;
     const formData = new FormData();
-    formData.append("deletePropertyId",deletePropertyId.toString());
+    formData.append("deletePropertyId", deletePropertyId.toString());
     this.subscriptions.push(
-      
+
       this.propertyService.deleteProperty(formData).subscribe(
         (response: CustomHttpResponse) => {
           this.deletePropertyShowLoading = false;
@@ -345,25 +345,25 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
         }
       )
-    ); 
+    );
 
   }
 
 
 
-  changePhotoClick():void {
+  changePhotoClick(): void {
     document.getElementById("imageFileType")?.click();
   }
 
 
-  displayDate():void {
-   /* document.getElementById("showDates")?.classList.toggle('display_checkin_checkout_dates');
-    document.getElementById("addDatesBtn")?.classList.toggle('display_checkin_checkout_dates'); */
+  displayDate(): void {
+    /* document.getElementById("showDates")?.classList.toggle('display_checkin_checkout_dates');
+     document.getElementById("addDatesBtn")?.classList.toggle('display_checkin_checkout_dates'); */
     this.showDates = false;
     this.addDatesBtn = false;
   }
 
-  onAddDate(checkinDateAdmin:Date, checkoutDateAdmin:Date, propertyId:number):void{
+  onAddDate(checkinDateAdmin: Date, checkoutDateAdmin: Date, propertyId: number): void {
     this.addDateShowLoading = true;
     const formData = new FormData();
     formData.append("checkinDateAdmin", checkinDateAdmin.toString());
@@ -371,12 +371,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     formData.append("propertyId", propertyId.toString());
 
     this.subscriptions.push(
-      
+
       this.propertyService.addCheckInCheckOutDates(formData).subscribe(
         (response: CustomHttpResponse) => {
           this.addDateShowLoading = false;
           this.sendNotification(NotificationType.SUCCESS, response.message);
-          
+
         },
         (errorResponse: HttpErrorResponse) => {
           this.addDateShowLoading = false;
@@ -386,14 +386,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     );
 
   }
-  
-  public onFileSelected1(file:File):void {
-    
-    
-    if(this.identityType.length == 0) {
+
+  public onFileSelected1(file: File): void {
+
+
+    if (this.identityType.length == 0) {
 
       this.sendNotification(NotificationType.ERROR, `Please Select your Identification Type`);
-      
+
     } else {
 
       this.imageShowLoading1 = true;
@@ -401,59 +401,59 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.identityImage = file;
 
       const formData = new FormData();
-      formData.append("identityImage",this.identityImage);
+      formData.append("identityImage", this.identityImage);
       formData.append("identityType", this.identityType)
-      
-      const upload$ = this.http.post(`${this.host}/uploadIdentityImage`,formData);
-      
+
+      const upload$ = this.http.post(`${this.host}/uploadIdentityImage`, formData);
+
       upload$.subscribe(
         (response: any) => {
           this.imageShowLoading1 = false
           this.image1showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
-          
-          
+
+
         },
         (errorResponse: HttpErrorResponse) => {
-          
+
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.imageShowLoading1 = false;
           this.image1showLoading = false;
         }
       )
     }
-      
-    
+
+
   }
 
 
 
   onFileSelected2(file: File): void {
-      this.imageShowLoading2 = true;
-      this.image2showLoading = true;
-      this.profileImage = file;
+    this.imageShowLoading2 = true;
+    this.image2showLoading = true;
+    this.profileImage = file;
 
-      const formData = new FormData();
-      formData.append("profileImage",this.profileImage);
-      
-      
-      const upload$ = this.http.post(`${this.host}/uploadProfileImage`,formData);
-      
-      upload$.subscribe(
-        (response: any) => {
-          this.imageShowLoading2 = false
-          this.image2showLoading = false;
-          this.sendNotification(NotificationType.SUCCESS, `Profile Image updated successfully.`);
-          
-          
-        },
-        (errorResponse: HttpErrorResponse) => {
-          
-          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          this.imageShowLoading2 = false;
-          this.image2showLoading = false;
-        }
-      )
+    const formData = new FormData();
+    formData.append("profileImage", this.profileImage);
+
+
+    const upload$ = this.http.post(`${this.host}/uploadProfileImage`, formData);
+
+    upload$.subscribe(
+      (response: any) => {
+        this.imageShowLoading2 = false
+        this.image2showLoading = false;
+        this.sendNotification(NotificationType.SUCCESS, `Profile Image updated successfully.`);
+
+
+      },
+      (errorResponse: HttpErrorResponse) => {
+
+        this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+        this.imageShowLoading2 = false;
+        this.image2showLoading = false;
+      }
+    )
   }
 
 
@@ -471,7 +471,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public get isAdmin(): boolean {
     return this.authenticationService.getUserRole() === Role.ADMIN;
   }
-  
+
   public get isOwner(): boolean {
     return this.authenticationService.getUserRole() === Role.OWNER;
   }
@@ -480,17 +480,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     return this.authenticationService.getUserRole() === Role.TRAVELLER;
   }
 
-  
 
 
-  
-  
+
+
+
   private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {
-      this.notificationService.notify(notificationType, 
-                          "An error occurred. Please Try Again Later");
+      this.notificationService.notify(notificationType,
+        "An error occurred. Please Try Again Later");
     }
   }
 
@@ -502,6 +502,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-  
+
 
 }

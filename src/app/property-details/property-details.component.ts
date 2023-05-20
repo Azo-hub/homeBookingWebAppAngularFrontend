@@ -137,7 +137,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
 
 
   onClickContactPropertyOwner() {
-    this.router.navigateByUrl("/contactPropertyOwner");
+    this.router.navigateByUrl(`/contactPropertyOwner/${this.property.propertyOwner.username}/${this.property.name}`);
 
   }
   
