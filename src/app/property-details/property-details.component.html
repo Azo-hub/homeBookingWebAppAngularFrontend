@@ -291,25 +291,27 @@
 
                         <h3>Amenities</h3>
                         <div class="col-sm-6 custom-text-fix">
-                            <p><span></span>&nbsp;{{property.amenities_wifi}</p>
-                            <p>{{property.amenities_towelsBedsheetsSoapAndToiletpaper}}</p>
-                            <p>{{property.amenities_shampoo}}</p>
-                            <p>{{property.amenities_closetDrawers}}</p>
-                            <p>{{property.amenities_hairDryer}}</p>
-                            <p>{{property.amenities_LEDTV}}</p>
-                            <p>{{property.amenities_grill}}</p>
-                            <p>{{property.amenities_parking}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_wifi}}</p>
+                            <p><span
+                                    class="fa fa-home"></span>&nbsp;{{property.amenities_towelsBedsheetsSoapAndToiletpaper}}
+                            </p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_shampoo}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_closetDrawers}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_hairDryer}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_LEDTV}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_grill}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_parking}}</p>
                         </div>
 
                         <div class="col-sm-6 custom-text-fix">
-                            <p>{{property.amenities_outdoorSwimmingPool}}</p>
-                            <p>{{property.amenities_ironBoard}}</p>
-                            <p>{{property.amenities_satelliteOrCable}}</p>
-                            <p>{{property.amenities_microwave}}</p>
-                            <p>{{property.amenities_boardGames}}</p>
-                            <p>{{property.amenities_toaster}}</p>
-                            <p>{{property.amenities_coffeeMaker}}</p>
-                            <p>{{property.amenities_stove}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_outdoorSwimmingPool}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_ironBoard}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_satelliteOrCable}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_microwave}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_boardGames}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_toaster}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_coffeeMaker}}</p>
+                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_stove}}</p>
 
                         </div>
 
@@ -322,6 +324,14 @@
                     <small class="custom-text-fix">{{property.propertyOwner.dateJoined}}</small>
                     <button type="button" class="my-2 property-details-button-fix"
                         (click)="onClickContactPropertyOwner()">Contact Host</button>
+
+                </div>
+            </div>
+
+            <div class="row my-4">
+                <h3>Address</h3>
+                <div class="col-sm-12 custom-text-fix">
+                    <p>{{property.propertyAddress1}} {{property.propertyAddress2}}</p>
 
                 </div>
             </div>
