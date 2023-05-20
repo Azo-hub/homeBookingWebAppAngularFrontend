@@ -186,10 +186,10 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>The Space</label>
-                            <input type="text" class="form-control my-2" required placeholder="No of People its Accommodates" ngModel
-                                name="noOfAccommodation" />
+                            <input type="text" class="form-control my-2" required
+                                placeholder="No of People its Accommodates" ngModel name="theSpace_noOfAccommodation" />
                             <input type="text" class="form-control my-2" required placeholder="No of Bedrooms" ngModel
-                                name="noOfBedrooms" />
+                                name="theSpace_noOfBedrooms" />
 
                         </div>
 
@@ -200,12 +200,12 @@
                             <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
                                 name="description" #descriptionInput="ngModel"></textarea> -->
                             <label>Beds</label>
-                            <input type="text" class="form-control my-2" required placeholder="King" ngModel
-                                name="noOfKing" />
-                            <input type="text" class="form-control my-2" required placeholder="Queen" ngModel
-                                name="noOfQueen" />
-                            <input type="text" class="form-control my-2" required placeholder="Single" ngModel
-                                name="noOfSingle" />
+                            <input type="text" class="form-control my-2" required placeholder="No of King" ngModel
+                                name="beds_noOfKing" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Queen" ngModel
+                                name="beds_noOfQueen" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Single" ngModel
+                                name="beds_noOfSingle" />
                         </div>
 
                     </div>
@@ -213,12 +213,12 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>Bathrooms</label>
-                            <input type="text" class="form-control my-2" required placeholder="Master Bathroom" ngModel
-                                name="noOfMasterBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="Private Bathroom" ngModel
-                                name="noOfPrivateBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel
-                                name="noOfHalfBath" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Master Bathroom"
+                                ngModel name="bathrooms_noOfMasterBathroom" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Private Bathroom"
+                                ngModel name="bathrooms_noOfPrivateBathroom" />
+                            <input type="text" class="form-control my-2" required placeholder="No of Half-bath" ngModel
+                                name="bathrooms_noOfHalfBath" />
                         </div>
 
                     </div>
@@ -227,39 +227,39 @@
                         <div class="col-sm-12">
                             <label class="my-2">Shared Spaces</label>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel name="Kitchen"
-                                    id="kitchenCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel
+                                    name="sharedSpaces_kitchen" id="kitchenCheckbox" /><label class="form-check-label"
                                     for="kitchenCheckbox">Kitchen</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel
-                                    name="laudryRoom" id="laundryRoomCheckbox" />
+                                    name="sharedSpaces_laundryRoom" id="laundryRoomCheckbox" />
                                 <label class="form-check-label" for="laundryRoomCheckbox">Laudry Room</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel
-                                    name="outDoorParking" id="outDoorParkingCheckbox" /><label class="form-check-label"
-                                    for="outDoorParkingCheckbox">Outdoor Parking</label>
+                                    name="sharedSpaces_outDoorParking" id="outDoorParkingCheckbox" /><label
+                                    class="form-check-label" for="outDoorParkingCheckbox">Outdoor Parking</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Garage" ngModel name="garage"
-                                    id="garageCheckbox" /><label for="garageCheckbox"
+                                <input type="checkbox" class="form-check-input" value="Garage" ngModel
+                                    name="sharedSpaces_garage" id="garageCheckbox" /><label for="garageCheckbox"
                                     class="form-check-label">Garage</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Balcony" ngModel name="balcony"
-                                    id="balconyCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Balcony" ngModel
+                                    name="sharedSpaces_balcony" id="balconyCheckbox" /><label class="form-check-label"
                                     for="balconyCheckbox">Balcony</label>
 
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Backyard" ngModel name="backyard"
-                                    id="backyardCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Backyard" ngModel
+                                    name="sharedSpaces_backyard" id="backyardCheckbox" /><label class="form-check-label"
                                     for="backyardCheckbox">Backyard</label>
                             </div>
 
@@ -273,53 +273,55 @@
                         <div class="col-sm-6">
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel name="Wifi"
-                                    id="WifiCheckbox" /><label class="form-check-label" for="WifiCheckbox">Wifi</label>
+                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel
+                                    name="amenities_wifi" id="WifiCheckbox" /><label class="form-check-label"
+                                    for="WifiCheckbox">Wifi</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input"
                                     value="Towels, bed sheets, soap, and toilet paper" ngModel
-                                    name="TowelsBedsheetsSoapAndToiletpaper"
+                                    name="amenities_towelsBedsheetsSoapAndToiletpaper"
                                     id="TowelsBedsheetsSoapAndToiletpaperCheckbox" />
                                 <label class="form-check-label" for="TowelsBedsheetsSoapAndToiletpaperCheckbox">Towels,
                                     bed sheets, soap, and toilet paper</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Shampoo" ngModel name="shampoo"
-                                    id="shampooCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Shampoo" ngModel
+                                    name="amenities_shampoo" id="shampooCheckbox" /><label class="form-check-label"
                                     for="shampooCheckbox">Shampoo</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Closet/drawers" ngModel
-                                    name="closet/drawers" id="closet/drawersCheckbox" /><label
+                                    name="amenities_closetDrawers" id="closet/drawersCheckbox" /><label
                                     for="closet/drawersCheckbox" class="form-check-label">Closet/drawers</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Hair dryer" ngModel
-                                    name="hairDryer" id="hairDryerCheckbox" /><label class="form-check-label"
+                                    name="amenities_hairDryer" id="hairDryerCheckbox" /><label class="form-check-label"
                                     for="hairDryerCheckbox">Hair dryer</label>
 
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="LED TV" ngModel name="LEDTV"
-                                    id="LEDTVCheckbox" /><label class="form-check-label" for="LEDTVCheckbox">LED
+                                <input type="checkbox" class="form-check-input" value="LED TV" ngModel
+                                    name="amenities_LEDTV" id="LEDTVCheckbox" /><label class="form-check-label"
+                                    for="LEDTVCheckbox">LED
                                     TV</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Grill" ngModel name="grill"
-                                    id="grillCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Grill" ngModel
+                                    name="amenities_grill" id="grillCheckbox" /><label class="form-check-label"
                                     for="grillCheckbox">Grill</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Parking" ngModel name="parking"
-                                    id="parkingCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Parking" ngModel
+                                    name="amenities_parking" id="parkingCheckbox" /><label class="form-check-label"
                                     for="parkingCheckbox">Parking</label>
                             </div>
 
@@ -329,50 +331,50 @@
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Outdoor Swimming Pool" ngModel
-                                    name="outdoorSwimmingPool" id="outdoorSwimmingPoolCheckbox" /><label
+                                    name="amenities_outdoorSwimmingPool" id="outdoorSwimmingPoolCheckbox" /><label
                                     class="form-check-label" for="outdoorSwimmingPoolCheckbox">Outdoor Swimming
                                     Pool</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Iron & Board" ngModel
-                                    name="iron&Board" id="iron&BoardCheckbox" /><label class="form-check-label"
+                                    name="amenities_ironBoard" id="iron&BoardCheckbox" /><label class="form-check-label"
                                     for="iron&BoardCheckbox">Iron & Board</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Satellite or cable" ngModel
-                                    name="satelliteOrCable" id="satelliteOrCableCheckbox" /><label
+                                    name="amenities_satelliteOrCable" id="satelliteOrCableCheckbox" /><label
                                     class="form-check-label" for="satelliteOrCableCheckbox">Satellite or cable</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Microwave" ngModel
-                                    name="microwave" id="microwaveCheckbox" /><label class="form-check-label"
+                                    name="amenities_microwave" id="microwaveCheckbox" /><label class="form-check-label"
                                     for="microwaveCheckbox">Microwave</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Board Games" ngModel
-                                    name="boardGames" id="boardGamesCheckbox" /><label class="form-check-label"
-                                    for="boardGamesCheckbox">Board Games</label>
+                                    name="amenities_boardGames" id="boardGamesCheckbox" /><label
+                                    class="form-check-label" for="boardGamesCheckbox">Board Games</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Toaster" ngModel name="toaster"
-                                    id="toasterCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Toaster" ngModel
+                                    name="amenities_toaster" id="toasterCheckbox" /><label class="form-check-label"
                                     for="toasterCheckbox">Toaster</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Coffee Maker" ngModel
-                                    name="coffeeMaker" id="coffeeMakerCheckbox" /><label class="form-check-label"
-                                    for="coffeeMakerCheckbox">Coffee Maker</label>
+                                    name="amenities_coffeeMaker" id="coffeeMakerCheckbox" /><label
+                                    class="form-check-label" for="coffeeMakerCheckbox">Coffee Maker</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Stove" ngModel name="stove"
-                                    id="stoveCheckbox" /><label class="form-check-label"
+                                <input type="checkbox" class="form-check-input" value="Stove" ngModel
+                                    name="amenities_stove" id="stoveCheckbox" /><label class="form-check-label"
                                     for="stoveCheckbox">Stove</label>
                             </div>
 
@@ -380,8 +382,6 @@
                         </div>
 
                     </div>
-
-
 
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
