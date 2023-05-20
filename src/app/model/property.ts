@@ -16,7 +16,7 @@ export class Property {
     public propertyOwner!: User;
     public propertyCleaningFee: number;
     public theSpace_noOfAccommodation: string;
-    public theSpace_noOfBathrooms: string;
+    public theSpace_noOfBathrooms: number;
     public theSpace_noOfBedrooms: string;
     public beds_noOfKing: string;
     public beds_noOfQueen: string;
@@ -64,7 +64,7 @@ export class Property {
         this.propertyZipCode = "";
         this.propertyCleaningFee = 0;
         this.theSpace_noOfAccommodation = "";
-        this.theSpace_noOfBathrooms = "";
+        this.theSpace_noOfBathrooms = Number(this.bathrooms_noOfMasterBathroom) + Number(this.bathrooms_noOfPrivateBathroom);
         this.theSpace_noOfBedrooms = "";
         this.beds_noOfKing = "";
         this.beds_noOfQueen = "";
