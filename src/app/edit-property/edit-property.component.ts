@@ -133,7 +133,7 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
     formData.append("propertyZipCode", property.propertyZipCode);
     formData.append("propertyCleaningFee", property.propertyCleaningFee.toString());
     formData.append("noOfAccommodation", property.theSpace_noOfAccommodation);
-    formData.append("noOfBathrooms", property.theSpace_noOfBathrooms);
+    
     formData.append("noOfBedrooms", property.theSpace_noOfBedrooms);
     formData.append("noOfKing", property.beds_noOfKing);
     formData.append("noOfQueen", property.beds_noOfQueen);

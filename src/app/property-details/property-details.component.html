@@ -249,11 +249,72 @@
             </div>
 
             <div class="row my-4">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <h2>About the rental</h2>
 
                     <hr />
-                    <p class="custom-text-fix">{{property.description}}</p>
+                    <div class="row my-2">
+                        <h3>The space</h3>
+                        <div class="col-sm-12 custom-text-fix">
+                            <p>Acccomodates: {{property.theSpace_noOfAccommodation}}</p>
+                            <p>Bathrooms: {{property.theSpace_noOfBathrooms}}</p>
+                            <p>Bedrooms: {{property.theSpace_noOfBedrooms}}</p>
+                        </div>
+
+                        <h3>Beds</h3>
+                        <div class="col-sm-12 custom-text-fix">
+                            <p>King: {{property.beds_noOfKing}}</p>
+                            <p>Queen: {{property.beds_noOfQueen}}</p>
+                            <p>Single: {{property.beds_noOfSingle}}</p>
+                        </div>
+
+                        <h3>Bathrooms</h3>
+                        <div class="col-sm-12 custom-text-fix">
+                            <p>Master Bathroom: {{property.bathrooms_noOfMasterBathroom}}</p>
+                            <p>Private Bathroom: {{property.bathrooms_noOfPrivateBathroom}}</p>
+                            <p>Half-bath: {{property.bathrooms_noOfHalfBath}}</p>
+                        </div>
+
+                        <h3>Shared Spaces</h3>
+                        <div class="col-sm-6 custom-text-fix">
+                            <p>{{property.sharedSpaces_kitchen}}</p>
+                            <p>{{property.sharedSpaces_laundryRoom}}</p>
+                            <p>{{property.sharedSpaces_outDoorParking}}</p>
+                            <p>{{property.sharedSpaces_garage}}</p>
+                        </div>
+
+                        <div class="col-sm-6 custom-text-fix">
+                            <p>{{property.sharedSpaces_balcony}}</p>
+                            <p>{{property.sharedSpaces_backyard}}</p>
+
+                        </div>
+
+                        <h3>Amenities</h3>
+                        <div class="col-sm-6 custom-text-fix">
+                            <p><span></span>&nbsp;{{property.amenities_wifi}</p>
+                            <p>{{property.amenities_towelsBedsheetsSoapAndToiletpaper}}</p>
+                            <p>{{property.amenities_shampoo}}</p>
+                            <p>{{property.amenities_closetDrawers}}</p>
+                            <p>{{property.amenities_hairDryer}}</p>
+                            <p>{{property.amenities_LEDTV}}</p>
+                            <p>{{property.amenities_grill}}</p>
+                            <p>{{property.amenities_parking}}</p>
+                        </div>
+
+                        <div class="col-sm-6 custom-text-fix">
+                            <p>{{property.amenities_outdoorSwimmingPool}}</p>
+                            <p>{{property.amenities_ironBoard}}</p>
+                            <p>{{property.amenities_satelliteOrCable}}</p>
+                            <p>{{property.amenities_microwave}}</p>
+                            <p>{{property.amenities_boardGames}}</p>
+                            <p>{{property.amenities_toaster}}</p>
+                            <p>{{property.amenities_coffeeMaker}}</p>
+                            <p>{{property.amenities_stove}}</p>
+
+                        </div>
+
+                    </div>
+
                     <h4 class="custom-text-fix"><b>Hosted by <a
                                 routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}"
                                 style="color:inherit;"> {{property.propertyOwner.firstname}}
