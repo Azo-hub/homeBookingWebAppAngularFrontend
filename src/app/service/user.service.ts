@@ -77,6 +77,10 @@ export class UserService {
     return this.http.post<CustomHttpResponse>(`${this.host}/support`,formData);
   }
 
+  contactPropertyOwner(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/contactPropertyOwner`, formData);
+  }
+
   
   public addUsersToLocalCache(users: User[]): void {
     localStorage.setItem('users', JSON.stringify(users));

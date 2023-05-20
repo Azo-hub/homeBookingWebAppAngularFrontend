@@ -46,8 +46,8 @@ const routes: Routes = [
   { path: "userdetails/:username", component: EditUserComponent, canActivate: [AuthenticationOwnerGuard, RoleAdminGuard] },
   { path: "support", component: SupportComponent, canActivate: [AuthenticationTravellerGuard, AuthenticationOwnerGuard, RoleAdminGuard] },
   { path: "orderDetails/:id", component: OrderDetailsComponent, canActivate: [AuthenticationGuard] },
-  { path: "propertyOwnerInfo/:username", component: PropertyOwnerInfoComponent }, 
-  { path: "contactPropertyOwner/:username", component: ContactPropertyOwnerComponent }
+  { path: "propertyOwnerInfo/:username", component: PropertyOwnerInfoComponent },
+  { path: "contactPropertyOwner/:username/:name", component: ContactPropertyOwnerComponent }
 
   //{path:"**", component:Error404Component}
 ];

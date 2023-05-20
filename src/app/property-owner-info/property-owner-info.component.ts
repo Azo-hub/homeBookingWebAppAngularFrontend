@@ -20,12 +20,12 @@ import { PropertyService } from '../service/property.service';
 export class PropertyOwnerInfoComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
-  propertiesByOwner: Property[] = [];  
+  propertiesByOwner: Property[] = [];
   propertyOwnerInfoUsername: string = "";
   user: User = new User;
-  
 
-  constructor(private userService: UserService, private propertyService: PropertyService, 
+
+  constructor(private userService: UserService, private propertyService: PropertyService,
     private router: Router, private notificationService: NotificationService,
     private activatedRoute: ActivatedRoute) { }
 
@@ -85,9 +85,8 @@ export class PropertyOwnerInfoComponent implements OnInit, OnDestroy {
     for (const eachSearchProperty of this.propertyService.getPropertiesFromLocalCache()) {
 
       if (eachSearchProperty.name?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchProperty.description?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
         eachSearchProperty.propertyType?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        eachSearchProperty.propertyAddress?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+        eachSearchProperty.propertyAddress1?.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
 
         searchProperty.push(eachSearchProperty);
 
@@ -102,7 +101,7 @@ export class PropertyOwnerInfoComponent implements OnInit, OnDestroy {
   }
 
 
-  
+
 
   private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
