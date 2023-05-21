@@ -24,7 +24,9 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   bookingCheckInDateFromUrl:string = "";
   bookingCheckOutDateFromUrl:string = "";
   userId:number = 0;
-  
+  noOfGuest:string = "";
+  noOfChildren:string = "";
+  pets:string = "";
   bookingFirstName:any;
   bookingLastName:any;
   bookingEmail:any;
@@ -47,6 +49,9 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
     this.bookingPropertyIdFromUrl = this.activatedRoute.snapshot.paramMap.get("id");
     this.bookingCheckInDateFromUrl = this.activatedRoute.snapshot.paramMap.get("checkInDate");
     this.bookingCheckOutDateFromUrl = this.activatedRoute.snapshot.paramMap.get("checkOutDate");
+    this.noOfGuest = this.activatedRoute.snapshot.paramMap.get("noOfGuest");
+    this.noOfChildren = this.activatedRoute.snapshot.paramMap.get("noOfChildren");
+    this.pets = this.activatedRoute.snapshot.paramMap.get("pets");
   }
   
   
@@ -62,7 +67,7 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
             this.bookingPhoneNumber, this.bookingCountry, this.bookingState, this.bookingStreet, 
             this.bookingCity,this.bookingZipCode,  
             this.bookingCheckInDate, this.bookingCheckOutDate, this.bookingNoOfDaysFromUrl,
-            this.bookingPropertyIdFromUrl);
+            this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets);
     
     this.subscriptions.push(
       
