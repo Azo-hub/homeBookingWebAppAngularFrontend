@@ -98,13 +98,17 @@
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel name="propertyAddress1"
-                              [ngModel] = "property.propertyAddress1"  #propertyAddress1Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                            <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel
+                                name="propertyAddress1" [ngModel]="property.propertyAddress1"
+                                #propertyAddress1Input="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
                         </div>
                         <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="text" class="form-control fa" placeholder="Address Line 2" ngModel name="propertyAddress2"
-                               [ngModel] = "property.propertyAddress2" #propertyAddress2Input="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
-                    
+                            <input type="text" class="form-control fa" placeholder="Address Line 2" ngModel
+                                name="propertyAddress2" [ngModel]="property.propertyAddress2"
+                                #propertyAddress2Input="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
@@ -136,186 +140,215 @@
                         <div class="col-sm-12">
                             <label>The Space</label>
                             <input type="text" class="form-control my-2" required placeholder="Accommodates" ngModel
-                               [ngModel] = "property.theSpace_noOfAccommodation" name="noOfAccommodation" />
+                                [ngModel]="property.theSpace_noOfAccommodation" name="noOfAccommodation" />
                             <input type="text" class="form-control my-2" required placeholder="No of Bedrooms" ngModel
-                               [ngModel] = "property.theSpace_noOfBedrooms"  name="noOfBedrooms" />
-                    
+                                [ngModel]="property.theSpace_noOfBedrooms" name="noOfBedrooms" />
+
                         </div>
-                    
+
                     </div>
-                    
+
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
                                                     name="description" #descriptionInput="ngModel"></textarea> -->
                             <label>Beds</label>
                             <input type="text" class="form-control my-2" required placeholder="King"
-                                [ngModel] = "property.beds_noOfKing" ngModel name="noOfKing" />
-                            <input type="text" class="form-control my-2" required placeholder="Queen" 
-                                [ngModel] = "property.beds_noOfQueen" ngModel name="noOfQueen" />
-                            <input type="text" class="form-control my-2" required placeholder="Single" 
-                                [ngModel] = "property.beds_noOfSingle" ngModel name="noOfSingle" />
+                                [ngModel]="property.beds_noOfKing" ngModel name="noOfKing" />
+                            <input type="text" class="form-control my-2" required placeholder="Queen"
+                                [ngModel]="property.beds_noOfQueen" ngModel name="noOfQueen" />
+                            <input type="text" class="form-control my-2" required placeholder="Single"
+                                [ngModel]="property.beds_noOfSingle" ngModel name="noOfSingle" />
                         </div>
-                    
+
                     </div>
-                    
+
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>Bathrooms</label>
                             <input type="text" class="form-control my-2" required placeholder="Master Bathroom" ngModel
-                               [ngModel] = "property.bathrooms_noOfMasterBathroom" name="noOfMasterBathroom" />
+                                [ngModel]="property.bathrooms_noOfMasterBathroom" name="noOfMasterBathroom" />
                             <input type="text" class="form-control my-2" required placeholder="Private Bathroom" ngModel
-                               [ngModel] = "property.bathrooms_noOfPrivateBathroom" name="noOfPrivateBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel 
-                                [ngModel] = "property.bathrooms_noOfHalfBath" name="noOfHalfBath" />
+                                [ngModel]="property.bathrooms_noOfPrivateBathroom" name="noOfPrivateBathroom" />
+                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel
+                                [ngModel]="property.bathrooms_noOfHalfBath" name="noOfHalfBath" />
                         </div>
-                    
+
                     </div>
-                    
+
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label class="my-2">Shared Spaces</label>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel name="Kitchen" 
-                                   [ngModel] = "property.sharedSpaces_kitchen" id="kitchenCheckbox" />
-                                   <label class="form-check-label" for="kitchenCheckbox">Kitchen</label>
+                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel name="Kitchen"
+                                    [ngModel]="property.sharedSpaces_kitchen" id="kitchenCheckbox" />
+                                <label class="form-check-label" for="kitchenCheckbox">Kitchen</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel name="laudryRoom"
-                                   [ngModel] = "property.sharedSpaces_laundryRoom" id="laundryRoomCheckbox" />
+                                <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel
+                                    name="laudryRoom" [ngModel]="property.sharedSpaces_laundryRoom"
+                                    id="laundryRoomCheckbox" />
                                 <label class="form-check-label" for="laundryRoomCheckbox">Laudry Room</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel name="outDoorParking"
-                                   [ngModel] = "property.sharedSpaces_outDoorParking"  id="outDoorParkingCheckbox" /><label class="form-check-label" for="outDoorParkingCheckbox">Outdoor
+                                <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel
+                                    name="outDoorParking" [ngModel]="property.sharedSpaces_outDoorParking"
+                                    id="outDoorParkingCheckbox" /><label class="form-check-label"
+                                    for="outDoorParkingCheckbox">Outdoor
                                     Parking</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Garage" ngModel name="garage"
-                                   [ngModel] = "property.sharedSpaces_garage"  id="garageCheckbox" /><label for="garageCheckbox" class="form-check-label">Garage</label>
+                                    [ngModel]="property.sharedSpaces_garage" id="garageCheckbox" /><label
+                                    for="garageCheckbox" class="form-check-label">Garage</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Balcony" ngModel name="balcony"
-                                   [ngModel] = "property.sharedSpaces_balcony" id="balconyCheckbox" /><label class="form-check-label" for="balconyCheckbox">Balcony</label>
-                    
+                                    [ngModel]="property.sharedSpaces_balcony" id="balconyCheckbox" /><label
+                                    class="form-check-label" for="balconyCheckbox">Balcony</label>
+
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Backyard" ngModel name="backyard"
-                                   [ngModel] = "property.sharedSpaces_backyard"  id="backyardCheckbox" /><label class="form-check-label" for="backyardCheckbox">Backyard</label>
+                                    [ngModel]="property.sharedSpaces_backyard" id="backyardCheckbox" /><label
+                                    class="form-check-label" for="backyardCheckbox">Backyard</label>
                             </div>
-                    
-                    
+
+
                         </div>
-                    
+
                     </div>
-                    
+
                     <div class="row my-2 mx-2">
                         <label class="my-2">Amenities</label>
                         <div class="col-sm-6">
-                            
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel name="Wifi" 
-                                 [ngModel] = "property.amenities_wifi" id="WifiCheckbox" /><label
+                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel name="Wifi"
+                                    [ngModel]="property.amenities_wifi" id="WifiCheckbox" /><label
                                     class="form-check-label" for="WifiCheckbox">Wifi</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Towels, bed sheets, soap, and toilet paper" ngModel
-                                 [ngModel] = "property.amenities_towelsBedsheetsSoapAndToiletpaper"  name="TowelsBedsheetsSoapAndToiletpaper" id="TowelsBedsheetsSoapAndToiletpaperCheckbox" />
+                                <input type="checkbox" class="form-check-input"
+                                    value="Towels, bed sheets, soap, and toilet paper" ngModel
+                                    [ngModel]="property.amenities_towelsBedsheetsSoapAndToiletpaper"
+                                    name="TowelsBedsheetsSoapAndToiletpaper"
+                                    id="TowelsBedsheetsSoapAndToiletpaperCheckbox" />
                                 <label class="form-check-label" for="TowelsBedsheetsSoapAndToiletpaperCheckbox">Towels,
                                     bed sheets, soap, and toilet paper</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Shampoo" 
-                                    [ngModel] = "property.amenities_shampoo" ngModel name="shampoo"
-                                    id="shampooCheckbox" /><label class="form-check-label" for="shampooCheckbox">Shampoo</label>
+                                <input type="checkbox" class="form-check-input" value="Shampoo"
+                                    [ngModel]="property.amenities_shampoo" ngModel name="shampoo"
+                                    id="shampooCheckbox" /><label class="form-check-label"
+                                    for="shampooCheckbox">Shampoo</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Closet/drawers" ngModel name="closetDrawers"
-                                   [ngModel] = "property.amenities_closetDrawers"  id="closet/drawersCheckbox" /><label for="closet/drawersCheckbox"
+                                <input type="checkbox" class="form-check-input" value="Closet/drawers" ngModel
+                                    name="closetDrawers" [ngModel]="property.amenities_closetDrawers"
+                                    id="closet/drawersCheckbox" /><label for="closet/drawersCheckbox"
                                     class="form-check-label">Closet/drawers</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Hair dryer" ngModel name="hairDryer"
-                                   [ngModel] = "property.amenities_hairDryer" id="hairDryerCheckbox" /><label class="form-check-label" for="hairDryerCheckbox">Hair dryer</label>
-                    
+                                <input type="checkbox" class="form-check-input" value="Hair dryer" ngModel
+                                    name="hairDryer" [ngModel]="property.amenities_hairDryer"
+                                    id="hairDryerCheckbox" /><label class="form-check-label"
+                                    for="hairDryerCheckbox">Hair dryer</label>
+
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="LED TV" ngModel name="LEDTV"
-                                   [ngModel] = "property.amenities_LEDTV"  id="LEDTVCheckbox" /><label class="form-check-label" for="LEDTVCheckbox">LED
+                                    [ngModel]="property.amenities_LEDTV" id="LEDTVCheckbox" /><label
+                                    class="form-check-label" for="LEDTVCheckbox">LED
                                     TV</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Grill" ngModel name="grill"
-                                   [ngModel] = "property.amenities_grill"  id="grillCheckbox" /><label class="form-check-label" for="grillCheckbox">Grill</label>
+                                    [ngModel]="property.amenities_grill" id="grillCheckbox" /><label
+                                    class="form-check-label" for="grillCheckbox">Grill</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Parking" ngModel name="parking"
-                                   [ngModel] = "property.amenities_parking"  id="parkingCheckbox" /><label class="form-check-label" for="parkingCheckbox">Parking</label>
+                                    [ngModel]="property.amenities_parking" id="parkingCheckbox" /><label
+                                    class="form-check-label" for="parkingCheckbox">Parking</label>
                             </div>
-                    
+
                         </div>
-                    
+
                         <div class="col-sm-6">
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Outdoor Swimming Pool" ngModel
-                                   [ngModel] = "property.amenities_outdoorSwimmingPool"  name="outdoorSwimmingPool" id="outdoorSwimmingPoolCheckbox" /><label class="form-check-label"
+                                    [ngModel]="property.amenities_outdoorSwimmingPool" name="outdoorSwimmingPool"
+                                    id="outdoorSwimmingPoolCheckbox" /><label class="form-check-label"
                                     for="outdoorSwimmingPoolCheckbox">Outdoor Swimming
                                     Pool</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Iron & Board" ngModel name="iron&Board"
-                                   [ngModel] = "property.amenities_ironBoard"  id="iron&BoardCheckbox" /><label class="form-check-label" for="iron&BoardCheckbox">Iron & Board</label>
+                                <input type="checkbox" class="form-check-input" value="Iron & Board" ngModel
+                                    name="iron&Board" [ngModel]="property.amenities_ironBoard"
+                                    id="iron&BoardCheckbox" /><label class="form-check-label"
+                                    for="iron&BoardCheckbox">Iron & Board</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Satellite or cable" ngModel name="satelliteOrCable"
-                                   [ngModel] = "property.amenities_satelliteOrCable"  id="satelliteOrCableCheckbox" /><label class="form-check-label" for="satelliteOrCableCheckbox">Satellite
+                                <input type="checkbox" class="form-check-input" value="Satellite or cable" ngModel
+                                    name="satelliteOrCable" [ngModel]="property.amenities_satelliteOrCable"
+                                    id="satelliteOrCableCheckbox" /><label class="form-check-label"
+                                    for="satelliteOrCableCheckbox">Satellite
                                     or cable</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Microwave" ngModel name="microwave"
-                                   [ngModel] = "property.amenities_microwave" id="microwaveCheckbox" /><label class="form-check-label" for="microwaveCheckbox">Microwave</label>
+                                <input type="checkbox" class="form-check-input" value="Microwave" ngModel
+                                    name="microwave" [ngModel]="property.amenities_microwave"
+                                    id="microwaveCheckbox" /><label class="form-check-label"
+                                    for="microwaveCheckbox">Microwave</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Board Games" ngModel name="boardGames"
-                                   [ngModel] = "property.amenities_boardGames"  id="boardGamesCheckbox" /><label class="form-check-label" for="boardGamesCheckbox">Board Games</label>
+                                <input type="checkbox" class="form-check-input" value="Board Games" ngModel
+                                    name="boardGames" [ngModel]="property.amenities_boardGames"
+                                    id="boardGamesCheckbox" /><label class="form-check-label"
+                                    for="boardGamesCheckbox">Board Games</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Toaster" ngModel name="toaster"
-                                   [ngModel] = "property.amenities_toaster"  id="toasterCheckbox" /><label class="form-check-label" for="toasterCheckbox">Toaster</label>
+                                    [ngModel]="property.amenities_toaster" id="toasterCheckbox" /><label
+                                    class="form-check-label" for="toasterCheckbox">Toaster</label>
                             </div>
-                    
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" value="Coffee Maker" ngModel name="coffeeMaker"
-                                   [ngModel] = "property.amenities_coffeeMaker" id="coffeeMakerCheckbox" /><label class="form-check-label" for="coffeeMakerCheckbox">Coffee
+                                <input type="checkbox" class="form-check-input" value="Coffee Maker" ngModel
+                                    name="coffeeMaker" [ngModel]="property.amenities_coffeeMaker"
+                                    id="coffeeMakerCheckbox" /><label class="form-check-label"
+                                    for="coffeeMakerCheckbox">Coffee
                                     Maker</label>
                             </div>
-                    
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Stove" ngModel name="stove"
-                                   [ngModel] = "property.amenities_stove"  id="stoveCheckbox" /><label class="form-check-label" for="stoveCheckbox">Stove</label>
+                                    [ngModel]="property.amenities_stove" id="stoveCheckbox" /><label
+                                    class="form-check-label" for="stoveCheckbox">Stove</label>
                             </div>
-                    
-                    
+
+
                         </div>
-                    
+
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
@@ -355,7 +388,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_1{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -373,7 +406,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_2{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_2{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -391,7 +424,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_3{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_3{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -410,7 +443,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_4{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_4{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -429,7 +462,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_5{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_5{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -448,7 +481,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_6{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_6{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -467,7 +500,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_7{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_7{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -486,7 +519,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_8{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_8{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -505,7 +538,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_9{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_9{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -524,7 +557,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_10{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_10{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -543,7 +576,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_11{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_11{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -562,7 +595,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_12{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_12{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -581,7 +614,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_13{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_13{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -600,7 +633,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_14{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_14{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -619,7 +652,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_15{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_15{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -638,7 +671,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_16{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_16{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -658,7 +691,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_17{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_17{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -677,7 +710,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_18{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_18{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -696,7 +729,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_19{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_19{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -715,7 +748,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_20{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_20{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -734,7 +767,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_21{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_21{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -753,7 +786,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_22{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_22{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -772,7 +805,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_23{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_23{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -791,7 +824,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_24{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_24{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -810,7 +843,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_25{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_25{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -829,7 +862,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_26{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_26{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -849,7 +882,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_27{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_27{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -868,7 +901,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_28{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_28{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -887,7 +920,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_29{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_29{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>
@@ -906,7 +939,7 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_30{{property.name}}{{property.id}}.jpg"
+                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_30{{property.name}}{{property.id}}.jpg"
                                             class="img-fluid rounded-start" alt="Property Image">
                                     </div>
                                 </div>

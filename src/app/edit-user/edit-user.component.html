@@ -5,7 +5,7 @@
 
 <div class="container my-2">
     <div class="row flex-lg-nowrap">
-        <div class = "col-md-2"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col mb-3">
@@ -15,150 +15,182 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
-                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                            <div class="d-flex justify-content-center align-items-center rounded"
+                                                style="height: 140px; background-color: rgb(233, 236, 239);">
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user?.firstname}} {{user?.lastname}}
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user?.firstname}}
+                                                {{user?.lastname}}
                                             </h4>
                                             <p class="mb-0">{{user?.email}}</p>
                                             <div class="text-muted">
                                                 <span>Last Login Date: </span>
                                                 <small>{{user?.lastLoginDateDisplay |
-													date:'medium'}}</small>
+                                                    date:'medium'}}</small>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="text-center text-sm-right">
-                                            <span class="badge" style="background-color:#39e75f;">{{user.role.substring(5)}}</span>&nbsp;
-                                            <small class="badge" style="background-color:#39e75f;" [hidden]="!user?.isVerified">Verified</small>
-                                            <small class="badge bg-danger"  [hidden]="user?.isVerified">Unverified</small>
+                                            <span class="badge"
+                                                style="background-color:#39e75f;">{{user.role.substring(5)}}</span>&nbsp;
+                                            <small class="badge" style="background-color:#39e75f;"
+                                                [hidden]="!user?.isVerified">Verified</small>
+                                            <small class="badge bg-danger"
+                                                [hidden]="user?.isVerified">Unverified</small>
                                             <div class="text-muted">
                                                 <small>Joined {{user?.dateJoined |
-													date:'mediumDate'}}</small>
+                                                    date:'mediumDate'}}</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a class="active nav-link" href="#settings" data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
-                                    
+                                    <li class="nav-item"><a class="active nav-link" href="#settings"
+                                            data-bs-toggle="tab" style="color:inherit;">Settings</a></li>
+
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active fade in show" id="settings">
-                                        
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="row my-2">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>First Name</label> <p class="form-control">{{user.firstname}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Last Name</label> <p class="form-control">{{user.lastname}}</p>
-                                                            </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <p class="form-control">{{user.firstname}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="row my-2">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Username</label> <p class="form-control" >{{user.username}}</p>
-                                                            </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <p class="form-control">{{user.lastname}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="row my-2">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Email</label> <p class="form-control" >{{user.email}}</p>
-                                                            </div>
+                                                </div>
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Username</label>
+                                                            <p class="form-control">{{user.username}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="row my-4">
-                                                        <div class="col-md-7 my-3">
-                                                            <img src="https://res.cloudinary.com/azostore/image/upload/bookingwebapp{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg" class="img-fluid"/>
-                                                            
-                                                            <h4 class="card-title my-2"><span><b>Card Type:</b></span>{{user.identityType}}</h4>
+                                                </div>
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <p class="form-control">{{user.email}}</p>
                                                         </div>
-                                                        <div class="col-md-5 my-3">
-                                                            <p class="form-control" style="color:inherit;"><b>Date of Birth: </b>{{user.dateOfBirth}}</p>
-                                                            <p class="form-control" style="color:inherit;"><b>Profile Image: </b><span [hidden]="!user.isImage">Present</span><span [hidden]="user.isImage">None</span></p>
-                                                        </div>
-                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="row my-4">
+                                                    <div class="col-md-7 my-3">
+                                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/bookingwebapp{{user.firstname}}{{user.lastname}}{{user.userId}}.jpg"
+                                                            class="img-fluid" />
+
+                                                        <h4 class="card-title my-2"><span><b>Card
+                                                                    Type:</b></span>{{user.identityType}}</h4>
+                                                    </div>
+                                                    <div class="col-md-5 my-3">
+                                                        <p class="form-control" style="color:inherit;"><b>Date of Birth:
+                                                            </b>{{user.dateOfBirth}}</p>
+                                                        <p class="form-control" style="color:inherit;"><b>Profile Image:
+                                                            </b><span [hidden]="!user.isImage">Present</span><span
+                                                                [hidden]="user.isImage">None</span></p>
                                                     </div>
 
-                                                    <div class="row my-4">
-                                                        <form #notificationForm="ngForm" (ngSubmit)="sendUserNotification(notificationForm)">
-                                                            <div class="col-md-12 form-group">
-                                                            
-                                                                <label class="my-2">To Notify the user of any of the required document not yet uploaded</label>
-                                                                <input type="text" class="form-control my-2" placeholder="Notification Subject" name="notifySubject" #notifySubjectInput="ngModel" ngModel />
-                                                                <textarea required name="notifyMessage" #notifyMessageInput="ngModel" ngModel placeholder="Type in notification message" rows="5" class="form-control"></textarea>
-                                                                <button class="btn addNewProperty-button-fix my-3" type="submit">
-                                                                    <i class="fa fa-spinner fa-spin " *ngIf="notificationShowLoading"></i>&nbsp;&nbsp;
-                                                                                <span *ngIf="notificationShowLoading===true">Loading...</span> <span
-                                                                                    *ngIf="notificationShowLoading === false">Notify</span>
-                                                                    </button>
-                                                            </div>
-                                                              
-                                                        </form>                                                     
-                                                    </div>
+                                                </div>
 
-                                                    <div class="row my-3">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label class = "my-2" for="toVerifyAcct">Verify Account</label>&nbsp;<i class="fa fa-spinner fa-spin " *ngIf="verifyShowLoading"></i>&nbsp;&nbsp;
-                                                                <span *ngIf="verifyShowLoading === true ">Loading...</span>
-                                                                <select class="form-control my-2" id="toVerifyAcct" name="verifyAccount" #verifyAcct="ngModel" [(ngModel)]="user.isVerified" (ngModelChange)="onVerifyAccount(verifyAcct.value)">
-                                                                     <option [ngValue]="true">Verify</option>
-                                                                    <option [ngValue]="false">Unverify</option>
-                                                                </select>
-                                                            </div>
+                                                <div class="row my-4">
+                                                    <form #notificationForm="ngForm"
+                                                        (ngSubmit)="sendUserNotification(notificationForm)">
+                                                        <div class="col-md-12 form-group">
+
+                                                            <label class="my-2">To Notify the user of any of the
+                                                                required document not yet uploaded</label>
+                                                            <input type="text" class="form-control my-2"
+                                                                placeholder="Notification Subject" name="notifySubject"
+                                                                #notifySubjectInput="ngModel" ngModel />
+                                                            <textarea required name="notifyMessage"
+                                                                #notifyMessageInput="ngModel" ngModel
+                                                                placeholder="Type in notification message" rows="5"
+                                                                class="form-control"></textarea>
+                                                            <button class="btn addNewProperty-button-fix my-3"
+                                                                type="submit">
+                                                                <i class="fa fa-spinner fa-spin "
+                                                                    *ngIf="notificationShowLoading"></i>&nbsp;&nbsp;
+                                                                <span
+                                                                    *ngIf="notificationShowLoading===true">Loading...</span>
+                                                                <span
+                                                                    *ngIf="notificationShowLoading === false">Notify</span>
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+
+                                                <div class="row my-3">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label class="my-2" for="toVerifyAcct">Verify
+                                                                Account</label>&nbsp;<i class="fa fa-spinner fa-spin "
+                                                                *ngIf="verifyShowLoading"></i>&nbsp;&nbsp;
+                                                            <span *ngIf="verifyShowLoading === true ">Loading...</span>
+                                                            <select class="form-control my-2" id="toVerifyAcct"
+                                                                name="verifyAccount" #verifyAcct="ngModel"
+                                                                [(ngModel)]="user.isVerified"
+                                                                (ngModelChange)="onVerifyAccount(verifyAcct.value)">
+                                                                <option [ngValue]="true">Verify</option>
+                                                                <option [ngValue]="false">Unverify</option>
+                                                            </select>
                                                         </div>
                                                     </div>
-    
-                                                    <div class="row my-3">
-                                                        <div class="col my-3">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title">Permissions Granted</h5>
-                                                                    <div class="card-text" *ngFor="let permission of user.authorities; let i = index">
-                                                                        <span class="card-text">{{permission}}</span><br/>
-                                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3">
+                                                    <div class="col my-3">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Permissions Granted</h5>
+                                                                <div class="card-text"
+                                                                    *ngFor="let permission of user.authorities; let i = index">
+                                                                    <span class="card-text">{{permission}}</span><br />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    
                                                 </div>
+
+
                                             </div>
-                                        
-                                        
-                                        
-                                            
-                                                                                            
-                                        
+                                        </div>
+
+
+
+
+
+
 
                                     </div>
 
-                                    
 
-                                    
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                
+
             </div>
 
         </div>
-        <div class = "col-md-2"></div>
+        <div class="col-md-2"></div>
     </div>
 </div>
