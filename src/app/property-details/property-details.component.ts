@@ -29,7 +29,9 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   showLoading : boolean = false;
   checkInDate : Date = new Date();
   checkOutDate : Date = new Date();
-  noOfGuest:string = ""; 
+  noOfGuest:number = 0; 
+  noOfChildren:number = 0;
+  pets:string="";
   showPropertyAvailabilityTable:boolean = false;
   showPropertyPricesTable:boolean =false;
   noOfNight:number = 0;

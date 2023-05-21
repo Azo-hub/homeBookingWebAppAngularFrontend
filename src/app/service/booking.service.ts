@@ -36,7 +36,8 @@ export class BookingService {
     bookingLastName:string, bookingEmail:string, bookingHomePhoneNumber:string,
     bookingPhoneNumber:string, bookingCountry:string, bookingState:string, bookingStreet:string, 
     bookingCity:string, bookingZipCode:string, checkInDate:Date, checkOutDate:Date,
-    bookingNoOfDays:string, bookingPropertyId:string):FormData {
+    bookingNoOfDays: string, bookingPropertyId: string, noOfGuest: string, noOfChildren: string, 
+      pets:string):FormData {
     
     const formData = new FormData();
     formData.append("bookingFirstName", bookingFirstName);
@@ -54,6 +55,9 @@ export class BookingService {
     formData.append("checkOutDate", checkOutDate.toString());
     formData.append("bookingNoOfDays", bookingNoOfDays);
     formData.append("bookingPropertyId", bookingPropertyId);
+    formData.append("noOfGuest", noOfGuest);
+    formData.append("noOfChildren", noOfChildren);
+    formData.append("pets", pets);
     
   return formData;
   

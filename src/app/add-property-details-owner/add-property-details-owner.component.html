@@ -74,37 +74,6 @@
                         </div>
                     </div>
 
-                    <div class="row my-2 mx-2">
-                        <div class="col-sm-12">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-
-                                </div>
-                                <input type="number" class="form-control" required ngModel name="propertyTax"
-                                    #propertyTaxInput="ngModel"
-                                    aria-label="Dollar amount (with dot and two decimal places)" step="0.01"
-                                    placeholder="Tax" />
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row my-2 mx-2">
-                        <div class="col-sm-12">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-
-                                </div>
-                                <input type="number" class="form-control" required ngModel name="propertyServiceFee"
-                                    #propertyServiceFeeInput="ngModel"
-                                    aria-label="Dollar amount (with dot and two decimal places)" step="0.01"
-                                    placeholder="Service Fee" />
-                            </div>
-
-                        </div>
-                    </div>
 
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
@@ -126,7 +95,7 @@
 
                 <div class="card my-5 card-fix">
 
-                    <div class="row my-2 mx-2">
+                    <div class="row my-2 mx-2 gy-4">
                         <div class="col-sm-6" style="display: flex; flex-direction: row;">
                             <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel
                                 name="propertyAddress1" #propertyAddress1Input="ngModel"
@@ -412,6 +381,7 @@
 
                 <div class="card-body my-2 mx-2">
                     <h5 class="card-title">Add Property Image <small class="text-muted">Max Image Size <= 3MB</small>
+                                &nbsp;&nbsp;<small>Accept Only .jpg</small>
                     </h5>
                     <div *ngIf="showImageUpload">
 

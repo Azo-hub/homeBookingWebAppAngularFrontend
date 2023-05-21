@@ -242,7 +242,7 @@
 
             <div class="row my-4">
                 <div class="col-sm-12 custom-text-fix">
-                    <h3>{{property.propertyPrice|currency}}</h3>
+                    <h2>{{property.propertyPrice|currency}}</h2>
                     <small>per night</small>
 
                 </div>
@@ -250,32 +250,32 @@
 
             <div class="row my-4">
                 <div class="col-md-12">
-                    <h2>About the rental</h2>
+                    <h2><b>About the rental</b></h2>
 
                     <hr />
                     <div class="row my-2">
-                        <h3>The space</h3>
+                        <h3><b>The space</b></h3>
                         <div class="col-sm-12 custom-text-fix">
                             <p>Acccomodates: {{property.theSpace_noOfAccommodation}}</p>
                             <p>Bathrooms: {{property.theSpace_noOfBathrooms}}</p>
                             <p>Bedrooms: {{property.theSpace_noOfBedrooms}}</p>
                         </div>
 
-                        <h3>Beds</h3>
+                        <h3><b>Beds</b></h3>
                         <div class="col-sm-12 custom-text-fix">
                             <p>King: {{property.beds_noOfKing}}</p>
                             <p>Queen: {{property.beds_noOfQueen}}</p>
                             <p>Single: {{property.beds_noOfSingle}}</p>
                         </div>
 
-                        <h3>Bathrooms</h3>
+                        <h3><b>Bathrooms</b></h3>
                         <div class="col-sm-12 custom-text-fix">
                             <p>Master Bathroom: {{property.bathrooms_noOfMasterBathroom}}</p>
                             <p>Private Bathroom: {{property.bathrooms_noOfPrivateBathroom}}</p>
                             <p>Half-bath: {{property.bathrooms_noOfHalfBath}}</p>
                         </div>
 
-                        <h3>Shared Spaces</h3>
+                        <h3><b>Shared Spaces</b></h3>
                         <div class="col-sm-6 custom-text-fix">
                             <p>{{property.sharedSpaces_kitchen}}</p>
                             <p>{{property.sharedSpaces_laundryRoom}}</p>
@@ -289,47 +289,57 @@
 
                         </div>
 
-                        <h3>Amenities</h3>
+                        <h3><b>Amenities</b></h3>
                         <div class="col-sm-6 custom-text-fix">
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_wifi}}</p>
-                            <p><span
-                                    class="fa fa-home"></span>&nbsp;{{property.amenities_towelsBedsheetsSoapAndToiletpaper}}
+                            <p [hidden]="!property.amenities_wifi"><span class="fa fa-home"></span>&nbsp;Wifi</p>
+                            <p [hidden]="!property.amenities_towelsBedsheetsSoapAndToiletpaper"><span
+                                    class="fa fa-home"></span>&nbsp;Towels, bedsheets, soap and Toilet paper
                             </p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_shampoo}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_closetDrawers}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_hairDryer}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_LEDTV}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_grill}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_parking}}</p>
+                            <p [hidden]="!property.amenities_shampoo"><span class="fa fa-home"></span>&nbsp;Shampoo</p>
+                            <p [hidden]="!property.amenities_closetDrawers"><span
+                                    class="fa fa-home"></span>&nbsp;Closet/drawers</p>
+                            <p [hidden]="!property.amenities_hairDryer"><span class="fa fa-home"></span>&nbsp;Hair Dryer
+                            </p>
+                            <p [hidden]="!property.amenities_LEDTV"><span class="fa fa-home"></span>&nbsp;LEDTV</p>
+                            <p [hidden]="!property.amenities_grill"><span class="fa fa-home"></span>&nbsp;Grill</p>
+                            <p [hidden]="!property.amenities_parking"><span class="fa fa-home"></span>&nbsp;Parking/p>
                         </div>
 
                         <div class="col-sm-6 custom-text-fix">
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_outdoorSwimmingPool}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_ironBoard}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_satelliteOrCable}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_microwave}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_boardGames}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_toaster}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_coffeeMaker}}</p>
-                            <p><span class="fa fa-home"></span>&nbsp;{{property.amenities_stove}}</p>
+                            <p [hidden]="!property.amenities_outdoorSwimmingPool"><span
+                                    class="fa fa-home"></span>&nbsp;Outdoor Swimming Pool</p>
+                            <p [hidden]="!property.amenities_ironBoard"><span class="fa fa-home"></span>&nbsp;Iron and
+                                Board</p>
+                            <p [hidden]="!property.amenities_satelliteOrCable"><span
+                                    class="fa fa-home"></span>&nbsp;Satellite or Cable</p>
+                            <p [hidden]="!property.amenities_microwave"><span class="fa fa-home"></span>&nbsp;Microwave
+                            </p>
+                            <p [hidden]="!property.amenities_boardGames"><span class="fa fa-home"></span>&nbsp;Board
+                                Games</p>
+                            <p [hidden]="!property.amenities_toaster"><span class="fa fa-home"></span>&nbsp;Toaster</p>
+                            <p [hidden]="!property.amenities_coffeeMaker"><span class="fa fa-home"></span>&nbsp;Coffee
+                                maker</p>
+                            <p [hidden]="!property.amenities_stove"><span class="fa fa-home"></span>&nbsp;Stove</p>
 
                         </div>
 
                     </div>
 
-                    <h4 class="custom-text-fix"><b>Hosted by <a
-                                routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}"
-                                style="color:inherit;"> {{property.propertyOwner.firstname}}
-                                {{property.propertyOwner.lastname}} </a></b></h4>
-                    <small class="custom-text-fix">{{property.propertyOwner.dateJoined}}</small>
-                    <button type="button" class="my-2 property-details-button-fix"
-                        (click)="onClickContactPropertyOwner()">Contact Host</button>
+                    <h2 class="custom-text-fix">Hosted by <a
+                            routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}" style="color:inherit;">
+                            {{property.propertyOwner.firstname}}
+                            {{property.propertyOwner.lastname}} </a> </h2>
+                    <small class="custom-text-fix">
+                        Joined: {{property.propertyOwner.dateJoined | date:'medium'}}</small>
+
+                    <p><button type="button" class="my-2 property-details-button-fix"
+                            (click)="onClickContactPropertyOwner()">Contact Host</button></p>
 
                 </div>
             </div>
 
             <div class="row my-4">
-                <h3>Address</h3>
+                <h2>Address</h2>
                 <div class="col-sm-12 custom-text-fix">
                     <p>{{property.propertyAddress1}} {{property.propertyAddress2}}</p>
 
@@ -338,7 +348,7 @@
 
             <div class="row">
                 <div class="col-sm-12 custom-text-fix">
-                    <h3>{{property.propertyPrice|currency}}</h3>
+                    <h2>{{property.propertyPrice|currency}}</h2>
                     <small>per night</small>
 
                 </div>
@@ -480,10 +490,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="text " [(ngModel)]="noOfGuest" placeholder="&#xF2C0; Guest "
+                                <td><input type="text " [(ngModel)]="noOfGuest" placeholder="&#xF2C0; No of Guest "
                                         class="form-control fa " /> </td>
-                                <td><input type="text" placeholder="&#xf1ae; Children" class="form-control fa" />
-                                    <input type="text" placeholder="Pets" class="form-control fa" />
+                                <td><input type="text" [(ngModel)]="noOfChildren" placeholder="&#xf1ae; No of Children"
+                                        class="form-control fa" />
+                                    <input type="text" [(ngModel)]="pets" placeholder="Pets" class="form-control fa" />
                                     <input type="hidden" name="propertyId " ngModel [(ngModel)]="property.id "
                                         class=" form-control fa " />
                                 </td>
@@ -527,7 +538,7 @@
                 <div class="col-md-12 ">
                     <button type="button" [hidden]="!showBookProceedButton"
                         class=" form-control my-2 property-details-button-fix"
-                        routerLink="/booking/{{noOfDays}}/{{checkInDate}}/{{checkOutDate}}/{{property.id}}">Proceed</button>
+                        routerLink="/booking/{{noOfDays}}/{{checkInDate}}/{{checkOutDate}}/{{property.id}}/{{noOfGuest}}/{{noOfChildren}}/{{pets}}">Proceed</button>
                 </div>
             </div>
 

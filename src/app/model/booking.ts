@@ -8,21 +8,24 @@ export class Booking {
     public totalPrice: number;
     public property: Property;
     public user: User;
-    public bookingFirstName: string; 
-    public bookingLastName: string; 
-    public bookingEmailAddress: string; 
-    public bookingPhoneNumber: string; 
-    public bookingPhoneHomeNumber: string; 
-    public bookingCountry: string; 
-    public bookingStreet: string; 
-    public bookingCity: string; 
-    public bookingState: string; 
-    public  bookingZipCode: string; 
-    public noOfDays!:number;
-   
-	
-	constructor() {
-        
+    public bookingFirstName: string;
+    public bookingLastName: string;
+    public bookingEmailAddress: string;
+    public bookingPhoneNumber: string;
+    public bookingPhoneHomeNumber: string;
+    public bookingCountry: string;
+    public bookingStreet: string;
+    public bookingCity: string;
+    public bookingState: string;
+    public bookingZipCode: string;
+    public noOfDays!: number;
+    public noOfGuest: string;
+    public noOfChildren: string;
+    public pets: string;
+
+
+    constructor() {
+
         this.bookingCheckInDate = new Date;
         this.bookingCheckOutDate = new Date;
         this.totalPrice = 0;
@@ -36,6 +39,10 @@ export class Booking {
         this.bookingCity = "";
         this.bookingState = "";
         this.bookingZipCode = "";
-        
+        this.noOfGuest = "";
+        this.noOfChildren = "";
+        this.pets = "";
+
+
     }
 }
