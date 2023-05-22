@@ -14,12 +14,12 @@ import { PropertyService } from 'src/app/service/property.service';
   styleUrls: ['./findspacesthatsuityourstyle.component.css']
 })
 export class FindspacesthatsuityourstyleComponent implements OnInit {
-  
+
   houseType1: string = "house";
   houseType2: string = "bungalows";
   houseType3: string = "cabins";
   houseType4: string = "caravans";
-  houseType5: string = "Condos/Apartments";
+  houseType5: string = "Condos-Apartments";
   houseType6: string = "Cottages";
   houseType7: string = "Farm Houses";
   houseType8: string = "Guest Houses";
@@ -28,19 +28,19 @@ export class FindspacesthatsuityourstyleComponent implements OnInit {
   houseType11: string = "Resorts";
   houseType12: string = "Town Houses";
   houseType13: string = "Villas";
-  
-  
-  
+
+
+
 
   constructor() { }
 
   ngOnInit(): void {
-    
-    
+
+
   }
-  
-   
-  
+
+
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -48,7 +48,7 @@ export class FindspacesthatsuityourstyleComponent implements OnInit {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: [ '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>' ],
+    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
     responsive: {
       0: {
         items: 1

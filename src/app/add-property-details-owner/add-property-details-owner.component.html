@@ -155,9 +155,9 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>The Space</label>
-                            <input type="text" class="form-control my-2" required
-                                placeholder="No of People its Accommodates" ngModel name="theSpace_noOfAccommodation" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Bedrooms" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of People its Accommodates"
+                                ngModel name="theSpace_noOfAccommodation" />
+                            <input type="text" class="form-control my-2" placeholder="No of Bedrooms" ngModel
                                 name="theSpace_noOfBedrooms" />
 
                         </div>
@@ -169,11 +169,11 @@
                             <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
                                 name="description" #descriptionInput="ngModel"></textarea> -->
                             <label>Beds</label>
-                            <input type="text" class="form-control my-2" required placeholder="No of King" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of King" ngModel
                                 name="beds_noOfKing" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Queen" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of Queen" ngModel
                                 name="beds_noOfQueen" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Single" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of Single" ngModel
                                 name="beds_noOfSingle" />
                         </div>
 
@@ -182,11 +182,11 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>Bathrooms</label>
-                            <input type="text" class="form-control my-2" required placeholder="No of Master Bathroom"
-                                ngModel name="bathrooms_noOfMasterBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Private Bathroom"
-                                ngModel name="bathrooms_noOfPrivateBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Half-bath" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of Master Bathroom" ngModel
+                                name="bathrooms_noOfMasterBathroom" />
+                            <input type="text" class="form-control my-2" placeholder="No of Private Bathroom" ngModel
+                                name="bathrooms_noOfPrivateBathroom" />
+                            <input type="text" class="form-control my-2" placeholder="No of Half-bath" ngModel
                                 name="bathrooms_noOfHalfBath" />
                         </div>
 
@@ -354,7 +354,7 @@
 
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
-                            <button type="submit" [disabled]="addNewPropertyForm.invalid || showLoading"
+                            <button type="submit" [disabled]="showLoading"
                                 class="form-control addNewProperty-button-fix">
                                 <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
                                 <span *ngIf="showLoading === true ">Loading...</span> <span

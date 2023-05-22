@@ -254,28 +254,45 @@
 
                     <hr />
                     <div class="row my-2">
-                        <h3><b>The space</b></h3>
+                        <h3
+                            [hidden]="property.theSpace_noOfAccommodation.length===0 && property.theSpace_noOfBedrooms.length===0">
+                            <b>The space</b>
+                        </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p>Acccomodates: {{property.theSpace_noOfAccommodation}}</p>
+                            <p [hidden]="property.theSpace_noOfAccommodation.length===0">Acccomodates:
+                                {{property.theSpace_noOfAccommodation}}</p>
                             <!--<p>Bathrooms: {{property.theSpace_noOfBathrooms}}</p> -->
-                            <p>Bedrooms: {{property.theSpace_noOfBedrooms}}</p>
+                            <p [hidden]="property.theSpace_noOfBedrooms.length===0">Bedrooms:
+                                {{property.theSpace_noOfBedrooms}}</p>
                         </div>
 
-                        <h3><b>Beds</b></h3>
+                        <h3
+                            [hidden]="property.beds_noOfSingle.length===0 && property.beds_noOfQueen.length===0 && property.beds_noOfSingle.length===0">
+                            <b>Beds</b>
+                        </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p>King: {{property.beds_noOfKing}}</p>
-                            <p>Queen: {{property.beds_noOfQueen}}</p>
-                            <p>Single: {{property.beds_noOfSingle}}</p>
+                            <p [hidden]="property.beds_noOfKing.length===0">King: {{property.beds_noOfKing}}</p>
+                            <p [hidden]="property.beds_noOfQueen.length===0">Queen: {{property.beds_noOfQueen}}</p>
+                            <p [hidden]="property.beds_noOfSingle.length===0">Single: {{property.beds_noOfSingle}}</p>
                         </div>
 
-                        <h3><b>Bathrooms</b></h3>
+                        <h3
+                            [hidden]="property.bathrooms_noOfMasterBathroom.length===0 && property.bathrooms_noOfPrivateBathroom.length===0 && property.bathrooms_noOfHalfBath.length===0">
+                            <b>Bathrooms</b>
+                        </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p>Master Bathroom: {{property.bathrooms_noOfMasterBathroom}}</p>
-                            <p>Private Bathroom: {{property.bathrooms_noOfPrivateBathroom}}</p>
-                            <p>Half-bath: {{property.bathrooms_noOfHalfBath}}</p>
+                            <p [hidden]="property.bathrooms_noOfMasterBathroom.length===0">Master Bathroom:
+                                {{property.bathrooms_noOfMasterBathroom}}</p>
+                            <p [hidden]="property.bathrooms_noOfPrivateBathroom.length===0">Private Bathroom:
+                                {{property.bathrooms_noOfPrivateBathroom}}</p>
+                            <p [hidden]="property.bathrooms_noOfHalfBath.length===0">Half-bath:
+                                {{property.bathrooms_noOfHalfBath}}</p>
                         </div>
 
-                        <h3><b>Shared Spaces</b></h3>
+                        <h3
+                            [hidden]="!property.sharedSpaces_kitchen && !property.sharedSpaces_laundryRoom && !property.sharedSpaces_outDoorParking && !property.sharedSpaces_garage && !property.sharedSpaces_balcony && !property.sharedSpaces_backyard">
+                            <b>Shared Spaces</b>
+                        </h3>
                         <div class="col-sm-6 custom-text-fix">
                             <p [hidden]="!property.sharedSpaces_kitchen">Kitchen</p>
                             <p [hidden]="!property.sharedSpaces_laundryRoom">Laundry Room</p>
@@ -329,8 +346,8 @@
                             routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}" style="color:inherit;">
                             {{property.propertyOwner.firstname}}
                             {{property.propertyOwner.lastname}} </a> </h2>
-                    <small class="custom-text-fix">
-                        Joined: {{property.propertyOwner.dateJoined | date:'medium'}}</small>
+                    <!--  <small class="custom-text-fix">
+                        Joined: {{property.propertyOwner.dateJoined | date:'medium'}}</small> -->
 
                     <p><button type="button" class="my-2 property-details-button-fix"
                             (click)="onClickContactPropertyOwner()">Contact Host</button></p>
@@ -361,15 +378,15 @@
                     <p>Cancellation policy</p>
                     <hr />
                     <p class="custom-text-fix">
-                        <b>100% refund of booking amount payable</b> if you cancel on or before Seven days after
+                        <b>100% refund of booking amount payable</b> if you cancel on or before 30 days after
                         booking.
                     </p>
                     <p class="custom-text-fix">
-                        <b>50% refund of booking amount payable</b> (minus the taxes and service fee) if you cancel at
-                        least 7 days before check-in.
+                        <b>80% refund of booking amount payable</b> if you cancel at
+                        least 5 days before check-in date.
                     </p>
                     <p class="custom-text-fix">
-                        <b>No refund</b> if you cancel Seven (7) days before check-in.
+                        <b>No refund</b> if you cancel Four (4) days before check-in date.
                     </p>
                     <p class="custom-text-fix">Please be assured you are satisfied with the cancellation Policy for this
                         booking, which will also apply if you have to cancel due to Covid-19 or any related issues.</p>
@@ -401,27 +418,8 @@
                             <b>Check out before:</b> 10:00 AM
                         </div>
                     </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-6 custom-text-fix">
-                            <ul>
-                                <li>Children allowed</li>
-                                <li>Pets allowed<br />Friendly dogs happily welcome!
-                                </li>
-                                <li>No events</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 custom-text-fix">
-                            <ul>
-                                <li>Smoking allowed<br />
-                                </li>
 
-                                <li>Minimum age of primary renter: <b>25</b><br /> <small>Families
-                                        only. No students/student groups.</small>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-sm-12"></div>
 
@@ -491,9 +489,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="text " [(ngModel)]="noOfGuest" placeholder="&#xF2C0; No of Guest "
+                                <td><input type="text " (ngModel)="noOfGuest" placeholder="&#xF2C0; No of Guest "
                                         class="form-control fa " /> </td>
-                                <td><input type="text" [(ngModel)]="noOfChildren" placeholder="&#xf1ae; No of Children"
+                                <td><input type="text" (ngModel)="noOfChildren" placeholder="&#xf1ae; No of Children"
                                         class="form-control fa" />
                                     <input type="text" [(ngModel)]="pets" placeholder="Pets" class="form-control fa" />
                                     <input type="hidden" name="propertyId " ngModel [(ngModel)]="property.id "
