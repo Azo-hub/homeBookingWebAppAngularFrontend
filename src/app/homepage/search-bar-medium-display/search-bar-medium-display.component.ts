@@ -13,15 +13,16 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
   styleUrls: ['./search-bar-medium-display.component.css']
 })
 export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
-  
-  searchBarMediumCheckInDate : Date = new Date();
-  searchBarMediumCheckOutDate : Date = new Date();
-  noOfGuest:string = ""; 
-  searchBarMediumShowLoading : boolean = false;
+
+  searchBarMediumCheckInDate: any;
+  searchBarMediumCheckOutDate: any;
+  noOfGuest: string = "";
+  searchBarMediumShowLoading: boolean = false;
   private subscriptions: Subscription[] = [];
-  
-  
-  constructor(private propertyService:PropertyService, private authenticationService:AuthenticationService,
+  currentDate: Date = new Date();
+
+
+  constructor(private propertyService: PropertyService, private authenticationService: AuthenticationService,
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -30,32 +31,32 @@ export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
 
 
 
-  onCheckDateAvailabilityMedium():void {
-    if(!this.authenticationService.isUserLoggedIn()) {
+  onCheckDateAvailabilityMedium(): void {
+    if (!this.authenticationService.isUserLoggedIn()) {
       this.sendNotification(NotificationType.ERROR, "You need to login to continue");;
     } else {
-    
-    this.searchBarMediumShowLoading = true;
-    const formData = new FormData();
-    formData.append("checkInDate" ,this.searchBarMediumCheckInDate.toString());
-    formData.append("checkOutDate" ,this.searchBarMediumCheckOutDate.toString());
-   // formData.append("propertyId" , this.property.id.toString());
-   
-    this.subscriptions.push(
-      this.propertyService.checkDateAvailability(formData).subscribe(
-        (response: CustomHttpResponse) => {
-          this.sendNotification(NotificationType.SUCCESS, response.message);
-          this.searchBarMediumShowLoading = false;
-         
-        },
-        (error:HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, error.error.message);
-          this.searchBarMediumShowLoading = false;
-        }
-        
-       
-      )
-    );
+
+      this.searchBarMediumShowLoading = true;
+      const formData = new FormData();
+      formData.append("checkInDate", this.searchBarMediumCheckInDate);
+      formData.append("checkOutDate", this.searchBarMediumCheckOutDate);
+      // formData.append("propertyId" , this.property.id.toString());
+
+      this.subscriptions.push(
+        this.propertyService.checkDateAvailability(formData).subscribe(
+          (response: CustomHttpResponse) => {
+            this.sendNotification(NotificationType.SUCCESS, response.message);
+            this.searchBarMediumShowLoading = false;
+
+          },
+          (error: HttpErrorResponse) => {
+            this.sendNotification(NotificationType.ERROR, error.error.message);
+            this.searchBarMediumShowLoading = false;
+          }
+
+
+        )
+      );
 
     }
   }
@@ -66,8 +67,8 @@ export class SearchBarMediumDisplayComponent implements OnInit, OnDestroy {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {
-      this.notificationService.notify(notificationType, 
-                          "An error occurred. Please Try Again Later");
+      this.notificationService.notify(notificationType,
+        "An error occurred. Please Try Again Later");
     }
   }
 

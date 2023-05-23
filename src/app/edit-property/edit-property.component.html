@@ -139,9 +139,9 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>The Space</label>
-                            <input type="text" class="form-control my-2" required placeholder="Accommodates" ngModel
+                            <input type="text" class="form-control my-2" placeholder="Accommodates" ngModel
                                 [ngModel]="property.theSpace_noOfAccommodation" name="noOfAccommodation" />
-                            <input type="text" class="form-control my-2" required placeholder="No of Bedrooms" ngModel
+                            <input type="text" class="form-control my-2" placeholder="No of Bedrooms" ngModel
                                 [ngModel]="property.theSpace_noOfBedrooms" name="noOfBedrooms" />
 
                         </div>
@@ -153,11 +153,11 @@
                             <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
                                                     name="description" #descriptionInput="ngModel"></textarea> -->
                             <label>Beds</label>
-                            <input type="text" class="form-control my-2" required placeholder="King"
+                            <input type="text" class="form-control my-2" placeholder="King"
                                 [ngModel]="property.beds_noOfKing" ngModel name="noOfKing" />
-                            <input type="text" class="form-control my-2" required placeholder="Queen"
+                            <input type="text" class="form-control my-2" placeholder="Queen"
                                 [ngModel]="property.beds_noOfQueen" ngModel name="noOfQueen" />
-                            <input type="text" class="form-control my-2" required placeholder="Single"
+                            <input type="text" class="form-control my-2" placeholder="Single"
                                 [ngModel]="property.beds_noOfSingle" ngModel name="noOfSingle" />
                         </div>
 
@@ -166,11 +166,11 @@
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
                             <label>Bathrooms</label>
-                            <input type="text" class="form-control my-2" required placeholder="Master Bathroom" ngModel
+                            <input type="text" class="form-control my-2" placeholder="Master Bathroom" ngModel
                                 [ngModel]="property.bathrooms_noOfMasterBathroom" name="noOfMasterBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="Private Bathroom" ngModel
+                            <input type="text" class="form-control my-2" placeholder="Private Bathroom" ngModel
                                 [ngModel]="property.bathrooms_noOfPrivateBathroom" name="noOfPrivateBathroom" />
-                            <input type="text" class="form-control my-2" required placeholder="Half-bath" ngModel
+                            <input type="text" class="form-control my-2" placeholder="Half-bath" ngModel
                                 [ngModel]="property.bathrooms_noOfHalfBath" name="noOfHalfBath" />
                         </div>
 
@@ -181,20 +181,20 @@
                             <label class="my-2">Shared Spaces</label>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Kitchen" ngModel name="Kitchen"
-                                    [ngModel]="property.sharedSpaces_kitchen" id="kitchenCheckbox" />
+                                    [(ngModel)]="property.sharedSpaces_kitchen" id="kitchenCheckbox" />
                                 <label class="form-check-label" for="kitchenCheckbox">Kitchen</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel
-                                    name="laudryRoom" [ngModel]="property.sharedSpaces_laundryRoom"
+                                    name="laudryRoom" [(ngModel)]="property.sharedSpaces_laundryRoom"
                                     id="laundryRoomCheckbox" />
                                 <label class="form-check-label" for="laundryRoomCheckbox">Laudry Room</label>
                             </div>
 
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel
-                                    name="outDoorParking" [ngModel]="property.sharedSpaces_outDoorParking"
+                                    name="outDoorParking" [(ngModel)]="property.sharedSpaces_outDoorParking"
                                     id="outDoorParkingCheckbox" /><label class="form-check-label"
                                     for="outDoorParkingCheckbox">Outdoor
                                     Parking</label>
@@ -352,7 +352,7 @@
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
-                            <button type="submit" [disabled]="editPropertyForm.invalid || showLoading"
+                            <button type="submit" [disabled]="showLoading"
                                 class="form-control addNewProperty-button-fix">
                                 <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
                                 <span *ngIf="showLoading === true ">Loading...</span> <span
