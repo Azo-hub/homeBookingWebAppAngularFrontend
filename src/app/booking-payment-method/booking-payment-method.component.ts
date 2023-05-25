@@ -37,6 +37,14 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   bookingStreet: any;
   bookingCity: any;
   bookingZipCode: any;
+  showNewBookingSection: boolean;
+  showPaymentMethodSection: boolean;
+  showCreditCardPaymentInfoError: boolean;
+  paypal: string = "PayPal";
+  zelle: string = "Zelle";
+  cashApp: string = "CashApp"
+  bookingPaymentMethod: string;
+
 
 
   constructor(private notificationService: NotificationService, private router: Router,
@@ -55,6 +63,19 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   }
 
 
+  onAddBookingPaymentInfo(paymentMethodFrom: string): void {
+    this.showPaymentMethodSection = true;
+    this.bookingPaymentMethod = paymentMethodFrom;
+    this.showNewBookingSection = true;
+
+  }
+
+  onAddBookingCreditCardPaymentInfo(): void {
+    this.showCreditCardPaymentInfoError = true;
+    this.sendNotification(NotificationType.ERROR, `Please check your card
+                        details and retry again or you try alternative method of payment`);
+  }
+
   public onBookingPaymentForm(): void {
     this.showLoading = true;
 
@@ -67,13 +88,13 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
         this.bookingPhoneNumber, this.bookingCountry, this.bookingState, this.bookingStreet,
         this.bookingCity, this.bookingZipCode,
         this.bookingCheckInDate, this.bookingCheckOutDate, this.bookingNoOfDaysFromUrl,
-        this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets);
+        this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets, this.bookingPaymentMethod);
 
     this.subscriptions.push(
 
       this.bookingService.newBooking(formData).subscribe(
         (response: Booking) => {
-
+          this.showNewBookingSection = true;
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property Booked Successfully! Check your email for follow-up messages.`);
           this.router.navigateByUrl(`/orderDetails/${response.id}`);
