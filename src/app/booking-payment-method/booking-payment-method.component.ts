@@ -45,6 +45,8 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   cashApp: string = "CashApp";
   venmo: string = "Venmo";
   bookingPaymentMethod: string;
+  showBillingAddressSection: boolean = false;
+  hideShowBillingAddressButton: boolean;
 
 
 
@@ -68,6 +70,12 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
     this.showPaymentMethodSection = true;
     this.bookingPaymentMethod = paymentMethodFrom;
     this.showNewBookingSection = true;
+
+  }
+
+  onAddCreditCardBillingAddressInfo(): void {
+    this.showBillingAddressSection = true;
+    this.hideShowBillingAddressButton = true;
 
   }
 
