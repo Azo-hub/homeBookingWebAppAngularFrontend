@@ -145,21 +145,27 @@
 
             <div class="row mt-3 mb-5 mx-2 gy-3">
 
-                <div class="col-sm-4" align="center">
+                <div class="col-sm-3" align="center">
                     <button type="button" class="btn booking-payment-method-btn-fix" style="color:inherit;"
                         (click)="onAddBookingPaymentInfo(paypal)"><span
                             class="fa fa-paypal"></span>&nbsp;{{paypal}}</button>
                 </div>
-                <div class="col-sm-4" align="center">
+                <div class="col-sm-3" align="center">
                     <button class="btn booking-payment-method-btn-fix" style="color:inherit;"
                         (click)="onAddBookingPaymentInfo(zelle)"><img src="/assets/customImage/Zelle_(Icon).webp"
                             height="16px" width="20px" />&nbsp;{{zelle}}</button>
                 </div>
-                <div class="col-sm-4" align="center">
+                <div class="col-sm-3" align="center">
                     <button class="btn booking-payment-method-btn-fix" style="color:inherit;"
                         (click)="onAddBookingPaymentInfo(cashApp)" value="Cash App"><img
                             src="/assets/customImage/cashAppIcon.jpeg" height="15px"
                             width="20px" />&nbsp;{{cashApp}}</button>
+                </div>
+                <div class="col-sm-3" align="center">
+                    <button class="btn booking-payment-method-btn-fix" style="color:inherit;"
+                        (click)="onAddBookingPaymentInfo(cashApp)" value="Venmo"><img
+                            src="/assets/customImage/venmo_icon.webp" height="15px"
+                            width="20px" />&nbsp;{{venmo}}</button>
                 </div>
             </div>
 

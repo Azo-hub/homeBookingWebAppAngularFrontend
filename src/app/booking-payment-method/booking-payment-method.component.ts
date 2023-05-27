@@ -42,7 +42,8 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   showCreditCardPaymentInfoError: boolean;
   paypal: string = "PayPal";
   zelle: string = "Zelle";
-  cashApp: string = "CashApp"
+  cashApp: string = "CashApp";
+  venmo: string = "Venmo";
   bookingPaymentMethod: string;
 
 
