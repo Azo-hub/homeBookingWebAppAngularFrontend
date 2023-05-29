@@ -12,55 +12,55 @@ import { Review } from '../model/review';
 })
 export class PropertyService {
   public host = environment.apiUrl;
-  
+
   constructor(private http: HttpClient) { }
-  
+
   newProperty(property: Property): Observable<HttpResponse<Property>> {
-    return this.http.post<Property> 
-    (`${this.host}/newProperty`, property, {observe: 'response'});
+    return this.http.post<Property>
+      (`${this.host}/newProperty`, property, { observe: 'response' });
   }
 
-  editProperty(formData: FormData): Observable<HttpResponse<Property>> {
-    return this.http.post<Property> 
-    (`${this.host}/editProperty`, formData, {observe: 'response'});
+  editProperty(property: Property): Observable<HttpResponse<Property>> {
+    return this.http.post<Property>
+      (`${this.host}/editProperty`, property, { observe: 'response' });
   }
-  
-  public getProperties(formData:FormData) : Observable<Property[]> {
-    return this.http.post<Property[]>(`${this.host}/allPropertyByCategory`,formData);
+
+  public getProperties(formData: FormData): Observable<Property[]> {
+    return this.http.post<Property[]>(`${this.host}/allPropertyByCategory`, formData);
   }
 
   getAllProperties(): Observable<Property[]> {
     return this.http.get<Property[]>(`${this.host}/allProperty`);
   }
-  
-  getPropertyById(formData:FormData) : Observable<Property> {
-    return this.http.post<Property>(`${this.host}/eachPropertyById`,formData);
-  }
-  
-  checkPropertyAvailability(formData:FormData): Observable<CustomHttpResponse> {
-       return this.http.post<CustomHttpResponse>
-        (`${this.host}/checkPropertyAvailability`,formData);
+
+  getPropertyById(formData: FormData): Observable<Property> {
+    return this.http.post<Property>(`${this.host}/eachPropertyById`, formData);
   }
 
-  checkDateAvailability(formData:FormData): Observable<CustomHttpResponse> {
+  checkPropertyAvailability(formData: FormData): Observable<CustomHttpResponse> {
     return this.http.post<CustomHttpResponse>
-     (`${this.host}/checkDateAvailability`,formData);
+      (`${this.host}/checkPropertyAvailability`, formData);
   }
 
-  getPropertiesByOwner(formData:FormData) : Observable<Property[]> {
-    return this.http.post<Property[]>(`${this.host}/allPropertyByOwner`,formData);
+  checkDateAvailability(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>
+      (`${this.host}/checkDateAvailability`, formData);
+  }
+
+  getPropertiesByOwner(formData: FormData): Observable<Property[]> {
+    return this.http.post<Property[]>(`${this.host}/allPropertyByOwner`, formData);
   }
 
   deleteProperty(formData: FormData): Observable<CustomHttpResponse> {
-    return this.http.post<CustomHttpResponse>(`${this.host}/deleteProperty`,formData);
+    return this.http.post<CustomHttpResponse>(`${this.host}/deleteProperty`, formData);
   }
 
   addReview(formData: FormData): Observable<CustomHttpResponse> {
-    return this.http.post<CustomHttpResponse>(`${this.host}/addReview`,formData);
+    return this.http.post<CustomHttpResponse>(`${this.host}/addReview`, formData);
   }
-  
+
   addCheckInCheckOutDates(formData: FormData): Observable<CustomHttpResponse> {
-    return this.http.post<CustomHttpResponse>(`${this.host}/addDates`,formData);
+    return this.http.post<CustomHttpResponse>(`${this.host}/addDates`, formData);
   }
 
   getReviewsByProperty(formData: FormData): Observable<Review[]> {
@@ -75,31 +75,31 @@ export class PropertyService {
   public addPropertiesToLocalCacheAdmin(properties: Property[]): void {
     localStorage.setItem('Allproperties', JSON.stringify(properties));
   }
-  
-  
+
+
   public getPropertiesFromLocalCache(): Property[] {
-    if(localStorage.getItem('properties')) {
-      
+    if (localStorage.getItem('properties')) {
+
       return JSON.parse(localStorage.getItem('properties') || '');
-      
+
     }
-    
+
     return [];
-    
+
   }
 
   public getPropertiesFromLocalCacheAdmin(): Property[] {
-    if(localStorage.getItem('Allproperties')) {
-      
+    if (localStorage.getItem('Allproperties')) {
+
       return JSON.parse(localStorage.getItem('Allproperties') || '');
-      
+
     }
-    
+
     return [];
-    
+
   }
-  
- 
+
+
 
 
 }

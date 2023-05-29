@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export class Property {
-    public id!: number;
+    public id: number;
     public name: string;
     public propertyType: string;
     public propertyPrice: number;
@@ -52,7 +52,7 @@ export class Property {
 
 
     constructor() {
-
+        this.id=0;
         this.name = "";
         this.propertyType = "";
         this.propertyPrice = 0;

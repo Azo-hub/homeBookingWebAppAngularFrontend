@@ -255,37 +255,37 @@
                     <hr />
                     <div class="row my-2">
                         <h3
-                            *ngIf="property.theSpace_noOfAccommodation.length==0 && property.theSpace_noOfBedrooms.length==0">
+                            [hidden]="property.theSpace_noOfAccommodation.length==0 && property.theSpace_noOfBedrooms.length==0">
                             <b>The space</b>
                         </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p *ngIf="property.theSpace_noOfAccommodation.length==0">Acccomodates:
+                            <p [hidden]="property.theSpace_noOfAccommodation.length == 0">Acccomodates:
                                 {{property.theSpace_noOfAccommodation}}</p>
-                            <!--<p>Bathrooms: {{property.theSpace_noOfBathrooms}}</p> -->
-                            <p *ngIf="property.theSpace_noOfBedrooms.length==0">Bedrooms:
+
+                            <p [hidden]="property.theSpace_noOfBedrooms.length ==0">Bedrooms:
                                 {{property.theSpace_noOfBedrooms}}</p>
                         </div>
 
                         <h3
-                            *ngIf="property.beds_noOfSingle.length==0 && property.beds_noOfQueen.length==0 && property.beds_noOfSingle.length==0">
+                            [hidden]="property.beds_noOfSingle.length==0 && property.beds_noOfQueen.length==0 && property.beds_noOfSingle.length==0">
                             <b>Beds</b>
                         </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p *ngIf="property.beds_noOfKing.length==0">King: {{property.beds_noOfKing}}</p>
-                            <p *ngIf="property.beds_noOfQueen.length==0">Queen: {{property.beds_noOfQueen}}</p>
-                            <p *ngIf="property.beds_noOfSingle.length==0">Single: {{property.beds_noOfSingle}}</p>
+                            <p [hidden]="property.beds_noOfKing.length==0">King: {{property.beds_noOfKing}}</p>
+                            <p [hidden]="property.beds_noOfQueen.length==0">Queen: {{property.beds_noOfQueen}}</p>
+                            <p [hidden]="property.beds_noOfSingle.length==0">Single: {{property.beds_noOfSingle}}</p>
                         </div>
 
                         <h3
-                            *ngIf="property.bathrooms_noOfMasterBathroom.length==0 && property.bathrooms_noOfPrivateBathroom.length==0 && property.bathrooms_noOfHalfBath.length==0">
+                            [hidden]="property.bathrooms_noOfMasterBathroom.length==0 && property.bathrooms_noOfPrivateBathroom.length==0 && property.bathrooms_noOfHalfBath.length==0">
                             <b>Bathrooms</b>
                         </h3>
                         <div class="col-sm-12 custom-text-fix">
-                            <p *ngIf="property.bathrooms_noOfMasterBathroom.length==0">Master Bathroom:
+                            <p [hidden]="property.bathrooms_noOfMasterBathroom.length==0">Master Bathroom:
                                 {{property.bathrooms_noOfMasterBathroom}}</p>
-                            <p *ngIf="property.bathrooms_noOfPrivateBathroom.length == 0">Private Bathroom:
+                            <p [hidden]="property.bathrooms_noOfPrivateBathroom.length == 0">Private Bathroom:
                                 {{property.bathrooms_noOfPrivateBathroom}}</p>
-                            <p *ngIf="property.bathrooms_noOfHalfBath.length==0">Half-bath:
+                            <p [hidden]="property.bathrooms_noOfHalfBath.length==0">Half-bath:
                                 {{property.bathrooms_noOfHalfBath}}</p>
                         </div>
 
