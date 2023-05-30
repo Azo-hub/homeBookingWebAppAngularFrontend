@@ -4,3 +4,13 @@
     border-radius: 25px;
     padding: 5px 20px 5px 20px;
 }
+
+.password-input-fix {
+    border-width: 1px 0px 1px 1px;
+}
+
+.password-input-span-fix {
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
+    background: inherit;
+}

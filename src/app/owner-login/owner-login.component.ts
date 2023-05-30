@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Component, OnInit , OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderType } from '../enum/header-type';
@@ -15,26 +15,34 @@ import { NotificationService } from '../service/notification.service';
 })
 export class OwnerLoginComponent implements OnInit, OnDestroy {
   showLoading: boolean = false;
-  private subscriptions: Subscription [] = [];
+  private subscriptions: Subscription[] = [];
+  hide: boolean = true;
+  showEye: boolean = false;
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    if(this.authenticationService.isUserLoggedIn()) {
+    if (this.authenticationService.isUserLoggedIn()) {
       this.router.navigateByUrl('/');
     } else {
       this.router.navigateByUrl('/login');
     }
   }
-  
+
+
+  showPassword(): void {
+    this.hide = !this.hide;
+    this.showEye = !this.showEye;
+  }
+
   public onLogin(user: User): void {
     this.showLoading = true;
-    
+
     this.subscriptions.push(
       this.authenticationService.login(user).subscribe(
         (response: HttpResponse<User>) => {
-          
+
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token || "");
           this.authenticationService.addUserToLocalCache(response.body || null);
@@ -43,24 +51,24 @@ export class OwnerLoginComponent implements OnInit, OnDestroy {
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
-          
+
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
     );
   }
-  
+
   private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {
-      this.notificationService.notify(notificationType, 
-                          "An error occurred. Please Try Again Later");
+      this.notificationService.notify(notificationType,
+        "An error occurred. Please Try Again Later");
     }
   }
-  
-  
+
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
