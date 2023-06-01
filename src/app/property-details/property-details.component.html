@@ -346,8 +346,8 @@
                             routerLink="/propertyOwnerInfo/{{property.propertyOwner.username}}" style="color:inherit;">
                             {{property.propertyOwner.firstname}}
                             {{property.propertyOwner.lastname}} </a> </h2>
-                    <!--  <small class="custom-text-fix">
-                        Joined: {{property.propertyOwner.dateJoined | date:'medium'}}</small> -->
+                    <small class="custom-text-fix">
+                        Joined: {{property.propertyOwner.dateJoined | date:'medium'}}</small>
 
                     <p><button type="button" class="my-2 property-details-button-fix"
                             (click)="onClickContactPropertyOwner()">Contact Host</button></p>
@@ -907,6 +907,15 @@
 
                     </owl-carousel-o>
 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">
+                    <a>Add a review</a>
                 </div>
             </div>
 

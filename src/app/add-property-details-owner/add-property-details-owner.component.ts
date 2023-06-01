@@ -185,45 +185,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
   }
 
 
-  onPushReview(reviewForm: NgForm):void {
-   /* this.reviews.push({content:reviewForm.value.reviewContent, 
-                        author:reviewForm.value.reviewAuthor, 
-                        location:reviewForm.value.reviewLocation}); */
-    this.showLoading = true;
-
-    const formData = new FormData();
-
-    formData.append("reviewContent", reviewForm.value.reviewContent);
-    formData.append("reviewAuthor", reviewForm.value.reviewAuthor);
-    formData.append("reviewLocation", reviewForm.value.reviewLocation);
-    formData.append("propertyId", this.propertyId.toString());
-    console.log(reviewForm.value.reviewContent);
-    console.log(reviewForm.value.reviewAuthor);
-    console.log(reviewForm.value.reviewLocation);
-
-    this.subscriptions.push(
-      this.propertyService.addReview(formData).subscribe(
-        (response: CustomHttpResponse) => {
-          this.sendNotification(NotificationType.SUCCESS, response.message);
-          this.showLoading = false;
-          this.getAllReviewsByProperty(this.propertyId);
-          this.showLoadingDone = true;
-          /*this.router.navigateByUrl(`/propertydetails/${this.propertyId}`);*/
-        },
-        (error:HttpErrorResponse) => {
-          this.sendNotification(NotificationType.WARNING, error.error.message);
-          this.showLoading = false;
-        }
-
-        
-
-      )
-    );
-
-    reviewForm.reset();
-    
-  }
-
+  
   getAllReviewsByProperty(propertyId:number):void {
     const formData = new FormData();
     formData.append("propertyId", propertyId.toString());
