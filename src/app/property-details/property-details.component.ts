@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { PropertyService } from '../service/property.service';
 import { DatePipe } from '@angular/common';
 import { Review } from '../model/review';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { AuthenticationService } from '../service/authentication.service';
 
 
 
@@ -42,14 +43,11 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   currentDate: Date = new Date();
 
 
-
-
-  constructor(private activatedRoute: ActivatedRoute,
-    private propertyService: PropertyService, private datePipe: DatePipe,
-    private router: Router, private notificationService: NotificationService) { }
+  constructor(private propertyService: PropertyService, private authenticationService: AuthenticationService,
+    private router: Router, private activatedRoute: ActivatedRoute, private notificationService: NotificationService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
-
     this.propertyId = this.activatedRoute.snapshot.paramMap.get("id");
 
     this.getEachProperty();
@@ -126,13 +124,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           const d2 = new Date(this.checkInDate);
           //this.noOfNight = +this.checkOutDate - +this.checkInDate;
           this.noOfNight = d1.getTime() - d2.getTime();
-          this.noOfDays = Math.ceil(this.noOfNight / (1000 * 3600 * 24));
-          this.showPropertyPricesTable = true;
-          this.showBookProceedButton = true;
-        },
-        (error: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, error.error.message);
-          this.showLoading = false;
+
         }
 
 

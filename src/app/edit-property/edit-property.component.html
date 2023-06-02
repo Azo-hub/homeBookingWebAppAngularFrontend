@@ -654,401 +654,415 @@
                             <div class="col-sm-7">
                                 <div class="row my-2 mx-1">
                                     <div class="col-sm-12">
+
                                         <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_14{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                            (change)="onEditFileSelected14($any($event).target.files[0])"
+                                            name="propertyImage14" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading14"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture14showLoading">Uploading...</span>
+                                        <span *ngIf="picture14showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected14($any($event).target.files[0])"
-                                    name="propertyImage14" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading14"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture14showLoading">Uploading...</span>
-                                <span *ngIf="picture14showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_15{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_15{{property.name}}{{property.id}}.jpg"
+                                                    class="img-fluid rounded-start" alt="Property Image">
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control"
+                                            (change)="onEditFileSelected15($any($event).target.files[0])"
+                                            name="propertyImage15" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading15"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture15showLoading">Uploading...</span>
+                                        <span *ngIf="picture15showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected15($any($event).target.files[0])"
-                                    name="propertyImage15" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading15"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture15showLoading">Uploading...</span>
-                                <span *ngIf="picture15showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_16{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_16{{property.name}}{{property.id}}.jpg"
+                                                    class="img-fluid rounded-start" alt="Property Image">
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control"
+                                            (change)="onEditFileSelected16($any($event).target.files[0])"
+                                            name="propertyImage16" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading16"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture16showLoading">Uploading...</span>
+                                        <span *ngIf="picture16showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected16($any($event).target.files[0])"
-                                    name="propertyImage16" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading16"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture16showLoading">Uploading...</span>
-                                <span *ngIf="picture16showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_17{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_17{{property.name}}{{property.id}}.jpg"
+                                                    class="img-fluid rounded-start" alt="Property Image">
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control"
+                                            (change)="onEditFileSelected17($any($event).target.files[0])"
+                                            name="propertyImage17" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading17"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture17showLoading">Uploading...</span>
+                                        <span *ngIf="picture17showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected17($any($event).target.files[0])"
-                                    name="propertyImage17" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading17"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture17showLoading">Uploading...</span>
-                                <span *ngIf="picture17showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_18{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_18{{property.name}}{{property.id}}.jpg"
+                                                    class="img-fluid rounded-start" alt="Property Image">
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control"
+                                            (change)="onEditFileSelected18($any($event).target.files[0])"
+                                            name="propertyImage18" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading18"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture18showLoading">Uploading...</span>
+                                        <span *ngIf="picture18showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected18($any($event).target.files[0])"
-                                    name="propertyImage18" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading18"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture18showLoading">Uploading...</span>
-                                <span *ngIf="picture18showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_19{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_19{{property.name}}{{property.id}}.jpg"
+                                                    class="img-fluid rounded-start" alt="Property Image">
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control"
+                                            (change)="onEditFileSelected19($any($event).target.files[0])"
+                                            name="propertyImage19" />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading19"></i>&nbsp;&nbsp;
+                                        <span *ngIf="picture19showLoading">Uploading...</span>
+                                        <span *ngIf="picture19showLoading === false">Completed</span>
                                     </div>
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected19($any($event).target.files[0])"
-                                    name="propertyImage19" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading19"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture19showLoading">Uploading...</span>
-                                <span *ngIf="picture19showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_20{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                                <div class="row my-3 gy-3 mx-1">
+                                    <div class="col-sm-7">
+                                        <div class="row my-2 mx-1">
+                                            <div class="col-sm-12">
+                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_20{{property.name}}{{property.id}}.jpg"
+                                                    (change)="onEditFileSelected20($any($event).target.files[0])"
+                                                    name="propertyImage20" />
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <i class="fa fa-spinner fa-spin "
+                                                    *ngIf="pictureShowLoading20"></i>&nbsp;&nbsp;
+                                                <span *ngIf="picture20showLoading">Uploading...</span>
+                                                <span *ngIf="picture20showLoading === false">Completed</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row my-3 gy-3 mx-1">
+                                            <div class="col-sm-7">
+                                                <div class="row my-2 mx-1">
+                                                    <div class="col-sm-12">
+                                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_21{{property.name}}{{property.id}}.jpg"
+                                                            class="img-fluid rounded-start" alt="Property Image">
+                                                    </div>
+                                                </div>
+                                                <input type="file" class="form-control"
+                                                    (change)="onEditFileSelected21($any($event).target.files[0])"
+                                                    name="propertyImage21" />
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <i class="fa fa-spinner fa-spin "
+                                                    *ngIf="pictureShowLoading21"></i>&nbsp;&nbsp;
+                                                <span *ngIf="picture21showLoading">Uploading...</span>
+                                                <span *ngIf="picture21showLoading === false">Completed</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row my-3 gy-3 mx-1">
+                                            <div class="col-sm-7">
+                                                <div class="row my-2 mx-1">
+                                                    <div class="col-sm-12">
+
+                                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_22{{property.name}}{{property.id}}.jpg"
+                                                            (change)="onEditFileSelected22($any($event).target.files[0])"
+                                                            name="propertyImage22" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading22"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture22showLoading">Uploading...</span>
+                                                        <span *ngIf="picture22showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_23{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected23($any($event).target.files[0])"
+                                                            name="propertyImage23" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading23"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture23showLoading">Uploading...</span>
+                                                        <span *ngIf="picture23showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_24{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected24($any($event).target.files[0])"
+                                                            name="propertyImage24" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading24"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture24showLoading">Uploading...</span>
+                                                        <span *ngIf="picture24showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_25{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected25($any($event).target.files[0])"
+                                                            name="propertyImage25" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading25"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture25showLoading">Uploading...</span>
+                                                        <span *ngIf="picture25showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_26{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected26($any($event).target.files[0])"
+                                                            name="propertyImage26" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading26"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture26showLoading">Uploading...</span>
+                                                        <span *ngIf="picture26showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_27{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected27($any($event).target.files[0])"
+                                                            name="propertyImage27" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading27"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture27showLoading">Uploading...</span>
+                                                        <span *ngIf="picture27showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_28{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected28($any($event).target.files[0])"
+                                                            name="propertyImage28" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading28"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture28showLoading">Uploading...</span>
+                                                        <span *ngIf="picture28showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_29{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected29($any($event).target.files[0])"
+                                                            name="propertyImage29" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading29"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture29showLoading">Uploading...</span>
+                                                        <span *ngIf="picture29showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-3 gy-3 mx-1">
+                                                    <div class="col-sm-7">
+                                                        <div class="row my-2 mx-1">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_30{{property.name}}{{property.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" class="form-control"
+                                                            (change)="onEditFileSelected30($any($event).target.files[0])"
+                                                            name="propertyImage30" />
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <i class="fa fa-spinner fa-spin "
+                                                            *ngIf="pictureShowLoading30"></i>&nbsp;&nbsp;
+                                                        <span *ngIf="picture30showLoading">Uploading...</span>
+                                                        <span *ngIf="picture30showLoading === false">Completed</span>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="card-footer" align="right"><button class="addNewProperty-button-fix"
+                                                (click)="imageUploadDone()">Done</button></div>
                                     </div>
+
+
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected20($any($event).target.files[0])"
-                                    name="propertyImage20" />
                             </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading20"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture20showLoading">Uploading...</span>
-                                <span *ngIf="picture20showLoading === false">Completed</span>
-                            </div>
+
                         </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_21{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
+                        <div class="container my-5" *ngIf="showReview"><!--*ngIf = "showReview"-->
+
+                            <div class="row my-5">
+
+                                <div class="col-md-10">
+                                    <h3 class="card-title my-3">Review</h3>
+                                    <div class="card mx-2 card-fix">
+                                        <form #reviewForm="ngForm" (ngSubmit)="onPushReview(reviewForm)">
+
+                                            <div class="card-body">
+                                                <textarea class="form-control my-2" placeholder="Add Review Content"
+                                                    required ngModel name="reviewContent"
+                                                    #reviewContent="ngModel"></textarea>
+                                                <input class="form-control my-2" placeholder="Add author name" required
+                                                    ngModel name="reviewAuthor" #reviewAuthor="ngModel" />
+                                                <input class="form-control my-2" placeholder="Add author location"
+                                                    required ngModel name="reviewLocation" #reviewLocation="ngModel" />
+                                            </div>
+                                            <div class="card-footer">
+                                                <button class="addNewProperty-button-fix" type="submit">
+                                                    <i class="fa fa-spinner fa-spin "
+                                                        *ngIf="showLoading "></i>&nbsp;&nbsp;
+                                                    <span *ngIf="showLoading === true ">Loading...</span>
+                                                    <span *ngIf="showLoading !== true ">Push</span>
+                                                    <span *ngIf="showLoadingDone === true">&nbsp;More</span>
+                                                </button> &nbsp;&nbsp;&nbsp;
+                                                <button *ngIf="showLoadingDone === true"
+                                                    class="addNewProperty-button-fix"
+                                                    routerLink="/propertydetails/{{this.propertyId}}">
+                                                    <span>Done</span>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
+
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected21($any($event).target.files[0])"
-                                    name="propertyImage21" />
                             </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading21"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture21showLoading">Uploading...</span>
-                                <span *ngIf="picture21showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_22{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
+                            <div class="row my-5">
+                                <div class="col-md-10">
+                                    <owl-carousel-o [options]="customOptions">
+                                        <ng-template carouselSlide *ngFor="let review of reviews">
+                                            <div class="row mx-2">
+                                                <div class="card">
+                                                    <div class="card-title">
+                                                        <h5><b>{{review.reviewAuthor}}</b></h5>
+                                                    </div>
+                                                    <div class="card-subtitle text-muted">
+                                                        <small>{{review.reviewLocation}}</small>
+                                                    </div>
+                                                    <hr />
+
+                                                    <div class="card-body">
+                                                        <h3>{{review.reviewContent}}</h3>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </ng-template>
+
+                                    </owl-carousel-o>
+
                                 </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected22($any($event).target.files[0])"
-                                    name="propertyImage22" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading22"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture22showLoading">Uploading...</span>
-                                <span *ngIf="picture22showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_23{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected23($any($event).target.files[0])"
-                                    name="propertyImage23" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading23"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture23showLoading">Uploading...</span>
-                                <span *ngIf="picture23showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_24{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected24($any($event).target.files[0])"
-                                    name="propertyImage24" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading24"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture24showLoading">Uploading...</span>
-                                <span *ngIf="picture24showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_25{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected25($any($event).target.files[0])"
-                                    name="propertyImage25" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading25"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture25showLoading">Uploading...</span>
-                                <span *ngIf="picture25showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_26{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected26($any($event).target.files[0])"
-                                    name="propertyImage26" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading26"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture26showLoading">Uploading...</span>
-                                <span *ngIf="picture26showLoading === false">Completed</span>
-                            </div>
-                        </div>
 
 
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_27{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected27($any($event).target.files[0])"
-                                    name="propertyImage27" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading27"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture27showLoading">Uploading...</span>
-                                <span *ngIf="picture27showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_28{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected28($any($event).target.files[0])"
-                                    name="propertyImage28" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading28"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture28showLoading">Uploading...</span>
-                                <span *ngIf="picture28showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_29{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected29($any($event).target.files[0])"
-                                    name="propertyImage29" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading29"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture29showLoading">Uploading...</span>
-                                <span *ngIf="picture29showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-3 gy-3 mx-1">
-                            <div class="col-sm-7">
-                                <div class="row my-2 mx-1">
-                                    <div class="col-sm-12">
-                                        <img src="https://res.cloudinary.com/valencedirectbookingrentals/image/upload/c_fill/bookingwebapp_30{{property.name}}{{property.id}}.jpg"
-                                            class="img-fluid rounded-start" alt="Property Image">
-                                    </div>
-                                </div>
-                                <input type="file" class="form-control"
-                                    (change)="onEditFileSelected30($any($event).target.files[0])"
-                                    name="propertyImage30" />
-                            </div>
-                            <div class="col-sm-5">
-                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading30"></i>&nbsp;&nbsp;
-                                <span *ngIf="picture30showLoading">Uploading...</span>
-                                <span *ngIf="picture30showLoading === false">Completed</span>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card-footer" align="right"><button class="addNewProperty-button-fix"
-                        (click)="imageUploadDone()">Done</button></div>
-            </div>
-
-
-        </div>
-    </div>
-
-</div>
-
-<div class="container my-5" *ngIf="showReview"><!--*ngIf = "showReview"-->
-
-    <div class="row my-5">
-
-        <div class="col-md-10">
-            <h3 class="card-title my-3">Review</h3>
-            <div class="card mx-2 card-fix">
-                <form #reviewForm="ngForm" (ngSubmit)="onPushReview(reviewForm)">
-
-                    <div class="card-body">
-                        <textarea class="form-control my-2" placeholder="Add Review Content" required ngModel
-                            name="reviewContent" #reviewContent="ngModel"></textarea>
-                        <input class="form-control my-2" placeholder="Add author name" required ngModel
-                            name="reviewAuthor" #reviewAuthor="ngModel" />
-                        <input class="form-control my-2" placeholder="Add author location" required ngModel
-                            name="reviewLocation" #reviewLocation="ngModel" />
-                    </div>
-                    <div class="card-footer">
-                        <button class="addNewProperty-button-fix" type="submit">
-                            <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-                            <span *ngIf="showLoading === true ">Loading...</span>
-                            <span *ngIf="showLoading !== true ">Push</span>
-                            <span *ngIf="showLoadingDone === true">&nbsp;More</span>
-                        </button> &nbsp;&nbsp;&nbsp;
-                        <button *ngIf="showLoadingDone === true" class="addNewProperty-button-fix"
-                            routerLink="/propertydetails/{{this.propertyId}}">
-                            <span>Done</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row my-5">
-        <div class="col-md-10">
-            <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide *ngFor="let review of reviews">
-                    <div class="row mx-2">
-                        <div class="card">
-                            <div class="card-title">
-                                <h5><b>{{review.reviewAuthor}}</b></h5>
-                            </div>
-                            <div class="card-subtitle text-muted"><small>{{review.reviewLocation}}</small></div>
-                            <hr />
-
-                            <div class="card-body">
-                                <h3>{{review.reviewContent}}</h3>
                             </div>
 
                         </div>
-
-                    </div>
-                </ng-template>
-
-            </owl-carousel-o>
-
-        </div>
-
-
-    </div>
-
-</div>
