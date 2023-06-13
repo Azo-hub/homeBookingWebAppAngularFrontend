@@ -32,36 +32,62 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
 
   onCheckDateAvailability(): void {
-    if (!this.authenticationService.isUserLoggedIn()) {
-      this.sendNotification(NotificationType.ERROR, "You need to login to continue");
-    } else {
+
+    this.searchBarShowLoading = true;
+    console.log(this.searchBarCheckInDate);
+    console.log(this.searchBarCheckOutDate);
+    const formData = new FormData();
+    formData.append("checkInDate", this.searchBarCheckInDate);
+    formData.append("checkOutDate", this.searchBarCheckOutDate);
+    // formData.append("propertyId" , this.property.id.toString());
+
+    this.subscriptions.push(
+      this.propertyService.checkDateAvailability(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.searchBarShowLoading = false;
+
+        },
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+          this.searchBarShowLoading = false;
+        }
 
 
-      this.searchBarShowLoading = true;
-      console.log(this.searchBarCheckInDate);
-      console.log(this.searchBarCheckOutDate);
-      const formData = new FormData();
-      formData.append("checkInDate", this.searchBarCheckInDate);
-      formData.append("checkOutDate", this.searchBarCheckOutDate);
-      // formData.append("propertyId" , this.property.id.toString());
+      )
+    );
 
-      this.subscriptions.push(
-        this.propertyService.checkDateAvailability(formData).subscribe(
-          (response: CustomHttpResponse) => {
-            this.sendNotification(NotificationType.SUCCESS, response.message);
-            this.searchBarShowLoading = false;
-
-          },
-          (error: HttpErrorResponse) => {
-            this.sendNotification(NotificationType.ERROR, error.error.message);
-            this.searchBarShowLoading = false;
-          }
-
-
-        )
-      );
-
-    }
+    /* if (!this.authenticationService.isUserLoggedIn()) {
+       this.sendNotification(NotificationType.ERROR, "You need to login to continue");
+     } else {
+ 
+ 
+       this.searchBarShowLoading = true;
+       console.log(this.searchBarCheckInDate);
+       console.log(this.searchBarCheckOutDate);
+       const formData = new FormData();
+       formData.append("checkInDate", this.searchBarCheckInDate);
+       formData.append("checkOutDate", this.searchBarCheckOutDate);
+       // formData.append("propertyId" , this.property.id.toString());
+ 
+       this.subscriptions.push(
+         this.propertyService.checkDateAvailability(formData).subscribe(
+           (response: CustomHttpResponse) => {
+             this.sendNotification(NotificationType.SUCCESS, response.message);
+             this.searchBarShowLoading = false;
+ 
+           },
+           (error: HttpErrorResponse) => {
+             this.sendNotification(NotificationType.ERROR, error.error.message);
+             this.searchBarShowLoading = false;
+           }
+ 
+ 
+         )
+       );
+ 
+     }
+     */
   }
 
 

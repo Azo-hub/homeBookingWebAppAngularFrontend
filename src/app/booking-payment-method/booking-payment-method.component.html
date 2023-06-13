@@ -23,7 +23,6 @@
 
 
     <div class="row mb-5 mx-1" [hidden]="showPaymentMethodSection">
-
         <div class="col-md-3"></div>
         <div class="col-md-6 card">
             <div class="row my-2">
@@ -127,7 +126,7 @@
             <div class="row my-4 mx-2">
                 <div class="col-sm-12">
                     <button class="form-control booking-payment-method-button-fix" [disabled]="showLoading"
-                        [hidden]="hideShowBillingAddressButton"  (click)="onAddCreditCardBillingAddressInfo()"
+                        [hidden]="hideShowBillingAddressButton" (click)="onAddCreditCardBillingAddressInfo()"
                         style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
                         <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
                         <span *ngIf="showLoading===true ">Loading...</span> <span
@@ -253,6 +252,7 @@
         </div>
 
         <div class="col-md-3"></div>
+
     </div>
 
 

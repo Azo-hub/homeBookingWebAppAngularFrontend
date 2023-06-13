@@ -23,7 +23,7 @@
             <div class="row mt-2 mb-3 mx-2">
                 <div class="col-sm-12">
                     <label for="cardType">Card Type: </label>
-                    <select class="form-control" id="cardType" name="cardType">
+                    <select class="form-control" id="cardType" name="cardType" required>
                         <option value="visa">Visa</option>
                         <option value="mastercard">Mastercard</option>
                         <option value="discover">Discover</option>
@@ -34,7 +34,7 @@
             <div class="row my-3 mx-2 gy-4">
                 <div class="col-sm-6">
                     <label>Card Holder Name</label>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" type="text" required/>
                 </div>
     
                 <div class="col-sm-6">
@@ -42,7 +42,7 @@
                     <label>Expiration Date</label>
                     <div class="row gy-2">
                         <div class="col-sm-6" align="center">
-                            <select class="form-control">
+                            <select class="form-control" required>
                                 <option disabled="disabled">---Month---</option>
                                 <option value="January">Jan (01)</option>
                                 <option value="February">Feb (02)</option>
@@ -61,7 +61,7 @@
                         </div>
     
                         <div class="col-sm-6">
-                            <select class="form-control">
+                            <select class="form-control" required>
                                 <option disabled="disabled">---Year---</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>

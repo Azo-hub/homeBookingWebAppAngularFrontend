@@ -11,7 +11,7 @@ import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
 import { DatePipe } from '@angular/common';
 import { Review } from '../model/review';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+
 import { AuthenticationService } from '../service/authentication.service';
 
 
@@ -24,6 +24,7 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./property-details.component.css']
 })
 export class PropertyDetailsComponent implements OnInit, OnDestroy {
+
   propertyId: string | null = "";
   private subscriptions: Subscription[] = [];
   property: Property = new Property;
@@ -124,6 +125,15 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           const d2 = new Date(this.checkInDate);
           //this.noOfNight = +this.checkOutDate - +this.checkInDate;
           this.noOfNight = d1.getTime() - d2.getTime();
+          this.noOfDays = Math.ceil(this.noOfNight / (1000 * 3600 * 24));
+          this.showPropertyPricesTable = true;
+          this.showBookProceedButton = true;
+
+        },
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.showLoading = false;
 
         }
 
@@ -155,30 +165,6 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
 
 
 
