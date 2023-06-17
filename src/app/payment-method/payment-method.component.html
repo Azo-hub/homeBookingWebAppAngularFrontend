@@ -1,5 +1,5 @@
-<div class = "container">
-    <div class="row mb-5 mx-1">
+<div class="container ">
+    <div class="row my-3 mx-2">
         <div class="col-md-3"></div>
         <div class="col-md-6 card">
             <div class="row my-2">
@@ -7,7 +7,7 @@
                     <h2>Payment Method</h2>
                 </div>
             </div>
-    
+
             <div class="row my-2 mx-2">
                 <div class="col-sm-12">
                     <h3>Credit Cards&nbsp;<span class="fa fa-credit-card" style="font-size:20px;"></span>&nbsp;
@@ -16,9 +16,9 @@
                         <span class="fa fa-cc-discover" style="font-size:20px;"></span>&nbsp;
                         <span class="fa fa-cc-amex" style="font-size:20px;"></span>
                     </h3>
-    
+
                 </div>
-    
+
             </div>
             <div class="row mt-2 mb-3 mx-2">
                 <div class="col-sm-12">
@@ -34,11 +34,11 @@
             <div class="row my-3 mx-2 gy-4">
                 <div class="col-sm-6">
                     <label>Card Holder Name</label>
-                    <input class="form-control" type="text" required/>
+                    <input class="form-control" type="text" required />
                 </div>
-    
+
                 <div class="col-sm-6">
-    
+
                     <label>Expiration Date</label>
                     <div class="row gy-2">
                         <div class="col-sm-6" align="center">
@@ -56,10 +56,10 @@
                                 <option value="October">Oct (10)</option>
                                 <option value="November">Nov (11)</option>
                                 <option value="December">Dec (12)</option>
-    
+
                             </select>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <select class="form-control" required>
                                 <option disabled="disabled">---Year---</option>
@@ -76,17 +76,17 @@
                                 <option value="2033">2033</option>
                                 <option value="2034">2034</option>
                                 <option value="2035">2035</option>
-    
+
                             </select>
                         </div>
                     </div>
-    
-    
-    
-    
+
+
+
+
                 </div>
-    
-    
+
+
             </div>
             <div class="row my-3 mx-2 gy-4">
                 <div class="col-sm-8">
@@ -100,18 +100,18 @@
             </div>
             <div class="row my-4 mx-2">
                 <div class="col-sm-12">
-                    <button class="form-control booking-payment-method-button-fix" [disabled]="showLoading"
-                        (click)="onAddCreditCardInfo()"
-                        style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                    <button class="form-control payment-method-button-fix" [disabled]="showLoading"
+                        (click)="onAddCreditCardInfo()" style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
                         <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-                        <span *ngIf="showLoading===true ">Loading...</span> <span *ngIf="showLoading !==true ">Next</span>
+                        <span *ngIf="showLoading===true ">Loading...</span> <span
+                            *ngIf="showLoading !==true ">Next</span>
                     </button>
                 </div>
-    
+
             </div>
-    
+
         </div>
-    
+
         <div class="col-md-3"></div>
     </div>
 

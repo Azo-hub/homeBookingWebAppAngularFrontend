@@ -876,12 +876,17 @@
 
             <div class="row my-4">
                 <div class="col-md-12">
-                    <div class="my-4">
-                        <h2>Reviews</h2>
-                        <hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Reviews</h2>
+                            <hr />
+                        </div>
                     </div>
-
-                   <app-review [id] = "propertyId"></app-review>
+                    <div class="row">
+                        <div class="col-sm-12 px-0">
+                            <app-review [id]="propertyId"></app-review>
+                        </div>
+                    </div>
 
                 </div>
             </div>

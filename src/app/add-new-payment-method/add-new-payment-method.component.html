@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <mat-horizontal-stepper linear>
+                <mat-step label="Payment Method" [completed]="showPaymentMethodSection">
+                </mat-step>
+                <mat-step label="Billing Address" [completed]="showBillingSection">
+                </mat-step>
+            </mat-horizontal-stepper>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+<app-payment-method></app-payment-method>
+<app-billing-address></app-billing-address>

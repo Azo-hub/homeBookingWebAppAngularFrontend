@@ -52,6 +52,7 @@ import { ContactPropertyOwnerComponent } from './contact-property-owner/contact-
 import { ReviewComponent } from './review/review.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
 import { BillingAddressComponent } from './billing-address/billing-address.component';
+import { AddNewPaymentMethodComponent } from './add-new-payment-method/add-new-payment-method.component';
 
 
 
@@ -90,7 +91,8 @@ import { BillingAddressComponent } from './billing-address/billing-address.compo
     ContactPropertyOwnerComponent,
     ReviewComponent,
     PaymentMethodComponent, 
-    BillingAddressComponent
+    BillingAddressComponent, 
+    AddNewPaymentMethodComponent
   ],
   imports: [
     BrowserModule,
