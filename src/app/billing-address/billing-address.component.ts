@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentMethod } from '../model/payment-method';
 
 @Component({
   selector: 'app-billing-address',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillingAddressComponent implements OnInit {
 
+  paymentMethod: PaymentMethod = new PaymentMethod;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.loadBillingAddress();
+  }
+
+  loadBillingAddress():void {
+
   }
 
 }

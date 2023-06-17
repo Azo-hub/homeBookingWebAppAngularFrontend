@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AddPropertyDetailsOwnerComponent } from './add-property-details-owner/add-property-details-owner.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookingPaymentMethodComponent } from './booking-payment-method/booking-payment-method.component';
@@ -46,12 +46,13 @@ import { RoleTravellerGuard } from './guard/role-traveller.guard';
 import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SupportComponent } from './support/support.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { PropertyOwnerInfoComponent } from './property-owner-info/property-owner-info.component';
 import { ContactPropertyOwnerComponent } from './contact-property-owner/contact-property-owner.component';
 import { ReviewComponent } from './review/review.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
 import { BillingAddressComponent } from './billing-address/billing-address.component';
+import { AddNewPaymentMethodComponent } from './add-new-payment-method/add-new-payment-method.component';
 
 
 
@@ -90,7 +91,8 @@ import { BillingAddressComponent } from './billing-address/billing-address.compo
     ContactPropertyOwnerComponent,
     ReviewComponent,
     PaymentMethodComponent,
-    BillingAddressComponent
+    BillingAddressComponent,
+    AddNewPaymentMethodComponent
   ],
   imports: [
     BrowserModule,
@@ -104,11 +106,11 @@ import { BillingAddressComponent } from './billing-address/billing-address.compo
     FormsModule,
     ReactiveFormsModule,
     MatStepperModule
-   
+
   ],
-  providers:[DatePipe, AuthenticationService, UserService,NotificationService,
-  BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard,RoleOwnerGuard,RoleTravellerGuard,
-  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true,}],
+  providers: [DatePipe, AuthenticationService, UserService, NotificationService,
+    BookingService, PropertyService, AuthenticationTravellerGuard, AuthenticationOwnerGuard, RoleOwnerGuard, RoleTravellerGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,6 +25,7 @@ import { RoleAdminGuard } from './guard/role-admin.guard';
 import { SupportComponent } from './support/support.component';
 import { PropertyOwnerInfoComponent } from './property-owner-info/property-owner-info.component';
 import { ContactPropertyOwnerComponent } from './contact-property-owner/contact-property-owner.component';
+import { AddNewPaymentMethodComponent } from './add-new-payment-method/add-new-payment-method.component';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: "support", component: SupportComponent, canActivate: [AuthenticationTravellerGuard, AuthenticationOwnerGuard] },
   { path: "orderDetails/:id", component: OrderDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: "propertyOwnerInfo/:username", component: PropertyOwnerInfoComponent },
-  { path: "contactPropertyOwner/:username/:name", component: ContactPropertyOwnerComponent }
+  { path: "contactPropertyOwner/:username/:name", component: ContactPropertyOwnerComponent },
+  { path: "addNewPaymentMethod", component: AddNewPaymentMethodComponent }
 
   //{path:"**", component:Error404Component}
 ];
