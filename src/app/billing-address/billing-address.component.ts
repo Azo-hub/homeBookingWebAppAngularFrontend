@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PaymentMethod } from '../model/payment-method';
 
 @Component({
@@ -8,6 +8,8 @@ import { PaymentMethod } from '../model/payment-method';
 })
 export class BillingAddressComponent implements OnInit {
 
+  @Input()
+  showBillingSectionFromParent:boolean = false;
   paymentMethod: PaymentMethod = new PaymentMethod;
 
   constructor() { }
