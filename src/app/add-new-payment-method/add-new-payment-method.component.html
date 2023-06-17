@@ -15,5 +15,7 @@
 
 </div>
 
-<app-payment-method></app-payment-method>
-<app-billing-address></app-billing-address>
+
+<app-payment-method (showBillingBtnPressed)="onshowBillingFromChild($event)"
+    [showPaymentMethodSectionFromParant]="showPaymentMethodSection"></app-payment-method>
+<app-billing-address [showBillingSectionFromParent]="showBillingSection"></app-billing-address>

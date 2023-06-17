@@ -184,27 +184,6 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
   }
 
 
-<<<<<<< HEAD
-  
-  getAllReviewsByProperty(propertyId:number):void {
-    const formData = new FormData();
-    formData.append("propertyId", propertyId.toString());
-    this.subscriptions.push(
-      this.propertyService.getReviewsByProperty(formData).subscribe(
-        (response: Review[]) => {
-          this.reviews = response;
-        },
-
-        (errorResponse: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
-        }
-      )
-    );
-        
-  }
-=======
->>>>>>> 953d31befbb0331b74a2a7e6d4d99c661317cc5c
 
 
   public host = environment.apiUrl;

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Booking } from '../model/booking';
+import { PaymentMethod } from '../model/payment-method';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,10 @@ export class BookingService {
     return this.http.post<Booking[]>(`${this.host}/searchAllBooking`, formData);
   }
 
+  addPaymentCard(formData: FormData): Observable<PaymentMethod> {
+    return this.http.post<PaymentMethod>(`${this.host}/newPaymentCard`, formData);
+  }
+
   public createBookingFormData(bookingFirstName: string,
     bookingLastName: string, bookingEmail: string, bookingHomePhoneNumber: string,
     bookingPhoneNumber: string, bookingCountry: string, bookingState: string, bookingStreet: string,
@@ -59,6 +64,25 @@ export class BookingService {
     formData.append("noOfChildren", noOfChildren);
     formData.append("pets", pets);
     formData.append("bookingPaymentMethod", bookingPaymentMethod);
+
+    return formData;
+
+  }
+
+
+
+
+
+  public createNewCardFormData(cardType: string, cardHolderName: string, cardExpiryMonth: string,
+    cardExpiryYear: string, cardNumber: number, cardCVC: number ): FormData {
+
+    const formData = new FormData();
+    formData.append("cardType", cardType);
+    formData.append("cardHolderName", cardHolderName);
+    formData.append("cardExpiryMonth", cardExpiryMonth);
+    formData.append("cardExpiryYear", cardExpiryYear);
+    formData.append("cardNumber", JSON.stringify(cardNumber));
+    formData.append("cardCVC", JSON.stringify(cardCVC));
 
     return formData;
 

@@ -8,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class AddNewPaymentMethodComponent implements OnInit {
 
   showPaymentMethodSection: boolean;
+  
   showBillingSection: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  
+
+  onshowBillingFromChild(data: boolean): void {
+    this.showPaymentMethodSection=false;
+    this.showBillingSection = data;
+    console.log(this.showBillingSection);
+  }
 
 }
