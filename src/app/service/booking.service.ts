@@ -11,37 +11,38 @@ export class BookingService {
   private host = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-  
-  public newBooking(formData: FormData) : Observable<Booking> {
+
+  public newBooking(formData: FormData): Observable<Booking> {
     return this.http.post<Booking>(`${this.host}/newBooking`, formData);
-  } 
+  }
 
-  getBookingById(formData : FormData) : Observable<Booking> {
+  getBookingById(formData: FormData): Observable<Booking> {
     return this.http.post<Booking>(`${this.host}/getBookingById`, formData);
-  } 
+  }
 
-  getAllBookingByUser() : Observable<Booking[]> {
+  getAllBookingByUser(): Observable<Booking[]> {
     return this.http.get<Booking[]>(`${this.host}/allBookingByUser`);
-  } 
+  }
 
-  getAllBooking() : Observable<Booking[]> {
+  getAllBooking(): Observable<Booking[]> {
     return this.http.get<Booking[]>(`${this.host}/allBooking`);
   }
 
-  searchAllBooking(formData:FormData): Observable<Booking[]> {
-    return this.http.post<Booking[]>(`${this.host}/searchAllBooking`,formData);
+  searchAllBooking(formData: FormData): Observable<Booking[]> {
+    return this.http.post<Booking[]>(`${this.host}/searchAllBooking`, formData);
   }
-  
-  public createBookingFormData(bookingFirstName:string,
-    bookingLastName:string, bookingEmail:string, bookingHomePhoneNumber:string,
-    bookingPhoneNumber:string, bookingCountry:string, bookingState:string, bookingStreet:string, 
-    bookingCity:string, bookingZipCode:string, checkInDate:Date, checkOutDate:Date,
-    bookingNoOfDays:string, bookingPropertyId:string):FormData {
-    
+
+  public createBookingFormData(bookingFirstName: string,
+    bookingLastName: string, bookingEmail: string, bookingHomePhoneNumber: string,
+    bookingPhoneNumber: string, bookingCountry: string, bookingState: string, bookingStreet: string,
+    bookingCity: string, bookingZipCode: string, checkInDate: Date, checkOutDate: Date,
+    bookingNoOfDays: string, bookingPropertyId: string, noOfGuest: string, noOfChildren: string,
+    pets: string, bookingPaymentMethod: string): FormData {
+
     const formData = new FormData();
     formData.append("bookingFirstName", bookingFirstName);
     formData.append("bookingLastName", bookingLastName);
-    
+
     formData.append("bookingEmailAddress", bookingEmail);
     formData.append("bookingPhoneNumber", bookingPhoneNumber);
     formData.append("bookingHomePhoneNumber", bookingHomePhoneNumber);
@@ -54,9 +55,13 @@ export class BookingService {
     formData.append("checkOutDate", checkOutDate.toString());
     formData.append("bookingNoOfDays", bookingNoOfDays);
     formData.append("bookingPropertyId", bookingPropertyId);
-    
-  return formData;
-  
+    formData.append("noOfGuest", noOfGuest);
+    formData.append("noOfChildren", noOfChildren);
+    formData.append("pets", pets);
+    formData.append("bookingPaymentMethod", bookingPaymentMethod);
+
+    return formData;
+
   }
 
 
@@ -68,29 +73,29 @@ export class BookingService {
   public addBookingsToLocalCacheAdmin(bookings: Booking[]): void {
     localStorage.setItem('Allbookings', JSON.stringify(bookings));
   }
-  
-  
+
+
   public getBookingsFromLocalCache(): Booking[] {
-    if(localStorage.getItem('bookings')) {
-      
+    if (localStorage.getItem('bookings')) {
+
       return JSON.parse(localStorage.getItem('bookings') || '');
-      
+
     }
-    
+
     return [];
-    
+
   }
 
   public getBookingsFromLocalCacheAdmin(): Booking[] {
-    if(localStorage.getItem('Allbookings')) {
-      
+    if (localStorage.getItem('Allbookings')) {
+
       return JSON.parse(localStorage.getItem('Allbookings') || '');
-      
+
     }
-    
+
     return [];
-    
+
   }
-  
+
 
 }

@@ -1,10 +1,9 @@
-
 <!-- Start of Navbar -->
 <app-navbar></app-navbar>
 <!-- End of Navbar -->
 
 <div class="container-fluid mb-5 px-0">
-    
+
     <div class="row mx-0 px-0">
         <div class="col-md-12 mx-0 px-0">
             <img src="/assets/customImage/vrbo-listyourproperty.jpg" width="100%" height="350px" />
@@ -12,17 +11,16 @@
     </div>
 </div>
 <div class="container my-5">
-    <mat-horizontal-stepper linear >
-        <mat-step label = "Add a New Property" [completed]="showAddPropertySection">
+    <mat-horizontal-stepper linear>
+        <mat-step label="Add a New Property" [completed]="showAddPropertySection">
         </mat-step>
-        <mat-step label = "Add Property Image" [completed]="showImageUpload">
+        <mat-step label="Add Property Image" [completed]="showImageUpload">
         </mat-step>
-        <mat-step label = "Add Property Review" [completed]="showReview">
-        </mat-step>
+        
     </mat-horizontal-stepper>
-    
-    
-    
+
+
+
     <div class="row my-3" [hidden]="showAddPropertySection">
         <h2>Add a New Property</h2>
 
@@ -31,9 +29,10 @@
                 <div class="card my-2 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                          <!--  <input type="text" class="form-control" placeholder="Enter Property Type" required ngModel name="propertyType" #propertyTypeInput="ngModel" /> -->
+                            <!--  <input type="text" class="form-control" placeholder="Enter Property Type" required ngModel name="propertyType" #propertyTypeInput="ngModel" /> -->
                             <label for="PropertyType" class="text-muted my-2">Enter Property Type</label>
-                            <select id="PropertyType" class="form-control" required ngModel name="propertyType" #propertyTypeInput="ngModel">
+                            <select id="PropertyType" class="form-control" required ngModel name="propertyType"
+                                #propertyTypeInput="ngModel">
 
                                 <option value="House">House</option>
                                 <option value="Bungalows">Bungalows</option>
@@ -48,13 +47,14 @@
                                 <option value="Resorts">Resorts</option>
                                 <option value="TownHouses">Town Houses</option>
                                 <option value="Villas">Villas</option>
-                                
+
                             </select>
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" placeholder="Enter Property Name" required ngModel name="name" #propertyNameInput="ngModel" />
+                            <input type="text" class="form-control" placeholder="Enter Property Name" required ngModel
+                                name="name" #propertyNameInput="ngModel" />
                         </div>
                     </div>
                     <div class="row my-2 mx-2">
@@ -64,24 +64,15 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyPrice" #propertyPriceInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Property Cost" />
+                                <input type="number" class="form-control" required ngModel name="propertyPrice"
+                                    #propertyPriceInput="ngModel"
+                                    aria-label="Dollar amount (with dot and two decimal places)" step="0.01"
+                                    placeholder="Property Cost" />
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="row my-2 mx-2">
-                        <div class="col-sm-12">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-
-                                </div>
-                                <input type="number" class="form-control" required ngModel name="propertyTax" #propertyTaxInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Tax" />
-                            </div>
-
-                        </div>
-                    </div>
 
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
@@ -90,20 +81,10 @@
                                     <span class="input-group-text">$</span>
 
                                 </div>
-                                <input type="number" class="form-control" required ngModel name="propertyServiceFee" #propertyServiceFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Service Fee" />
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row my-2 mx-2">
-                        <div class="col-sm-12">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-
-                                </div>
-                                <input type="number" class="form-control" required ngModel name="propertyCleaningFee" #propertyCleaningFeeInput="ngModel" aria-label="Dollar amount (with dot and two decimal places)" step="0.01" placeholder="Cleaning Fee" />
+                                <input type="number" class="form-control" required ngModel name="propertyCleaningFee"
+                                    #propertyCleaningFeeInput="ngModel"
+                                    aria-label="Dollar amount (with dot and two decimal places)" step="0.01"
+                                    placeholder="Cleaning Fee" />
                             </div>
 
                         </div>
@@ -112,68 +93,279 @@
                 </div>
 
                 <div class="card my-5 card-fix">
-                    <div class="row my-2 mx-2">
-                        <label class="text-muted my-1">Country</label>
-                        <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            
-                            <select required class="form-control fa" placeholder="&#xF041; Country" ngModel name="propertyCountry" #propertyCountryInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" >
-                                <option value="United State of America" >U.S.A.</option>
-                            </select>
-                            
+
+                    <div class="row my-2 mx-2 gy-4">
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="text" required class="form-control fa" placeholder="Address Line 1" ngModel
+                                name="propertyAddress1" #propertyAddress1Input="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                        </div>
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="text" class="form-control fa" placeholder="Address Line 2" ngModel
+                                name="propertyAddress2" #propertyAddress2Input="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+
                         </div>
                     </div>
+
+                    <div class="row my-2 mx-2 gy-4">
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="text" required class="form-control fa" placeholder="City" ngModel
+                                name="propertyCity" #propertyCityInput="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                        </div>
+                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
+                            <input type="number" required class="form-control fa" placeholder="Zip Code" ngModel
+                                name="propertyZipCode" #propertyZipCodeInput="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                        </div>
+                    </div>
+
                     <div class="row my-2 mx-2">
                         <label class="text-muted my-1">States</label>
                         <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <select required class="form-control fa" placeholder="State" ngModel name="propertyState" #propertyStateInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" >
+                            <select required class="form-control fa" placeholder="State" ngModel name="propertyState"
+                                #propertyStateInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 <option *ngFor="let state of states" [ngValue]="state.value">{{state.label}}</option>
                             </select>
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="row my-2 mx-2">
-                        <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="Street Address" ngModel name="propertyAddress" #propertyAddressInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />  
-                            
-                        </div>
-                    </div>
-                    <div class="row my-2 mx-2 gy-4">
-                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="text" required class="form-control fa" placeholder="City" ngModel name="propertyCity" #propertyCityInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
-                        </div>
-                        <div class="col-sm-6" style="display: flex; flex-direction: row;">
-                            <input type="number" required class="form-control fa" placeholder="Zip Code" ngModel name="propertyZipCode" #propertyZipCodeInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+
+
                         </div>
                     </div>
 
-                    
+                    <div class="row my-2 mx-2">
+
+                        <label class="text-muted my-1">Country</label>
+                        <div class="col-sm-12" style="display: flex; flex-direction: row;">
+
+                            <select required class="form-control fa" placeholder="&#xF041; Country" ngModel
+                                name="propertyCountry" #propertyCountryInput="ngModel"
+                                style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                <option value="United State of America">U.S.A.</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="card my-5 card-fix">
                     <div class="row my-2 mx-2">
                         <div class="col-sm-12">
-                           <textarea  rows="10" class="form-control"  required placeholder="Property Description"  ngModel name="description" #descriptionInput="ngModel"></textarea>
-                           
+                            <label>The Space</label>
+                            <input type="text" class="form-control my-2" placeholder="No of People its Accommodates"
+                                ngModel name="theSpace_noOfAccommodation" />
+                            <input type="text" class="form-control my-2" placeholder="No of Bedrooms" ngModel
+                                name="theSpace_noOfBedrooms" />
+
                         </div>
-                        
+
                     </div>
 
-                   
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <!-- <textarea rows="10" class="form-control" required placeholder="Property Description" ngModel
+                                name="description" #descriptionInput="ngModel"></textarea> -->
+                            <label>Beds</label>
+                            <input type="text" class="form-control my-2" placeholder="No of King" ngModel
+                                name="beds_noOfKing" />
+                            <input type="text" class="form-control my-2" placeholder="No of Queen" ngModel
+                                name="beds_noOfQueen" />
+                            <input type="text" class="form-control my-2" placeholder="No of Single" ngModel
+                                name="beds_noOfSingle" />
+                        </div>
+
+                    </div>
+
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <label>Bathrooms</label>
+                            <input type="text" class="form-control my-2" placeholder="No of Master Bathroom" ngModel
+                                name="bathrooms_noOfMasterBathroom" />
+                            <input type="text" class="form-control my-2" placeholder="No of Private Bathroom" ngModel
+                                name="bathrooms_noOfPrivateBathroom" />
+                            <input type="text" class="form-control my-2" placeholder="No of Half-bath" ngModel
+                                name="bathrooms_noOfHalfBath" />
+                        </div>
+
+                    </div>
+
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+                            <label class="my-2">Shared Spaces</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Kitchen" ngModel
+                                    name="sharedSpaces_kitchen" id="kitchenCheckbox" /><label class="form-check-label"
+                                    for="kitchenCheckbox">Kitchen</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Laudry Room" ngModel
+                                    name="sharedSpaces_laundryRoom" id="laundryRoomCheckbox" />
+                                <label class="form-check-label" for="laundryRoomCheckbox">Laudry Room</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Outdoor Parking" ngModel
+                                    name="sharedSpaces_outDoorParking" id="outDoorParkingCheckbox" /><label
+                                    class="form-check-label" for="outDoorParkingCheckbox">Outdoor Parking</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Garage" ngModel
+                                    name="sharedSpaces_garage" id="garageCheckbox" /><label for="garageCheckbox"
+                                    class="form-check-label">Garage</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Balcony" ngModel
+                                    name="sharedSpaces_balcony" id="balconyCheckbox" /><label class="form-check-label"
+                                    for="balconyCheckbox">Balcony</label>
+
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Backyard" ngModel
+                                    name="sharedSpaces_backyard" id="backyardCheckbox" /><label class="form-check-label"
+                                    for="backyardCheckbox">Backyard</label>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="row my-2 mx-2">
+                        <label class="my-2">Amenities</label>
+                        <div class="col-sm-6">
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Wifi" ngModel
+                                    name="amenities_wifi" id="WifiCheckbox" /><label class="form-check-label"
+                                    for="WifiCheckbox">Wifi</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input"
+                                    value="Towels, bed sheets, soap, and toilet paper" ngModel
+                                    name="amenities_towelsBedsheetsSoapAndToiletpaper"
+                                    id="TowelsBedsheetsSoapAndToiletpaperCheckbox" />
+                                <label class="form-check-label" for="TowelsBedsheetsSoapAndToiletpaperCheckbox">Towels,
+                                    bed sheets, soap, and toilet paper</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Shampoo" ngModel
+                                    name="amenities_shampoo" id="shampooCheckbox" /><label class="form-check-label"
+                                    for="shampooCheckbox">Shampoo</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Closet/drawers" ngModel
+                                    name="amenities_closetDrawers" id="closet/drawersCheckbox" /><label
+                                    for="closet/drawersCheckbox" class="form-check-label">Closet/drawers</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Hair dryer" ngModel
+                                    name="amenities_hairDryer" id="hairDryerCheckbox" /><label class="form-check-label"
+                                    for="hairDryerCheckbox">Hair dryer</label>
+
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="LED TV" ngModel
+                                    name="amenities_LEDTV" id="LEDTVCheckbox" /><label class="form-check-label"
+                                    for="LEDTVCheckbox">LED
+                                    TV</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Grill" ngModel
+                                    name="amenities_grill" id="grillCheckbox" /><label class="form-check-label"
+                                    for="grillCheckbox">Grill</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Parking" ngModel
+                                    name="amenities_parking" id="parkingCheckbox" /><label class="form-check-label"
+                                    for="parkingCheckbox">Parking</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Outdoor Swimming Pool" ngModel
+                                    name="amenities_outdoorSwimmingPool" id="outdoorSwimmingPoolCheckbox" /><label
+                                    class="form-check-label" for="outdoorSwimmingPoolCheckbox">Outdoor Swimming
+                                    Pool</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Iron & Board" ngModel
+                                    name="amenities_ironBoard" id="iron&BoardCheckbox" /><label class="form-check-label"
+                                    for="iron&BoardCheckbox">Iron & Board</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Satellite or cable" ngModel
+                                    name="amenities_satelliteOrCable" id="satelliteOrCableCheckbox" /><label
+                                    class="form-check-label" for="satelliteOrCableCheckbox">Satellite or cable</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Microwave" ngModel
+                                    name="amenities_microwave" id="microwaveCheckbox" /><label class="form-check-label"
+                                    for="microwaveCheckbox">Microwave</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Board Games" ngModel
+                                    name="amenities_boardGames" id="boardGamesCheckbox" /><label
+                                    class="form-check-label" for="boardGamesCheckbox">Board Games</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Toaster" ngModel
+                                    name="amenities_toaster" id="toasterCheckbox" /><label class="form-check-label"
+                                    for="toasterCheckbox">Toaster</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Coffee Maker" ngModel
+                                    name="amenities_coffeeMaker" id="coffeeMakerCheckbox" /><label
+                                    class="form-check-label" for="coffeeMakerCheckbox">Coffee Maker</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" value="Stove" ngModel
+                                    name="amenities_stove" id="stoveCheckbox" /><label class="form-check-label"
+                                    for="stoveCheckbox">Stove</label>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
                     <div class="row my-2 mx-2">
                         <div class="col-md-12">
-                            <button type="submit" [disabled]="addNewPropertyForm.invalid || showLoading" class="form-control addNewProperty-button-fix">
-								<i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-								<span *ngIf="showLoading === true ">Loading...</span> <span
-									*ngIf="showLoading !== true ">Add</span>
-							</button>
+                            <button type="submit" [disabled]="showLoading"
+                                class="form-control addNewProperty-button-fix">
+                                <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                                <span *ngIf="showLoading === true ">Loading...</span> <span
+                                    *ngIf="showLoading !== true ">Add</span>
+                            </button>
                         </div>
 
                     </div>
 
 
                 </div>
-                
+
 
             </form>
         </div>
@@ -181,426 +373,395 @@
 
 
 
-        
-            <div class = "row">
-                <div class = "col-md-10">
-                    <div class = "card my-4 card-fix" *ngIf="showImageUpload">
-                        
-                        <div class = "card-body my-2 mx-2">
-                            <h5 class = "card-title">Add Property Image <small class="text-muted">Max Image Size <= 3MB</small></h5>
-                            <div *ngIf="showImageUpload">
-        
-                                <div class="row my-1 mx-1">
-                                    <div class="col-sm-12">
-                
-                
-                                    </div>
-                                </div>
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected1($any($event).target.files[0])" name="propertyImage1" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading1"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture1showLoading">Uploading...</span>
-                                        <span *ngIf="picture1showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected2($any($event).target.files[0])" name="propertyImage2" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading2"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture2showLoading">Uploading...</span>
-                                        <span *ngIf="picture2showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected3($any($event).target.files[0])" name="propertyImage3" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading3"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture3showLoading">Uploading...</span>
-                                        <span *ngIf="picture3showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-                
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected4($any($event).target.files[0])" name="propertyImage4" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading4"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture4showLoading">Uploading...</span>
-                                        <span *ngIf="picture4showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-                
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected5($any($event).target.files[0])" name="propertyImage5" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading5"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture5showLoading">Uploading...</span>
-                                        <span *ngIf="picture5showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected6($any($event).target.files[0])" name="propertyImage6" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading6"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture6showLoading">Uploading...</span>
-                                        <span *ngIf="picture6showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected7($any($event).target.files[0])" name="propertyImage7" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading7"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture7showLoading">Uploading...</span>
-                                        <span *ngIf="picture7showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected8($any($event).target.files[0])" name="propertyImage8" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading8"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture8showLoading">Uploading...</span>
-                                        <span *ngIf="picture8showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected9($any($event).target.files[0])" name="propertyImage9" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading9"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture9showLoading">Uploading...</span>
-                                        <span *ngIf="picture9showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected10($any($event).target.files[0])" name="propertyImage10" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading10"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture10showLoading">Uploading...</span>
-                                        <span *ngIf="picture10showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected11($any($event).target.files[0])" name="propertyImage11" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading11"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture11showLoading">Uploading...</span>
-                                        <span *ngIf="picture11showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected12($any($event).target.files[0])" name="propertyImage12" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading12"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture12showLoading">Uploading...</span>
-                                        <span *ngIf="picture12showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected13($any($event).target.files[0])" name="propertyImage13" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading13"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture13showLoading">Uploading...</span>
-                                        <span *ngIf="picture13showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected14($any($event).target.files[0])" name="propertyImage14" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading14"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture14showLoading">Uploading...</span>
-                                        <span *ngIf="picture14showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected15($any($event).target.files[0])" name="propertyImage15" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading15"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture15showLoading">Uploading...</span>
-                                        <span *ngIf="picture15showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected16($any($event).target.files[0])" name="propertyImage16" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading16"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture16showLoading">Uploading...</span>
-                                        <span *ngIf="picture16showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected17($any($event).target.files[0])" name="propertyImage17" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading17"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture17showLoading">Uploading...</span>
-                                        <span *ngIf="picture17showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected18($any($event).target.files[0])" name="propertyImage18" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading18"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture18showLoading">Uploading...</span>
-                                        <span *ngIf="picture18showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected19($any($event).target.files[0])" name="propertyImage19" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading19"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture19showLoading">Uploading...</span>
-                                        <span *ngIf="picture19showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected20($any($event).target.files[0])" name="propertyImage20" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading20"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture20showLoading">Uploading...</span>
-                                        <span *ngIf="picture20showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected21($any($event).target.files[0])" name="propertyImage21" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading21"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture21showLoading">Uploading...</span>
-                                        <span *ngIf="picture21showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected22($any($event).target.files[0])" name="propertyImage22" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading22"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture22showLoading">Uploading...</span>
-                                        <span *ngIf="picture22showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected23($any($event).target.files[0])" name="propertyImage23" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading23"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture23showLoading">Uploading...</span>
-                                        <span *ngIf="picture23showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected24($any($event).target.files[0])" name="propertyImage24" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading24"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture24showLoading">Uploading...</span>
-                                        <span *ngIf="picture24showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected25($any($event).target.files[0])" name="propertyImage25" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading25"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture25showLoading">Uploading...</span>
-                                        <span *ngIf="picture25showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected26($any($event).target.files[0])" name="propertyImage26" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading26"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture26showLoading">Uploading...</span>
-                                        <span *ngIf="picture26showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected27($any($event).target.files[0])" name="propertyImage27" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading27"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture27showLoading">Uploading...</span>
-                                        <span *ngIf="picture27showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected28($any($event).target.files[0])" name="propertyImage28" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading28"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture28showLoading">Uploading...</span>
-                                        <span *ngIf="picture28showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected29($any($event).target.files[0])" name="propertyImage29" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading29"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture29showLoading">Uploading...</span>
-                                        <span *ngIf="picture29showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                                <div class="row my-3 gy-3 mx-1">
-                                    <div class="col-sm-7">
-                                        <input type="file" class="form-control" (change)="onFileSelected30($any($event).target.files[0])" name="propertyImage30" />
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading30"></i>&nbsp;&nbsp;
-                                        <span *ngIf="picture30showLoading">Uploading...</span>
-                                        <span *ngIf="picture30showLoading === false">Completed</span>
-                                    </div>
-                                </div>
-        
-                               
-                            </div>
-                        </div>
-                        <div class="card-footer" align="right"><button class="addNewProperty-button-fix" (click)="imageUploadDone()">Done</button></div>
-                    </div>
-                    
-        
-                </div>
-            </div>
-        
-    
 
-</div>
-
-<div class="container my-5" *ngIf = "showReview"><!--*ngIf = "showReview"--> 
-
-    <div class="row my-5">
-
+    <div class="row">
         <div class="col-md-10">
-            <h3 class = "card-title my-3">Review</h3>
-            <div class = "card mx-2 card-fix">
-                <form #reviewForm="ngForm" (ngSubmit)="onPushReview(reviewForm)">
-                    
-                    <div class = "card-body">
-                        <textarea class="form-control my-2" placeholder="Add Review Content" required ngModel name="reviewContent" #reviewContent="ngModel"></textarea>
-                        <input class="form-control my-2" placeholder="Add author name" required ngModel name="reviewAuthor" #reviewAuthor="ngModel" />
-                        <input class="form-control my-2" placeholder="Add author location" required ngModel name="reviewLocation" #reviewLocation="ngModel" />
-                    </div>
-                    <div class = "card-footer">
-                        <button class="addNewProperty-button-fix" type="submit">
-                            <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-                                <span *ngIf="showLoading === true ">Loading...</span>
-                                <span *ngIf="showLoading !== true ">Push</span> 
-                                <span *ngIf="showLoadingDone === true">&nbsp;More</span> 
-                        </button> &nbsp;&nbsp;&nbsp;
-                        <button *ngIf="showLoadingDone === true" class="addNewProperty-button-fix" routerLink="/propertydetails/{{this.propertyId}}">
-                            <span>Done</span> 
-                        </button>
-                    </div>
-                </form>
-             </div>
+            <div class="card my-4 card-fix" *ngIf="showImageUpload">
 
-        </div>
-    </div>
+                <div class="card-body my-2 mx-2">
+                    <h5 class="card-title">Add Property Image <small class="text-muted">Max Image Size <= 3MB</small>
+                                &nbsp;&nbsp;<small>Accept Only .jpg</small>
+                    </h5>
+                    <div *ngIf="showImageUpload">
 
-    <div class = "row my-5">
-        <div class = "col-md-10">
-            <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide *ngFor="let review of reviews">
-                    <div class="row mx-2">
-                        <div class="card">
-                            <div class = "card-title"><h5><b>{{review.reviewAuthor}}</b></h5></div>
-                            <div class = "card-subtitle text-muted"><small>{{review.reviewLocation}}</small></div> <hr/>
-                            
-                            <div class = "card-body">
-                                <h3>{{review.reviewContent}}</h3>
+                        <div class="row my-1 mx-1">
+                            <div class="col-sm-12">
+
+
                             </div>
-                            
                         </div>
-            
-                    </div>
-                </ng-template>
-                
-            </owl-carousel-o>
-            
-        </div>
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected1($any($event).target.files[0])" name="propertyImage1" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading1"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture1showLoading">Uploading...</span>
+                                <span *ngIf="picture1showLoading === false">Completed</span>
+                            </div>
+                        </div>
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected2($any($event).target.files[0])" name="propertyImage2" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading2"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture2showLoading">Uploading...</span>
+                                <span *ngIf="picture2showLoading === false">Completed</span>
+                            </div>
+                        </div>
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected3($any($event).target.files[0])" name="propertyImage3" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading3"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture3showLoading">Uploading...</span>
+                                <span *ngIf="picture3showLoading === false">Completed</span>
+                            </div>
+                        </div>
 
-        
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected4($any($event).target.files[0])" name="propertyImage4" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading4"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture4showLoading">Uploading...</span>
+                                <span *ngIf="picture4showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected5($any($event).target.files[0])" name="propertyImage5" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading5"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture5showLoading">Uploading...</span>
+                                <span *ngIf="picture5showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected6($any($event).target.files[0])" name="propertyImage6" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading6"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture6showLoading">Uploading...</span>
+                                <span *ngIf="picture6showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected7($any($event).target.files[0])" name="propertyImage7" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading7"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture7showLoading">Uploading...</span>
+                                <span *ngIf="picture7showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected8($any($event).target.files[0])" name="propertyImage8" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading8"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture8showLoading">Uploading...</span>
+                                <span *ngIf="picture8showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected9($any($event).target.files[0])" name="propertyImage9" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading9"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture9showLoading">Uploading...</span>
+                                <span *ngIf="picture9showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected10($any($event).target.files[0])" name="propertyImage10" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading10"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture10showLoading">Uploading...</span>
+                                <span *ngIf="picture10showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected11($any($event).target.files[0])" name="propertyImage11" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading11"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture11showLoading">Uploading...</span>
+                                <span *ngIf="picture11showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected12($any($event).target.files[0])" name="propertyImage12" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading12"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture12showLoading">Uploading...</span>
+                                <span *ngIf="picture12showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected13($any($event).target.files[0])" name="propertyImage13" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading13"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture13showLoading">Uploading...</span>
+                                <span *ngIf="picture13showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected14($any($event).target.files[0])" name="propertyImage14" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading14"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture14showLoading">Uploading...</span>
+                                <span *ngIf="picture14showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected15($any($event).target.files[0])" name="propertyImage15" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading15"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture15showLoading">Uploading...</span>
+                                <span *ngIf="picture15showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected16($any($event).target.files[0])" name="propertyImage16" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading16"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture16showLoading">Uploading...</span>
+                                <span *ngIf="picture16showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected17($any($event).target.files[0])" name="propertyImage17" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading17"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture17showLoading">Uploading...</span>
+                                <span *ngIf="picture17showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected18($any($event).target.files[0])" name="propertyImage18" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading18"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture18showLoading">Uploading...</span>
+                                <span *ngIf="picture18showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected19($any($event).target.files[0])" name="propertyImage19" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading19"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture19showLoading">Uploading...</span>
+                                <span *ngIf="picture19showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected20($any($event).target.files[0])" name="propertyImage20" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading20"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture20showLoading">Uploading...</span>
+                                <span *ngIf="picture20showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected21($any($event).target.files[0])" name="propertyImage21" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading21"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture21showLoading">Uploading...</span>
+                                <span *ngIf="picture21showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected22($any($event).target.files[0])" name="propertyImage22" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading22"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture22showLoading">Uploading...</span>
+                                <span *ngIf="picture22showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected23($any($event).target.files[0])" name="propertyImage23" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading23"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture23showLoading">Uploading...</span>
+                                <span *ngIf="picture23showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected24($any($event).target.files[0])" name="propertyImage24" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading24"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture24showLoading">Uploading...</span>
+                                <span *ngIf="picture24showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected25($any($event).target.files[0])" name="propertyImage25" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading25"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture25showLoading">Uploading...</span>
+                                <span *ngIf="picture25showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected26($any($event).target.files[0])" name="propertyImage26" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading26"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture26showLoading">Uploading...</span>
+                                <span *ngIf="picture26showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected27($any($event).target.files[0])" name="propertyImage27" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading27"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture27showLoading">Uploading...</span>
+                                <span *ngIf="picture27showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected28($any($event).target.files[0])" name="propertyImage28" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading28"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture28showLoading">Uploading...</span>
+                                <span *ngIf="picture28showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected29($any($event).target.files[0])" name="propertyImage29" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading29"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture29showLoading">Uploading...</span>
+                                <span *ngIf="picture29showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3 gy-3 mx-1">
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control"
+                                    (change)="onFileSelected30($any($event).target.files[0])" name="propertyImage30" />
+                            </div>
+                            <div class="col-sm-5">
+                                <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading30"></i>&nbsp;&nbsp;
+                                <span *ngIf="picture30showLoading">Uploading...</span>
+                                <span *ngIf="picture30showLoading === false">Completed</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="card-footer" align="right"><button class="addNewProperty-button-fix"
+                        (click)="imageUploadDone()">Done</button></div>
+            </div>
+
+
+        </div>
     </div>
+
+
 
 </div>
-
-
-
-
-
-
 

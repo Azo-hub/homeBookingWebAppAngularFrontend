@@ -16,6 +16,9 @@ import { NotificationService } from '../service/notification.service';
 export class TravellerLoginComponent implements OnInit, OnDestroy {
   showLoading: boolean = false;
   private subscriptions: Subscription [] = [];
+  hide: boolean = true;
+  showEye: boolean = false;
+
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
     private notificationService: NotificationService) { }
@@ -27,6 +30,14 @@ export class TravellerLoginComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/login');
     }
   }
+
+
+
+  showPassword(): void {
+    this.hide = !this.hide;
+    this.showEye = !this.showEye;
+  }
+
   
   public onLogin(user: User): void {
     this.showLoading = true;

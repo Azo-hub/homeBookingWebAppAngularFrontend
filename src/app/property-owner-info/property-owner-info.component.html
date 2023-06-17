@@ -1,0 +1,173 @@
+<!-- Start of Navbar -->
+<app-navbar></app-navbar>
+<!-- End of Navbar -->
+
+
+<div class="container my-2">
+    <div class="row flex-lg-nowrap">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="e-profile">
+                                <div class="row">
+                                    <div class="col-12 col-sm-auto mb-3">
+                                        <div class="mx-auto" style="width: 140px;">
+                                            <div class="d-flex justify-content-center align-items-center rounded"
+                                                style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp-profileImage-{{user?.firstname}}{{user?.lastname}}{{user?.userId}}.jpg"
+                                                    class="img-fluid" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user?.firstname}}
+                                                {{user?.lastname}}
+                                            </h4>
+                                            <p class="mb-0">{{user?.email}}</p>
+                                            <div class="text-muted">
+                                                <span>Last Login Date: </span>
+                                                <small>{{user?.lastLoginDateDisplay |
+                                                    date:'medium'}}</small>
+                                            </div>
+
+                                        </div>
+                                        <div class="text-center text-sm-right">
+                                            <span class="badge"
+                                                style="background-color:#39e75f;">{{user.role.substring(5)}}</span>&nbsp;
+                                            <small class="badge" style="background-color:#39e75f;"
+                                                [hidden]="!user?.isVerified">Verified</small>
+                                            <small class="badge bg-danger"
+                                                [hidden]="user?.isVerified">Unverified</small>
+                                            <div class="text-muted">
+                                                <small>Joined {{user?.dateJoined |
+                                                    date:'mediumDate'}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="active nav-link" href="#settings"
+                                            data-bs-toggle="tab" style="color:inherit;">Info</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#properties" data-bs-toggle="tab"
+                                            style="color:inherit;">Properties Listed</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content pt-3">
+                                    <div class="tab-pane active fade in show" id="settings">
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <p class="form-control">{{user.firstname}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <p class="form-control">{{user.lastname}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Username</label>
+                                                            <p class="form-control">{{user.username}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row my-2">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <p class="form-control">{{user.email}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="tab-pane fade in show" id="properties">
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input name="searchTerm" #searchInput="ngModel" ngModel
+                                                        (ngModelChange)="onSearchProperty(searchInput.value)"
+                                                        type="search" placeholder="Search Property"
+                                                        class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid">
+                                            <div class="row" *ngFor="let propertyEach of propertiesByOwner">
+                                                <div class="col-md-12">
+                                                    <div class="card my-3 mx-2">
+                                                        <div class="row gy-2">
+                                                            <div class="col-md-7">
+
+                                                                <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg"
+                                                                    class="img-fluid rounded-start"
+                                                                    alt="Property Image">
+
+                                                            </div>
+
+
+                                                            <div class="col-md-5">
+
+                                                                <div class="card-body">
+                                                                    <a routerLink="/propertydetails/{{propertyEach.id}}"
+                                                                        style="color:inherit; text-decoration:none;">
+                                                                        <h5 class="card-subtitle">
+                                                                            {{propertyEach.propertyType}}</h5>
+
+                                                                        <h3 class="card-title">
+                                                                            <b>{{propertyEach.name}}</b>
+                                                                        </h3>
+
+                                                                        <p class="card-text">
+                                                                            <small
+                                                                                class="text-muted">$&nbsp;{{propertyEach.propertyPrice}}</small>
+                                                                        </p>
+
+                                                                    </a>
+
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

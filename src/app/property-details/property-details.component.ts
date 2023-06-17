@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { NotificationService } from '../service/notification.service';
 import { PropertyService } from '../service/property.service';
 import { DatePipe } from '@angular/common';
 import { Review } from '../model/review';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+
+import { AuthenticationService } from '../service/authentication.service';
 
 
 
@@ -23,13 +24,16 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./property-details.component.css']
 })
 export class PropertyDetailsComponent implements OnInit, OnDestroy {
+
   propertyId: string | null = "";
   private subscriptions: Subscription[] = [];
   property: Property = new Property;
   showLoading: boolean = false;
-  checkInDate: Date = new Date();
-  checkOutDate: Date = new Date();
-  noOfGuest: string = "";
+  checkInDate: any;
+  checkOutDate: any;
+  noOfGuest: number = 0;
+  noOfChildren: number = 0;
+  pets: string = "";
   showPropertyAvailabilityTable: boolean = false;
   showPropertyPricesTable: boolean = false;
   noOfNight: number = 0;
@@ -37,19 +41,18 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   showBookProceedButton: boolean = false;
   showBookNowButton: boolean = false;
   reviews: Review[] = [];
+  currentDate: Date = new Date();
 
 
-
-  constructor(private activatedRoute: ActivatedRoute,
-    private propertyService: PropertyService, private datePipe: DatePipe,
-    private router: Router, private notificationService: NotificationService) { }
+  constructor(private propertyService: PropertyService, private authenticationService: AuthenticationService,
+    private router: Router, private activatedRoute: ActivatedRoute, private notificationService: NotificationService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
-
     this.propertyId = this.activatedRoute.snapshot.paramMap.get("id");
 
     this.getEachProperty();
-    this.getAllReviewsByProperty(this.propertyId);
+    /*  this.getAllReviewsByProperty(this.propertyId);*/
   }
 
   getEachProperty(): void {
@@ -75,25 +78,25 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
 
   }
 
-
-  getAllReviewsByProperty(propertyId: string): void {
-    const formData = new FormData();
-    formData.append("propertyId", propertyId);
-    this.subscriptions.push(
-      this.propertyService.getReviewsByProperty(formData).subscribe(
-        (response: Review[]) => {
-          this.reviews = response;
-        },
-
-        (errorResponse: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-
-        }
-      )
-    );
-
-  }
-
+  /*
+    getAllReviewsByProperty(propertyId: string): void {
+      const formData = new FormData();
+      formData.append("propertyId", propertyId);
+      this.subscriptions.push(
+        this.propertyService.getReviewsByProperty(formData).subscribe(
+          (response: Review[]) => {
+            this.reviews = response;
+          },
+  
+          (errorResponse: HttpErrorResponse) => {
+            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+  
+          }
+        )
+      );
+  
+    }
+  */
 
   onCheckPropertyAvailabilityButtonEvent(): void {
 
@@ -107,8 +110,8 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   onCheckPropertyAvailability(): void {
     this.showLoading = true;
     const formData = new FormData();
-    formData.append("checkInDate", this.checkInDate.toString());
-    formData.append("checkOutDate", this.checkOutDate.toString());
+    formData.append("checkInDate", this.checkInDate);
+    formData.append("checkOutDate", this.checkOutDate);
     formData.append("propertyId", this.property.id.toString());
     // console.log(checkInAndOutDate.checkInDate.value.toString());
     //console.log(checkInAndOutDate.checkOutDate.toString());
@@ -118,20 +121,31 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
         (response: CustomHttpResponse) => {
           this.sendNotification(NotificationType.SUCCESS, response.message);
           this.showLoading = false;
-          this.noOfNight = +this.checkOutDate - +this.checkInDate;
+          const d1 = new Date(this.checkOutDate);
+          const d2 = new Date(this.checkInDate);
+          //this.noOfNight = +this.checkOutDate - +this.checkInDate;
+          this.noOfNight = d1.getTime() - d2.getTime();
           this.noOfDays = Math.ceil(this.noOfNight / (1000 * 3600 * 24));
-
           this.showPropertyPricesTable = true;
           this.showBookProceedButton = true;
+
         },
-        (error: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
+
         }
 
 
       )
     );
+  }
+
+
+  onClickContactPropertyOwner() {
+    this.router.navigateByUrl(`/contactPropertyOwner/${this.property.propertyOwner.username}/${this.property.name}`);
+
   }
 
 
@@ -151,30 +165,6 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
 
 
 

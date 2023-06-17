@@ -14,85 +14,120 @@ import { NotificationService } from '../service/notification.service';
   styleUrls: ['./booking-payment-method.component.css']
 })
 export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
-  
-  showLoading: boolean = false; 
-  private subscriptions: Subscription [] = [];
+
+  showLoading: boolean = false;
+  private subscriptions: Subscription[] = [];
   bookingCheckInDate: Date = new Date;
   bookingCheckOutDate: Date = new Date;
-  bookingNoOfDaysFromUrl:string = "";
-  bookingPropertyIdFromUrl:string = "";
-  bookingCheckInDateFromUrl:string = "";
-  bookingCheckOutDateFromUrl:string = "";
-  userId:number = 0;
-  
-  bookingFirstName:any;
-  bookingLastName:any;
-  bookingEmail:any;
-  bookingHomePhoneNumber:any;
-  bookingPhoneNumber:any;
-  bookingCountry:any;
-  bookingState:any;
-  bookingStreet:any;
-  bookingCity:any;
-  bookingZipCode:any;
-  
+  bookingNoOfDaysFromUrl: string = "";
+  bookingPropertyIdFromUrl: string = "";
+  bookingCheckInDateFromUrl: string = "";
+  bookingCheckOutDateFromUrl: string = "";
+  userId: number = 0;
+  noOfGuest: string = "";
+  noOfChildren: string = "";
+  pets: string = "";
+  bookingFirstName: any;
+  bookingLastName: any;
+  bookingEmail: any;
+  bookingHomePhoneNumber: any;
+  bookingPhoneNumber: any;
+  bookingCountry: any;
+  bookingState: any;
+  bookingStreet: any;
+  bookingCity: any;
+  bookingZipCode: any;
+  showNewBookingSection: boolean;
+  showPaymentMethodSection: boolean;
+  showCreditCardPaymentInfoError: boolean;
+  paypal: string = "PayPal";
+  zelle: string = "Zelle";
+  cashApp: string = "CashApp";
+  venmo: string = "Venmo";
+  bookingPaymentMethod: string;
+  showBillingAddressSection: boolean = false;
+  hideShowBillingAddressButton: boolean;
+
+
 
   constructor(private notificationService: NotificationService, private router: Router,
-    private activatedRoute: ActivatedRoute, 
-    private bookingService:BookingService) { }
+    private activatedRoute: ActivatedRoute,
+    private bookingService: BookingService) { }
 
   ngOnInit(): void {
-    
+
     this.bookingNoOfDaysFromUrl = this.activatedRoute.snapshot.paramMap.get("noOfDays");
     this.bookingPropertyIdFromUrl = this.activatedRoute.snapshot.paramMap.get("id");
     this.bookingCheckInDateFromUrl = this.activatedRoute.snapshot.paramMap.get("checkInDate");
     this.bookingCheckOutDateFromUrl = this.activatedRoute.snapshot.paramMap.get("checkOutDate");
+    this.noOfGuest = this.activatedRoute.snapshot.paramMap.get("noOfGuest");
+    this.noOfChildren = this.activatedRoute.snapshot.paramMap.get("noOfChildren");
+    this.pets = this.activatedRoute.snapshot.paramMap.get("pets");
   }
-  
-  
+
+
+  onAddBookingPaymentInfo(paymentMethodFrom: string): void {
+    this.showPaymentMethodSection = true;
+    this.bookingPaymentMethod = paymentMethodFrom;
+    this.showNewBookingSection = true;
+
+  }
+
+  onAddCreditCardBillingAddressInfo(): void {
+    this.showBillingAddressSection = true;
+    this.hideShowBillingAddressButton = true;
+
+  }
+
+  onAddBookingCreditCardPaymentInfo(): void {
+    this.showCreditCardPaymentInfoError = true;
+    this.sendNotification(NotificationType.ERROR, `Please check your card
+                        details and retry again or you try alternative method of payment`);
+  }
+
   public onBookingPaymentForm(): void {
     this.showLoading = true;
-    
+
     this.bookingPropertyIdFromUrl
-    this.bookingCheckInDate = new Date(this.bookingCheckInDateFromUrl); 
+    this.bookingCheckInDate = new Date(this.bookingCheckInDateFromUrl);
     this.bookingCheckOutDate = new Date(this.bookingCheckOutDateFromUrl);
-    const formData = 
-          this.bookingService.createBookingFormData(this.bookingFirstName,
-            this.bookingLastName, this.bookingEmail, this.bookingHomePhoneNumber,
-            this.bookingPhoneNumber, this.bookingCountry, this.bookingState, this.bookingStreet, 
-            this.bookingCity,this.bookingZipCode,  
-            this.bookingCheckInDate, this.bookingCheckOutDate, this.bookingNoOfDaysFromUrl,
-            this.bookingPropertyIdFromUrl);
-    
+    const formData =
+      this.bookingService.createBookingFormData(this.bookingFirstName,
+        this.bookingLastName, this.bookingEmail, this.bookingHomePhoneNumber,
+        this.bookingPhoneNumber, this.bookingCountry, this.bookingState, this.bookingStreet,
+        this.bookingCity, this.bookingZipCode,
+        this.bookingCheckInDate, this.bookingCheckOutDate, this.bookingNoOfDaysFromUrl,
+        this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets, this.bookingPaymentMethod);
+
     this.subscriptions.push(
-      
+
       this.bookingService.newBooking(formData).subscribe(
         (response: Booking) => {
-          
+          this.showNewBookingSection = true;
           this.showLoading = false;
           this.sendNotification(NotificationType.SUCCESS, `Property Booked Successfully! Check your email for follow-up messages.`);
-          this.router.navigateByUrl(`/orderDetails/${response.id}`); 
+          this.router.navigateByUrl(`/orderDetails/${response.id}`);
         },
         (errorResponse: HttpErrorResponse) => {
-          
+
           this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
           this.showLoading = false;
         }
       )
     );
   }
-  
-  
+
+
   private sendNotification(notificationType: NotificationType, message: string) {
     if (message) {
       this.notificationService.notify(notificationType, message);
     } else {
-      this.notificationService.notify(notificationType, 
-                          "An error occurred. Please Try Again Later");
+      this.notificationService.notify(notificationType,
+        "An error occurred. Please Try Again Later");
     }
   }
-  
-  
+
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

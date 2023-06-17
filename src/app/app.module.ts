@@ -47,6 +47,12 @@ import { EditPropertyComponent } from './edit-property/edit-property.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SupportComponent } from './support/support.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { PropertyOwnerInfoComponent } from './property-owner-info/property-owner-info.component';
+import { ContactPropertyOwnerComponent } from './contact-property-owner/contact-property-owner.component';
+import { ReviewComponent } from './review/review.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { BillingAddressComponent } from './billing-address/billing-address.component';
+import { AddNewPaymentMethodComponent } from './add-new-payment-method/add-new-payment-method.component';
 
 
 
@@ -80,7 +86,13 @@ import {MatStepperModule} from '@angular/material/stepper';
     OrderDetailsComponent,
     EditPropertyComponent,
     EditUserComponent,
-    SupportComponent
+    SupportComponent,
+    PropertyOwnerInfoComponent,
+    ContactPropertyOwnerComponent,
+    ReviewComponent,
+    PaymentMethodComponent, 
+    BillingAddressComponent, 
+    AddNewPaymentMethodComponent
   ],
   imports: [
     BrowserModule,

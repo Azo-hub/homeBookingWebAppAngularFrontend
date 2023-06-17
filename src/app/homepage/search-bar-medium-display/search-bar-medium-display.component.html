@@ -5,53 +5,53 @@
         </div>
     </div>
 </div>-->
-<div class = "container-fluid my-5 searchBarMediumDisplay" style="width: 100%;">
-    <div class = "row my-3">
-        <div class = "col-sm-12">
+<div class="container-fluid my-5 searchBarMediumDisplay" style="width: 100%;">
+    <div class="row my-3">
+        <div class="col-sm-12">
             <h3 class="my-2" style="color: inherit;">
                 Find your place for together
             </h3>
             <input type="text" class="form-control fa" placeholder="&#xF041; United States of America" />
         </div>
     </div>
-    <div class = "row my-3">
-        <div class = "col-sm-12">
-            <span>Check-In</span><br/>
-            <input id="searchBarMediumCheckin" class="form-control fa" [(ngModel)]="searchBarMediumCheckInDate" [owlDateTime]="searchBarMediumDateSingle" [owlDateTimeTrigger]="searchBarMediumDateSingle" placeholder="&#xF274; Check-in" required>
-            <owl-date-time #searchBarMediumDateSingle></owl-date-time>
+    <div class="row my-3">
+        <div class="col-sm-12">
+            <span>Check-In</span><br />
+            <input type="date" class="form-control fa" [(ngModel)]="searchBarMediumCheckInDate"
+                min="{{currentDate | date:'yyyy-MM-dd'}}" placeholder="&#xF274; Check-in" required />
 
         </div>
     </div>
-    <div class = "row my-3">
-        <div class = "col-sm-12">
+    <div class="row my-3">
+        <div class="col-sm-12">
             <span>Check-Out</span>
-            <input id="searchBarMediumCheckout" class="form-control fa" [(ngModel)]="searchBarMediumCheckOutDate" [owlDateTime]="searchBarMediumDateSingle1" [owlDateTimeTrigger]="searchBarMediumDateSingle1" placeholder="&#xF274; Check-out" required>
-            <owl-date-time #searchBarMediumDateSingle1></owl-date-time>
+            <input type="date" class="form-control fa" [(ngModel)]="searchBarMediumCheckOutDate"
+                min="{{currentDate | date:'yyyy-MM-dd'}}" placeholder="&#xF274; Check-out" required />
         </div>
     </div>
-    <div class = "row my-3">
-        <div class = "col-sm-12">
+    <div class="row my-3">
+        <div class="col-sm-12">
             <input type="text" placeholder="&#xF2C0; Guest" class="form-control fa" />
         </div>
     </div>
-    <div class = "row my-3">
-        <div class = "col-sm-12">
+    <div class="row my-3">
+        <div class="col-sm-12">
             <input type="text" placeholder="&#xf1ae; Children" class="form-control fa" />
         </div>
     </div>
-    <div class = "row my-3">
-        <div class = "col-sm-12">
+    <div class="row my-3">
+        <div class="col-sm-12">
             <input type="text" placeholder="Pets" class="form-control fa" />
         </div>
     </div>
 
-    <div class = "row my-3">
-        <div class = "col-sm-12">
-            <button class="btn form-control searchbar-button-fix" (click)="onCheckDateAvailabilityMedium()" [disabled]="searchBarMediumShowLoading">
+    <div class="row my-3">
+        <div class="col-sm-12">
+            <button class="btn form-control searchbar-button-fix" (click)="onCheckDateAvailabilityMedium()"
+                [disabled]="searchBarMediumShowLoading">
                 <i class="fa fa-spinner fa-spin " *ngIf="searchBarMediumShowLoading"></i>&nbsp;&nbsp;
                 <span *ngIf="searchBarMediumShowLoading===true">Loading...</span> <span
                     *ngIf="searchBarMediumShowLoading !==true">Search</span></button>
         </div>
     </div>
 </div>
-

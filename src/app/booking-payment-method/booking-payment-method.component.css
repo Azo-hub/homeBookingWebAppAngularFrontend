@@ -1,0 +1,13 @@
+.booking-payment-method-button-fix {
+    background-color: #172C57;
+    color: #F8F7F5;
+    border-radius: 25px;
+    padding: 5px 20px 5px 20px;
+}
+
+.booking-payment-method-btn-fix {
+    border: solid;
+    border-color: #354e81;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+}
