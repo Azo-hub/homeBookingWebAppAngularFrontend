@@ -1,87 +1,90 @@
 <div class="container" *ngIf="showBillingSectionFromParent">
+
     <div class="row my-3 mx-2">
         <div class="col-sm-3"></div>
         <div class="col-sm-6 my-2 card">
-
-            <div class="row my-2">
-                <div class="col-md-12" align="center">
-                    <h2>Billing Address</h2>
-                </div>
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Address Line 1"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Address Line 2"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="City"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="State"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Zip Code"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-
-            </div>
-
-
-            <div class="row my-4">
-
-                <div class="col-sm-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Country"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <!--  
-                    <div class="row my-4">
-                        <div class="col-sm-12">
-                            <button class="form-control booking-payment-method-button-fix" [disabled]="showLoading"
-                                (click)="onAddCreditCardPaymentInfo()"
-                                style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
-                                <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-                                <span *ngIf="showLoading===true ">Loading...</span> <span
-                                    *ngIf="showLoading !==true ">Proceed</span>
-                            </button>
-                        </div> 
-            
+            <form #billingAddressForm="ngForm" (ngSubmit)="onSubmitBillingAddressForm(billingAddressForm)">
+                <div class="row my-2">
+                    <div class="col-md-12" align="center">
+                        <h2>Billing Address</h2>
                     </div>
-            
-                    -->
+                </div>
 
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Address Line 1"
+                            name="paymentMethodBillingAddressLine1" ngModel required
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                </div>
+
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Address Line 2 (Optional)"
+                            name="paymentMethodBillingAddressLine2" ngModel
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                </div>
+
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="City" name="paymentMethodBillingCity"
+                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+
+                </div>
+
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="State" name="paymentMethodBillingState"
+                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                </div>
+
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="tel" class="form-control " placeholder="Zip Code"
+                            name="paymentMethodBillingZipCode" ngModel
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+
+                </div>
+
+
+                <div class="row my-4 mx-2">
+
+                    <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Country"
+                            name="paymentMethodBillingCountry" ngModel
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                </div>
+
+
+                <div class="row my-4 mx-2">
+                    <div class="col-sm-12">
+                        <button type="submit" class="form-control billing-address-button-fix" [disabled]="showLoading"
+                            style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                            <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                            <span *ngIf="showLoading===true ">Loading...</span> <span
+                                *ngIf="showLoading !==true ">Proceed</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
         </div>
         <div class="col-sm-3"></div>
 

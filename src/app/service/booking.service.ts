@@ -37,6 +37,10 @@ export class BookingService {
     return this.http.post<PaymentMethod>(`${this.host}/newPaymentCard`, formData);
   }
 
+  addBillingAddress(formData: FormData): Observable<PaymentMethod> {
+    return this.http.post<PaymentMethod>(`${this.host}/newBillingAddress`, formData);
+  }
+
   public createBookingFormData(bookingFirstName: string,
     bookingLastName: string, bookingEmail: string, bookingHomePhoneNumber: string,
     bookingPhoneNumber: string, bookingCountry: string, bookingState: string, bookingStreet: string,
@@ -74,20 +78,37 @@ export class BookingService {
 
 
   public createNewCardFormData(cardType: string, cardHolderName: string, cardExpiryMonth: string,
-    cardExpiryYear: string, cardNumber: number, cardCVC: number ): FormData {
+    cardExpiryYear: string, cardNumber: number, cardCVC: number): FormData {
 
     const formData = new FormData();
     formData.append("cardType", cardType);
     formData.append("cardHolderName", cardHolderName);
     formData.append("cardExpiryMonth", cardExpiryMonth);
     formData.append("cardExpiryYear", cardExpiryYear);
-    formData.append("cardNumber", JSON.stringify(cardNumber));
-    formData.append("cardCVC", JSON.stringify(cardCVC));
+    formData.append("cardNumber", cardNumber.toString());
+    formData.append("cardCVC", cardCVC.toString());
 
     return formData;
 
   }
 
+  public createBillingAddressFormData(paymentMethodBillingAddressLine1: string,
+    paymentMethodBillingAddressLine2: string, paymentMethodBillingCity: string,
+    paymentMethodBillingState: string, paymentMethodBillingZipCode: number,
+    paymentMethodBillingCountry: string, paymentMethodId: number): FormData {
+
+    const formData = new FormData();
+    formData.append("paymentMethodBillingAddressLine1", paymentMethodBillingAddressLine1);
+    formData.append("paymentMethodBillingAddressLine2", paymentMethodBillingAddressLine2);
+    formData.append("paymentMethodBillingCity", paymentMethodBillingCity);
+    formData.append("paymentMethodBillingState", paymentMethodBillingState);
+    formData.append("paymentMethodBillingZipCode", paymentMethodBillingZipCode.toString());
+    formData.append("paymentMethodBillingCountry", paymentMethodBillingCountry);
+    formData.append("paymentMethodId", paymentMethodId.toString());
+
+    return formData;
+
+  }
 
 
   public addBookingsToLocalCache(bookings: Booking[]): void {
