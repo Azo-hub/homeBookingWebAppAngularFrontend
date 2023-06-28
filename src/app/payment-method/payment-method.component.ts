@@ -22,8 +22,13 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
 
   @Input()
   showPaymentMethodSectionFromParant: boolean;
+
   @Output()
   showBillingBtnPressed: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
+  @Output()
+  paymentCardId: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private bookingService: BookingService, private notificationService: NotificationService) { }
 
@@ -46,11 +51,13 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
           this.showLoading = false;
           this.showBilling = true;
           this.showBillingBtnPressed.emit(this.showBilling);
+          this.paymentCardId.emit(response.id);
 
         },
 
         (error: HttpErrorResponse) => {
-          this.sendNotification(NotificationType.WARNING, error.error.message);
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+          this.showLoading = false;
         }
 
 

@@ -10,7 +10,7 @@ export class PaymentMethod {
     public paymentMethodBillingAddressLine2: string;
     public paymentMethodBillingCity: string;
     public paymentMethodBillingState: string;
-    public paymentMethodBillingZipCode: string;
+    public paymentMethodBillingZipCode: number;
     public paymentMethodBillingCountry: string;
 
 
@@ -25,7 +25,7 @@ export class PaymentMethod {
         this.paymentMethodBillingAddressLine2 = "";
         this.paymentMethodBillingCity = "";
         this.paymentMethodBillingState = "";
-        this.paymentMethodBillingZipCode = "";
+        this.paymentMethodBillingZipCode = 0;
         this.paymentMethodBillingCountry = "";
 
     }

@@ -1,3 +1,7 @@
+<!-- Start of Navbar -->
+<app-navbar></app-navbar>
+<!-- End of Navbar -->
+
 <div class="container">
     <div class="row my-2">
         <div class="col-md-3"></div>
@@ -15,7 +19,8 @@
 
 </div>
 
-
 <app-payment-method (showBillingBtnPressed)="onshowBillingFromChild($event)"
+    (paymentCardId)="onPaymentCardIdFromChild($event)"
     [showPaymentMethodSectionFromParant]="showPaymentMethodSection"></app-payment-method>
-<app-billing-address [showBillingSectionFromParent]="showBillingSection"></app-billing-address>
+<app-billing-address [showBillingSectionFromParent]="showBillingSection"
+    [paymentMethodIdFromParent]="paymentMethodId"></app-billing-address>

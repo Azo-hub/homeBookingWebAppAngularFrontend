@@ -11,6 +11,8 @@ export class AddNewPaymentMethodComponent implements OnInit {
   
   showBillingSection: boolean;
 
+  paymentMethodId: number;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class AddNewPaymentMethodComponent implements OnInit {
     this.showPaymentMethodSection=false;
     this.showBillingSection = data;
     console.log(this.showBillingSection);
+  }
+
+  onPaymentCardIdFromChild(data: number): void {
+    this.paymentMethodId = data;
   }
 
 }
