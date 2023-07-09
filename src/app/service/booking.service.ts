@@ -41,6 +41,10 @@ export class BookingService {
     return this.http.post<PaymentMethod>(`${this.host}/newBillingAddress`, formData);
   }
 
+  getAllPaymentMethod(): Observable<PaymentMethod[]> {
+    return this.http.get<PaymentMethod[]>(`${this.host}/getAllPaymentMethod`);
+  }
+
   public createBookingFormData(bookingFirstName: string,
     bookingLastName: string, bookingEmail: string, bookingHomePhoneNumber: string,
     bookingPhoneNumber: string, bookingCountry: string, bookingState: string, bookingStreet: string,

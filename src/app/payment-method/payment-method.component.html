@@ -6,17 +6,39 @@
             <h2 align="center" class="my-2">Payment Method</h2>
 
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span><input class="form-check-input me-1" type="radio"
-                            name="listGroupRadio" value="" id="firstRadio" checked>
-                        <label class="form-check-label" for="firstRadio">First radio</label></span></li>
-                <li class="list-group-item"><span><input class="form-check-input me-1" type="radio"
-                            name="listGroupRadio" value="" id="secondRadio">
-                        <label class="form-check-label" for="secondRadio">Second radio</label></span></li>
-                <li class="list-group-item"><span><input class="form-check-input me-1" type="radio"
-                            name="listGroupRadio" value="" id="thirdRadio">
-                        <label class="form-check-label" for="thirdRadio">Third radio</label></span></li>
+                <li class="list-group-item" *ngFor="let paymentList of paymentMethodList">
+                    <table>
+                        <tr>
+                            <td><input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""
+                                    id="firstRadio" checked></td>
+                            <td>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <td colspan="2"><label class="form-check-label" for="firstRadio"
+                                                style="color:inherit; font-size: larger;">
+                                                {{paymentList.cardHolderName}}
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><small>{{paymentList.cardNumber}}</small></td>
+                                        <td><small><span>{{paymentList.expirationMonth}}</span>
+                                                &nbsp;<span>{{paymentList.expirationYear}}</span></small></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                </li>
+
             </ul>
 
+            <div class="card-footer" align="right">
+                <a>Add a New Card</a>
+            </div>
 
         </div>
         <div class="col-md-3"></div>

@@ -44,7 +44,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   currentDate: Date = new Date();
 
 
-  constructor(private propertyService: PropertyService, private authenticationService: AuthenticationService,
+  constructor(private propertyService: PropertyService,/* private authenticationService: AuthenticationService,*/
     private router: Router, private activatedRoute: ActivatedRoute, private notificationService: NotificationService,
     private http: HttpClient) { }
 
@@ -52,7 +52,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
     this.propertyId = this.activatedRoute.snapshot.paramMap.get("id");
 
     this.getEachProperty();
-    /*  this.getAllReviewsByProperty(this.propertyId);*/
+    
   }
 
   getEachProperty(): void {
@@ -78,25 +78,6 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
 
   }
 
-  /*
-    getAllReviewsByProperty(propertyId: string): void {
-      const formData = new FormData();
-      formData.append("propertyId", propertyId);
-      this.subscriptions.push(
-        this.propertyService.getReviewsByProperty(formData).subscribe(
-          (response: Review[]) => {
-            this.reviews = response;
-          },
-  
-          (errorResponse: HttpErrorResponse) => {
-            this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-  
-          }
-        )
-      );
-  
-    }
-  */
 
   onCheckPropertyAvailabilityButtonEvent(): void {
 
