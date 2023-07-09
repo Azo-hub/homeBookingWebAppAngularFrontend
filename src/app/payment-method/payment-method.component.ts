@@ -19,6 +19,7 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
   showBilling: boolean = false;
   private subscriptions: Subscription[] = [];
   paymentCard: PaymentMethod = new PaymentMethod;
+  paymentMethodList: PaymentMethod[] = [];
 
   @Input()
   showPaymentMethodSectionFromParant: boolean;
@@ -34,6 +35,7 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.showPaymentMethodSectionFromParant = true;
+    this.getAllPaymentMethod();
 
   }
 
@@ -68,6 +70,26 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
 
 
 
+
+  }
+
+
+
+  getAllPaymentMethod(): void {
+    this.subscriptions.push(
+      this.bookingService.getAllPaymentMethod().subscribe(
+        (response: PaymentMethod[]) => {
+          this.paymentMethodList = response;
+
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        }
+
+      )
+    );
 
   }
 

@@ -81,7 +81,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
           this.showLoading = false;
           this.getAllReviewsByProperty(this.propertyId);
           this.showLoadingDone = true;
-          /*this.router.navigateByUrl(`/propertydetails/${this.propertyId}`);*/
+          
         },
         (error: HttpErrorResponse) => {
           this.sendNotification(NotificationType.WARNING, error.error.message);
