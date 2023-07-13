@@ -20,6 +20,8 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   paymentCard: PaymentMethod = new PaymentMethod;
   paymentMethodList: PaymentMethod[] = [];
+  showPaymentCardForm: boolean = false;
+  showPaymentCardList: boolean = false;
 
   @Input()
   showPaymentMethodSectionFromParant: boolean;
@@ -68,12 +70,37 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
     );
 
 
-
-
-
   }
 
 
+  onClickAddNewCard(): void {
+    this.showPaymentCardList = true;
+    this.showPaymentCardForm = true;
+
+  }
+
+  onClickPaymentMethodRadioBtn(id: number, value: boolean): void {
+
+    const formData = new FormData();
+    formData.append("paymentMethodId", id.toString());
+    formData.append("value", value.toString());
+
+    this.subscriptions.push(
+      this.bookingService.setDefaultPaymentMethod(formData).subscribe(
+        (response: PaymentMethod[]) => {
+          this.paymentMethodList = response;
+          this.sendNotification(NotificationType.SUCCESS, "Default Payment Card set successfully!");
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        }
+
+      )
+    );
+
+  }
 
   getAllPaymentMethod(): void {
     this.subscriptions.push(
