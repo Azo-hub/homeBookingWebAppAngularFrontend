@@ -28,6 +28,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
   reviews: Review[] = [];
   showLoadingDone: boolean;
   showReview: boolean = false;
+  showAddNewReviewForm: boolean = false;
 
 
   constructor(private propertyService: PropertyService, private notificationService: NotificationService) { }
@@ -96,6 +97,11 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
     reviewForm.reset();
 
+  }
+
+
+  onClickAddNewReview(): void {
+    this.showAddNewReviewForm = true;
   }
 
 
