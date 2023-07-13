@@ -11,49 +11,49 @@ import { PropertyService } from '../service/property.service';
   styleUrls: ['./find-spaces-that-suit-you-inner.component.css']
 })
 export class FindSpacesThatSuitYouInnerComponent implements OnInit, OnDestroy {
-  
-  allhousesType:string|null = "";
-  private subscriptions: Subscription[] = [];
-  properties : Property[] = [];
-  
-  
 
-  constructor(private activatedRoute: ActivatedRoute, private propertyService:PropertyService) { }
+  allhousesType: string | null = "";
+  private subscriptions: Subscription[] = [];
+  properties: Property[] = [];
+
+
+
+  constructor(private activatedRoute: ActivatedRoute, private propertyService: PropertyService) { }
 
   ngOnInit(): void {
     this.allhousesType = this.activatedRoute.snapshot.paramMap.get("category");
     console.log(this.allhousesType);
     this.getAllProperty();
   }
-  
-  
-  getAllProperty():void {
-    
+
+
+  getAllProperty(): void {
+
     const formData = new FormData();
-    formData.append("propertyType",this.allhousesType);
+    formData.append("propertyType", this.allhousesType);
     this.subscriptions.push(
-      
+
       this.propertyService.getProperties(formData).subscribe(
         (response: Property[]) => {
           //this.uService.addUsersToLocalCache(response);
           this.properties = response;
-          
+
         },
         (errorResponse: HttpErrorResponse) => {
           //this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-          
+
         }
       )
     );
-    
+
   }
-  
-  
+
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  
-  
+
+
 
 }

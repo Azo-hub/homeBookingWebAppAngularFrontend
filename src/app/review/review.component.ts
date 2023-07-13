@@ -49,6 +49,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
       this.propertyService.getReviewsByProperty(formData).subscribe(
         (response: Review[]) => {
           this.reviews = response;
+
         },
 
         (error: HttpErrorResponse) => {
@@ -81,7 +82,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
           this.showLoading = false;
           this.getAllReviewsByProperty(this.propertyId);
           this.showLoadingDone = true;
-          
+
         },
         (error: HttpErrorResponse) => {
           this.sendNotification(NotificationType.WARNING, error.error.message);

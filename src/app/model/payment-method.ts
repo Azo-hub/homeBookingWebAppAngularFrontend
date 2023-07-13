@@ -12,6 +12,7 @@ export class PaymentMethod {
     public paymentMethodBillingState: string;
     public paymentMethodBillingZipCode: number;
     public paymentMethodBillingCountry: string;
+    public defaultPaymentMethod: boolean;
 
 
     constructor() {
@@ -27,6 +28,7 @@ export class PaymentMethod {
         this.paymentMethodBillingState = "";
         this.paymentMethodBillingZipCode = 0;
         this.paymentMethodBillingCountry = "";
+        this.defaultPaymentMethod = false;
 
     }
 }
