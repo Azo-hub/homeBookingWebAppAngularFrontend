@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddPropertyDetailsOwnerComponent } from './add-property-details-owner/add-property-details-owner.component';
-import { BookingPaymentMethodComponent } from './booking-payment-method/booking-payment-method.component';
+import { BookingComponent } from './booking/booking.component';
 import { FindSpacesThatSuitYouInnerComponent } from './find-spaces-that-suit-you-inner/find-spaces-that-suit-you-inner.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AuthenticationOwnerGuard } from './guard/authentication-owner.guard';
@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: "addNewProperty", component: AddPropertyDetailsOwnerComponent, canActivate: [AuthenticationOwnerGuard, RoleOwnerGuard] },
   { path: "listing2", component: ListingProperty2Component },
   { path: "listing3", component: ListingProperty3Component },
-  { path: "booking/:noOfDays/:checkInDate/:checkOutDate/:id/:noOfGuest/:noOfChildren/:pets", component: BookingPaymentMethodComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard] },
+  { path: "booking/:noOfDays/:checkInDate/:checkOutDate/:id/:noOfGuest/:noOfChildren/:pets", component: BookingComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard] },
   { path: "privacyPolicy", component: PrivacyPolicyComponent },
   { path: "userProfile", component: UserProfileComponent, canActivate: [AuthenticationGuard] },
   { path: "orderCompleted", component: OrderDetailsComponent, canActivate: [AuthenticationTravellerGuard, RoleTravellerGuard] },

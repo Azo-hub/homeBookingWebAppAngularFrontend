@@ -1,0 +1,440 @@
+<h1>
+    <a class="navbar-brand" routerLink="/" style="color:inherit; font-size:3vmin;"><img
+            src="/assets/customImage/bookingLogo.jpeg" height="50vmin"
+            width="50vmin" />&nbsp;<b>ValenceDirectBookingRentals</b></a>
+</h1>
+
+<hr />
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <mat-horizontal-stepper linear>
+                <mat-step label="Payment Method" [completed]="showPaymentMethodSection">
+                </mat-step>
+                <mat-step label="New Booking Information" [completed]="showNewBookingSection">
+                </mat-step>
+            </mat-horizontal-stepper>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div [hidden]="showPaymentMethodSection">
+        <div class="row my-3 mx-2" *ngIf="!showPaymentCardList">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 card mx-0 px-0">
+                <h2 align="center" class="my-2">Payment Method</h2>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let paymentList of paymentMethodList">
+                        <table>
+                            <tr>
+                                <td><input class="form-check-input me-1" type="radio" name="listGroupRadio"
+                                        [value]="paymentList.defaultPaymentMethod"
+                                        [checked]="paymentList.defaultPaymentMethod === true" id="firstRadio"
+                                        (click)="onClickPaymentMethodRadioBtn(paymentList.id, paymentList.defaultPaymentMethod)">
+                                </td>
+                                <td>
+                                    <table class="table table-responsive">
+                                        <tr>
+                                            <td colspan="2"><label class="form-check-label" for="firstRadio"
+                                                    style="color:inherit; font-size: larger;">
+                                                    {{paymentList.cardHolderName}}
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>**********{{paymentList.cardNumber.toString().substring(paymentList.cardNumber.toString().length
+                                                    - 4)}}</small></td>
+                                            <td><small><span>{{paymentList.expirationMonth}}</span>
+                                                    &nbsp;<span>{{paymentList.expirationYear}}</span></small></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                    </li>
+
+                </ul>
+
+                <div class="card-footer">
+                    <a class="ms-4" style="text-decoration: underline;" (click)="onClickUseADifferentCard()">Use a
+                        Different Card</a>
+                </div>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+        <div class="row mb-5 mx-1" *ngIf="showPaymentCardForm">
+
+
+            <div class="col-md-3"></div>
+            <div class="col-md-6 card">
+                <form #addADifferentCardForm="ngForm" (ngSubmit)="onSubmitAddADifferentCardForm(addADifferentCardForm)">
+
+                    <div class="row my-2">
+                        <div class="col-md-12" align="center">
+                            <h2>Payment Method</h2>
+                        </div>
+                    </div>
+
+                    <div class="row my-2 mx-2">
+                        <div class="col-sm-12">
+
+                            <h3>Credit Cards&nbsp;<span class="fa fa-credit-card" style="font-size:20px;"></span>&nbsp;
+                                <span class="fa fa-cc-mastercard" style="font-size:20px;"></span>&nbsp;
+                                <span class="fa fa-cc-visa" style="font-size:20px;"></span>&nbsp;
+                                <span class="fa fa-cc-discover" style="font-size:20px;"></span>&nbsp;
+                                <span class="fa fa-cc-amex" style="font-size:20px;"></span>
+                            </h3>
+
+                        </div>
+
+                    </div>
+                    <div class="row mt-2 mb-3 mx-2">
+                        <div class="col-sm-12">
+                            <label for="cardType">Card Type: </label>
+                            <select class="form-control" id="cardType" required ngModel name="cardType">
+                                <option value="visa">Visa</option>
+                                <option value="mastercard">Mastercard</option>
+                                <option value="discover">Discover</option>
+                                <option value="amex">American Express</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row my-3 mx-2 gy-4">
+                        <div class="col-sm-6">
+                            <label>Card Holder Name</label>
+                            <input class="form-control" type="text" required ngModel name="cardHolderName" />
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <label>Expiration Date</label>
+                            <div class="row gy-2">
+                                <div class="col-sm-6" align="center">
+                                    <select class="form-control" required ngModel name="cardExpiryMonth">
+                                        <option disabled="disabled">---Month---</option>
+                                        <option value="January">Jan (01)</option>
+                                        <option value="February">Feb (02)</option>
+                                        <option value="March">Mar (03)</option>
+                                        <option value="April">Apr (04)</option>
+                                        <option value="May">May (05)</option>
+                                        <option value="June">Jun (06)</option>
+                                        <option value="July">Jul (07)</option>
+                                        <option value="August">Aug (08)</option>
+                                        <option value="September">Sep (09)</option>
+                                        <option value="October">Oct (10)</option>
+                                        <option value="November">Nov (11)</option>
+                                        <option value="December">Dec (12)</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <select class="form-control" required ngModel name="cardExpiryYear">
+                                        <option disabled="disabled">---Year---</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                        <option value="2031">2031</option>
+                                        <option value="2032">2032</option>
+                                        <option value="2033">2033</option>
+                                        <option value="2034">2034</option>
+                                        <option value="2035">2035</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="row my-3 mx-2 gy-4">
+                        <div class="col-sm-8">
+                            <label>Card Number</label>
+                            <input class="form-control" type="tel" ngModel name="cardNumber" required />
+                        </div>
+                        <div class="col-sm-4">
+                            <label>CVC</label>
+                            <input class="form-control" type="tel" ngModel name="cardCVC" required />
+                        </div>
+                    </div>
+                    <div class="row my-4 mx-2">
+                        <div class="col-sm-12">
+                            <button type="submit" class="form-control booking-payment-method-button-fix"
+                                [disabled]="showLoading || addADifferentCardForm.invalid"
+                                [hidden]="hideShowBillingAddressButton"
+                                style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                                <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                                <span *ngIf="showLoading===true ">Loading...</span> <span
+                                    *ngIf="showLoading !==true ">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </form>
+
+                <div class="row my-3 mx-2" [hidden]="!showBillingAddressSection">
+                    <form>
+                        <div class="col-sm-12 my-2">
+
+                            <h2 class="mb-5">Billing Address</h2>
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="Address Line 1" ngModel
+                                        name="paymentMethodBillingAddressLine1" required
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+                            </div>
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="Address Line 2 (Optional)"
+                                        ngModel name="paymentMethodBillingAddressLine2"
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+                            </div>
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="City" ngModel
+                                        name="paymentMethodBillingCity" required
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+
+                            </div>
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="State" ngModel
+                                        name="paymentMethodBillingState" required
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+                            </div>
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="Zip Code" ngModel
+                                        name="paymentMethodBillingZipCode" required
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="row my-4">
+
+                                <div class="col-sm-12" style="display: flex; flex-direction: row;">
+                                    <input type="text" class="form-control " placeholder="Country" ngModel
+                                        name="paymentMethodBillingCountry" required
+                                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                                </div>
+
+                            </div>
+
+                            <div class="row my-4">
+                                <div class="col-sm-12">
+                                    <button class="form-control booking-payment-method-button-fix"
+                                        [disabled]="showLoading"
+                                        style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                                        <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                                        <span *ngIf="showLoading===true ">Loading...</span> <span
+                                            *ngIf="showLoading !==true ">Proceed</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="col-md-3"></div>
+
+</div>
+
+
+
+
+<div class="row" *ngIf="showNewBookingSection">
+
+    <div class="col-md-3 my-2">
+        <a routerLink="/" style="color: inherit;"><span style="font-size: 25px;" class="fa fa-arrow-left"
+                aria-hidden="true"></span></a>
+    </div>
+    <div class="col-md-6 my-2">
+        <div>
+            <h2 class="mb-5" align="center">Add your Personal Details and Booking Address</h2>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control" placeholder="First Name" required
+                        [(ngModel)]="bookingFirstName" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                </div>
+
+            </div>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control" placeholder="Last Name" required
+                        [(ngModel)]="bookingLastName" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                </div>
+
+            </div>
+
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="email" class="form-control" placeholder="Email Address" required
+                        [(ngModel)]="bookingEmail" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                </div>
+
+                <span class="help-block text-muted">Please use a valid email as the property owner will communicate
+                    you through it.</span>
+            </div>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="Home Phone"
+                        [(ngModel)]="bookingHomePhoneNumber" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+            </div>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="Cell Phone" [(ngModel)]="bookingPhoneNumber"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+            </div>
+
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="Country" [(ngModel)]="bookingCountry"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+            </div>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="State" [(ngModel)]="bookingState"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+            </div>
+
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="City" [(ngModel)]="bookingCity"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+
+            </div>
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="Street" [(ngModel)]="bookingStreet"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+            </div>
+
+
+            <div class="row my-4">
+
+                <div class="col-md-12" style="display: flex; flex-direction: row;">
+                    <input type="text" class="form-control " placeholder="Zip Code" [(ngModel)]="bookingZipCode"
+                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row my-2 ">
+                <div class="col-md-12 ">
+                    <p class="text-muted">When you book this property and make payment, your reservation will be
+                        confirmed instantly.</p>
+
+                </div>
+
+            </div>
+
+            <div class="row my-4 ">
+                <div class="col-md-12 " style="display: flex; flex-direction: row;">
+
+                    <button class="form-control booking-payment-method-button-fix" type="submit"
+                        [disabled]="showLoading" (click)="onBookingPaymentForm()"
+                        style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                        <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                        <span *ngIf="showLoading===true ">Loading...</span> <span *ngIf="showLoading !==true ">Request
+                            to Book</span>
+                    </button>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3 "></div>
+</div>

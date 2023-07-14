@@ -7,13 +7,15 @@ import { Booking } from '../model/booking';
 import { User } from '../model/user';
 import { BookingService } from '../service/booking.service';
 import { NotificationService } from '../service/notification.service';
+import { PaymentMethod } from '../model/payment-method';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-booking-payment-method',
-  templateUrl: './booking-payment-method.component.html',
-  styleUrls: ['./booking-payment-method.component.css']
+  templateUrl: './booking.component.html',
+  styleUrls: ['./booking.component.css']
 })
-export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
+export class BookingComponent implements OnInit, OnDestroy {
 
   showLoading: boolean = false;
   private subscriptions: Subscription[] = [];
@@ -40,13 +42,14 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
   showNewBookingSection: boolean;
   showPaymentMethodSection: boolean;
   showCreditCardPaymentInfoError: boolean;
-  paypal: string = "PayPal";
-  zelle: string = "Zelle";
-  cashApp: string = "CashApp";
-  venmo: string = "Venmo";
   bookingPaymentMethod: string;
   showBillingAddressSection: boolean = false;
   hideShowBillingAddressButton: boolean;
+  paymentMethodList: PaymentMethod[] = [];
+  showPaymentCardForm: boolean = false;
+  showPaymentCardList: boolean = false;
+  paymentMethod: PaymentMethod = new PaymentMethod;
+
 
 
 
@@ -73,16 +76,32 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
 
   }
 
-  onAddCreditCardBillingAddressInfo(): void {
-    this.showBillingAddressSection = true;
-    this.hideShowBillingAddressButton = true;
 
-  }
 
-  onAddBookingCreditCardPaymentInfo(): void {
-    this.showCreditCardPaymentInfoError = true;
-    this.sendNotification(NotificationType.ERROR, `Please check your card
-                        details and retry again or you try alternative method of payment`);
+  onSubmitAddADifferentCardForm(addADifferentCardForm: NgForm): void {
+    this.showLoading = true;
+
+    const formData = this.bookingService.createNewCardFormData(addADifferentCardForm.value.cardType,
+      addADifferentCardForm.value.cardHolderName, addADifferentCardForm.value.cardExpiryMonth,
+      addADifferentCardForm.value.cardExpiryYear, addADifferentCardForm.value.cardNumber,
+      addADifferentCardForm.value.cardCVC);
+
+    this.subscriptions.push(
+
+      this.bookingService.addPaymentCard(formData).subscribe(
+        (response: PaymentMethod) => {
+          this.paymentMethod = response;
+          this.showLoading = false;
+          this.showBillingAddressSection = true;
+          this.hideShowBillingAddressButton = true;
+        },
+        (errorResponse: HttpErrorResponse) => {
+
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.showLoading = false;
+        }
+      )
+    );
   }
 
   public onBookingPaymentForm(): void {
@@ -116,6 +135,38 @@ export class BookingPaymentMethodComponent implements OnInit, OnDestroy {
       )
     );
   }
+
+
+
+  onClickUseADifferentCard(): void {
+    this.showPaymentCardList = true;
+    this.showPaymentCardForm = true;
+
+  }
+
+  onClickPaymentMethodRadioBtn(id: number, value: boolean): void {
+
+    const formData = new FormData();
+    formData.append("paymentMethodId", id.toString());
+    formData.append("value", value.toString());
+
+    this.subscriptions.push(
+      this.bookingService.setDefaultPaymentMethod(formData).subscribe(
+        (response: PaymentMethod[]) => {
+          this.paymentMethodList = response;
+          this.sendNotification(NotificationType.SUCCESS, "Default Payment Card set successfully!");
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        }
+
+      )
+    );
+
+  }
+
 
 
   private sendNotification(notificationType: NotificationType, message: string) {

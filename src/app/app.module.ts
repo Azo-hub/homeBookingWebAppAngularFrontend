@@ -9,7 +9,7 @@ import { AddPropertyDetailsOwnerComponent } from './add-property-details-owner/a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookingPaymentMethodComponent } from './booking-payment-method/booking-payment-method.component';
+import { BookingComponent } from './booking/booking.component';
 import { FindSpacesThatSuitYouInnerComponent } from './find-spaces-that-suit-you-inner/find-spaces-that-suit-you-inner.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { DiscoverAboutComponent } from './homepage/discover-about/discover-about.component';
@@ -75,7 +75,7 @@ import { AddNewPaymentMethodComponent } from './add-new-payment-method/add-new-p
     FindSpacesThatSuitYouInnerComponent,
     ForgetPasswordComponent,
     PropertyDetailsComponent,
-    BookingPaymentMethodComponent,
+    BookingComponent,
     ListingProperty1Component,
     ListingProperty2Component,
     ListingProperty3Component,
