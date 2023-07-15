@@ -7,7 +7,7 @@
 
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" *ngFor="let paymentList of paymentMethodList">
-                    <table>
+                    <table class="table table-responsive">
                         <tr>
                             <td><input class="form-check-input me-1" type="radio" name="listGroupRadio"
                                     [value]="paymentList.defaultPaymentMethod"
@@ -17,7 +17,7 @@
                             <td>
                                 <table class="table table-responsive">
                                     <tr>
-                                        <td colspan="2"><label class="form-check-label" for="firstRadio"
+                                        <td colspan="3"><label class="form-check-label" for="firstRadio"
                                                 style="color:inherit; font-size: larger;">
                                                 {{paymentList.cardHolderName}}
                                             </label>
@@ -26,11 +26,18 @@
                                     <tr>
                                         <td><small>**********{{paymentList.cardNumber.toString().substring(paymentList.cardNumber.toString().length
                                                 - 4)}}</small></td>
-                                        <td><small><span>{{paymentList.expirationMonth}}</span>
+                                        <td><small><span>{{paymentList.expirationMonth.toString().substring(0,3)}}</span>
                                                 &nbsp;<span>{{paymentList.expirationYear}}</span></small></td>
+                                        <td><a style="color:rgb(177, 70, 70);"
+                                                (click)="onRemoveCard(paymentList.id)"><small><span
+                                                        class="fa fa-times"></span>&nbsp;Remove
+                                                    Card</small></a></td>
                                     </tr>
                                 </table>
                             </td>
+
+
+
                         </tr>
                     </table>
 
@@ -73,18 +80,24 @@
                 <div class="row mt-2 mb-3 mx-2">
                     <div class="col-sm-12">
                         <label for="cardType">Card Type: </label>
-                        <select class="form-control" id="cardType" name="cardType" required ngModel>
+                        <select class="form-control" id="cardType" name="cardType" required ngModel
+                            #cardTypeInput="ngModel">
                             <option value="visa">Visa</option>
                             <option value="mastercard">Mastercard</option>
                             <option value="discover">Discover</option>
                             <option value="amex">American Express</option>
                         </select>
                     </div>
+                    <small *ngIf="cardTypeInput.touched && cardTypeInput.invalid" style="color:red;" class="my-1">Card
+                        Type not Selected</small>
                 </div>
                 <div class="row my-3 mx-2 gy-4">
                     <div class="col-sm-6">
                         <label>Card Holder Name</label>
-                        <input class="form-control" type="text" required ngModel name="cardHolderName" />
+                        <input class="form-control" type="text" required ngModel name="cardHolderName"
+                            #cardHolderNameInput="ngModel" />
+                        <small *ngIf="cardHolderNameInput.touched && cardHolderNameInput.invalid" style="color:red;"
+                            class="my-1">Card Holder Name Empty</small>
                     </div>
 
                     <div class="col-sm-6">
@@ -92,7 +105,8 @@
                         <label>Expiration Date</label>
                         <div class="row gy-2">
                             <div class="col-sm-6" align="center">
-                                <select class="form-control" required ngModel name="cardExpiryMonth">
+                                <select class="form-control" required ngModel name="cardExpiryMonth"
+                                    #cardExpiryMonthInput="ngModel">
                                     <option disabled="disabled">---Month---</option>
                                     <option value="January">Jan (01)</option>
                                     <option value="February">Feb (02)</option>
@@ -108,10 +122,13 @@
                                     <option value="December">Dec (12)</option>
 
                                 </select>
+                                <small *ngIf="cardExpiryMonthInput.touched && cardExpiryMonthInput.invalid"
+                                    style="color:red;" class="my-1">Expiry Month is Empty</small>
                             </div>
 
                             <div class="col-sm-6">
-                                <select class="form-control" required ngModel name="cardExpiryYear">
+                                <select class="form-control" required ngModel name="cardExpiryYear"
+                                    #cardExpiryYearInput="ngModel">
                                     <option disabled="disabled">---Year---</option>
                                     <option value="2023">2023</option>
                                     <option value="2024">2024</option>
@@ -128,11 +145,11 @@
                                     <option value="2035">2035</option>
 
                                 </select>
+                                <small *ngIf="cardExpiryYearInput.touched && cardExpiryYearInput.invalid"
+                                    style="color:red;" class="my-1">Expiry Year
+                                    is Empty</small>
                             </div>
                         </div>
-
-
-
 
                     </div>
 
@@ -141,16 +158,23 @@
                 <div class="row my-3 mx-2 gy-4">
                     <div class="col-sm-8">
                         <label>Card Number</label>
-                        <input class="form-control" type="tel" ngModel name="cardNumber" />
+                        <input class="form-control" type="tel" required ngModel name="cardNumber"
+                            #cardNumberInput="ngModel" />
+                        <small *ngIf="cardNumberInput.touched && cardNumberInput.invalid" style="color:red;"
+                            class="my-1">Card Number is Empty</small>
                     </div>
                     <div class="col-sm-4">
                         <label>CVC</label>
-                        <input class="form-control" type="tel" ngModel name="cardCVC" />
+                        <input class="form-control" type="tel" required ngModel name="cardCVC"
+                            #cardCVCInput="ngModel" />
+                        <small *ngIf="cardCVCInput.touched && cardCVCInput.invalid" style="color:red;" class="my-1">CVC
+                            is Empty</small>
                     </div>
                 </div>
                 <div class="row my-4 mx-2">
                     <div class="col-sm-12">
-                        <button type="submit" class="form-control payment-method-button-fix" [disabled]="showLoading"
+                        <button type="submit" class="form-control payment-method-button-fix"
+                            [disabled]="showLoading || paymentCardForm.invalid"
                             style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
                             <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
                             <span *ngIf="showLoading===true ">Loading...</span> <span

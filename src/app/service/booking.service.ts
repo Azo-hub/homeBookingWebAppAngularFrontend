@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Booking } from '../model/booking';
 import { PaymentMethod } from '../model/payment-method';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,10 @@ export class BookingService {
 
   public setDefaultPaymentMethod(formData: FormData): Observable<PaymentMethod[]> {
     return this.http.post<PaymentMethod[]>(`${this.host}/setDefaultPaymentMethod`, formData);
+  }
+
+  public removeCard(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/removeCard`, formData);
   }
 
   public createBookingFormData(bookingFirstName: string,
