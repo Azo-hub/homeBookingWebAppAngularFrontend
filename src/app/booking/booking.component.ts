@@ -66,6 +66,26 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.noOfGuest = this.activatedRoute.snapshot.paramMap.get("noOfGuest");
     this.noOfChildren = this.activatedRoute.snapshot.paramMap.get("noOfChildren");
     this.pets = this.activatedRoute.snapshot.paramMap.get("pets");
+    this.getAllPaymentMethod();
+  }
+
+
+  getAllPaymentMethod(): void {
+    this.subscriptions.push(
+      this.bookingService.getAllPaymentMethod().subscribe(
+        (response: PaymentMethod[]) => {
+          this.paymentMethodList = response;
+
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        }
+
+      )
+    );
+
   }
 
 

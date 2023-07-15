@@ -33,13 +33,13 @@
                             <tr>
                                 <td><input class="form-check-input me-1" type="radio" name="listGroupRadio"
                                         [value]="paymentList.defaultPaymentMethod"
-                                        [checked]="paymentList.defaultPaymentMethod === true" id="firstRadio"
+                                        [checked]="paymentList.defaultPaymentMethod === true"
                                         (click)="onClickPaymentMethodRadioBtn(paymentList.id, paymentList.defaultPaymentMethod)">
                                 </td>
                                 <td>
                                     <table class="table table-responsive">
                                         <tr>
-                                            <td colspan="2"><label class="form-check-label" for="firstRadio"
+                                            <td colspan="2"><label class="form-check-label"
                                                     style="color:inherit; font-size: larger;">
                                                     {{paymentList.cardHolderName}}
                                                 </label>

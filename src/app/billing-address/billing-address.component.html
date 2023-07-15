@@ -15,8 +15,13 @@
                     <div class="col-sm-12" style="display: flex; flex-direction: row;">
                         <input type="text" class="form-control " placeholder="Address Line 1"
                             name="paymentMethodBillingAddressLine1" ngModel required
+                            #paymentMethodBillingAddressLine1Input="ngModel"
                             style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                     </div>
+
+                    <small
+                        *ngIf="paymentMethodBillingAddressLine1Input.touched && paymentMethodBillingAddressLine1Input.invalid"
+                        style="color:red;" class="my-1">Billing Address is Empty</small>
 
                 </div>
 
@@ -34,9 +39,12 @@
 
                     <div class="col-sm-12" style="display: flex; flex-direction: row;">
                         <input type="text" class="form-control " placeholder="City" name="paymentMethodBillingCity"
-                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                            #paymentMethodBillingCityInput="ngModel" required ngModel
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                     </div>
 
+                    <small *ngIf="paymentMethodBillingCityInput.touched && paymentMethodBillingCityInput.invalid"
+                        style="color:red;" class="my-1">Billing City is Empty</small>
 
                 </div>
 
@@ -44,8 +52,13 @@
 
                     <div class="col-sm-12" style="display: flex; flex-direction: row;">
                         <input type="text" class="form-control " placeholder="State" name="paymentMethodBillingState"
-                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                            #paymentMethodBillingStateInput="ngModel" required ngModel
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                     </div>
+
+                    <small *ngIf="paymentMethodBillingStateInput.touched && paymentMethodBillingStateInput.invalid"
+                        style="color:red;" class="my-1">Billing State is Empty</small>
+
 
                 </div>
 
@@ -53,10 +66,12 @@
 
                     <div class="col-sm-12" style="display: flex; flex-direction: row;">
                         <input type="tel" class="form-control " placeholder="Zip Code"
-                            name="paymentMethodBillingZipCode" ngModel
-                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                            name="paymentMethodBillingZipCode" #paymentMethodBillingZipCodeInput="ngModel" required
+                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                     </div>
 
+                    <small *ngIf="paymentMethodBillingZipCodeInput.touched && paymentMethodBillingZipCodeInput.invalid"
+                        style="color:red;" class="my-1">Billing ZipCode is Empty</small>
 
                 </div>
 
@@ -65,16 +80,20 @@
 
                     <div class="col-sm-12" style="display: flex; flex-direction: row;">
                         <input type="text" class="form-control " placeholder="Country"
-                            name="paymentMethodBillingCountry" ngModel
-                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                            name="paymentMethodBillingCountry" #paymentMethodBillingCountryInput="ngModel" required
+                            ngModel style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                     </div>
+
+                    <small *ngIf="paymentMethodBillingCountryInput.touched && paymentMethodBillingCountryInput.invalid"
+                        style="color:red;" class="my-1">Billing Country is Empty</small>
 
                 </div>
 
 
                 <div class="row my-4 mx-2">
                     <div class="col-sm-12">
-                        <button type="submit" class="form-control billing-address-button-fix" [disabled]="showLoading"
+                        <button type="submit" class="form-control billing-address-button-fix"
+                            [disabled]="showLoading || billingAddressForm.invalid"
                             style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
                             <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
                             <span *ngIf="showLoading===true ">Loading...</span> <span

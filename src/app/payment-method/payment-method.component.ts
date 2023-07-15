@@ -6,6 +6,7 @@ import { PaymentMethod } from '../model/payment-method';
 import { NotificationType } from '../enum/notification-type.enum';
 import { NotificationService } from '../service/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 
 @Component({
@@ -100,6 +101,26 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
       )
     );
 
+  }
+
+  onRemoveCard(id: number): void {
+    const formData = new FormData();
+    formData.append("paymentMethodId", id.toString());
+
+    this.subscriptions.push(
+      this.bookingService.removeCard(formData).subscribe(
+        (response: CustomHttpResponse) => {
+          this.sendNotification(NotificationType.SUCCESS, response.message);
+          this.getAllPaymentMethod();
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, error.error.message);
+
+        }
+
+      )
+    );
   }
 
   getAllPaymentMethod(): void {
