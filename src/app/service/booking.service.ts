@@ -54,12 +54,17 @@ export class BookingService {
     return this.http.post<CustomHttpResponse>(`${this.host}/removeCard`, formData);
   }
 
+  addNewBillingAddress(formData: FormData): Observable<PaymentMethod> {
+    return this.http.post<PaymentMethod>(`${this.host}/addNewBillingAddress`, formData);
+  }
+
+
   public createBookingFormData(bookingFirstName: string,
     bookingLastName: string, bookingEmail: string, bookingHomePhoneNumber: string,
     bookingPhoneNumber: string, bookingCountry: string, bookingState: string, bookingStreet: string,
     bookingCity: string, bookingZipCode: string, checkInDate: Date, checkOutDate: Date,
     bookingNoOfDays: string, bookingPropertyId: string, noOfGuest: string, noOfChildren: string,
-    pets: string, bookingPaymentMethod: string): FormData {
+    pets: string, bookingPaymentMethod: number): FormData {
 
     const formData = new FormData();
     formData.append("bookingFirstName", bookingFirstName);
@@ -80,7 +85,7 @@ export class BookingService {
     formData.append("noOfGuest", noOfGuest);
     formData.append("noOfChildren", noOfChildren);
     formData.append("pets", pets);
-    formData.append("bookingPaymentMethod", bookingPaymentMethod);
+    formData.append("bookingPaymentMethodId", bookingPaymentMethod.toString());
 
     return formData;
 

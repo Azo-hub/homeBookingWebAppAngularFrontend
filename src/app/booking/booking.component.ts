@@ -42,13 +42,13 @@ export class BookingComponent implements OnInit, OnDestroy {
   showNewBookingSection: boolean;
   showPaymentMethodSection: boolean;
   showCreditCardPaymentInfoError: boolean;
-  bookingPaymentMethod: string;
   showBillingAddressSection: boolean = false;
   hideShowBillingAddressButton: boolean;
   paymentMethodList: PaymentMethod[] = [];
   showPaymentCardForm: boolean = false;
   showPaymentCardList: boolean = false;
   paymentMethod: PaymentMethod = new PaymentMethod;
+  bookingPaymentMethodId: number;
 
 
 
@@ -89,14 +89,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
 
-  onAddBookingPaymentInfo(paymentMethodFrom: string): void {
-    this.showPaymentMethodSection = true;
-    this.bookingPaymentMethod = paymentMethodFrom;
-    this.showNewBookingSection = true;
-
-  }
-
-
 
   onSubmitAddADifferentCardForm(addADifferentCardForm: NgForm): void {
     this.showLoading = true;
@@ -111,9 +103,11 @@ export class BookingComponent implements OnInit, OnDestroy {
       this.bookingService.addPaymentCard(formData).subscribe(
         (response: PaymentMethod) => {
           this.paymentMethod = response;
+          this.bookingPaymentMethodId = response.id;
           this.showLoading = false;
           this.showBillingAddressSection = true;
           this.hideShowBillingAddressButton = true;
+
         },
         (errorResponse: HttpErrorResponse) => {
 
@@ -136,7 +130,7 @@ export class BookingComponent implements OnInit, OnDestroy {
         this.bookingPhoneNumber, this.bookingCountry, this.bookingState, this.bookingStreet,
         this.bookingCity, this.bookingZipCode,
         this.bookingCheckInDate, this.bookingCheckOutDate, this.bookingNoOfDaysFromUrl,
-        this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets, this.bookingPaymentMethod);
+        this.bookingPropertyIdFromUrl, this.noOfGuest, this.noOfChildren, this.pets, this.bookingPaymentMethodId);
 
     this.subscriptions.push(
 
@@ -162,6 +156,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.showPaymentCardList = true;
     this.showPaymentCardForm = true;
 
+
   }
 
   onClickPaymentMethodRadioBtn(id: number, value: boolean): void {
@@ -174,13 +169,52 @@ export class BookingComponent implements OnInit, OnDestroy {
       this.bookingService.setDefaultPaymentMethod(formData).subscribe(
         (response: PaymentMethod[]) => {
           this.paymentMethodList = response;
-          this.sendNotification(NotificationType.SUCCESS, "Default Payment Card set successfully!");
+          this.bookingPaymentMethodId = id;
+          this.sendNotification(NotificationType.SUCCESS, "Payment Card set successfully!");
+          this.showNewBookingSection = true;
+          this.showPaymentCardList = true;
         },
 
         (error: HttpErrorResponse) => {
           this.sendNotification(NotificationType.ERROR, error.error.message);
 
         }
+
+      )
+    );
+
+  }
+
+
+  onSubmitBillingAddressForm(billingAddressForm: NgForm): void {
+    this.showLoading = true;
+
+    const formData = this.bookingService.createBillingAddressFormData(
+      billingAddressForm.value.paymentMethodBillingAddressLine1,
+      billingAddressForm.value.paymentMethodBillingAddressLine2,
+      billingAddressForm.value.paymentMethodBillingCity,
+      billingAddressForm.value.paymentMethodBillingState,
+      billingAddressForm.value.paymentMethodBillingZipCode,
+      billingAddressForm.value.paymentMethodBillingCountry,
+      this.paymentMethod.id);
+
+    this.subscriptions.push(
+      this.bookingService.addNewBillingAddress(formData).subscribe(
+        (response: PaymentMethod) => {
+          this.paymentMethod = response;
+          this.bookingPaymentMethodId = this.paymentMethod.id;
+          this.showLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, `Payment Details Successfully Added.`);
+          this.showNewBookingSection = true;
+          this.showPaymentCardForm = false;
+
+        },
+
+        (error: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.WARNING, error.error.message);
+        }
+
+
 
       )
     );

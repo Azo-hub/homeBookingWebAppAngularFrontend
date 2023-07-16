@@ -101,18 +101,24 @@
                     <div class="row mt-2 mb-3 mx-2">
                         <div class="col-sm-12">
                             <label for="cardType">Card Type: </label>
-                            <select class="form-control" id="cardType" required ngModel name="cardType">
+                            <select class="form-control" id="cardType" required ngModel name="cardType"
+                                #cardTypeInput="ngModel">
                                 <option value="visa">Visa</option>
                                 <option value="mastercard">Mastercard</option>
                                 <option value="discover">Discover</option>
                                 <option value="amex">American Express</option>
                             </select>
                         </div>
+                        <small *ngIf="cardTypeInput.touched && cardTypeInput.invalid" style="color:red;">Card Type is
+                            Empty</small>
                     </div>
                     <div class="row my-3 mx-2 gy-4">
                         <div class="col-sm-6">
                             <label>Card Holder Name</label>
-                            <input class="form-control" type="text" required ngModel name="cardHolderName" />
+                            <input class="form-control" type="text" required ngModel name="cardHolderName"
+                                #cardHolderNameInput="ngModel" />
+                            <small *ngIf="cardHolderNameInput.touched && cardHolderNameInput.invalid"
+                                style="color:red;">Card Holder Name is Empty</small>
                         </div>
 
                         <div class="col-sm-6">
@@ -120,7 +126,8 @@
                             <label>Expiration Date</label>
                             <div class="row gy-2">
                                 <div class="col-sm-6" align="center">
-                                    <select class="form-control" required ngModel name="cardExpiryMonth">
+                                    <select class="form-control" required ngModel name="cardExpiryMonth"
+                                        #cardExpiryMonthInput="ngModel">
                                         <option disabled="disabled">---Month---</option>
                                         <option value="January">Jan (01)</option>
                                         <option value="February">Feb (02)</option>
@@ -136,10 +143,14 @@
                                         <option value="December">Dec (12)</option>
 
                                     </select>
+
+                                    <small *ngIf="cardExpiryMonthInput.touched && cardExpiryMonthInput.invalid"
+                                        style="color:red;">Expiry Month is Empty</small>
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <select class="form-control" required ngModel name="cardExpiryYear">
+                                    <select class="form-control" required ngModel name="cardExpiryYear"
+                                        #cardExpiryYearInput="ngModel">
                                         <option disabled="disabled">---Year---</option>
                                         <option value="2023">2023</option>
                                         <option value="2024">2024</option>
@@ -156,6 +167,9 @@
                                         <option value="2035">2035</option>
 
                                     </select>
+
+                                    <small *ngIf="cardExpiryYearInput.touched && cardExpiryYearInput.invalid"
+                                        style="color:red;">Expiry Year is Empty</small>
                                 </div>
                             </div>
 
@@ -169,11 +183,17 @@
                     <div class="row my-3 mx-2 gy-4">
                         <div class="col-sm-8">
                             <label>Card Number</label>
-                            <input class="form-control" type="tel" ngModel name="cardNumber" required />
+                            <input class="form-control" type="tel" ngModel name="cardNumber" required
+                                #cardNumberInput="ngModel" />
+                            <small *ngIf="cardNumberInput.touched && cardNumberInput.invalid" style="color:red;">Card
+                                Number is Empty</small>
                         </div>
                         <div class="col-sm-4">
                             <label>CVC</label>
-                            <input class="form-control" type="tel" ngModel name="cardCVC" required />
+                            <input class="form-control" type="tel" ngModel name="cardCVC" required
+                                #cardCVCInput="ngModel" />
+                            <small *ngIf="cardCVCInput.touched && cardCVCInput.invalid" style="color:red;">CVC is
+                                Empty</small>
                         </div>
                     </div>
                     <div class="row my-4 mx-2">
@@ -194,7 +214,7 @@
                 </form>
 
                 <div class="row my-3 mx-2" [hidden]="!showBillingAddressSection">
-                    <form>
+                    <form #billingAddressForm="ngForm" (ngSubmit)="onSubmitBillingAddressForm(billingAddressForm)">
                         <div class="col-sm-12 my-2">
 
                             <h2 class="mb-5">Billing Address</h2>
@@ -203,10 +223,13 @@
 
                                 <div class="col-sm-12" style="display: flex; flex-direction: row;">
                                     <input type="text" class="form-control " placeholder="Address Line 1" ngModel
-                                        name="paymentMethodBillingAddressLine1" required
+                                        name="paymentMethodBillingAddressLine1"
+                                        #paymentMethodBillingAddressLine1Input="ngModel" required
                                         style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 </div>
-
+                                <small
+                                    *ngIf="paymentMethodBillingAddressLine1Input.touched && paymentMethodBillingAddressLine1Input.invalid"
+                                    style="color:red;">Billing Address is Empty</small>
                             </div>
 
                             <div class="row my-4">
@@ -224,9 +247,12 @@
                                 <div class="col-sm-12" style="display: flex; flex-direction: row;">
                                     <input type="text" class="form-control " placeholder="City" ngModel
                                         name="paymentMethodBillingCity" required
+                                        #paymentMethodBillingCityInput="ngModel"
                                         style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 </div>
-
+                                <small
+                                    *ngIf="paymentMethodBillingCityInput.touched && paymentMethodBillingCityInput.invalid"
+                                    style="color:red;">Billing City is Empty</small>
 
                             </div>
 
@@ -235,9 +261,13 @@
                                 <div class="col-sm-12" style="display: flex; flex-direction: row;">
                                     <input type="text" class="form-control " placeholder="State" ngModel
                                         name="paymentMethodBillingState" required
+                                        #paymentMethodBillingStateInput="ngModel"
                                         style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 </div>
 
+                                <small
+                                    *ngIf="paymentMethodBillingStateInput.touched && paymentMethodBillingStateInput.invalid"
+                                    style="color:red;">Billing State is Empty</small>
                             </div>
 
                             <div class="row my-4">
@@ -245,9 +275,13 @@
                                 <div class="col-sm-12" style="display: flex; flex-direction: row;">
                                     <input type="text" class="form-control " placeholder="Zip Code" ngModel
                                         name="paymentMethodBillingZipCode" required
+                                        #paymentMethodBillingZipCodeInput="ngModel"
                                         style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 </div>
 
+                                <small
+                                    *ngIf="paymentMethodBillingZipCodeInput.touched && paymentMethodBillingZipCodeInput.invalid"
+                                    style="color:red;">Billing ZipCode is Empty</small>
 
                             </div>
 
@@ -257,14 +291,18 @@
                                 <div class="col-sm-12" style="display: flex; flex-direction: row;">
                                     <input type="text" class="form-control " placeholder="Country" ngModel
                                         name="paymentMethodBillingCountry" required
+                                        #paymentMethodBillingCountryInput="ngModel"
                                         style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
                                 </div>
 
+                                <small
+                                    *ngIf="paymentMethodBillingCountryInput.touched && paymentMethodBillingCountryInput.invalid"
+                                    style="color:red;">Billing Country is Empty</small>
                             </div>
 
                             <div class="row my-4">
                                 <div class="col-sm-12">
-                                    <button class="form-control booking-payment-method-button-fix"
+                                    <button type="submit" class="form-control booking-payment-method-button-fix"
                                         [disabled]="showLoading"
                                         style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
                                         <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
@@ -297,144 +335,166 @@
 
 
 
+<div class="container-fluid" *ngIf="showNewBookingSection">
+    <div class="row">
 
-<div class="row" *ngIf="showNewBookingSection">
+        <div class="col-md-3"></div>
 
-    <div class="col-md-3 my-2">
-        <a routerLink="/" style="color: inherit;"><span style="font-size: 25px;" class="fa fa-arrow-left"
-                aria-hidden="true"></span></a>
-    </div>
-    <div class="col-md-6 my-2">
-        <div>
-            <h2 class="mb-5" align="center">Add your Personal Details and Booking Address</h2>
+        <div class="col-md-6 my-2">
+            <div>
+                <h2 class="mb-5" align="center">Add your Personal Details and Booking Address</h2>
 
-            <div class="row my-4">
+                <div class="row my-4">
 
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control" placeholder="First Name" required
-                        [(ngModel)]="bookingFirstName" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="First Name" required
+                            [(ngModel)]="bookingFirstName" #bookingFirstNameInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <small *ngIf="bookingFirstNameInput.touched && bookingFirstNameInput.invalid"
+                        style="color:red;">First Name is Empty</small>
                 </div>
 
-            </div>
+                <div class="row my-4">
 
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control" placeholder="Last Name" required
-                        [(ngModel)]="bookingLastName" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
-                </div>
-
-            </div>
-
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="email" class="form-control" placeholder="Email Address" required
-                        [(ngModel)]="bookingEmail" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
-                </div>
-
-                <span class="help-block text-muted">Please use a valid email as the property owner will communicate
-                    you through it.</span>
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Home Phone"
-                        [(ngModel)]="bookingHomePhoneNumber" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Cell Phone" [(ngModel)]="bookingPhoneNumber"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Country" [(ngModel)]="bookingCountry"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="State" [(ngModel)]="bookingState"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                </div>
-
-            </div>
-
-
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="City" [(ngModel)]="bookingCity"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control" placeholder="Last Name" required
+                            [(ngModel)]="bookingLastName" #bookingLastNameInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <small *ngIf="bookingLastNameInput.touched && bookingLastNameInput.invalid" style="color:red;">Last
+                        Name is Empty</small>
                 </div>
 
 
-            </div>
+                <div class="row my-4">
 
-            <div class="row my-4">
-
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Street" [(ngModel)]="bookingStreet"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="email" class="form-control" placeholder="Email Address" required
+                            [(ngModel)]="bookingEmail" #bookingEmailInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" />
+                    </div>
+                    <small *ngIf="bookingEmailInput.touched && bookingEmailInput.invalid" style="color:red;">Email
+                        Address is Empty</small>
+                    <small class="help-block text-muted">Please use a valid email as the property owner will communicate
+                        you through it.</small>
                 </div>
 
-            </div>
+                <div class="row my-4">
 
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Home Phone" required
+                            [(ngModel)]="bookingHomePhoneNumber" #bookingHomePhoneNumberInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
 
-            <div class="row my-4">
+                    <small *ngIf="bookingHomePhoneNumberInput.touched && bookingHomePhoneNumberInput.invalid"
+                        style="color:red;">Home Phone Number is Empty</small>
+                </div>
 
-                <div class="col-md-12" style="display: flex; flex-direction: row;">
-                    <input type="text" class="form-control " placeholder="Zip Code" [(ngModel)]="bookingZipCode"
-                        style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Cell Phone" required
+                            #bookingPhoneNumberInput="ngModel" [(ngModel)]="bookingPhoneNumber"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingPhoneNumberInput.touched && bookingPhoneNumberInput.invalid"
+                        style="color:red;">Cell Phone Number is Empty</small>
                 </div>
 
 
-            </div>
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Country" [(ngModel)]="bookingCountry"
+                            required #bookingCountryInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingCountryInput.touched && bookingCountryInput.invalid" style="color:red;">Country
+                        is Empty</small>
+                </div>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="State" [(ngModel)]="bookingState" required
+                            #bookingStateInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingStateInput.touched && bookingStateInput.invalid" style="color:red;">State
+                        is Empty</small>
+                </div>
+
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="City" [(ngModel)]="bookingCity" required
+                            #bookingCityInput="ngModel" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingCityInput.touched && bookingCityInput.invalid" style="color:red;">City
+                        is Empty</small>
+                </div>
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Street" [(ngModel)]="bookingStreet"
+                            required #bookingStreetInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingStreetInput.touched && bookingStreetInput.invalid" style="color:red;">Street
+                        is Empty</small>
+                </div>
+
+
+                <div class="row my-4">
+
+                    <div class="col-md-12" style="display: flex; flex-direction: row;">
+                        <input type="text" class="form-control " placeholder="Zip Code" [(ngModel)]="bookingZipCode"
+                            required #bookingZipCodeInput="ngModel"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                    </div>
+
+                    <small *ngIf="bookingZipCodeInput.touched && bookingZipCodeInput.invalid" style="color:red;">ZipCode
+                        is Empty</small>
+                </div>
 
 
 
-            <div class="row my-2 ">
-                <div class="col-md-12 ">
-                    <p class="text-muted">When you book this property and make payment, your reservation will be
-                        confirmed instantly.</p>
+                <div class="row my-2 ">
+                    <div class="col-md-12 ">
+                        <p class="text-muted">When you book this property and make payment, your reservation will be
+                            confirmed instantly.</p>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="row my-4 ">
+                    <div class="col-md-12 " style="display: flex; flex-direction: row;">
 
-            <div class="row my-4 ">
-                <div class="col-md-12 " style="display: flex; flex-direction: row;">
+                        <button class="form-control booking-payment-method-button-fix" type="submit"
+                            [disabled]="showLoading" (click)="onBookingPaymentForm()"
+                            style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
+                            <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
+                            <span *ngIf="showLoading===true ">Loading...</span> <span
+                                *ngIf="showLoading !==true ">Request
+                                to Book</span>
+                        </button>
 
-                    <button class="form-control booking-payment-method-button-fix" type="submit"
-                        [disabled]="showLoading" (click)="onBookingPaymentForm()"
-                        style=" flex-grow: 1; flex-shrink: 1; flex-basis: auto; ">
-                        <i class="fa fa-spinner fa-spin " *ngIf="showLoading "></i>&nbsp;&nbsp;
-                        <span *ngIf="showLoading===true ">Loading...</span> <span *ngIf="showLoading !==true ">Request
-                            to Book</span>
-                    </button>
-
+                    </div>
 
                 </div>
-
             </div>
+
+
         </div>
-
-
+        <div class="col-md-3 "></div>
     </div>
-    <div class="col-md-3 "></div>
 </div>
