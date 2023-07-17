@@ -31,10 +31,19 @@
                 <p class="form-control">{{booking.bookingPhoneNumber}}</p>
             </div>
 
-            <!--   <div class="form-group">
+            <div class="form-group">
                 <label class="my-2">Home Phone Nmber</label>
-                <p class="form-control">{{}}</p>
-            </div> -->
+                <p class="form-control">{{booking.bookingPhonehomeNumber}}</p>
+            </div>
+
+            <div class="form-group">
+                <label class="my-2">Payment Card Details</label>
+                <p class="form-control"><span>Card Holder: </span>{{booking.paymentMethod.cardHolderName}}<br />
+                    <span>Card Type: </span>{{booking.paymentMethod.cardType}}
+                </p>
+
+            </div>
+
 
         </div>
 

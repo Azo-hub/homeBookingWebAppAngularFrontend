@@ -120,50 +120,6 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
   public onEditProperty(property: Property): void {
     this.showLoading = true;
 
-    /* const formData = new FormData();
-    formData.append("id", this.editPropertyIdFromUrl);
-    formData.append("name", editpropertyForm.value.propertyNameInput.value);
-     formData.append("propertyType", editpropertyForm.value.propertyTypeInput);
-      formData.append("propertyPrice", editpropertyForm.value.propertyPriceInput.toString());
-       formData.append("propertyCountry", editpropertyForm.value.propertyCountryInput);
-       formData.append("propertyState", property.propertyState);
-       formData.append("propertyCity", property.propertyCity);
-       formData.append("propertyAddress1", property.propertyAddress1);
-       formData.append("propertyAddress2", property.propertyAddress2);
-       formData.append("propertyZipCode", property.propertyZipCode);
-       formData.append("propertyCleaningFee", property.propertyCleaningFee.toString());
-       formData.append("noOfAccommodation", property.theSpace_noOfAccommodation);
-   
-       formData.append("noOfBedrooms", property.theSpace_noOfBedrooms);
-       formData.append("noOfKing", property.beds_noOfKing);
-       formData.append("noOfQueen", property.beds_noOfQueen);
-       formData.append("noOfSingle", property.beds_noOfSingle);
-       formData.append("noOfMasterBathroom", property.bathrooms_noOfMasterBathroom);
-       formData.append("noOfPrivateBathroom", property.bathrooms_noOfPrivateBathroom);
-       formData.append("noOfHalfBath", property.bathrooms_noOfHalfBath);
-       formData.append("Kitchen", property.sharedSpaces_kitchen);
-       formData.append("laudryRoom", property.sharedSpaces_laundryRoom);
-       formData.append("outDoorParking", property.sharedSpaces_outDoorParking);
-       formData.append("garage", property.sharedSpaces_garage);
-       formData.append("balcony", property.sharedSpaces_balcony);
-       formData.append("backyard", property.sharedSpaces_backyard);
-       formData.append("wifi", property.amenities_wifi);
-       formData.append("TowelsBedsheetsSoapAndToiletpaper", property.amenities_towelsBedsheetsSoapAndToiletpaper);
-       formData.append("shampoo", property.amenities_shampoo);
-       formData.append("closetDrawers", property.amenities_closetDrawers);
-       formData.append("hairDryer", property.amenities_hairDryer);
-       formData.append("LEDTV", property.amenities_LEDTV);
-       formData.append("grill", property.amenities_grill);
-       formData.append("parking", property.amenities_parking);
-       formData.append("outdoorSwimmingPool", property.amenities_outdoorSwimmingPool);
-       formData.append("iron&Board", property.amenities_ironBoard);
-       formData.append("satelliteOrCable", property.amenities_satelliteOrCable);
-       formData.append("microwave", property.amenities_microwave);
-       formData.append("boardGames", property.amenities_boardGames);
-       formData.append("toaster", property.amenities_toaster);
-       formData.append("coffeeMaker", property.amenities_coffeeMaker);
-       formData.append("stove", property.amenities_stove); */
-
     this.subscriptions.push(
 
       this.propertyService.editProperty(property).subscribe(
