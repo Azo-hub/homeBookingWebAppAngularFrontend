@@ -1,3 +1,4 @@
+import { PaymentMethod } from "./payment-method";
 import { Property } from "./property";
 import { User } from "./user";
 
@@ -12,7 +13,7 @@ export class Booking {
     public bookingLastName: string;
     public bookingEmailAddress: string;
     public bookingPhoneNumber: string;
-    public bookingPhoneHomeNumber: string;
+    public bookingPhonehomeNumber: string;
     public bookingCountry: string;
     public bookingStreet: string;
     public bookingCity: string;
@@ -22,6 +23,7 @@ export class Booking {
     public noOfGuest: string;
     public noOfChildren: string;
     public pets: string;
+    public paymentMethod: PaymentMethod;
 
 
     constructor() {
@@ -33,7 +35,7 @@ export class Booking {
         this.bookingLastName = "";
         this.bookingEmailAddress = "";
         this.bookingPhoneNumber = "";
-        this.bookingPhoneHomeNumber = "";
+        this.bookingPhonehomeNumber = "";
         this.bookingCountry = "";
         this.bookingStreet = "";
         this.bookingCity = "";
@@ -42,6 +44,7 @@ export class Booking {
         this.noOfGuest = "";
         this.noOfChildren = "";
         this.pets = "";
+        this.paymentMethod = new PaymentMethod;
 
 
     }

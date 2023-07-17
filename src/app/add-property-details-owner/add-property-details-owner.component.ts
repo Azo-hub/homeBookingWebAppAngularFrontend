@@ -99,33 +99,26 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
 
 
   states = [
-    { value: "Alabama", label: "Alabama" }, { value: "Alaska", label: "Alaska" },
-    { value: "Arizona", label: "Arizona" }, { value: "Arkansas", label: "Arkansas" },
-    { value: "California", label: "California" }, { value: "Colorado", label: "Colorado" },
-    { value: "Connecticut", label: "Connecticut" }, { value: "Delaware", label: "Delaware" },
-    { value: "Florida", label: "Florida" }, { value: "Georgia", label: "Georgia" },
-    { value: "Hawaii", label: "Hawaii" }, { value: "Idaho", label: "Idaho" },
-    { value: "Illinois", label: "Illinois" }, { value: "Indiana", label: "Indiana" },
-    { value: "Iowa", label: "Iowa" }, { value: "Kansas", label: "Kansas" },
-    { value: "Kentucky[D]", label: "Kentucky[D]" }, { value: "Louisiana", label: "Louisiana" },
-    { value: "Maine", label: "Maine" }, { value: "Maryland", label: "Maryland" },
-    { value: "Massachusetts[D]", label: "Massachusetts[D]" }, { value: "Michigan", label: "Michigan" },
-    { value: "Minnesota", label: "Minnesota" }, { value: "Mississippi", label: "Mississippi" },
-    { value: "Missouri", label: "Missouri" }, { value: "Montana", label: "Montana" },
-    { value: "Nebraska", label: "Nebraska" }, { value: "Nevada", label: "Nevada" },
-    { value: "New Hampshire", label: "New Hampshire" }, { value: "New Jersey", label: "New Jersey" },
-    { value: "New Mexico", label: "New Mexico" }, { value: "New York", label: "New York" },
-    { value: "North Carolina", label: "North Carolina" }, { value: "North Dakota", label: "North Dakota" },
-    { value: "Ohio", label: "Ohio" }, { value: "Oklahoma", label: "Oklahoma" },
-    { value: "Oregon", label: "Oregon" }, { value: "Pennsylvania[D]", label: "Pennsylvania[D]" },
-    { value: "Rhode Island", label: "Rhode Island" }, { value: "South Carolina", label: "South Carolina" },
-    { value: "South Dakota", label: "South Dakota" }, { value: "Tennessee", label: "Tennessee" },
+    { value: "Abia", label: "Abia" }, { value: "Adamawa", label: "Adamawa" },
+    { value: "Akwa Ibom", label: "Akwa Ibom" }, { value: "Anambra", label: "Anambra" },
+    { value: "Bauchi", label: "Bauchi" }, { value: "Bayelsa", label: "Bayelsa" },
+    { value: "Benue", label: "Benue" }, { value: "Borno", label: "Borno" },
+    { value: "Cross River", label: "Cross River" }, { value: "Delta", label: "Delta" },
+    { value: "Ebonyi", label: "Ebonyi" }, { value: "Edo", label: "Edo" },
+    { value: "Ekiti", label: "Ekiti" }, { value: "Enugu", label: "Enugu" },
+    { value: "Gombe", label: "Gombe" }, { value: "Imo", label: "Imo" },
+    { value: "Jigawa", label: "Jigawa" }, { value: "Kaduna", label: "Kaduna" },
+    { value: "Kano", label: "Kano" }, { value: "Katsina", label: "Katsina" },
+    { value: "Kebbi", label: "Kebbi" }, { value: "Kogi", label: "Kogi" },
+    { value: "Kwara", label: "Kwara" }, { value: "Lagos", label: "Lagos" },
+    { value: "Nasarawa", label: "Nasarawa" }, { value: "Niger", label: "Niger" },
+    { value: "Ogun", label: "Ogun" }, { value: "Ondo", label: "Ondo" },
+    { value: "Osun", label: "Osun" }, { value: "Oyo", label: "Oyo" },
+    { value: "Plateau", label: "Plateau" }, { value: "Rivers", label: "Rivers" },
+    { value: "Sokoto", label: "Sokoto" }, { value: "Taraba", label: "Taraba" },
+    { value: "Yobe", label: "Yobe" }, { value: "Zamfara", label: "Zamfara" },
+    { value: "F.C.T.", label: "F.C.T." }
 
-    { value: "Texas", label: "Texas" }, { value: "Utah", label: "Utah" },
-    { value: "Vermont", label: "Vermont" }, { value: "Virginia[D]", label: "Virginia[D]" },
-    { value: "Washington", label: "Washington" }, { value: "West Virginia", label: "West Virginia" },
-    { value: "Wisconsin", label: "Wisconsin" }, { value: "Wyoming", label: "Wyoming" },
-    { value: "District of Columbia", label: "District of Columbia" }
   ]
 
 
