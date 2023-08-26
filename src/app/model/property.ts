@@ -46,13 +46,15 @@ export class Property {
     public amenities_toaster: string;
     public amenities_coffeeMaker: string;
     public amenities_stove: string;
+    public propertyImageUrl: string[];
+    public isImage: boolean[];
 
 
 
 
 
     constructor() {
-        this.id=0;
+        this.id = 0;
         this.name = "";
         this.propertyType = "";
         this.propertyPrice = 0;
@@ -94,6 +96,8 @@ export class Property {
         this.amenities_toaster = "";
         this.amenities_coffeeMaker = "";
         this.amenities_stove = "";
+        this.propertyImageUrl = [];
+        this.isImage = [];
 
     }
 

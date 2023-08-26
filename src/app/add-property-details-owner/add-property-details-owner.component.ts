@@ -1296,8 +1296,45 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
   }
 
 
+  profileImageArray: File[] = [];
+
+  onSelect1(file: File): void {
+    if (file) {
+      for (let i = 0; i < File.length; i++) {
+        /* var reader = new FileReader();
+         reader.readAsDataURL(file[i]);
+         reader.onload = (events: any) => {
+           this.urls.push(events.target.result);
+         } */
+
+        this.profileImageArray.push(file[i]);
+      }
+
+      console.log(this.profileImageArray);
+
+    }
+
+    const formData = new FormData();
+    formData.append("propertyImageArray", this.profileImageArray.toString());
+    formData.append("propertyId", String(this.propertyId));
+
+    const upload$ = this.http.post(`${this.host}/uploadPropertyImageTest`, formData);
+
+    upload$.subscribe(
+      (response: any) => {
+
+        this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
 
 
+      },
+      (errorResponse: HttpErrorResponse) => {
+
+        this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+
+      }
+    )
+
+  }
 
 
 
@@ -1325,6 +1362,20 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
 
 
 
+  urls: string[] = [];
+
+  onSelect(e): void {
+    if (e.target.files) {
+      for (let i = 0; i < File.length; i++) {
+        var reader = new FileReader();
+        reader.readAsDataURL(e.target.files[i]);
+        reader.onload = (events: any) => {
+          this.urls.push(events.target.result);
+        }
+      }
+    }
+
+  }
 
 
 

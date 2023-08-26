@@ -146,7 +146,7 @@
                             <select required class="form-control fa" placeholder="&#xF041; Country" ngModel
                                 name="propertyCountry" #propertyCountryInput="ngModel"
                                 style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-                                <option value="United State of America">U.S.A.</option>
+                                <option value="Nigeria">Nigeria</option>
                             </select>
 
                         </div>
@@ -767,5 +767,22 @@
     </div>
 
 
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img *ngFor="let url of urls" [src]="url" height="250px" width="250px" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="file" class="form-control" (change)="onSelect1($any($event).target.files[0])"
+                name="propertyImage300" multiple />
+            <input type="file" (change)="onSelect($event)" multiple />
+        </div>
+    </div>
 
 </div>
