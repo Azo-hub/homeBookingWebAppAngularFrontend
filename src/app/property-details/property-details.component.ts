@@ -55,6 +55,8 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
     
   }
 
+  
+
   getEachProperty(): void {
 
     const formData = new FormData();
