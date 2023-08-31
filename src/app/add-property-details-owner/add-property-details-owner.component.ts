@@ -122,14 +122,16 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
 
 
 
-  public onFileSelected(file: File): void {
+  public onFileSelected(files: File[]): void {
+
     this.pictureShowLoading = true;
     this.pictureshowLoading = true;
-    this.profileImage = file;
 
     const formData = new FormData();
-    formData.append("propertyImage", this.profileImage);
-    formData.append("propertyId", String(this.propertyId));
+    for (const file of files) {
+      formData.append('propertyImages', file, file.name);
+      formData.append("propertyId", String(this.propertyId));
+    }
 
     const upload$ = this.http.post(`${this.host}/uploadPropertyImages`, formData);
 
@@ -137,7 +139,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
       (response: any) => {
         this.pictureShowLoading = false
         this.pictureshowLoading = false;
-        this.sendNotification(NotificationType.SUCCESS, `Image uploaded successfully.`);
+        this.sendNotification(NotificationType.SUCCESS, `Images uploaded successfully.`);
 
 
       },
@@ -148,8 +150,6 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
         this.pictureshowLoading = false;
       }
     )
-
-
 
 
   }

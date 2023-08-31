@@ -384,8 +384,9 @@
             <div class="card my-4 card-fix" *ngIf="showImageUpload">
 
                 <div class="card-body my-2 mx-2">
-                    <h5 class="card-title">Add Property Image <small class="text-muted">Max Image Size <= 3MB</small>
-                                &nbsp;&nbsp;<small>Accept Only .jpg</small>
+                    <h5 class="card-title">Add Property Image <small class="text-muted">Multiple Image can be
+                            selected.</small>
+
                     </h5>
                     <div *ngIf="showImageUpload">
 
@@ -398,7 +399,8 @@
                         <div class="row my-3 gy-3 mx-1">
                             <div class="col-sm-7">
                                 <input type="file" class="form-control"
-                                    (change)="onFileSelected($any($event).target.files[0])" name="propertyImage" />
+                                    (change)="onFileSelected($any($event).target.files)" name="propertyImage"
+                                    multiple />
                             </div>
                             <div class="col-sm-5">
                                 <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading"></i>&nbsp;&nbsp;
