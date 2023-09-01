@@ -22,7 +22,6 @@ export class FindSpacesThatSuitYouInnerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.allhousesType = this.activatedRoute.snapshot.paramMap.get("category");
-    console.log(this.allhousesType);
     this.getAllProperty();
   }
 
@@ -37,6 +36,7 @@ export class FindSpacesThatSuitYouInnerComponent implements OnInit, OnDestroy {
         (response: Property[]) => {
           //this.uService.addUsersToLocalCache(response);
           this.properties = response;
+          console.log(this.properties);
 
         },
         (errorResponse: HttpErrorResponse) => {

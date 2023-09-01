@@ -7,8 +7,7 @@
 <div class="card my-5 mx-2" style="max-width: 700px;" *ngFor="let propertyEach of properties">
     <div class="row">
         <div class="col-md-4">
-            <img src="https://res.cloudinary.com/azostore/image/upload/c_fill/bookingwebapp_1{{propertyEach.name}}{{propertyEach.id}}.jpg"
-                class="d-block w-100" alt="...">
+            <img [src]="propertyEach.propertyImageUrl[0]" class="d-block w-100" alt="...">
 
         </div>
         <div class="col-md-8">
