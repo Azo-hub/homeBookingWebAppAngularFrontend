@@ -401,6 +401,12 @@
                                 <input type="file" class="form-control"
                                     (change)="onFileSelected($any($event).target.files)" name="propertyImage"
                                     multiple />
+
+                                <!-- <div *ngIf="fileStatus.status === 'progress'" class="progress" role="progressbar" aria-label="Basic example"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-animated bg-info" [style.width.%]="fileStatus.percent">
+                                        {{fileStatus.requestType}} {{fileStatus.percent}}%</div>
+                                </div> -->
                             </div>
                             <div class="col-sm-5">
                                 <i class="fa fa-spinner fa-spin " *ngIf="pictureShowLoading"></i>&nbsp;&nbsp;

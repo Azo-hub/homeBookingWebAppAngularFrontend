@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpProgressEvent, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -65,6 +65,11 @@ export class PropertyService {
 
   getReviewsByProperty(formData: FormData): Observable<Review[]> {
     return this.http.post<Review[]>(`${this.host}/reviewByProperty`, formData);
+
+  }
+
+  uploadPropertyImages(formData: FormData): Observable<CustomHttpResponse> {
+    return this.http.post<CustomHttpResponse>(`${this.host}/uploadPropertyImages`, formData);
 
   }
 

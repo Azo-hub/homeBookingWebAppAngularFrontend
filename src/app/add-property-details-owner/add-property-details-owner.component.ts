@@ -1,4 +1,4 @@
-import { HttpResponse, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse, HttpClient, HttpEvent, HttpEventType, HttpProgressEvent } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -36,6 +36,7 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
 
   showLoadingDone: boolean;
   public host = environment.apiUrl;
+  fileStatus = { status: '', requestType: '', percent: 0 };
 
 
 
@@ -133,23 +134,24 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
       formData.append("propertyId", String(this.propertyId));
     }
 
-    const upload$ = this.http.post(`${this.host}/uploadPropertyImages`, formData);
+    this.subscriptions.push(
+      this.propertyService.uploadPropertyImages(formData).subscribe(
+        (response: CustomHttpResponse) => {
 
-    upload$.subscribe(
-      (response: any) => {
-        this.pictureShowLoading = false
-        this.pictureshowLoading = false;
-        this.sendNotification(NotificationType.SUCCESS, `Images uploaded successfully.`);
+        /*  this.reportProgress(event); */
+          this.pictureShowLoading = false
+          this.pictureshowLoading = false;
+          this.sendNotification(NotificationType.SUCCESS, `Images uploaded successfully.`);
 
+        },
+        (errorResponse: HttpErrorResponse) => {
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.pictureShowLoading = false;
+          this.pictureshowLoading = false;
+        }
+      )
+    );
 
-      },
-      (errorResponse: HttpErrorResponse) => {
-
-        this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
-        this.pictureShowLoading = false;
-        this.pictureshowLoading = false;
-      }
-    )
 
 
   }
@@ -157,7 +159,41 @@ export class AddPropertyDetailsOwnerComponent implements OnInit, OnDestroy, Afte
 
 
 
+/*  private reportProgress(httpEvent: HttpEvent<any | Blob>): void {
+    switch (httpEvent.type) {
+      case HttpEventType.UploadProgress:
+        this.updateStatus(httpEvent.loaded, httpEvent.total!, 'Uploading...');
+        break;
 
+      case HttpEventType.DownloadProgress:
+        this.updateStatus(httpEvent.loaded, httpEvent.total!, 'Downloading...');
+        break;
+
+      case HttpEventType.ResponseHeader:
+        console.log('Header returned', httpEvent);
+        break;
+
+      case HttpEventType.Response:
+        if (httpEvent.body instanceof Array) {
+          this.fileStatus.status = 'done';
+
+        }
+        break;
+
+      default:
+        console.log(httpEvent);
+        break;
+    }
+  }
+
+  private updateStatus(loaded: number, total: number, requestType: string) {
+    this.fileStatus.status = 'progress';
+    this.fileStatus.requestType = requestType;
+    this.fileStatus.percent = Math.round(100 * loaded / total);
+
+  }
+
+*/
 
 
   private sendNotification(notificationType: NotificationType, message: string) {
